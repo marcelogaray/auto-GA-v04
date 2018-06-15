@@ -43,10 +43,11 @@ task runFeatures(type: Test) {
 
     options {
         jvmArgs = ['-Dcucumber.options= ' +
-                           '--glue org.umssdiplo.automationv01 ' + // proyecto a cargar
-                           '--plugin pretty ' + // formatear la salida de informacion
-                           '--plugin json:build/cucumber/cucumber.json ' + //
+                           '--glue org.umssdiplo.automationv01 ' +
+                           '--plugin pretty ' +
+                           '--plugin json:build/cucumber/cucumber.json ' +
                            '--plugin rerun:build/cucumber/rerun.txt ']
+        jvmArgs = ['-Dbrowser=' + browser]
     }
 
     // show standard out and standard error of the test JVM(s) on the console
