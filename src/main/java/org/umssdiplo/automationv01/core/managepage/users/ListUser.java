@@ -16,6 +16,9 @@ public class ListUser extends BasePage{
     @FindBy(xpath = "/html/body/ssi-root/ssi-users/div/div/div[4]/mat-table/mat-row[2]/mat-cell[4]/button[2]")
     private WebElement editButton;
 
+    @FindBy(xpath = "/html/body/ssi-root/ssi-users/div/div/div[4]/mat-table/mat-row[2]/mat-cell[4]/button[1]")
+    private WebElement deleteUserBtn;
+
     public void listUsers() {
         System.out.println("================= List Users ===================");
         CommonEvents.clickButton(menuPersonal);
@@ -27,5 +30,11 @@ public class ListUser extends BasePage{
         System.out.println("================= Click Edit Button ===================");
         CommonEvents.clickButton(editButton);
         System.out.println("================= Button clicked ===================");
+    }
+
+    public void clickDeleteUser(){
+        System.out.println("================= Click Eliminar Button ===================");
+        CommonEvents.clickButton(deleteUserBtn);
+        System.out.println("================= User Deleted ===================");
     }
 }

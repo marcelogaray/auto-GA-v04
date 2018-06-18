@@ -34,4 +34,10 @@ public class UserStepDef {
         editUser = LoadPage.getEditUserPage();
         editUser.fillFormUserData();
     }
+
+    @Given("^Click on Eliminar Button$")
+    public void clickOnEliminarButton() throws Throwable {
+        listUser = LoadPage.listUserPage();
+        listUser.clickDeleteUser();
+    }
 }
