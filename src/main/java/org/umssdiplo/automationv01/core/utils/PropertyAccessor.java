@@ -11,6 +11,9 @@ public class PropertyAccessor {
     private static final String USER_NAME = "username";
     private static final String PASSWORD = "password";
 
+    private static final String USER_NAME_TEST = "username.test";
+    private static final String PASSWORD_NAME_TEST = "password.test";
+
     private static PropertyAccessor PropertyAccessor;
     private Properties properties;
 
@@ -63,5 +66,13 @@ public class PropertyAccessor {
 
     public String getPassword() {
         return getDataProperty(PASSWORD);
+    }
+
+    public String getUserNameTest() {
+        return getDataProperty(USER_NAME_TEST);
+    }
+
+    public String getPasswordNameTest(){
+        return getDataProperty(PASSWORD_NAME_TEST);
     }
 }

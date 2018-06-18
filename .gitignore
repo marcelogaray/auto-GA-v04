@@ -21,3 +21,14 @@
 
 # virtual machine crash logs, see http://www.java.com/en/download/help/error_hotspot.xml
 hs_err_pid*
+.gradle/
+.idea/
+build/tmp/
+/chromedriver.exe
+/geckodriver.exe
+/chromedriver
+build/reports/
+build/resources/
+build/test-results/
+out/test/resources/
+src/main/java/org/umssdiplo/automationv01/core/managepage/Personal/
