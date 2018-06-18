@@ -116,4 +116,12 @@ public class CommonEvents {
         webElement.sendKeys(Keys.ENTER);
     }
 
+
+    /**
+     * This method quit the process
+     */
+    public static void stopServer(){
+        ManageDriver.getInstance().getWebDriver().quit();
+    }
+
 }
