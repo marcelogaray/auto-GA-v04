@@ -13,14 +13,10 @@ public final class LoadPage {
     }
 
     public static Incident incidentPage() {
-        ManageDriver.getInstance().getWebDriver()
-                .navigate().to(PropertyAccessor.getInstance().getBaseUrl().concat(""));
         return new Incident();
     }
 
     public static Home homePage() {
-        ManageDriver.getInstance().getWebDriver()
-                .navigate().to(PropertyAccessor.getInstance().getBaseUrl().concat(""));
         return new Home();
     }
 }

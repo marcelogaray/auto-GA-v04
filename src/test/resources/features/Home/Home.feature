@@ -6,4 +6,5 @@ Feature: Home
     And set my credentials on 'Login' page
 
   Scenario: Incident page is displayed once click into 'Incident' link
-    Given Click on 'Incident' link
+    Given 'Home' Page is loaded
+    And Click on 'Incident' link
