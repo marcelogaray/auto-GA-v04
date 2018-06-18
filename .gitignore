@@ -25,3 +25,5 @@ build
 out
 .gradle
 .idea
+.idea/uiDesigner.xml
+.idea.vcs.xml
