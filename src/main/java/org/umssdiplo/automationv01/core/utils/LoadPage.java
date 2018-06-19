@@ -2,6 +2,7 @@ package org.umssdiplo.automationv01.core.utils;
 
 import org.umssdiplo.automationv01.core.customwebdriver.ManageDriver;
 import org.umssdiplo.automationv01.core.managepage.Home.Home;
+import org.umssdiplo.automationv01.core.managepage.Incident.CreateIncident;
 import org.umssdiplo.automationv01.core.managepage.Incident.Incident;
 import org.umssdiplo.automationv01.core.managepage.Login.Login;
 
@@ -18,5 +19,9 @@ public final class LoadPage {
 
     public static Home homePage() {
         return new Home();
+    }
+
+    public static CreateIncident createIncidentPage() {
+        return new CreateIncident();
     }
 }
