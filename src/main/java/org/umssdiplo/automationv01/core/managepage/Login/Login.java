@@ -13,8 +13,7 @@ public class Login extends BasePage {
     @FindBy(name = "password")
     private WebElement passwordInputField;
 
-    //@FindBy(css = ".btn-primary.btn-block")
-    @FindBy(css = ".btn.btn-primary.btn-block.ladda-button.fadeIn.animated")
+    @FindBy(css = ".btn-primary.btn-block")
     private WebElement loginBtn;
 
     public void setCredentials() {
