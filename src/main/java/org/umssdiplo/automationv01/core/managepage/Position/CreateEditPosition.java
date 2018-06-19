@@ -56,4 +56,9 @@ public class CreateEditPosition extends BasePage {
         CommonEvents.clickButton(buttonSavePosition);
         System.out.println("Click on button Save position.\n");
     }
+
+    public void setEditDataForm(String description) {
+        CommonEvents.setInputField(fieldDescription, fieldDescription.getText() + ". " + description);
+        System.out.println("Set Description: " + description + ".\n");
+    }
 }

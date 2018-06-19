@@ -70,4 +70,14 @@ public class StepsPositionDefinition {
     public void selectAParentPositionOption() throws Throwable {
         createEditPosition.clickDropdownParentPosition();
     }
+
+    @And("^select 'Edit' button of first position in the list$")
+    public void selectEditButtonOfFirstPositionInTheList() throws Throwable {
+        position.clickEditButton(0);
+    }
+
+    @And("^edit description data of position in form$")
+    public void editDescriptionDataOfPositionInForm() throws Throwable {
+        createEditPosition.setEditDataForm("<<edited>>");
+    }
 }

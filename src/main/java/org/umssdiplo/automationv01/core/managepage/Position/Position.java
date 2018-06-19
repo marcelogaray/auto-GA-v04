@@ -60,7 +60,10 @@ public class Position extends BasePage {
     }
 
     public void clickEditButton(int positionElement) {
-        if(linksEditPosition != null){
+        CommonEvents.isVisible(table);
+        CommonEvents.findWebElement(linksEditPosition, "cargo");
+
+        if(linksEditPosition != null && linksEditPosition.size() > 0){
             WebElement btnEdit = linksEditPosition.get(positionElement);
             CommonEvents.clickButton(btnEdit);
             System.out.println("Click on button Edit of position " + positionElement + ".\n");
