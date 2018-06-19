@@ -10,6 +10,8 @@ public class PropertyAccessor {
     private static final String BASE_URL = "baseurl";
     private static final String USER_NAME = "username";
     private static final String PASSWORD = "password";
+    private static final String RESOURCE_COST = "resourceCost";
+    private static final String RESOURCE_DETAIL = "resourceDetail";
 
     private static PropertyAccessor PropertyAccessor;
     private Properties properties;
@@ -63,5 +65,13 @@ public class PropertyAccessor {
 
     public String getPassword() {
         return getDataProperty(PASSWORD);
+    }
+
+    public String getResourceCost(){
+        return getDataProperty(RESOURCE_COST);
+    }
+
+    public String getResourceDetail(){
+        return getDataProperty(RESOURCE_DETAIL);
     }
 }
