@@ -1,13 +1,13 @@
 # Marcos Bustos Jimenez
-# RF04-TC-127 feature review the behavior in thie feature
+# RF04-TC-127 feature review the behavior to create resources
 Feature: RF04-TC-127
 
-  Scenario: Home page is displayed once set credential in login page
+  @marcos
+  Scenario: 'Progama SSO' page is displayed
     Given 'SSI G & D' page is loaded
     And set my credentials on 'Login' page 'SSI G & D'
-
-  Scenario: 'Progama SSO' page is displayed
-      Given click menu 'Programa SSO'
-      And click sub menu 'Recursos'
-      And click 'Agregar nuevo recurso'
-      And filling inputs resources form
+    And click menu 'Programa SSO'
+    And click sub menu 'Recursos'
+    And click 'Agregar nuevo recurso'
+    And filling inputs resources form
+    And stop web driver

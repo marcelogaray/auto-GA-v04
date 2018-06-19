@@ -7,7 +7,7 @@ import org.umssdiplo.automationv01.core.managepage.Login.Login;
 import org.umssdiplo.automationv01.core.managepage.ProgramSSO.ProgramaSSO;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
-public class StepsDefinationSSI_GyD {
+public class StepsDefinationSSI_GyD_Resources {
     private Login login;
     private ProgramaSSO programaSSO;
 

@@ -44,6 +44,6 @@ public class ProgramaSSO extends BasePage {
         CommonEvents.setInputField(detailInputField, detail);
         CommonEvents.clickButton(saveBtn);
 
-        CommonEvents.stopServer();
+
     }
 }
