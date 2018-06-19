@@ -13,7 +13,14 @@ public class Incident extends BasePage {
     @FindBy(id = "incidents-report-btn")
     private WebElement incidentReportBtn;
 
+    @FindBy(className = "mat-table")
+    private WebElement tableIncidents;
+
     public void clickCreateIncident() {
         CommonEvents.clickButton(addNewIncidentButton);
+    }
+
+    public boolean verifyIfTableExists() {
+        return CommonEvents.isVisible(tableIncidents);
     }
 }

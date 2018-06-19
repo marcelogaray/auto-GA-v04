@@ -8,15 +8,26 @@ import org.umssdiplo.automationv01.core.managepage.Login.Login;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
 public class IncidentStepDefinition {
-    Incident incident = new Incident();
+    Incident incident;
+
+    @Given("^Incident Page is loaded$")
+    public void incidentPageIsLoaded() throws Throwable {
+        incident = LoadPage.incidentPage();
+    }
 
     @Given("^Click on 'Add new Incident' button$")
     public void clickOnAddNewIncidentButton() throws Throwable {
         incident.clickCreateIncident();
     }
 
-    @And("^set Incidents form for create$")
-    public void setIncidentsFormForCreate() throws Throwable {
-
+    @And("^List of incidents is loaded$")
+    public void listOfIncidentsIsLoaded() throws Throwable {
+        incident.verifyIfTableExists();
     }
+
+//    @And("^set Incidents form for create$")
+//    public void setIncidentsFormForCreate() throws Throwable {
+//
+//    }
+
 }

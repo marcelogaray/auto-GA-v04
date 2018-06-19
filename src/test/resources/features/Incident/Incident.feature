@@ -4,8 +4,14 @@ Feature: Incident
   Background:
     Given 'Login' page is loaded
     And set my credentials on 'Login' page
+    And 'Home' Page is loaded
     And Click on 'Incident' link
 
   Scenario: Incident page is displayed once click into 'Incident' link
-    Given Click on 'Add new Incident' button
-    And set Incidents form for create
+    Given Incident Page is loaded
+    And List of incidents is loaded
+
+#  Scenario: Incident page is displayed once click into 'Incident' link
+#    Given Incident Page is loaded
+#    And Click on 'Add new Incident' button
+#    And set Incidents form for create
