@@ -6,12 +6,17 @@ import org.umssdiplo.automationv01.core.managepage.Position.CreatePosition;
 import org.umssdiplo.automationv01.core.managepage.Position.EditPosition;
 import org.umssdiplo.automationv01.core.managepage.Position.ListPosition;
 import org.umssdiplo.automationv01.core.managepage.Position.Position;
+import org.umssdiplo.automationv01.core.managepage.Util;
 
 public final class LoadPage {
     public static Login loginPage() {
         ManageDriver.getInstance().getWebDriver()
                 .navigate().to(PropertyAccessor.getInstance().getBaseUrl());
         return new Login();
+    }
+
+    public static Util util(){
+        return new Util();
     }
 
     public static Position positionPage() {
