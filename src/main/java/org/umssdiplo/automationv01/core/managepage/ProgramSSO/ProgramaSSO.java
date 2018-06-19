@@ -25,6 +25,16 @@ public class ProgramaSSO extends BasePage {
     @FindBy(className = "btnGuardar")
     private WebElement saveBtn;
 
+    @FindBy(xpath = "//mat-header-cell[text()='Costo']")
+    private WebElement costHeader;
+
+    @FindBy(xpath = "//mat-header-cell[text()='Detalle']")
+    private WebElement detailHeader;
+
+    @FindBy(xpath = "//mat-header-cell[text()='Accion']")
+    private WebElement actionHeader;
+
+
     public void clickMenuProgramSSO() {
         CommonEvents.clickButton(menuProgramSSO);
     }
@@ -43,7 +53,20 @@ public class ProgramaSSO extends BasePage {
         CommonEvents.setInputField(costInputField, cost);
         CommonEvents.setInputField(detailInputField, detail);
         CommonEvents.clickButton(saveBtn);
+    }
 
+    public Boolean visibilityCostHeader()
+    {
+        return CommonEvents.isVisible(costHeader);
+    }
 
+    public Boolean visibilityDetailHeader()
+    {
+        return CommonEvents.isVisible(detailHeader);
+    }
+
+    public Boolean visibilityActionHeader()
+    {
+        return CommonEvents.isVisible(actionHeader);
     }
 }
