@@ -9,6 +9,7 @@ import cucumber.api.testng.AbstractTestNGCucumberTests;
                 "html:build/cucumber",
                 "json:build/cucumber/cucumber.json",
                 "junit:build/test-report.xml"}
+        //,tags = {"@listpositions"}
 )
 public class CucumberRunner extends AbstractTestNGCucumberTests{
 }
