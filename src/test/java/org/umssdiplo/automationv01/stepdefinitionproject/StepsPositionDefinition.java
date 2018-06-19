@@ -24,7 +24,7 @@ public class StepsPositionDefinition {
         position.clickPositions();
     }
 
-    @And("^load list positions page is loaded$")
+    @And("^validate list positions page is loaded$")
     public void positionsPageIsLoaded() throws Throwable {
         position.validatePagePosition();
     }
@@ -37,5 +37,30 @@ public class StepsPositionDefinition {
     @And("^validate exist paginator of list positions$")
     public void validateExistPaginatorOfListPositions() throws Throwable {
         position.validPaginator();
+    }
+
+    @And("^select 'Crear nuevo cargo' button$")
+    public void selectCrearNuevoCargoButton() throws Throwable {
+        position.clickCreatePositions();
+    }
+
+    @And("^fill data to create a new position in form$")
+    public void fillDataToCreateANewPositionInForm() throws Throwable {
+        position.setCreateDataForm("Cargo prueba", "2", "Test position automation creation");
+    }
+
+    @And("^click on button save position$")
+    public void clickOnButtonSavePosition() throws Throwable {
+        position.clickSavePositions();
+    }
+
+    @And("^review load position page after save position created$")
+    public void reviewLoadPositionPageAfterSavePositionCreated() throws Throwable {
+        position.validatePagePosition();
+    }
+
+    @And("^select a parent position option$")
+    public void selectAParentPositionOption() throws Throwable {
+        position.clickDropdownParentPosition();
     }
 }
