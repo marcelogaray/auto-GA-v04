@@ -1,19 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # Position feature review the behavior in the feature
 Feature: Position
 

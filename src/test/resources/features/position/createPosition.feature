@@ -1,19 +1,3 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # Position feature review the behavior in the feature
 Feature: Create Position
 
@@ -29,7 +13,7 @@ Feature: Create Position
     And select 'Crear nuevo cargo' button
 
   Scenario: Validate Create new position
-    Given load necesary objects position
+    Given load necesary objects create position
     And fill data to create a new position in form
     And select a parent position option
     And click on button save position

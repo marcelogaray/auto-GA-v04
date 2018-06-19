@@ -3,15 +3,22 @@ package org.umssdiplo.automationv01.stepdefinitionproject;
 import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
+import org.umssdiplo.automationv01.core.managepage.Position.CreateEditPosition;
 import org.umssdiplo.automationv01.core.managepage.Position.Position;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
 public class StepsPositionDefinition {
     Position position;
+    CreateEditPosition createEditPosition;
 
     @Given("^load necesary objects position$")
     public void loadNecesaryObjectsPosition() throws Throwable {
         position = LoadPage.positionPage();
+    }
+
+    @Given("^load necesary objects create position$")
+    public void loadNecesaryObjectsCreatePosition() throws Throwable {
+        createEditPosition = LoadPage.createPositionPage();
     }
 
     @And("^select 'Estructura organizacional' menu option$")
@@ -46,12 +53,12 @@ public class StepsPositionDefinition {
 
     @And("^fill data to create a new position in form$")
     public void fillDataToCreateANewPositionInForm() throws Throwable {
-        position.setCreateDataForm("Cargo prueba", "2", "Test position automation creation");
+        createEditPosition.setCreateDataForm("Cargo prueba", "2", "Test position automation creation");
     }
 
     @And("^click on button save position$")
     public void clickOnButtonSavePosition() throws Throwable {
-        position.clickSavePositions();
+        createEditPosition.clickSavePositions();
     }
 
     @And("^review load position page after save position created$")
@@ -61,6 +68,6 @@ public class StepsPositionDefinition {
 
     @And("^select a parent position option$")
     public void selectAParentPositionOption() throws Throwable {
-        position.clickDropdownParentPosition();
+        createEditPosition.clickDropdownParentPosition();
     }
 }

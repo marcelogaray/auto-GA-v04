@@ -26,23 +26,8 @@ public class Position extends BasePage {
     @FindBy(id = "btnCreatePosition")
     private WebElement buttonCreatePosition;
 
-    @FindBy(name = "fieldName")
-    private WebElement fieldName;
-
-    @FindBy(name = "fieldLevel")
-    private WebElement fieldLevel;
-
-    @FindBy(name = "fieldDescription")
-    private WebElement fieldDescription;
-
-    @FindBy(xpath = "//mat-select")
-    private WebElement dropDownParent;
-
-    @FindBy(xpath = "//mat-option")
-    private List<WebElement> optsParentPosition;
-
-    @FindBy(id = "buttonSavePosition")
-    private WebElement buttonSavePosition;
+    @FindBy(xpath = "//a[contains(@class, 'linkEdit')]")
+    private List<WebElement> linksEditPosition;
 
     public void clickOrganizationalStructure() {
         CommonEvents.clickButton(menuOrganizationalStructure);
@@ -70,40 +55,17 @@ public class Position extends BasePage {
     }
 
     public void clickCreatePositions() {
-        //CommonEvents.isVisible(buttonCreatePosition);
         CommonEvents.clickButton(buttonCreatePosition);
         System.out.println("Click on button create Position.\n");
     }
 
-    public void setCreateDataForm(String name, String level, String description) {
-        CommonEvents.setInputField(fieldName, name);
-        System.out.println("Set Name: " + name + ".\n");
-        CommonEvents.setInputField(fieldLevel, level);
-        System.out.println("Set Level: " + level + ".\n");
-        CommonEvents.setInputField(fieldDescription, description);
-        System.out.println("Set Description: " + description + ".\n");
-    }
-
-    public void clickDropdownParentPosition(){
-        CommonEvents.isVisible(dropDownParent);
-        CommonEvents.clickButton(dropDownParent);
-        System.out.println("select parent position.\n");
-        clickOptionParentPosition();
-    }
-
-    public void clickOptionParentPosition(){
-        if(optsParentPosition != null){
-            WebElement option = optsParentPosition.get(0);
-            CommonEvents.clickButton(option);
-            System.out.println("select option parent position.\n");
+    public void clickEditButton(int positionElement) {
+        if(linksEditPosition != null){
+            WebElement btnEdit = linksEditPosition.get(positionElement);
+            CommonEvents.clickButton(btnEdit);
+            System.out.println("Click on button Edit of position " + positionElement + ".\n");
         } else {
-            System.out.println("Not exist a parent position.\n");
+            System.out.println("Not exist position items in the list.\n");
         }
-    }
-
-    public void clickSavePositions() {
-        //CommonEvents.isVisible(buttonSavePosition);
-        CommonEvents.clickButton(buttonSavePosition);
-        System.out.println("Click on button Save position.\n");
     }
 }
