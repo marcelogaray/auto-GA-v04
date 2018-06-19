@@ -10,8 +10,3 @@ Feature: Incident
   Scenario: Incident page is displayed once click into 'Incident' link
     Given Incident Page is loaded
     And List of incidents is loaded
-
-#  Scenario: Incident page is displayed once click into 'Incident' link
-#    Given Incident Page is loaded
-#    And Click on 'Add new Incident' button
-#    And set Incidents form for create
