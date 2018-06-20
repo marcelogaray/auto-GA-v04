@@ -1,10 +1,9 @@
 package org.umssdiplo.automationv01;
 
 import cucumber.api.CucumberOptions;
-import cucumber.api.java.After;
 import cucumber.api.testng.AbstractTestNGCucumberTests;
 import org.testng.annotations.AfterTest;
-import org.umssdiplo.automationv01.core.managepage.Util;
+import org.umssdiplo.automationv01.core.customwebdriver.ManageDriver;
 
 @CucumberOptions(
         features = {"src/test/resources/features"},
@@ -16,7 +15,6 @@ import org.umssdiplo.automationv01.core.managepage.Util;
 public class CucumberRunner extends AbstractTestNGCucumberTests{
     @AfterTest
     public void closeWebDriver(){
-        Util util = new Util();
-        util.stopWebDriver();
+        ManageDriver.getInstance().getWebDriver().quit();
     }
 }
