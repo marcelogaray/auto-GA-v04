@@ -13,18 +13,4 @@ public class CommonStepdef {
     private Login login;
     private Home home;
 
-//    @Given("^Ingresamos al Sistema$")
-//    public void loginPageIsLoaded() throws Throwable {
-//        login = LoadPage.loginPage();
-//    }
-//
-//    @And("^Insertamos las credenciales en el formulario de inicio de sesion$")
-//    public void setMyCredentialsOnLoginPage() throws Throwable {
-//        home = login.setCredentials();
-//    }
-//
-//    @Given("^Estoy autenticado a la pagina de inicio$")
-//    public void homePageIsLoaded() throws Throwable {
-//        Assert.assertEquals(home.homePageIsVisiable(), true);
-//    }
 }
