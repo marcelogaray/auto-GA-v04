@@ -1,31 +1,18 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 # Position feature review the behavior in the feature
+# RF02-TC-071 UI > Asignación de funciones > Estructura organizacional >
+# Cargos de la empresa > Verificar la carga del listado de los cargos con un paginador de la lista
+
+@listPosition
 Feature: Position
 
-  Scenario: Home page is displayed once set credential in login page
-    Given 'SSI-D' page is loaded
-    And set my credentials on 'Login' page
+  Scenario: Pagina de inicio es mostrada una vez que se ponen los credenciales correctos de inicio de sesión
+    Given 'SSI-D' pagina de inicio de sesion es cargada
+    And Ingresar los credenciales validos en la pagina 'Login' para ingresar al sistema
 
-  Scenario: Position page list all positions of organizational structure
-    Given load necesary objects position
-    And select 'Estructura organizacional' menu option
-    And select 'Cargos de la empresa' menu option
-    And load list positions page is loaded
-    And validate table list of positions
-    And validate exist paginator of list positions
-    And stop web driver
+  Scenario: Verificar la carga del listado de los cargos con un paginador de la lista
+    Given 'SSI-D' pagina Home fue cargada despues de inicio de sesion
+    When Se selecciona la opcion del menu 'Estructura organizacional'
+    And Seleccionar la opcion del sub menu 'Cargos del personal'
+    And Verificar que se haya cargado la pagina Cargos de la empresa
+    Then Validar que exista el listado con los cargos registrados en la base de datos
+    And Verificar que el listado contenga paginador de contenido

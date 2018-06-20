@@ -9,13 +9,13 @@ import org.umssdiplo.automationv01.core.utils.LoadPage;
 public class StepsDefinitionSSID {
     private Login login;
 
-    @Given("^'SSI-D' page is loaded$")
-    public void phpTravelPageIsLoaded() throws Throwable {
+    @Given("^'SSI-D' pagina de inicio de sesion es cargada$")
+    public void ssiDPaginaDeInicioDeSesionEsCargada() throws Throwable {
         login = LoadPage.loginPage();
     }
 
-    @And("^set my credentials on 'Login' page$")
-    public void setMyCredentialsOnLoginPage() throws Throwable {
+    @And("^Ingresar los credenciales validos en la pagina 'Login' para ingresar al sistema$")
+    public void ingresarLosCredencialesValidosEnLaPaginaLoginParaIngresarAlSistema() throws Throwable {
         login.setCredentials();
     }
 }

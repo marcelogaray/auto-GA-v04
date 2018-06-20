@@ -5,11 +5,13 @@ import org.openqa.selenium.support.FindBy;
 import org.umssdiplo.automationv01.core.managepage.BasePage;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
+import java.util.List;
+
 public class Position extends BasePage {
-    @FindBy(name = "menuStructure")
+    @FindBy(id = "menuStructure")
     private WebElement menuOrganizationalStructure;
 
-    @FindBy(name = "smPositions")
+    @FindBy(id = "smPositions")
     private WebElement menuPosition;
 
     @FindBy(xpath = "//h1[contains(text(), 'Cargos de la empresa')]")
@@ -21,28 +23,37 @@ public class Position extends BasePage {
     @FindBy(xpath = "//mat-paginator")
     private WebElement paginator;
 
+    @FindBy(xpath = "//mat-row")
+    private List<WebElement> rowsPosition;
+
     public void clickOrganizationalStructure() {
+        CommonEvents.isVisible(menuOrganizationalStructure);
         CommonEvents.clickButton(menuOrganizationalStructure);
-        System.out.println("Select the option structure organizational in menu.\n");
     }
 
     public void clickPositions() throws InterruptedException {
+        CommonEvents.isVisible(menuPosition);
         CommonEvents.clickButton(menuPosition);
-        System.out.println("Select the option Positions in sub menu.\n");
     }
 
     public void validatePagePosition() {
         CommonEvents.isVisible(page);
-        System.out.println("The page of Organizational structure - Position is Displayed.");
     }
 
     public void listPositions() {
-        CommonEvents.isVisible(table);
-        System.out.println("The table of list Positions is Displayed.");
+        CommonEvents.isPresent(table);
+        validateRowsPositionsRegistered();
+    }
+
+    private void validateRowsPositionsRegistered() {
+        if (rowsPosition != null && rowsPosition.size() > 0) {
+            System.out.println("Existen cargos registrados que se ven en el listado correctamente.");
+        } else {
+            System.out.println("No existen cargos registrados.");
+        }
     }
 
     public void validPaginator() {
         CommonEvents.isPresent(paginator);
-        System.out.println("The list positions have paginator");
     }
 }
