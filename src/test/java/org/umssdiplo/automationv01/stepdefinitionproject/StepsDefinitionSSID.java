@@ -27,7 +27,6 @@ public class StepsDefinitionSSID {
     }
 
     //SSID HOME
-
     @And("^click menu Equipment in 'Home' page$")
     public void selectMenuEquipment() throws Throwable {
         home.clickEquipment();
@@ -39,7 +38,6 @@ public class StepsDefinitionSSID {
     }
 
     //SSID LIST EQUIPMENTS
-
     @Then("'Equipment List' page loads DONE")
     public void listEquipmentPresent() throws Throwable{
         boolean result = listEquipment.listEquipmetsPresent();
