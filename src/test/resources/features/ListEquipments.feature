@@ -2,8 +2,8 @@
 Feature: ListEquipment
 
   Scenario:  Verificar lista de Equipamiento (Datos registrados) deben ser correctamente mostrados
-    Given 'SSID' page is loaded
-    And set my credentials on SSID 'Login' page
-    And click menu Equipment in 'Home' page
-    And click subMenu Equipment in 'Home' page
-    Then 'Equipment List' page loads DONE
+    Given 'SSI-D' pagina de inicio de sesion es cargada
+    And Ingresar los credenciales validos en la pagina 'Login' para ingresar al sistema
+    And click menu Equipment en  pagina 'Home'
+    And click subMenu Equipment en  pagina 'Home'
+    Then  pagina 'Equipment List' cargada corectamente

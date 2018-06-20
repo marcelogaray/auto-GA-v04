@@ -16,30 +16,30 @@ public class StepsDefinitionSSID {
     private ListEquipment listEquipment;
 
     //SSID LOGIN
-    @Given("^'SSID' page is loaded$")
-    public void phpTravelPageIsLoaded() throws Throwable {
+    @Given("^'SSI-D' pagina de inicio de sesion es cargada$")
+    public void ssiDPaginaDeInicioDeSesionEsCargada() throws Throwable {
         login = LoadPage.loginPage();
     }
 
-    @And("^set my credentials on SSID 'Login' page$")
-    public void setMyCredentialsOnLoginPage() throws Throwable {
+    @And("^Ingresar los credenciales validos en la pagina 'Login' para ingresar al sistema$")
+    public void ingresarLosCredencialesValidosEnLaPaginaLoginParaIngresarAlSistema() throws Throwable {
         home = login.setCredentials();
     }
 
     //SSID HOME
-    @And("^click menu Equipment in 'Home' page$")
+    @And("^click menu Equipment en  pagina 'Home'$")
     public void selectMenuEquipment() throws Throwable {
         home.clickEquipment();
     }
 
-    @And("^click subMenu Equipment in 'Home' page")
+    @And("^click subMenu Equipment en  pagina 'Home'")
     public void selectSubMenuEquipment() throws Throwable {
         listEquipment = home.clickSubEquipment();
     }
 
     //SSID LIST EQUIPMENTS
-    @Then("'Equipment List' page loads DONE")
-    public void listEquipmentPresent() throws Throwable{
+    @Then(" pagina 'Equipment List' cargada corectamente")
+    public void listEquipmentPresent() throws Throwable {
         boolean result = listEquipment.listEquipmetsPresent();
         Assert.assertTrue(result);
     }
