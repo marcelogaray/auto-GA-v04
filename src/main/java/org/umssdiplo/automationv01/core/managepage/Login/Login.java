@@ -13,7 +13,7 @@ public class Login extends BasePage {
     @FindBy(name = "password")
     private WebElement passwordInputField;
 
-    @FindBy(tagName = "button")
+    @FindBy(xpath = "//button/span[contains(text(),'Ingresar')]")
     private WebElement loginBtn;
 
     public void setCredentials() {
