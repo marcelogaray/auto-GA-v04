@@ -7,7 +7,7 @@ import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
 public class Home extends BasePage {
 
-    @FindBy(id = "incidents-btn")
+    @FindBy(id = "incident-lnk")
     private WebElement incidentLink;
 
     public void clickIncident() {

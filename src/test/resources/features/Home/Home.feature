@@ -6,3 +6,4 @@ Feature: Home
 
   Scenario: Incident page is displayed once click into 'Incident' link
     Given 'Home' Page is loaded
+    And Click on 'Incident' link
