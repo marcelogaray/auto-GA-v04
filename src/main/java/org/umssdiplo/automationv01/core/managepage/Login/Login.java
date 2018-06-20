@@ -7,13 +7,13 @@ import org.umssdiplo.automationv01.core.utils.CommonEvents;
 import org.umssdiplo.automationv01.core.utils.PropertyAccessor;
 
 public class Login extends BasePage {
-    @FindBy(name = "email")
+    @FindBy(id = "mat-input-0")
     private WebElement usernameInputField;
 
-    @FindBy(name = "password")
+    @FindBy(id = "mat-input-1")
     private WebElement passwordInputField;
 
-    @FindBy(css = ".btn-primary.btn-block")
+    @FindBy(className = "mat-button-wrapper")
     private WebElement loginBtn;
 
     public void setCredentials() {
