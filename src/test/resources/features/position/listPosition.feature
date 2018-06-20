@@ -5,10 +5,6 @@
 @listPosition
 Feature: Position
 
-  Scenario: Pagina de inicio es mostrada una vez que se ponen los credenciales correctos de inicio de sesión
-    Given 'SSI-D' pagina de inicio de sesion es cargada
-    And Ingresar los credenciales validos en la pagina 'Login' para ingresar al sistema
-
   Scenario: Verificar la carga del listado de los cargos con un paginador de la lista
     Given 'SSI-D' pagina Home fue cargada despues de inicio de sesion
     When Se selecciona la opcion del menu 'Estructura organizacional'
