@@ -8,31 +8,31 @@ import org.umssdiplo.automationv01.core.utils.PropertyAccessor;
 
 public class RegisterEquipment extends BasePage {
 
-    @FindBy(xpath = "/html/body/ssi-root/ssi-home/div/ssi-header/div/mat-toolbar/div/button[5]")
+    @FindBy(id = "menuEquipament")
     private WebElement equipMenu;
 
-    @FindBy(xpath = "//*[@id=\"cdk-overlay-0\"]/div/div/button[1]")
+    @FindBy(id = "smEquipament")
     private WebElement equiSubMenu;
 
-    @FindBy(xpath = "/html/body/ssi-root/ssi-equipment/div/div[2]/button")
+    @FindBy(id = "crearEquipment")
     private WebElement crearEquipment;
 
-    @FindBy(xpath = "//*[@id=\"mat-input-2\"]")
+    @FindBy(id = "nombreEquipment")
     private WebElement equipmentName;
 
-    @FindBy(xpath = "//*[@id=\"mat-select-0\"]/div/div[1]/span")
+    @FindBy(id= "typeEquipment")
     private WebElement equipmentType;
 
-    @FindBy(xpath = "//*[@id=\"mat-option-1\"]/span")
+    @FindBy(id="mat-option-1")
     private WebElement equipmentSelectType;
 
-    @FindBy(xpath = "//*[@id=\"mat-input-3\"]")
+    @FindBy(id="descEquipment")
     private WebElement equipmentDesc;
 
-    @FindBy(xpath = "//*[@id=\"image\"]")
+    @FindBy(id="imageEquipment")
     private WebElement equipmentImage;
 
-    @FindBy(xpath = "//*[@id=\"form\"]/button")
+    @FindBy(id="newEquipment")
     private WebElement createBtn;
 
     public void registerEquipment() {
