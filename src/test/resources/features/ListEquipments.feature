@@ -1,7 +1,9 @@
 # Login feature review the behavior in thie feature
 Feature: ListEquipment
 
-  Scenario: VERIFY THAT THE LIST OF EQUIPMENTS IS SHOWN WHEN THE "EQUIPAMENT" SUBMENU IS SELECTED
+  Scenario:  Verificar lista de Equipamiento (Datos registrados) deben ser correctamente mostrados
     Given 'SSID' page is loaded
     And set my credentials on SSID 'Login' page
-    And list equipment on 'Home' page
+    And click menu Equipment in 'Home' page
+    And click subMenu Equipment in 'Home' page
+    Then 'Equipment List' page loads DONE
