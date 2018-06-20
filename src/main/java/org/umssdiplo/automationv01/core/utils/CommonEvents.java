@@ -115,5 +115,4 @@ public class CommonEvents {
     public static void pressEnterKey(WebElement webElement) {
         webElement.sendKeys(Keys.ENTER);
     }
-
 }
