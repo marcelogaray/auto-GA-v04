@@ -17,8 +17,7 @@ public class Home extends BasePage{
         CommonEvents.clickButton(equipMenu);
     }
 
-    public ListEquipment clickSubEquipment()
-    {
+    public ListEquipment clickSubEquipment() {
         CommonEvents.clickButton(equiSubMenu);
         return new ListEquipment();
     }

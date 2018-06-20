@@ -6,10 +6,11 @@ import org.umssdiplo.automationv01.core.managepage.BasePage;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
 public class ListEquipment extends BasePage {
+
     @FindBy(id = "crearEquipment")
     WebElement createEquipmentBtn;
 
-    public boolean listEquipmetsPresent(){
+    public boolean listEquipmetsPresent() {
         return CommonEvents.isPresent(createEquipmentBtn);
     }
 }

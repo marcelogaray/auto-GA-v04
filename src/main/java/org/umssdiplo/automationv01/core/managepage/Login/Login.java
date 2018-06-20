@@ -18,11 +18,23 @@ public class Login extends BasePage {
     private WebElement loginBtn;
 
     public Home setCredentials() {
-        String username = PropertyAccessor.getInstance().getUser();
-        String password = PropertyAccessor.getInstance().getPassword();
-        CommonEvents.setInputField(usernameInputField, username);
-        CommonEvents.setInputField(passwordInputField, password);
-        CommonEvents.clickButton(loginBtn);
+        setUser();
+        setPassword();
+        clickBtnLogin();
         return new Home();
+    }
+
+    private void setUser() {
+        String username = PropertyAccessor.getInstance().getUser();
+        CommonEvents.setInputField(usernameInputField, username);
+    }
+
+    private void setPassword() {
+        String password = PropertyAccessor.getInstance().getPassword();
+        CommonEvents.setInputField(passwordInputField, password);
+    }
+
+    private void clickBtnLogin() {
+        CommonEvents.clickButton(loginBtn);
     }
 }
