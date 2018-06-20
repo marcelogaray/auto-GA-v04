@@ -19,9 +19,4 @@ public class StepsDefinitionSSID {
     public void ingresarLosCredencialesValidosEnLaPaginaLoginParaIngresarAlSistema() throws Throwable {
         login.setCredentials();
     }
-
-    @Then("^Pagina SSI-D Inicio es cargada$")
-    public void paginaSSIDInicioEsCargada() throws Throwable {
-        System.out.println("se realiza el inicio de sesion.");
-    }
 }
