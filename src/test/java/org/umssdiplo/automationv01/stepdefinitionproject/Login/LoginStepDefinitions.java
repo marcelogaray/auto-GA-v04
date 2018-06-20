@@ -9,12 +9,12 @@ import org.umssdiplo.automationv01.core.utils.LoadPage;
 public class LoginStepDefinitions {
     private Login login;
 
-    @Given("^'Login' page is loaded$")
+    @Given("^Ingresamos al Sistema$")
     public void loginPageIsLoaded() throws Throwable {
         login = LoadPage.loginPage();
     }
 
-    @And("^set my credentials on 'Login' page$")
+    @And("^Insertamos las credenciales en el formulario de inicio de sesion$")
     public void setMyCredentialsOnLoginPage() throws Throwable {
         login.setCredentials();
     }

@@ -8,7 +8,7 @@ import org.umssdiplo.automationv01.core.utils.LoadPage;
 public class HomeStepDefinitions {
     private Home home;
 
-    @Given("^'Home' Page is loaded$")
+    @Given("^Estoy autenticado a la pagina de inicio$")
     public void homePageIsLoaded() throws Throwable {
         home = LoadPage.homePage();
     }
