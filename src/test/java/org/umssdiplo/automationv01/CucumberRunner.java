@@ -11,10 +11,11 @@ import org.umssdiplo.automationv01.core.customwebdriver.ManageDriver;
                 "html:build/cucumber",
                 "json:build/cucumber/cucumber.json",
                 "junit:build/test-report.xml"}
+        ,tags = "@login"
 )
-public class CucumberRunner extends AbstractTestNGCucumberTests{
+public class CucumberRunner extends AbstractTestNGCucumberTests {
     @AfterTest
-    public void closeWebDriver(){
+    public void closeWebDriver() {
         ManageDriver.getInstance().getWebDriver().quit();
     }
 }
