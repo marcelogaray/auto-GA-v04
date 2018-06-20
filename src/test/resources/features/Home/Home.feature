@@ -1,4 +1,4 @@
-# Login feature review the behavior in thie feature
+# Home feature review the behavior in thie feature
 Feature: Home
   Background:
     Given Ingresamos al Sistema

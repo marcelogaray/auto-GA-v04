@@ -10,7 +10,14 @@ public class Home extends BasePage {
     @FindBy(id = "incident-lnk")
     private WebElement incidentLink;
 
+    @FindBy(xpath = "//h1[contains(text(), 'Sistema de seguridad industrial - Grupo D')]")
+    private WebElement homePageTitle;
+
     public void clickIncident() {
         CommonEvents.clickButton(incidentLink);
+    }
+
+    public boolean homePageIsVisiable() {
+        return CommonEvents.isVisible(homePageTitle);
     }
 }
