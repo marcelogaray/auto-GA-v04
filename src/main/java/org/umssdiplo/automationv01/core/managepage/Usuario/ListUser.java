@@ -17,7 +17,7 @@ public class ListUser extends BasePage {
         CommonEvents.isVisible(btnAgregarUsuario);
     }
 
-    public boolean verifyListUser() {
+    public boolean isUserListVisible() {
         return CommonEvents.isVisible(paginElement);
     }
 }

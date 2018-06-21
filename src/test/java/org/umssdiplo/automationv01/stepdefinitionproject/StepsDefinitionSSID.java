@@ -36,18 +36,18 @@ public class StepsDefinitionSSID {
         menu = home.getHomeMenu();
     }
 
-    @And("^Menu 'Personal' estee seleccionado$")
+    @And("^seleccionar menu 'Personal' en la pagina 'Menu Principal'$")
     public void menuPersonalEsteeSeleccionado() throws Throwable {
         menuPersonal = menu.selectPersonalSubMenu();
     }
 
-    @And("^Seleccionar SubMenu 'Usuario'$")
+    @And("^Seleccionar submenu 'Usuario' en menu 'Personal'$")
     public void seleccionarSubMenuUsuario() throws Throwable {
         listUser = menuPersonal.selectSubMenuUsuario();
     }
 
-    @Then("^Validar 'Lista de Usuarios'$")
+    @Then("^Validar que la 'Lista de Usuarios' este visible$")
     public void validarListaDeUsuarios() throws Throwable {
-        boolean result = listUser.verifyListUser();
+        boolean result = listUser.isUserListVisible();
     }
 }

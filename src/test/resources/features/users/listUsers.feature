@@ -5,8 +5,8 @@ Feature: List User
     Given 'SSI-D' pagina de inicio de sesion es cargada
     And Ingresar los credenciales validos en la pagina 'Login' para ingresar al sistema
 
-  Scenario:
+  Scenario: Verificar lista de Usuarios este correctamente cargado
     Given Menu principal estee cargado
-    And Menu 'Personal' estee seleccionado
-    And Seleccionar SubMenu 'Usuario'
-    Then Validar 'Lista de Usuarios'
+    And seleccionar menu 'Personal' en la pagina 'Menu Principal'
+    And Seleccionar submenu 'Usuario' en menu 'Personal'
+    Then Validar que la 'Lista de Usuarios' este visible
