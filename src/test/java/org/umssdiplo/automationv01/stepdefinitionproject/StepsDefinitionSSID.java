@@ -4,12 +4,16 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.When;
 import org.umssdiplo.automationv01.core.managepage.Header.Header;
+import org.umssdiplo.automationv01.core.managepage.Header.MenuPersonal;
 import org.umssdiplo.automationv01.core.managepage.Login.Login;
+import org.umssdiplo.automationv01.core.managepage.Usuario.Usuario;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
 public class StepsDefinitionSSID {
     private Login login;
     private Header header;
+    private MenuPersonal menuPersonal;
+    private Usuario usuario;
 
     @Given("^'SSI-D' pagina de inicio de sesion es cargada$")
     public void ssiDPaginaDeInicioDeSesionEsCargada() throws Throwable {
@@ -23,11 +27,11 @@ public class StepsDefinitionSSID {
 
     @Given("^seleccionar el menu de persona$")
     public void seleccionarElMenuDePersona() throws Throwable {
-        header.selectPersonalMenu();
+        menuPersonal = header.selectPersonalMenu();
     }
 
     @When("^Seleccionar SubMenu Users$")
     public void seleccionarSubMenuUsers() throws Throwable {
-        header.selectSubMenuUsuario();
+        usuario = menuPersonal.selectSubMenuUsuario();
     }
 }

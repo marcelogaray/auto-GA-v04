@@ -10,24 +10,12 @@ public class Header extends BasePage {
     @FindBy(id = "menuPersonal")
     private WebElement personalMenu;
 
-    @FindBy(id = "users")
-    private WebElement usuarioSubMenu;
-
     public Header() {
         CommonEvents.isVisible(personalMenu);
     }
 
-    public void selectPersonalMenu() {
-        if(CommonEvents.isVisible(personalMenu)){
-            CommonEvents.clickButton(personalMenu);
-        }else{
-            System.out.println("No existe el menu personal");
-        }
-
+    public MenuPersonal selectPersonalMenu() {
+        CommonEvents.clickButton(personalMenu);
+        return new MenuPersonal();
     }
-
-    public void selectSubMenuUsuario() {
-        CommonEvents.clickButton(usuarioSubMenu);
-    }
-
 }
