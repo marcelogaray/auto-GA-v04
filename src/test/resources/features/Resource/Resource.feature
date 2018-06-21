@@ -2,12 +2,14 @@
 
  Feature: Recursos
 
+   Background: Pagina de inicio es mostrada una vez que se ponen los credenciales correctos de inicio de sesión
+     Given 'SSI-D' pagina de inicio de sesion es cargada
+     And Ingresar los credenciales validos en la pagina 'Login' para ingresar al sistema
+
    # RF04-TC-126 feature review the display list of resources
    @resource
    Scenario: RF04-TC-126 - Verificar cabecera de lista de Recursos
-     Given 'SSI-D' pagina de inicio de sesion es cargada
-     And Ingresar los credenciales validos en la pagina 'Login' para ingresar al sistema
-     And Menu principal este cargado
+     Given Menu principal estee cargado
      And menu 'Programa SSO' este seleccionado
      And seleccionar sub menu 'Recursos'
      Then validar si columna 'Costo' es visible

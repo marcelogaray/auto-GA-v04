@@ -55,11 +55,6 @@ public class StepsDefinitionSSID {
         boolean result = listUser.isUserListVisible();
     }
 
-    @Given("^Menu principal este cargado$")
-    public void menuEstaCargado() throws Throwable {
-        menu = home.menuIsVisible();
-    }
-
     //ProgramSSO - Resources
     @And("^menu 'Programa SSO' este seleccionado$")
     public void clickMenuProgramSSO() throws Throwable {
@@ -71,7 +66,7 @@ public class StepsDefinitionSSID {
         resource = subMenuProgramSSO.clickSubMenuResources();
     }
 
-    @And("^validar si columna 'Costo' es visible$")
+    @Then("^validar si columna 'Costo' es visible$")
     public Boolean visibilityCostHeader(){
         return resource.visibilityCostHeader();
     }
