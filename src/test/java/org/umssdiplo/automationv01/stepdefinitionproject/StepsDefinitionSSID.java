@@ -1,9 +1,7 @@
 package org.umssdiplo.automationv01.stepdefinitionproject;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
-import cucumber.api.java.en.Then;
 import org.umssdiplo.automationv01.core.managepage.Home.Home;
 import org.umssdiplo.automationv01.core.managepage.Login.Login;
 import org.umssdiplo.automationv01.core.managepage.Menu.Menu;
@@ -14,7 +12,7 @@ public class StepsDefinitionSSID {
     private Home home;
     private Menu menu;
 
-    private void loadPageObjects(){
+    private void loadPageObjects() {
         login = LoadPage.loginPage();
     }
 
