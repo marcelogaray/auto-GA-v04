@@ -6,7 +6,9 @@ import cucumber.api.java.en.Then;
 import org.umssdiplo.automationv01.core.managepage.Home.Home;
 import org.umssdiplo.automationv01.core.managepage.Login.Login;
 import org.umssdiplo.automationv01.core.managepage.Menu.Menu;
+import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuOrganizationalStructure;
 import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuPersonal;
+import org.umssdiplo.automationv01.core.managepage.Position.Position;
 import org.umssdiplo.automationv01.core.managepage.Usuario.ListUser;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
@@ -16,6 +18,8 @@ public class StepsDefinitionSSID {
     private Menu menu;
     private SubMenuPersonal menuPersonal;
     private ListUser listUser;
+    private Position position;
+    private SubMenuOrganizationalStructure subMenuOrganizationalStructure;
 
     private void loadPageObjects() {
         login = LoadPage.loginPage();
@@ -49,5 +53,26 @@ public class StepsDefinitionSSID {
     @Then("^Validar que la 'Lista de Usuarios' este visible$")
     public void validarListaDeUsuarios() throws Throwable {
         boolean result = listUser.isUserListVisible();
+    }
+
+    //Position RF02-TC-071: Verify list of Positions load correctly
+    @And("^Se selecciona la opcion del menu 'Estructura organizacional'$")
+    public void seSeleccionaLaOpcionDelMenuEstructuraOrganizacional() throws Throwable {
+        subMenuOrganizationalStructure = menu.clickMenuOrganizationalStructure();
+    }
+
+    @And("^Seleccionar la opcion del sub menu 'Cargos del personal'$")
+    public void seleccionarLaOpcionDelSubMenuCargosDelPersonal() throws Throwable {
+        position = subMenuOrganizationalStructure.clickSubMenuPositions();
+    }
+
+    @Then("^Validar que exista el listado con los cargos registrados en la base de datos$")
+    public void validarQueExistaElListadoConLosCargosRegistradosEnLaBaseDeDatos() throws Throwable {
+        position.validListPositions();
+    }
+
+    @And("^Verificar que el listado contenga paginador de contenido$")
+    public void verificarQueElListadoContengaPaginadorDeContenido() throws Throwable {
+        position.validPaginator();
     }
 }
