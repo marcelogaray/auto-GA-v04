@@ -3,7 +3,7 @@ package org.umssdiplo.automationv01.core.managepage.Login;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.umssdiplo.automationv01.core.managepage.BasePage;
-import org.umssdiplo.automationv01.core.managepage.Header.Header;
+import org.umssdiplo.automationv01.core.managepage.Home.Home;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 import org.umssdiplo.automationv01.core.utils.PropertyAccessor;
 
@@ -17,13 +17,13 @@ public class Login extends BasePage {
     @FindBy(id = "btnAccept")
     private WebElement loginBtn;
 
-    public Header setCredentials() {
+    public Home setCredentials() {
         String username = PropertyAccessor.getInstance().getUser();
         String password = PropertyAccessor.getInstance().getPassword();
         setDataUsernameInputField(username);
         setDataPasswordInputField(password);
         clickLoginAcceptButton();
-        return new Header();
+        return new Home();
     }
 
     private void setDataUsernameInputField(String username) {
