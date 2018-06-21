@@ -9,7 +9,7 @@ public class Position extends BasePage {
     @FindBy(xpath = "//h1[contains(text(),'Cargos de la empresa')]")
     private WebElement title;
 
-    public Position(){
+    public Position() {
         CommonEvents.isVisible(title);
     }
 }

@@ -10,7 +10,7 @@ public class SubMenuOrganizationalStructure extends BasePage {
     @FindBy(id = "smPositions")
     private WebElement subMenuPositions;
 
-    public SubMenuOrganizationalStructure(){
+    public SubMenuOrganizationalStructure() {
         CommonEvents.isVisible(subMenuPositions);
     }
 
