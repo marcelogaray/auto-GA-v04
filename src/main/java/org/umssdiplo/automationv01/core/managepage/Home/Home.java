@@ -10,15 +10,15 @@ public class Home extends BasePage {
     @FindBy(xpath = "//h1[contains(text(),'Sistema de seguridad industrial')]")
     private WebElement title;
 
-    @FindBy(id = "menuInicial")
-    private WebElement titleMenu;
+    @FindBy(xpath = "//button/span[contains(text(),'Inicio')]")
+    private WebElement mainMenu;
 
     public Home(){
         CommonEvents.isVisible(title);
     }
 
-    public Menu menuIsVisible() {
-        CommonEvents.isPresent(titleMenu);
+    public Menu getHomeMenu() {
+        CommonEvents.isVisible(mainMenu);
         return new Menu();
     }
 }
