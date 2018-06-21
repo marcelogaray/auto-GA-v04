@@ -18,6 +18,4 @@ public class Menu extends BasePage {
         CommonEvents.clickButton(menuStructure);
         return new SubMenuOrganizationalStructure();
     }
-
-
 }

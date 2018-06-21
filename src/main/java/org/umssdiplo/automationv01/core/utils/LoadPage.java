@@ -10,8 +10,4 @@ public final class LoadPage {
                 .navigate().to(PropertyAccessor.getInstance().getBaseUrl());
         return new Login();
     }
-
-    public static Menu menuPage() {
-        return new Menu();
-    }
 }
