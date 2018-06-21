@@ -32,13 +32,13 @@ public class StepsDefinitionSSID {
         home.clickEquipment();
     }
 
-    @And("^click subMenu Equipment en  pagina 'Home'")
+    @And("^click subMenu Equipment en  pagina 'Home'$")
     public void selectSubMenuEquipment() throws Throwable {
         listEquipment = home.clickSubEquipment();
     }
 
     //SSID LIST EQUIPMENTS
-    @Then(" pagina 'Equipment List' cargada corectamente")
+    @Then("^pagina 'Equipment List' cargada corectamente$")
     public void listEquipmentPresent() throws Throwable {
         boolean result = listEquipment.listEquipmetsPresent();
         Assert.assertTrue(result);
