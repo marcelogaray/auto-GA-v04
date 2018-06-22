@@ -14,9 +14,6 @@ public class Position extends BasePage {
     @FindBy(name = "tblPositions")
     private WebElement table;
 
-    @FindBy(xpath = "//mat-row")
-    private List<WebElement> rowsPosition;
-
     @FindBy(xpath = "//div/div[contains(text(),'Items per page:')]")
     private WebElement paginator;
 
@@ -25,16 +22,7 @@ public class Position extends BasePage {
     }
 
     public Boolean validListPositions() {
-        validateRowsPositionsRegistered();
         return CommonEvents.isVisible(table);
-    }
-
-    private void validateRowsPositionsRegistered() {
-        if (rowsPosition != null && rowsPosition.size() > 0) {
-            System.out.println("Existen cargos registrados que se ven en el listado correctamente.");
-        } else {
-            System.out.println("No existen cargos registrados.");
-        }
     }
 
     public Boolean validPaginator() {

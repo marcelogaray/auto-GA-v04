@@ -3,6 +3,7 @@ package org.umssdiplo.automationv01.stepdefinitionproject;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import org.testng.Assert;
 import org.umssdiplo.automationv01.core.managepage.Home.Home;
 import org.umssdiplo.automationv01.core.managepage.Login.Login;
 import org.umssdiplo.automationv01.core.managepage.Menu.Menu;
@@ -68,11 +69,11 @@ public class StepsDefinitionSSID {
 
     @Then("^Validar que exista el listado con los cargos registrados en la base de datos$")
     public void validarQueExistaElListadoConLosCargosRegistradosEnLaBaseDeDatos() throws Throwable {
-        boolean result = position.validListPositions();
+        Assert.assertTrue(position.validListPositions(), "No se encuentra la lista de cargos");
     }
 
     @And("^Verificar que el listado contenga paginador de contenido$")
     public void verificarQueElListadoContengaPaginadorDeContenido() throws Throwable {
-        boolean result = position.validPaginator();
+        Assert.assertTrue(position.validPaginator(), "No se encuentra el paginador");
     }
 }
