@@ -5,12 +5,14 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import org.testng.Assert;
 import org.umssdiplo.automationv01.core.managepage.Home.Home;
+import org.umssdiplo.automationv01.core.managepage.Incident.IncidentPage;
 import org.umssdiplo.automationv01.core.managepage.Login.Login;
 import org.umssdiplo.automationv01.core.managepage.Menu.Menu;
 import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuProgramSSO;
 import org.umssdiplo.automationv01.core.managepage.ProgramSSO.Resource;
 import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuPersonal;
 import org.umssdiplo.automationv01.core.managepage.Usuario.ListUser;
+import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
 public class StepsDefinitionSSID {
@@ -21,6 +23,7 @@ public class StepsDefinitionSSID {
     private ListUser listUser;
     private SubMenuProgramSSO subMenuProgramSSO;
     private Resource resource;
+    private IncidentPage incidentPage;
 
     private void loadPageObjects() {
         login = LoadPage.loginPage();
@@ -36,7 +39,7 @@ public class StepsDefinitionSSID {
         home = login.setCredentials();
     }
 
-    @Given("^Menu principal estee cargado$")
+    @Given("^'Menu principal' estee cargado$")
     public void seleccionarElMenuDePersona() throws Throwable {
         menu = home.getHomeMenu();
     }
@@ -80,5 +83,14 @@ public class StepsDefinitionSSID {
     @And("^validar si columna 'Accion' es visible en la pagina 'Recursos'$")
     public void visibilityActionHeader(){
         Assert.assertTrue(resource.visibilityActionHeader(), "No se encuentra la columna 'Accion' en la pagina 'Recursos'");
+      
+    @And("^Presionar en la opcion 'Incidentes' del 'Menu Principal'$")
+    public void presionarEnLaOpcionIncidentesDelMenuPrincipal() throws Throwable {
+        incidentPage = menu.clickMenuIncident();
+    }
+
+    @Then("^Verificar que la tabla de incidentes se muestre correctamente$")
+    public void verificarQueLaTablaDeIncidentesSeMuestreCorrectamente() throws Throwable {
+        Assert.assertTrue(incidentPage.isTableVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Incident"));
     }
 }
