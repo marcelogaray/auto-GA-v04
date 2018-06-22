@@ -29,7 +29,6 @@ public class StepsDefinitionSSID {
     private ListEquipment listEquipment;
     private Position position;
     private SubMenuOrganizationalStructure subMenuOrganizationalStructure;
-    private IncidentPage incidentPage;
 
     private void loadPageObjects() {
         login = LoadPage.loginPage();
