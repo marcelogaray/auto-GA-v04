@@ -29,6 +29,7 @@ public class StepsDefinitionSSID {
     private ListEquipment listEquipment;
     private Position position;
     private SubMenuOrganizationalStructure subMenuOrganizationalStructure;
+    private IncidentPage incidentPage;
 
     private void loadPageObjects() {
         login = LoadPage.loginPage();
@@ -83,6 +84,7 @@ public class StepsDefinitionSSID {
     @And("^Verificar que el listado contenga paginador de contenido$")
     public void verificarQueElListadoContengaPaginadorDeContenido() throws Throwable {
         Assert.assertTrue(position.validPaginator(), "No se encuentra el paginador");
+
     }
 
     @And("^Presionar en la opcion 'Incidentes' del 'Menu Principal'$")
