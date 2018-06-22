@@ -3,6 +3,7 @@ package org.umssdiplo.automationv01.core.managepage.Menu;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.umssdiplo.automationv01.core.managepage.BasePage;
+import org.umssdiplo.automationv01.core.managepage.Incident.IncidentPage;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
 public class Menu extends BasePage {
@@ -11,6 +12,12 @@ public class Menu extends BasePage {
 
     @FindBy(id = "menuPersonal")
     private WebElement menuPersonal;
+
+    @FindBy(id= "incident-lnk")
+    private WebElement menuIncident;
+
+    @FindBy(id = "menuEquipament")
+    private WebElement nemuEquipament;
 
     public Menu() {
         CommonEvents.isVisible(menuPersonal);
@@ -26,4 +33,15 @@ public class Menu extends BasePage {
         CommonEvents.clickButton(menuPersonal);
         return new SubMenuPersonal();
     }
+
+    public IncidentPage clickMenuIncident() {
+        CommonEvents.clickButton(menuIncident);
+        return new IncidentPage();
+    }
+
+    public SubMenuEquipment selectEquipmentMenu() {
+        CommonEvents.clickButton(nemuEquipament);
+        return new SubMenuEquipment();
+    }
+
 }

@@ -25,3 +25,6 @@ hs_err_pid*
 /.idea/
 /chromedriver.exe
 /geckodriver.exe
+build
+out
+
