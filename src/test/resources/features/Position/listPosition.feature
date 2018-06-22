@@ -9,7 +9,7 @@ Feature: List Position
     And Ingresar los credenciales validos en la pagina 'Login' para ingresar al sistema
 
   Scenario: Verificar la carga del listado de los cargos del personal
-    Given menu principal estee cargado
+    Given 'Menu principal' estee cargado
     When seleccionar la opcion 'Estructura organizacional' en el menu principal
     And seleccionar la opcion 'Cargos del personal' en el sub menu de estructura organizacional
     Then validar que exista el listado con los cargos registrados en la base de datos

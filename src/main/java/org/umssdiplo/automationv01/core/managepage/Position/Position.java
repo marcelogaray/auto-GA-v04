@@ -12,7 +12,7 @@ public class Position extends BasePage {
     @FindBy(name = "tblPositions")
     private WebElement table;
 
-    @FindBy(xpath = "//div/div[contains(text(),'Items per page:')]")
+    @FindBy(xpath = "//div[contains(text(),'Items per page:')]")
     private WebElement paginator;
 
     public Position() {

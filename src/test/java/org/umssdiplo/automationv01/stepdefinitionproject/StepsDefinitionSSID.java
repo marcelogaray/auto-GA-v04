@@ -3,15 +3,15 @@ package org.umssdiplo.automationv01.stepdefinitionproject;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
-import org.testng.Assert;
+import cucumber.api.java.en.When;
 import org.testng.Assert;
 import org.umssdiplo.automationv01.core.managepage.Equipment.ListEquipment;
 import org.umssdiplo.automationv01.core.managepage.Home.Home;
 import org.umssdiplo.automationv01.core.managepage.Incident.IncidentPage;
 import org.umssdiplo.automationv01.core.managepage.Login.Login;
 import org.umssdiplo.automationv01.core.managepage.Menu.Menu;
-import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuOrganizationalStructure;
 import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuEquipment;
+import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuOrganizationalStructure;
 import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuPersonal;
 import org.umssdiplo.automationv01.core.managepage.Position.Position;
 import org.umssdiplo.automationv01.core.managepage.Usuario.ListUser;
@@ -66,26 +66,34 @@ public class StepsDefinitionSSID {
     }
 
     //Position RF02-TC-071: Verify list of Positions load correctly
-    @And("^Seleccionar la opcion 'Estructura organizacional' en el menu principal$")
-    public void seSeleccionaLaOpcionDelMenuEstructuraOrganizacional() throws Throwable {
+    @When("^seleccionar la opcion 'Estructura organizacional' en el menu principal$")
+    public void seleccionarLaOpcionEstructuraOrganizacionalEnElMenuPrincipal() throws Throwable {
         subMenuOrganizationalStructure = menu.clickMenuOrganizationalStructure();
     }
 
-    @And("^Seleccionar la opcion 'Cargos del personal' en el sub menu de estructura organizacional$")
-    public void seleccionarLaOpcionDelSubMenuCargosDelPersonal() throws Throwable {
+    @And("^seleccionar la opcion 'Cargos del personal' en el sub menu de estructura organizacional$")
+    public void seleccionarLaOpcionCargosDelPersonalEnElSubMenuDeEstructuraOrganizacional() throws Throwable {
         position = subMenuOrganizationalStructure.clickSubMenuPositions();
     }
 
-    @Then("^Validar que exista el listado con los cargos registrados en la base de datos$")
+    @Then("^validar que exista el listado con los cargos registrados en la base de datos$")
     public void validarQueExistaElListadoConLosCargosRegistradosEnLaBaseDeDatos() throws Throwable {
-        Assert.assertTrue(position.validListPositions(), "No se encuentra la lista de cargos");
+        Assert.assertTrue(
+                position.validListPositions(),
+                String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Positions list")
+        );
     }
 
-    @And("^Verificar que el listado contenga paginador de contenido$")
+    @And("^verificar que el listado contenga paginador de contenido$")
     public void verificarQueElListadoContengaPaginadorDeContenido() throws Throwable {
+        Assert.assertTrue(
+                position.validPaginator(),
+                String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Positions paginator list")
+        );
         Assert.assertTrue(position.validPaginator(), "No se encuentra el paginador");
 
     }
+    //End Positions
 
     @And("^Presionar en la opcion 'Incidentes' del 'Menu Principal'$")
     public void presionarEnLaOpcionIncidentesDelMenuPrincipal() throws Throwable {
@@ -94,7 +102,7 @@ public class StepsDefinitionSSID {
 
     @Then("^Verificar que la tabla de incidentes se muestre correctamente$")
     public void verificarQueLaTablaDeIncidentesSeMuestreCorrectamente() throws Throwable {
-        Assert.assertTrue(incidentPage.isTableVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Incident"));
+        Assert.assertTrue(incidentPage.isTableVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Incident title"));
     }
 
     @And("^seleccionar menu 'Equipamiento' en la pagina 'Menu Principal'$")
@@ -109,7 +117,7 @@ public class StepsDefinitionSSID {
 
     @Then("^Verificar que la 'Lista de Equipamientos' este visible$")
     public void validarListaDeEquipamientos() throws Throwable {
-        Assert.assertTrue(listEquipment.isEquipmentListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments"));
+        Assert.assertTrue(listEquipment.isEquipmentListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
     }
 
 }

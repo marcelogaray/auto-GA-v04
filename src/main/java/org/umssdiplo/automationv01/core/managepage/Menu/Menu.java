@@ -13,7 +13,7 @@ public class Menu extends BasePage {
     @FindBy(id = "menuPersonal")
     private WebElement menuPersonal;
 
-    @FindBy(id= "incident-lnk")
+    @FindBy(id = "incident-lnk")
     private WebElement menuIncident;
 
     @FindBy(id = "menuEquipament")
@@ -43,5 +43,4 @@ public class Menu extends BasePage {
         CommonEvents.clickButton(nemuEquipament);
         return new SubMenuEquipment();
     }
-
 }
