@@ -25,7 +25,6 @@ public class StepsDefinitionSSID {
     private SubMenuPersonalContract menuPersonalContract;
     private ListContract listContract;
 
-
     private void loadPageObjects() {
         login = LoadPage.loginPage();
     }
@@ -88,5 +87,5 @@ public class StepsDefinitionSSID {
     @Then("^Validar que la 'Lista de Contratos' este visible$")
     public void validarListaDeContratos() throws Throwable {
         boolean result = listContract.isContractListVisible();
-
+    }
 }
