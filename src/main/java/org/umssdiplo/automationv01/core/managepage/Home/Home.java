@@ -18,7 +18,6 @@ public class Home extends BasePage {
     }
 
     public Menu getHomeMenu() {
-        CommonEvents.isVisible(mainMenu);
         return new Menu();
     }
 }

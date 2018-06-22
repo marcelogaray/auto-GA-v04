@@ -3,6 +3,7 @@ package org.umssdiplo.automationv01.stepdefinitionproject;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import org.testng.Assert;
 import org.umssdiplo.automationv01.core.managepage.Home.Home;
 import org.umssdiplo.automationv01.core.managepage.Login.Login;
 import org.umssdiplo.automationv01.core.managepage.Menu.Menu;
@@ -58,7 +59,7 @@ public class StepsDefinitionSSID {
     //ProgramSSO - Resources
     @And("^menu 'Programa SSO' este seleccionado de la pagina 'Home'$")
     public void clickMenuProgramSSO() throws Throwable {
-         subMenuProgramSSO = menu.clickMenuProgramSSO();
+         subMenuProgramSSO = menu.clickProgramSSOMenu();
     }
 
     @And("^seleccionar sub menu 'Recursos'")
@@ -67,17 +68,17 @@ public class StepsDefinitionSSID {
     }
 
     @Then("^validar si columna 'Costo' es visible en la pagina 'Recursos'$")
-    public Boolean visibilityCostHeader(){
-        return resource.visibilityCostHeader();
+    public void visibilityCostHeader(){
+        Assert.assertTrue(resource.visibilityCostHeader(), "No se encuentra la columna 'Costo' en la pagina 'Recursos'");
     }
 
     @And("^validar si columna 'Detalle' es visible en la pagina 'Recursos'$")
-    public Boolean visibilityDetailHeader(){
-        return resource.visibilityDetailHeader();
+    public void visibilityDetailHeader(){
+        Assert.assertTrue(resource.visibilityDetailHeader(),"No se encuentra la columna 'Detalle' en la pagina 'Recursos'");
     }
 
     @And("^validar si columna 'Accion' es visible en la pagina 'Recursos'$")
-    public Boolean visibilityActionHeader(){
-        return resource.visibilityActionHeader();
+    public void visibilityActionHeader(){
+        Assert.assertTrue(resource.visibilityActionHeader(), "No se encuentra la columna 'Accion' en la pagina 'Recursos'");
     }
 }

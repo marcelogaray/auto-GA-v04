@@ -7,7 +7,6 @@
      And Ingresar los credenciales validos en la pagina 'Login' para ingresar al sistema
 
    # RF04-TC-126 feature review the display list of resources
-   @resource
    Scenario: RF04-TC-126 - Verificar cabecera de lista de Recursos
      Given Menu principal estee cargado
      And menu 'Programa SSO' este seleccionado de la pagina 'Home'

@@ -15,15 +15,15 @@ public class Resource extends BasePage {
     @FindBy(xpath = "//mat-header-cell[text()='Accion']")
     private WebElement actionHeader;
 
-    public Boolean visibilityCostHeader() {
+    public boolean visibilityCostHeader() {
         return CommonEvents.isVisible(costHeader);
     }
 
-    public Boolean visibilityDetailHeader() {
+    public boolean visibilityDetailHeader() {
         return CommonEvents.isVisible(detailHeader);
     }
 
-    public Boolean visibilityActionHeader() {
+    public boolean visibilityActionHeader() {
         return CommonEvents.isVisible(actionHeader);
     }
 }
