@@ -100,8 +100,9 @@ public class StepsDefinitionSSID {
     }
 
     @And("^validar si columna 'Accion' es visible en la pagina 'Recursos'$")
-    public void visibilityActionHeader(){
+    public void visibilityActionHeader() {
         Assert.assertTrue(resource.visibilityActionHeader(), "No se encuentra la columna 'Accion' en la pagina 'Recursos'");
+    }
 
     //Position RF02-TC-071: Verify list of Positions load correctly
     @When("^seleccionar la opcion 'Estructura organizacional' en el menu principal$")
@@ -124,16 +125,6 @@ public class StepsDefinitionSSID {
         Assert.assertTrue(position.validPaginator(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Positions paginator list"));
     }
     //End Positions
-
-    @And("^Presionar en la opcion 'Incidentes' del 'Menu Principal'$")
-    public void presionarEnLaOpcionIncidentesDelMenuPrincipal() throws Throwable {
-        incidentPage = menu.clickMenuIncident();
-    }
-
-    @Then("^Verificar que la tabla de incidentes se muestre correctamente$")
-    public void verificarQueLaTablaDeIncidentesSeMuestreCorrectamente() throws Throwable {
-        Assert.assertTrue(incidentPage.isTableVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Incident title"));
-    }
 
     @And("^seleccionar menu 'Equipamiento' en la pagina 'Menu Principal'$")
     public void menuEquipamientoEstaSeleccionado() throws Throwable {
