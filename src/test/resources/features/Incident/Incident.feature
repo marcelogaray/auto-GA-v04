@@ -6,6 +6,6 @@ Feature: Lista de Incidentes
     And Ingresar los credenciales validos en la pagina 'Login' para ingresar al sistema
 
   Scenario: Verificar que la cabecera de lista de Incidentes deben ser mostrados correctamente.
-    Given Menu principal estee cargado
-    And Presionar en la opcion Incidentes del menu principal
+    Given 'Menu principal' estee cargado
+    And Presionar en la opcion 'Incidentes' del 'Menu Principal'
     Then Verificar que la tabla de incidentes se muestre correctamente

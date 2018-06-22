@@ -6,7 +6,7 @@ Feature: List User
     And Ingresar los credenciales validos en la pagina 'Login' para ingresar al sistema
 
   Scenario: Verificar lista de Usuarios este correctamente cargado
-    Given Menu principal estee cargado
+    Given 'Menu principal' estee cargado
     And seleccionar menu 'Personal' en la pagina 'Menu Principal'
     And Seleccionar submenu 'Usuario' en menu 'Personal'
     Then Validar que la 'Lista de Usuarios' este visible

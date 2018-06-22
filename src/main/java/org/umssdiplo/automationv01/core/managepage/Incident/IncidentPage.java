@@ -17,11 +17,7 @@ public class IncidentPage extends BasePage {
     private WebElement addNewIncidentBtn;
 
     public IncidentPage() {
-        boolean res = isTitleVisible();
-    }
-
-    public boolean isTitleVisible() {
-        return CommonEvents.isVisible(title);
+        CommonEvents.isVisible(title);
     }
 
     public boolean isTableVisible() {
