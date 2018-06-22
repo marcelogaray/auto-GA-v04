@@ -34,4 +34,9 @@ public class Menu extends BasePage {
         CommonEvents.clickButton(menuIncident);
         return new IncidentPage();
     }
+    public SubMenuPersonalContract selectPersonalSubMenuContract() {
+        CommonEvents.clickButton(menuPersonal);
+        return new SubMenuPersonalContract();
+    }
 }
+
