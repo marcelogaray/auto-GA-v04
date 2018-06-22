@@ -68,11 +68,11 @@ public class StepsDefinitionSSID {
 
     @Then("^Validar que exista el listado con los cargos registrados en la base de datos$")
     public void validarQueExistaElListadoConLosCargosRegistradosEnLaBaseDeDatos() throws Throwable {
-        position.validListPositions();
+        boolean result = position.validListPositions();
     }
 
     @And("^Verificar que el listado contenga paginador de contenido$")
     public void verificarQueElListadoContengaPaginadorDeContenido() throws Throwable {
-        position.validPaginator();
+        boolean result = position.validPaginator();
     }
 }

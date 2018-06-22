@@ -24,9 +24,9 @@ public class Position extends BasePage {
         CommonEvents.isVisible(title);
     }
 
-    public void validListPositions() {
-        CommonEvents.isVisible(table);
+    public Boolean validListPositions() {
         validateRowsPositionsRegistered();
+        return CommonEvents.isVisible(table);
     }
 
     private void validateRowsPositionsRegistered() {
@@ -37,7 +37,7 @@ public class Position extends BasePage {
         }
     }
 
-    public void validPaginator() {
-        CommonEvents.isVisible(paginator);
+    public Boolean validPaginator() {
+        return CommonEvents.isVisible(paginator);
     }
 }
