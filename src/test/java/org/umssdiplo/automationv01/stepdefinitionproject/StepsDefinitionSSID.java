@@ -80,8 +80,8 @@ public class StepsDefinitionSSID {
         Assert.assertTrue(position.validListPositions(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Positions list"));
     }
 
-    @And("^verificar que 'Paginador' se muestra debajo de la tabla 'Lista de Cargo'$")
-    public void verificarQuePaginadorSeMuestraDebajoDeLaTablaListaDeCargo() throws Throwable {
+    @And("^validar que 'Paginador' se muestra debajo de la tabla 'Lista de Cargo'$")
+    public void validarQuePaginadorSeMuestraDebajoDeLaTablaListaDeCargo() throws Throwable {
         Assert.assertTrue(position.validPaginator(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Positions paginator list"));
     }
     //End Positions

@@ -13,4 +13,4 @@ Feature: List Position
     When seleccionar la opcion 'Estructura organizacional' en el menu principal
     And seleccionar la opcion 'Cargos del personal' en el sub menu de estructura organizacional
     Then validar que se cargue el listado de cargos en la pagina 'Cargos de la empresa'
-    And verificar que 'Paginador' se muestra debajo de la tabla 'Lista de Cargo'
+    And validar que 'Paginador' se muestra debajo de la tabla 'Lista de Cargo'
