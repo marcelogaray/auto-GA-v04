@@ -93,5 +93,14 @@ public class StepsDefinitionSSID {
     @And("^validar si columna 'Accion' es visible en la pagina 'Recursos'$")
     public void visibilityActionHeader(){
         Assert.assertTrue(resource.visibilityActionHeader(), "No se encuentra la columna 'Accion' en la pagina 'Recursos'");
+
+    @And("^Presionar en la opcion 'Incidentes' del 'Menu Principal'$")
+    public void presionarEnLaOpcionIncidentesDelMenuPrincipal() throws Throwable {
+        incidentPage = menu.clickMenuIncident();
+    }
+
+    @Then("^Verificar que la tabla de incidentes se muestre correctamente$")
+    public void verificarQueLaTablaDeIncidentesSeMuestreCorrectamente() throws Throwable {
+        Assert.assertTrue(incidentPage.isTableVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Incident"));
     }
 }

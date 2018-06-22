@@ -19,6 +19,10 @@ public class Menu extends BasePage {
     @FindBy(id = "menuProgramSSO")
     private WebElement menuProgramaSSO;
 
+    @FindBy(id= "incident-lnk")
+    private WebElement menuIncident;
+
+
     public Menu() {
         CommonEvents.isVisible(menuPersonal);
     }
@@ -32,6 +36,10 @@ public class Menu extends BasePage {
         CommonEvents.clickButton(menuPersonal);
         return new SubMenuPersonal();
     }
+
+    public SubMenuProgramSSO clickProgramSSOMenu(){
+        CommonEvents.clickButton(menuProgramaSSO);
+        return new SubMenuProgramSSO();
 
     public IncidentPage clickMenuIncident() {
         CommonEvents.clickButton(menuIncident);
