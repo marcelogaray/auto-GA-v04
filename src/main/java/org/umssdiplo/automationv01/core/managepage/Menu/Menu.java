@@ -26,7 +26,7 @@ public class Menu extends BasePage {
         return new SubMenuPersonal();
     }
 
-    public SubMenuPersonalContract selectPersonalSubMenu() {
+    public SubMenuPersonalContract selectPersonalSubMenuContract() {
         CommonEvents.clickButton(menuPersonal);
         return new SubMenuPersonalContract();
     }

@@ -7,7 +7,7 @@ Feature: List Contract
     And Ingresar los credenciales validos en la pagina 'Login' para ingresar al sistema
 
   Scenario: Verificar lista de Contratos este correctamente cargado
-    Given Menu principal este cargado
-    And seleccionar menu 'Personal' en la pagina 'Menu Principal'
+    Given Menu principal este cargado en pagina de Inicio
+    And seleccionar menu 'Personal' para contract en la pagina 'Menu Principal'
     And Seleccionar submenu 'Contratos' en menu 'Personal'
     Then Validar que la 'Lista de Contratos' este visible

@@ -12,16 +12,14 @@ import org.umssdiplo.automationv01.core.utils.LoadPage;
 import org.umssdiplo.automationv01.core.managepage.Contract.ListContract;
 import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuPersonalContract;
 
-
 public class StepsDefinitionSSID {
     private Login login;
     private Home home;
     private Menu menu;
     private SubMenuPersonal menuPersonal;
     private ListUser listUser;
-    private SubMenuPersonalContract menuPersonal;
+    private SubMenuPersonalContract menuPersonalContract;
     private ListContract listContract;
-
 
     private void loadPageObjects() {
         login = LoadPage.loginPage();
@@ -56,24 +54,24 @@ public class StepsDefinitionSSID {
     public void validarListaDeUsuarios() throws Throwable {
         boolean result = listUser.isUserListVisible();
     }
-    
-    @Given("^Menu principal este cargado$")
-    public void seleccionarElMenuDePersona() throws Throwable {
+
+    @Given("^Menu principal este cargado en pagina de Inicio$")
+    public void seleccionarPaginaInicio() throws Throwable {
         menu = home.getHomeMenu();
     }
 
-    @And("^seleccionar menu 'Personal' en la pagina 'Menu Principal'$")
-    public void menuPersonalEsteeSeleccionado() throws Throwable {
-        menuPersonal = menu.selectPersonalSubMenu();
+    @And("^seleccionar menu 'Personal' para contract en la pagina 'Menu Principal'$")
+    public void menuPersonalSeleccionado() throws Throwable {
+        menuPersonalContract = menu.selectPersonalSubMenuContract();
     }
 
     @And("^Seleccionar submenu 'Contratos' en menu 'Personal'$")
-    public void seleccionarSubMenuUsuario() throws Throwable {
-        listContract = menuPersonal.selectSubMenuContract();
+    public void seleccionarContratos() throws Throwable {
+        listContract = menuPersonalContract.selectSubMenuContract();
     }
 
     @Then("^Validar que la 'Lista de Contratos' este visible$")
-    public void validarListaDeUsuarios() throws Throwable {
+    public void validarListaDeContratos() throws Throwable {
         boolean result = listContract.isContractListVisible();
     }
 }
