@@ -56,7 +56,7 @@ public class StepsDefinitionSSID {
     }
 
     //ProgramSSO - Resources
-    @And("^menu 'Programa SSO' este seleccionado$")
+    @And("^menu 'Programa SSO' este seleccionado de la pagina 'Home'$")
     public void clickMenuProgramSSO() throws Throwable {
          subMenuProgramSSO = menu.clickMenuProgramSSO();
     }
@@ -66,17 +66,17 @@ public class StepsDefinitionSSID {
         resource = subMenuProgramSSO.clickSubMenuResources();
     }
 
-    @Then("^validar si columna 'Costo' es visible$")
+    @Then("^validar si columna 'Costo' es visible en la pagina 'Recursos'$")
     public Boolean visibilityCostHeader(){
         return resource.visibilityCostHeader();
     }
 
-    @And("^validar si columna 'Detalle' es visible$")
+    @And("^validar si columna 'Detalle' es visible en la pagina 'Recursos'$")
     public Boolean visibilityDetailHeader(){
         return resource.visibilityDetailHeader();
     }
 
-    @And("^validar si columna 'Accion' is visible$")
+    @And("^validar si columna 'Accion' es visible en la pagina 'Recursos'$")
     public Boolean visibilityActionHeader(){
         return resource.visibilityActionHeader();
     }

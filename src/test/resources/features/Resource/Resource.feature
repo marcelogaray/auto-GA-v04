@@ -10,8 +10,8 @@
    @resource
    Scenario: RF04-TC-126 - Verificar cabecera de lista de Recursos
      Given Menu principal estee cargado
-     And menu 'Programa SSO' este seleccionado
+     And menu 'Programa SSO' este seleccionado de la pagina 'Home'
      And seleccionar sub menu 'Recursos'
-     Then validar si columna 'Costo' es visible
-     And validar si columna 'Detalle' es visible
-     And validar si columna 'Accion' is visible
+     Then validar si columna 'Costo' es visible en la pagina 'Recursos'
+     And validar si columna 'Detalle' es visible en la pagina 'Recursos'
+     And validar si columna 'Accion' es visible en la pagina 'Recursos'
