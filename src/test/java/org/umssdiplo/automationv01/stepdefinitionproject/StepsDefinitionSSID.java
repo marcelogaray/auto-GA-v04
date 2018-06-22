@@ -75,22 +75,14 @@ public class StepsDefinitionSSID {
         position = subMenuOrganizationalStructure.clickSubMenuPositions();
     }
 
-    @Then("^validar que exista el listado con los cargos registrados en la base de datos$")
-    public void validarQueExistaElListadoConLosCargosRegistradosEnLaBaseDeDatos() throws Throwable {
-        Assert.assertTrue(
-                position.validListPositions(),
-                String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Positions list")
-        );
+    @Then("^validar que se cargue el listado de cargos en la pagina 'Cargos de la empresa'$")
+    public void validarQueSeCargueElListadoDeCargosEnLaPaginaCargosDeLaEmpresa() throws Throwable {
+        Assert.assertTrue(position.validListPositions(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Positions list"));
     }
 
-    @And("^verificar que el listado contenga paginador de contenido$")
-    public void verificarQueElListadoContengaPaginadorDeContenido() throws Throwable {
-        Assert.assertTrue(
-                position.validPaginator(),
-                String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Positions paginator list")
-        );
-        Assert.assertTrue(position.validPaginator(), "No se encuentra el paginador");
-
+    @And("^verificar que 'Paginador' se muestra debajo de la tabla 'Lista de Cargo'$")
+    public void verificarQuePaginadorSeMuestraDebajoDeLaTablaListaDeCargo() throws Throwable {
+        Assert.assertTrue(position.validPaginator(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Positions paginator list"));
     }
     //End Positions
 
@@ -118,5 +110,4 @@ public class StepsDefinitionSSID {
     public void validarListaDeEquipamientos() throws Throwable {
         Assert.assertTrue(listEquipment.isEquipmentListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
     }
-
 }
