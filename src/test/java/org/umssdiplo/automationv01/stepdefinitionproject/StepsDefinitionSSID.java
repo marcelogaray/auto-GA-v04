@@ -17,6 +17,8 @@ import org.umssdiplo.automationv01.core.managepage.Position.Position;
 import org.umssdiplo.automationv01.core.managepage.Usuario.ListUser;
 import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
+import org.umssdiplo.automationv01.core.managepage.Contract.ListContract;
+import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuPersonalContract;
 
 public class StepsDefinitionSSID {
     private Login login;
@@ -29,6 +31,8 @@ public class StepsDefinitionSSID {
     private ListEquipment listEquipment;
     private Position position;
     private SubMenuOrganizationalStructure subMenuOrganizationalStructure;
+    private SubMenuPersonalContract menuPersonalContract;
+    private ListContract listContract;
 
     private void loadPageObjects() {
         login = LoadPage.loginPage();
@@ -109,5 +113,25 @@ public class StepsDefinitionSSID {
     @Then("^Verificar que la 'Lista de Equipamientos' este visible$")
     public void validarListaDeEquipamientos() throws Throwable {
         Assert.assertTrue(listEquipment.isEquipmentListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
+    }
+
+    @Given("^menu principal este cargado en pagina de inicio$")
+    public void seleccionarPaginaInicio() throws Throwable {
+        menu = home.getHomeMenu();
+    }
+
+    @And("^seleccionar la opcion 'Personal' en la pagina 'menu principal'$")
+    public void menuPersonalSeleccionado() throws Throwable {
+        menuPersonalContract = menu.selectPersonalSubMenuContract();
+    }
+
+    @And("^seleccionar el submenu 'Contratos' del menu 'Personal'$")
+    public void seleccionarContratos() throws Throwable {
+        listContract = menuPersonalContract.selectSubMenuContract();
+    }
+
+    @Then("^validar que la 'Lista de Contratos' este visible$")
+    public void validarListaDeContratos() throws Throwable {
+        boolean result = listContract.isContractListVisible();
     }
 }
