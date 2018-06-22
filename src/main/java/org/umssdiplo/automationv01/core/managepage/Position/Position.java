@@ -9,7 +9,21 @@ public class Position extends BasePage {
     @FindBy(xpath = "//h1[contains(text(),'Cargos de la empresa')]")
     private WebElement title;
 
+    @FindBy(name = "tblPositions")
+    private WebElement table;
+
+    @FindBy(xpath = "//div[contains(text(),'Items per page:')]")
+    private WebElement paginator;
+
     public Position() {
         CommonEvents.isVisible(title);
+    }
+
+    public boolean validListPositions() {
+        return CommonEvents.isVisible(table);
+    }
+
+    public boolean validPaginator() {
+        return CommonEvents.isVisible(paginator);
     }
 }
