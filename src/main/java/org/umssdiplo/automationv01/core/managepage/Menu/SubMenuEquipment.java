@@ -8,7 +8,7 @@ import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
 public class SubMenuEquipment extends BasePage {
 
-    @FindBy(xpath = "//*[@id=\"smEquipament\"]")
+    @FindBy(id = "smEquipament")
     private WebElement equipmentSubMenu;
 
     public SubMenuEquipment() {
