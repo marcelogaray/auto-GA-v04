@@ -3,6 +3,7 @@ package org.umssdiplo.automationv01.stepdefinitionproject;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
 import org.testng.Assert;
 import org.umssdiplo.automationv01.core.managepage.Home.Home;
 import org.umssdiplo.automationv01.core.managepage.Incident.IncidentPage;
@@ -10,6 +11,7 @@ import org.umssdiplo.automationv01.core.managepage.Login.Login;
 import org.umssdiplo.automationv01.core.managepage.Menu.Menu;
 import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuPersonal;
 import org.umssdiplo.automationv01.core.managepage.Usuario.ListUser;
+import org.umssdiplo.automationv01.core.managepage.Personal.FindPersonal;
 import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
@@ -20,6 +22,7 @@ public class StepsDefinitionSSID {
     private SubMenuPersonal menuPersonal;
     private ListUser listUser;
     private IncidentPage incidentPage;
+    private FindPersonal findPersonal;
 
     private void loadPageObjects() {
         login = LoadPage.loginPage();
@@ -63,5 +66,22 @@ public class StepsDefinitionSSID {
     @Then("^Verificar que la tabla de incidentes se muestre correctamente$")
     public void verificarQueLaTablaDeIncidentesSeMuestreCorrectamente() throws Throwable {
         Assert.assertTrue(incidentPage.isTableVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Incident"));
+    }
+
+    @And("^Seleccionar submenu 'Personal' en menu 'Personal'$")
+    public void seleccionarSubMenuPersonal() throws Throwable {
+        findPersonal = menuPersonal.selectSubMenuPersonal();
+        Assert.assertTrue(findPersonal.isFindPersonalVisible());
+    }
+
+    @When("^Ingresar (.*) para 'Buscar Personal' en la tabla$")
+    public void buscarPersonal(String personal){
+        findPersonal.buscarPersonal(personal);
+    }
+
+    @Then("^El resultado de 'Buscar Personal' deberia ser (\\d+)$")
+    public void resultador(int resultado){
+        int encontrado = findPersonal.personalEncontrado(resultado);
+        Assert.assertEquals(encontrado, resultado);
     }
 }
