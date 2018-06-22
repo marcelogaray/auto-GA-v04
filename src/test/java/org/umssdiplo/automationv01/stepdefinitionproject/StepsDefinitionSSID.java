@@ -57,12 +57,12 @@ public class StepsDefinitionSSID {
     }
 
     //Position RF02-TC-071: Verify list of Positions load correctly
-    @And("^Se selecciona la opcion del menu 'Estructura organizacional'$")
+    @And("^Seleccionar la opcion 'Estructura organizacional' en el menu principal$")
     public void seSeleccionaLaOpcionDelMenuEstructuraOrganizacional() throws Throwable {
         subMenuOrganizationalStructure = menu.clickMenuOrganizationalStructure();
     }
 
-    @And("^Seleccionar la opcion del sub menu 'Cargos del personal'$")
+    @And("^Seleccionar la opcion 'Cargos del personal' en el sub menu de estructura organizacional$")
     public void seleccionarLaOpcionDelSubMenuCargosDelPersonal() throws Throwable {
         position = subMenuOrganizationalStructure.clickSubMenuPositions();
     }

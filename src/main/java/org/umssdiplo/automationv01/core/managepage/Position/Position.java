@@ -19,11 +19,11 @@ public class Position extends BasePage {
         CommonEvents.isVisible(title);
     }
 
-    public Boolean validListPositions() {
+    public boolean validListPositions() {
         return CommonEvents.isVisible(table);
     }
 
-    public Boolean validPaginator() {
+    public boolean validPaginator() {
         return CommonEvents.isVisible(paginator);
     }
 }
