@@ -8,7 +8,7 @@ import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
 public class SubMenuPersonalContract extends BasePage {
 
-    @FindBy(xpath = "//button[@id='smContract']")
+    @FindBy(id = "smContract")
     private WebElement usuarioSubMenu;
 
     public SubMenuPersonalContract() {
