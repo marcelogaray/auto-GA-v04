@@ -1,5 +1,5 @@
 # Login feature review the behavior in thie feature
-@login
+
 Feature: Login
 
   Scenario: Pagina de inicio es mostrada una vez que se ponen los credenciales correctos de inicio de sesión
