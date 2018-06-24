@@ -20,4 +20,12 @@ public class ListUser extends BasePage {
     public boolean isUserListVisible() {
         return CommonEvents.isVisible(paginElement);
     }
+
+    public void clickAddNewUser() {
+        CommonEvents.clickButton(btnAgregarUsuario);
+    }
+
+    public FormUser isFormUserVisible() {
+        return new FormUser();
+    }
 }

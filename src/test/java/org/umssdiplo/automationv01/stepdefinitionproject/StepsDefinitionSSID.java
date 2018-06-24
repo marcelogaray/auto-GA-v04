@@ -1,9 +1,11 @@
 package org.umssdiplo.automationv01.stepdefinitionproject;
 
+import cucumber.api.DataTable;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.testng.Assert;
 import org.testng.Assert;
 import org.umssdiplo.automationv01.core.managepage.Equipment.ListEquipment;
 import org.umssdiplo.automationv01.core.managepage.Home.Home;
@@ -17,6 +19,7 @@ import org.umssdiplo.automationv01.core.managepage.Position.Position;
 import org.umssdiplo.automationv01.core.managepage.Usuario.ListUser;
 import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
+import org.umssdiplo.automationv01.core.managepage.Usuario.FormUser;
 
 public class StepsDefinitionSSID {
     private Login login;
@@ -29,6 +32,7 @@ public class StepsDefinitionSSID {
     private ListEquipment listEquipment;
     private Position position;
     private SubMenuOrganizationalStructure subMenuOrganizationalStructure;
+    private FormUser formUser;
 
     private void loadPageObjects() {
         login = LoadPage.loginPage();
@@ -61,7 +65,22 @@ public class StepsDefinitionSSID {
 
     @Then("^Validar que la 'Lista de Usuarios' este visible$")
     public void validarListaDeUsuarios() throws Throwable {
-        boolean result = listUser.isUserListVisible();
+        Assert.assertTrue(listUser.isUserListVisible());
+    }
+
+    @And("^Hacer clic en el boton 'Agregar Nuevo Usuario'$")
+    public void hacerClicEnElBotonAgregarNuevoUsuario() throws Throwable {
+        listUser.clickAddNewUser();
+    }
+
+    @When("^Formulario de 'Registro Nuevo Usuario' este cargado$")
+    public void formularioDeRegistroNuevoUsuarioEsteeCargado() throws Throwable {
+        formUser = listUser.isFormUserVisible();
+    }
+
+    @And("^Registrar usuarios con username, password con los siguiente datos$")
+    public void registrarUsuariosConUsernamePasswordYQueEsteenEnEstadoActivado(DataTable usersTable) throws Throwable {
+        formUser.createNewUserFromTable(usersTable);
     }
 
     //Position RF02-TC-071: Verify list of Positions load correctly
