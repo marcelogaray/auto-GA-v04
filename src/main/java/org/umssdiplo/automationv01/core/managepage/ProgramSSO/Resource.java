@@ -15,6 +15,19 @@ public class Resource extends BasePage {
     @FindBy(xpath = "//mat-header-cell[text()='Accion']")
     private WebElement actionHeader;
 
+    @FindBy(id = "btnAddResource")
+    private WebElement addResourceButton;
+
+    @FindBy(id = "titleResource")
+    private WebElement titleResource;
+
+    @FindBy(id = "resourceList")
+    private WebElement resourceList;
+
+    public Resource(){
+        CommonEvents.isVisible(titleResource);
+    }
+
     public boolean visibilityCostHeader() {
         return CommonEvents.isVisible(costHeader);
     }
@@ -25,5 +38,14 @@ public class Resource extends BasePage {
 
     public boolean visibilityActionHeader() {
         return CommonEvents.isVisible(actionHeader);
+    }
+
+    public ResourceForm clickAddResourceButton(){
+        CommonEvents.clickButton(addResourceButton);
+        return new ResourceForm();
+    }
+
+    public boolean isVisibleListResource(){
+        return CommonEvents.isVisible(resourceList);
     }
 }

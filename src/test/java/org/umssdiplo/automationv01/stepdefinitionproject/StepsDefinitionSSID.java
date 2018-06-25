@@ -4,6 +4,7 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import cucumber.api.java.en_scouse.An;
 import org.testng.Assert;
 import org.umssdiplo.automationv01.core.managepage.Equipment.ListEquipment;
 import org.umssdiplo.automationv01.core.managepage.Home.Home;
@@ -16,6 +17,7 @@ import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuEquipment;
 import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuOrganizationalStructure;
 import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuPersonal;
 import org.umssdiplo.automationv01.core.managepage.Position.Position;
+import org.umssdiplo.automationv01.core.managepage.ProgramSSO.ResourceForm;
 import org.umssdiplo.automationv01.core.managepage.Usuario.ListUser;
 import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
@@ -33,6 +35,7 @@ public class StepsDefinitionSSID {
     private ListEquipment listEquipment;
     private Position position;
     private SubMenuOrganizationalStructure subMenuOrganizationalStructure;
+    private ResourceForm resourceForm;
 
     private void loadPageObjects() {
         login = LoadPage.loginPage();
@@ -90,18 +93,33 @@ public class StepsDefinitionSSID {
     }
 
     @Then("^validar si columna 'Costo' es visible en la pagina 'Recursos'$")
-    public void visibilityCostHeader(){
+    public void visibilityCostHeader() throws Throwable {
         Assert.assertTrue(resource.visibilityCostHeader(), "No se encuentra la columna 'Costo' en la pagina 'Recursos'");
     }
 
     @And("^validar si columna 'Detalle' es visible en la pagina 'Recursos'$")
-    public void visibilityDetailHeader(){
+    public void visibilityDetailHeader() throws Throwable {
         Assert.assertTrue(resource.visibilityDetailHeader(),"No se encuentra la columna 'Detalle' en la pagina 'Recursos'");
     }
 
     @And("^validar si columna 'Accion' es visible en la pagina 'Recursos'$")
-    public void visibilityActionHeader() {
+    public void visibilityActionHeader()  throws Throwable {
         Assert.assertTrue(resource.visibilityActionHeader(), "No se encuentra la columna 'Accion' en la pagina 'Recursos'");
+    }
+
+    @And("^click en el boton 'Agregrar nuevo recurso' de la pagina 'Recursos'$")
+    public void clickAddNewResource() throws Throwable {
+        resourceForm = resource.clickAddResourceButton();
+    }
+
+    @And("^llenar el formulario con valores validos de la pagiga 'Agregar Recursos' costo = \"(.*)\" y detalle = \"(.*)\"$")
+    public void fillResourcesForm(String cost, String detail)throws Throwable {
+        resource = resourceForm.fillResourceForm(cost,detail);
+    }
+
+    @Then("^validar que la lista de la pagina 'Recursos' este visible$")
+    public void ValidateListOfResources() throws Throwable {
+        Assert.assertTrue(resource.isVisibleListResource(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "list resources"));
     }
 
     //Position RF02-TC-071: Verify list of Positions load correctly
