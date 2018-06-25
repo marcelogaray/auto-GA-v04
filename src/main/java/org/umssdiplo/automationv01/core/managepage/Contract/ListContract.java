@@ -13,11 +13,19 @@ public class ListContract extends BasePage {
     @FindBy(xpath = "//div/div[contains(text(),'Items per page:')]")
     private WebElement paginElement;
 
+    @FindBy(xpath = "/html/body/ssi-root/ssi-contract/div/div/div[2]/button")
+    private WebElement btnAgregarContrato;
+
     public ListContract() {
-        CommonEvents.isVisible(btnAgregarUsuario);
+        CommonEvents.isVisible(btnAgregarContrato);
     }
 
     public boolean isContractListVisible() {
         return CommonEvents.isVisible(paginElement);
+    }
+
+    public FormContract seleccionarBoton() {
+        CommonEvents.clickButton(btnAgregarContrato);
+        return new FormContract();
     }
 }
