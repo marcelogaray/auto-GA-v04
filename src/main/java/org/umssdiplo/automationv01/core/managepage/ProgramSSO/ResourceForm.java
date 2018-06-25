@@ -15,10 +15,17 @@ public class ResourceForm extends BasePage {
     @FindBy(className = "btnGuardar")
     private WebElement saveBtn;
 
+    @FindBy(id = "titleFormCreate")
+    private WebElement titleCreate;
+
     public Resource fillResourceForm(String cost, String detail){
         CommonEvents.setInputField(costInputField, cost);
         CommonEvents.setInputField(detailInputField, detail);
         CommonEvents.clickButton(saveBtn);
         return new Resource();
+    }
+
+    public boolean isTitleValid(String title){
+        return CommonEvents.isVisible(titleCreate) && titleCreate.getText().equalsIgnoreCase(title);
     }
 }

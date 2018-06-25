@@ -122,6 +122,11 @@ public class StepsDefinitionSSID {
         Assert.assertTrue(resource.isVisibleListResource(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "list resources"));
     }
 
+    @Then("^validar si el titulo 'Crear Recurso' de la pagina de 'Agregar Recursos'$")
+    public void ValidateTitleRecourceForm() throws Throwable {
+        Assert.assertTrue(resourceForm.isTitleValid("Crear Recurso"), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "title form resources"));
+    }
+
     //Position RF02-TC-071: Verify list of Positions load correctly
     @When("^seleccionar la opcion 'Estructura organizacional' en el menu principal$")
     public void seleccionarLaOpcionEstructuraOrganizacionalEnElMenuPrincipal() throws Throwable {
