@@ -4,16 +4,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.umssdiplo.automationv01.core.managepage.BasePage;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
-
 import java.util.List;
 import java.util.Map;
 
 public class FormContract extends BasePage {
 
-    @FindBy(xpath = "//*[@id=\"mat-input-3\"]")
+    @FindBy(id = "mat-input-3")
     private WebElement contractCode;
 
-    @FindBy(xpath = "//*[@id=\"mat-select-1\"]/div/div[1]/span")
+    @FindBy(id = "mat-select-1")
     private WebElement contractCity;
 
     @FindBy(id = "mat-option-5")
@@ -22,19 +21,19 @@ public class FormContract extends BasePage {
     @FindBy(id = "mat-input-4")
     private WebElement contractDescription;
 
-    @FindBy(xpath = "//*[@id=\"mat-select-2\"]/div/div[1]/span")
+    @FindBy(id = "mat-select-2")
     private WebElement contractType;
 
     @FindBy(id = "mat-option-14")
     private WebElement seleccionType;
 
-    @FindBy(xpath = "//*[@id=\"mat-input-6\"]")
+    @FindBy(id = "mat-input-6")
     private WebElement contractDate;
 
-    @FindBy(xpath = "//*[@id=\"mat-input-5\"]")
+    @FindBy(id = "mat-input-5")
     private WebElement contractSalary;
 
-    @FindBy(xpath = "//*[@id=\"form\"]/button")
+    @FindBy(id = "btnEnviarContract")
     private WebElement enviar;
 
     public void registerContract(List<Map<String, String>> data){

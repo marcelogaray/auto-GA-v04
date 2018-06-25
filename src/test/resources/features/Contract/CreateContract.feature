@@ -14,6 +14,6 @@ Feature: Create Contract
     And Seleccionar boton Agregar Nuevo Contrato del Area de contratos
     And Llenar 'formulario de Contrato Nuevo'
       | contractCodes | contractDescriptions   | contractSalarys | contractDates     |
-      | 0006          | descripcion            | 3500            | 06/22/2018        |
+      | 0007          | descripcion            | 3500            | 06/22/2018        |
     And Seleccionar Boton 'Enviar' para grabar los datos del formulario
 

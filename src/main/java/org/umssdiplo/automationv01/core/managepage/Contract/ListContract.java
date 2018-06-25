@@ -7,13 +7,10 @@ import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
 public class ListContract extends BasePage {
 
-    @FindBy(xpath = "//button/span[contains(text(),'Agregar Nuevo Usuario')]")
-    private WebElement btnAgregarUsuario;
-
-    @FindBy(xpath = "//div/div[contains(text(),'Items per page:')]")
+    @FindBy(id = "ContractTable")
     private WebElement paginElement;
 
-    @FindBy(xpath = "/html/body/ssi-root/ssi-contract/div/div/div[2]/button")
+    @FindBy(id = "btnAgregarContrato")
     private WebElement btnAgregarContrato;
 
     public ListContract() {
