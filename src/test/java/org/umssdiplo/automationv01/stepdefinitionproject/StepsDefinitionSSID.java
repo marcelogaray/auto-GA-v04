@@ -1,5 +1,6 @@
 package org.umssdiplo.automationv01.stepdefinitionproject;
 
+import cucumber.api.DataTable;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -7,6 +8,7 @@ import cucumber.api.java.en.When;
 import org.testng.Assert;
 import org.umssdiplo.automationv01.core.managepage.Equipment.ListEquipment;
 import org.umssdiplo.automationv01.core.managepage.Home.Home;
+import org.umssdiplo.automationv01.core.managepage.Incident.CreateIncidentPage;
 import org.umssdiplo.automationv01.core.managepage.Incident.IncidentPage;
 import org.umssdiplo.automationv01.core.managepage.Login.Login;
 import org.umssdiplo.automationv01.core.managepage.Menu.Menu;
@@ -17,6 +19,9 @@ import org.umssdiplo.automationv01.core.managepage.Position.Position;
 import org.umssdiplo.automationv01.core.managepage.Usuario.ListUser;
 import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
+
+import java.util.List;
+import java.util.Map;
 
 public class StepsDefinitionSSID {
     private Login login;
@@ -29,6 +34,7 @@ public class StepsDefinitionSSID {
     private ListEquipment listEquipment;
     private Position position;
     private SubMenuOrganizationalStructure subMenuOrganizationalStructure;
+    private CreateIncidentPage createIncidentPage;
 
     private void loadPageObjects() {
         login = LoadPage.loginPage();
@@ -110,4 +116,21 @@ public class StepsDefinitionSSID {
     public void validarListaDeEquipamientos() throws Throwable {
         Assert.assertTrue(listEquipment.isEquipmentListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
     }
+
+    @And("^hacemos 'click' en el boton 'Incidentes' del 'Menu Principal'$")
+    public void hacemosClickEnElBotonIncidentesDelMenuPrincipal() throws Throwable {
+        createIncidentPage = incidentPage.clickOnAddNewIncidentBtn();
+    }
+
+    @When("^Llenamos los 'datos del formulario' dentro del formulario de 'Creacion de Incidentes'$")
+    public void llenamosLosDatosDelFormularioDentroDelFormularioDeCreacionDeIncidentes(DataTable table) throws Throwable {
+        List<Map<String, String>> data = table.asMaps(String.class, String. class);
+        createIncidentPage.setIncidentForm(data);
+    }
+
+    @And("^Hacemos clic en el boton de 'Guardar'$")
+    public void hacemosClicEnElBotonDeGuardar() throws Throwable {
+        Assert.assertTrue(createIncidentPage.clickSaveButton(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Toast Message Success"));
+    }
+
 }
