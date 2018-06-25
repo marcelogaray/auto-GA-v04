@@ -6,7 +6,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.testng.Assert;
-import org.testng.Assert;
+import org.umssdiplo.automationv01.core.managepage.Assign.FormAssignPersonal;
 import org.umssdiplo.automationv01.core.managepage.Equipment.ListEquipment;
 import org.umssdiplo.automationv01.core.managepage.Home.Home;
 import org.umssdiplo.automationv01.core.managepage.Incident.IncidentPage;
@@ -16,10 +16,10 @@ import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuEquipment;
 import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuOrganizationalStructure;
 import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuPersonal;
 import org.umssdiplo.automationv01.core.managepage.Position.Position;
+import org.umssdiplo.automationv01.core.managepage.Usuario.FormUser;
 import org.umssdiplo.automationv01.core.managepage.Usuario.ListUser;
 import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
-import org.umssdiplo.automationv01.core.managepage.Usuario.FormUser;
 
 public class StepsDefinitionSSID {
     private Login login;
@@ -33,6 +33,7 @@ public class StepsDefinitionSSID {
     private Position position;
     private SubMenuOrganizationalStructure subMenuOrganizationalStructure;
     private FormUser formUser;
+    private FormAssignPersonal formAssignPersonal;
 
     private void loadPageObjects() {
         login = LoadPage.loginPage();
@@ -128,5 +129,15 @@ public class StepsDefinitionSSID {
     @Then("^Verificar que la 'Lista de Equipamientos' este visible$")
     public void validarListaDeEquipamientos() throws Throwable {
         Assert.assertTrue(listEquipment.isEquipmentListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
+    }
+
+    @And("^Seleccionar submenu 'Asignacion' en menu 'Personal'$")
+    public void seleccionarSubmenuAsignacionEnMenuPersonal() throws Throwable {
+        formAssignPersonal = menuPersonal.selectSubMenuAssignPersonal();
+    }
+
+    @Then("^Verificar que el 'Formulario de Asignacion Personal' es visible$")
+    public void verificarQueElFormularioDeAsignacionPersonalEsVisible() throws Throwable {
+        Assert.assertTrue(formAssignPersonal.isFormAssignPersonalVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Form Assign Equipament Personal"));
     }
 }
