@@ -5,7 +5,9 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.testng.Assert;
+import org.umssdiplo.automationv01.core.managepage.BasePage;
 import org.umssdiplo.automationv01.core.managepage.Equipment.ListEquipment;
+import org.umssdiplo.automationv01.core.managepage.Equipment.ListInventory;
 import org.umssdiplo.automationv01.core.managepage.Home.Home;
 import org.umssdiplo.automationv01.core.managepage.Incident.IncidentPage;
 import org.umssdiplo.automationv01.core.managepage.Login.Login;
@@ -13,10 +15,13 @@ import org.umssdiplo.automationv01.core.managepage.Menu.Menu;
 import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuEquipment;
 import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuOrganizationalStructure;
 import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuPersonal;
+import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuInventory;
 import org.umssdiplo.automationv01.core.managepage.Position.Position;
 import org.umssdiplo.automationv01.core.managepage.Usuario.ListUser;
 import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
+
+import java.util.List;
 
 public class StepsDefinitionSSID {
     private Login login;
@@ -29,6 +34,8 @@ public class StepsDefinitionSSID {
     private ListEquipment listEquipment;
     private Position position;
     private SubMenuOrganizationalStructure subMenuOrganizationalStructure;
+    private SubMenuInventory menuInventory;
+    private ListInventory listInventory;
 
     private void loadPageObjects() {
         login = LoadPage.loginPage();
@@ -96,9 +103,12 @@ public class StepsDefinitionSSID {
         Assert.assertTrue(incidentPage.isTableVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Incident title"));
     }
 
+    //Equipments
     @And("^seleccionar menu 'Equipamiento' en la pagina 'Menu Principal'$")
     public void menuEquipamientoEstaSeleccionado() throws Throwable {
-        menuEquipamiento = menu.selectEquipmentMenu();
+        List<BasePage> subMenusEquipments = menu.selectEquipmentMenu();
+        menuEquipamiento =(SubMenuEquipment) subMenusEquipments.get(0);
+        menuInventory = (SubMenuInventory) subMenusEquipments.get(1);
     }
 
     @And("^Seleccionar submenu 'Equipamiento' en menu 'Equipamiento'$")
@@ -109,5 +119,15 @@ public class StepsDefinitionSSID {
     @Then("^Verificar que la 'Lista de Equipamientos' este visible$")
     public void validarListaDeEquipamientos() throws Throwable {
         Assert.assertTrue(listEquipment.isEquipmentListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
+    }
+
+    @And("^Seleccionar submenu 'Inventory' en menu 'Equipamiento'$")
+    public void seleccionarSubMenuInventory() throws Throwable {
+        listInventory = menuInventory.selectSubMenuInventory();
+    }
+
+    @Then("^Verificar Campos de 'Reporte de Inventario' deben mostrarse correctamente$")
+    public void verificarCamposReporteInventarios() throws Throwable {
+        Assert.assertTrue(listInventory.isInventoryListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Inventory title"));
     }
 }

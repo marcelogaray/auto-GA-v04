@@ -6,6 +6,9 @@ import org.umssdiplo.automationv01.core.managepage.BasePage;
 import org.umssdiplo.automationv01.core.managepage.Incident.IncidentPage;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Menu extends BasePage {
     @FindBy(id = "menuStructure")
     private WebElement menuStructure;
@@ -39,8 +42,11 @@ public class Menu extends BasePage {
         return new IncidentPage();
     }
 
-    public SubMenuEquipment selectEquipmentMenu() {
+    public List<BasePage> selectEquipmentMenu() {
         CommonEvents.clickButton(nemuEquipament);
-        return new SubMenuEquipment();
+        List<BasePage> equipamentMenuList = new ArrayList<>();
+        equipamentMenuList.add(new SubMenuEquipment());
+        equipamentMenuList.add(new SubMenuInventory());
+        return equipamentMenuList;
     }
 }
