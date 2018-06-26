@@ -156,4 +156,8 @@ public class CreateIncidentPage extends BasePage {
     public Boolean isVisibleToastMessage() {
         return CommonEvents.isVisible(toastMessage);
     }
+
+    public Boolean isButtonEnabled() {
+        return CommonEvents.isEnabled(saveButton);
+    }
 }

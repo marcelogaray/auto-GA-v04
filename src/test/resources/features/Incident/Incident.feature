@@ -25,3 +25,11 @@ Feature: Lista de Incidentes
     And Presionar en la opcion 'Incidentes' del 'Menu Principal'
     And hacemos 'click' en el boton 'Incidentes' del 'Menu Principal'
     And Verificamos que el titulo de 'Creacion de Incidentes' se muestre correctamente
+
+  Scenario: RF05-TC-006 Validar campos obligatorios en el formulario de creación de Recurso
+    Given 'Menu principal' estee cargado
+    And Presionar en la opcion 'Incidentes' del 'Menu Principal'
+    And Verificar que la tabla de incidentes se muestre correctamente
+    And hacemos 'click' en el boton 'Incidentes' del 'Menu Principal'
+    When Llenamos el campo 'code' con un valor vacio
+    Then Verificar que el boton de guardado no se deshabilita

@@ -145,4 +145,9 @@ public class StepsDefinitionSSID {
         createIncidentPage.fillCodeInput("");
         createIncidentPage.fillCheckReincident("true");
     }
+
+    @Then("^Verificar que el boton de guardado no se deshabilita$")
+    public void verificarQueElBotonDeGuardadoNoSeDeshabilita() throws Throwable {
+        createIncidentPage.isButtonEnabled();
+    }
 }
