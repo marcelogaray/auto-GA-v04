@@ -27,6 +27,9 @@ public class Position extends BasePage {
     @FindBy(name = "colActions")
     private WebElement headerListActions;
 
+    @FindBy(id = "btnCreatePosition")
+    private WebElement buttonCreatePosition;
+
     public Position() {
         CommonEvents.isVisible(title);
     }
@@ -46,4 +49,9 @@ public class Position extends BasePage {
     public boolean validHeaderDependencyPositionList() { return CommonEvents.isVisible(headerListParent); }
 
     public boolean validHeaderActionsPositionList() { return CommonEvents.isVisible(headerListActions); }
+
+    public CreatePosition clickButtonCreatePosition() {
+        CommonEvents.clickButton(buttonCreatePosition);
+        return new CreatePosition();
+    }
 }
