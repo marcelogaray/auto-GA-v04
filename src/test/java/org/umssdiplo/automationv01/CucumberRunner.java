@@ -10,8 +10,7 @@ import org.umssdiplo.automationv01.core.customwebdriver.ManageDriver;
         format = {"pretty",
                 "html:build/cucumber",
                 "json:build/cucumber/cucumber.json",
-                "junit:build/test-report.xml"},
-                tags = "@RegEquipment"
+                "junit:build/test-report.xml"}
 )
 public class CucumberRunner extends AbstractTestNGCucumberTests {
     @AfterTest

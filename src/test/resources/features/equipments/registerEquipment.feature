@@ -1,5 +1,4 @@
-#Register Equipment
-  @RegEquipment
+
   Feature: Register Equipment
 
     Background: Pagina de inicio es mostrada una vez que se ponen los credenciales correctos de inicio de sesión
