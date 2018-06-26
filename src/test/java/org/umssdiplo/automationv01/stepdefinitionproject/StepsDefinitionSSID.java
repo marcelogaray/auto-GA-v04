@@ -1,6 +1,7 @@
 package org.umssdiplo.automationv01.stepdefinitionproject;
 
 import cucumber.api.DataTable;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -133,4 +134,19 @@ public class StepsDefinitionSSID {
         Assert.assertTrue(createIncidentPage.clickSaveButton(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Toast Message Success"));
     }
 
+    @And("^Verificamos que el titulo de 'Creacion de Incidentes' se muestre correctamente$")
+    public void verificamosQueElTituloDeCreacionDeIncidentesSeMuestreCorrectamente() throws Throwable {
+        Assert.assertTrue(createIncidentPage.isTitleVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Titulo 'Crear Incidente'"));
+    }
+
+    @When("^Llenamos el campo 'code' con un valor vacio$")
+    public void llenamosLosDatosRequeridosDelFormularioDeCreacionDeIncidentes() throws Throwable {
+        createIncidentPage.fillCodeInput("");
+        createIncidentPage.fillCheckReincident("true");
+    }
+
+    @Then("^Verificar que el boton de guardado no se deshabilita$")
+    public void verificarQueSeMuestreElMensajeDeQueElCampoEsRequerido() throws Throwable {
+        Assert.assertFalse(createIncidentPage.isButtonEnabled(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_DISABLED, "Create Button"));
+    }
 }

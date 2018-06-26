@@ -11,6 +11,9 @@ import java.util.Map;
 
 public class CreateIncidentPage extends BasePage {
 
+    @FindBy(xpath = "//h1[contains(text(),'Crear Incidente')]")
+    private WebElement title;
+
     @FindBy(xpath = "//mat-radio-group/mat-radio-button/label")
     private List<WebElement> radioGroupSeverity;
 
@@ -82,6 +85,10 @@ public class CreateIncidentPage extends BasePage {
         CommonEvents.isVisible(saveButton);
     }
 
+    public boolean isTitleVisible() {
+        return CommonEvents.isVisible(title);
+    }
+
     public void setIncidentForm(List<Map<String, String>> data) {
         fillSeverityRadioBtn(data.get(0).get("Severity"));
         fillCodeInput(data.get(0).get("Code"));
@@ -149,6 +156,10 @@ public class CreateIncidentPage extends BasePage {
 
     public Boolean isVisibleToastMessage() {
         return CommonEvents.isVisible(toastMessage);
+    }
+
+    public Boolean isButtonEnabled() {
+        return CommonEvents.isEnabled(saveButton);
     }
 
 }
