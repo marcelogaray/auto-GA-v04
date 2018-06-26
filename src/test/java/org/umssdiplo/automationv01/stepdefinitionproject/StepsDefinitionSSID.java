@@ -1,5 +1,6 @@
 package org.umssdiplo.automationv01.stepdefinitionproject;
 
+import cucumber.api.DataTable;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -17,6 +18,11 @@ import org.umssdiplo.automationv01.core.managepage.Position.Position;
 import org.umssdiplo.automationv01.core.managepage.Usuario.ListUser;
 import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
+import org.umssdiplo.automationv01.core.managepage.Contract.ListContract;
+import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuPersonalContract;
+import org.umssdiplo.automationv01.core.managepage.Contract.FormContract;
+import java.util.List;
+import java.util.Map;
 
 public class StepsDefinitionSSID {
     private Login login;
@@ -29,6 +35,9 @@ public class StepsDefinitionSSID {
     private ListEquipment listEquipment;
     private Position position;
     private SubMenuOrganizationalStructure subMenuOrganizationalStructure;
+    private SubMenuPersonalContract menuPersonalContract;
+    private ListContract listContract;
+    private FormContract formContract;
 
     private void loadPageObjects() {
         login = LoadPage.loginPage();
@@ -109,5 +118,95 @@ public class StepsDefinitionSSID {
     @Then("^Verificar que la 'Lista de Equipamientos' este visible$")
     public void validarListaDeEquipamientos() throws Throwable {
         Assert.assertTrue(listEquipment.isEquipmentListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
+    }
+
+    //Contract element
+    @Given("menu principal este cargado en pagina de Inicio$")
+    public void seleccionarPaginaInicio() throws Throwable {
+        menu = home.getHomeMenu();
+    }
+
+    @And("^seleccionar menu 'Personal' para contract en la pagina 'Menu Principal'$")
+    public void menuPersonalSeleccionado() throws Throwable {
+        menuPersonalContract = menu.selectPersonalSubMenuContract();
+    }
+
+    @And("^seleccionar submenu 'Contratos' en menu 'Personal'$")
+    public void seleccionarContratos() throws Throwable {
+        listContract = menuPersonalContract.selectSubMenuContract();
+    }
+
+    @Then("^validar que la 'Lista de Contratos' este visible$")
+    public void validarListaDeContratos() throws Throwable {
+        boolean result = listContract.isContractListVisible();
+    }
+
+    @And("^mostrar 'Lista de Contratos'$")
+    public void validarContratos() throws Throwable {
+        boolean result = listContract.isContractListVisible();
+    }
+
+    @And("^seleccionar boton Agregar Nuevo Contrato del Area de contratos$")
+    public void seleccionarAgregarContrato() throws Throwable {
+        formContract = listContract.seleccionarBoton();
+    }
+
+    @And("^llenar 'formulario de Contrato Nuevo'$")
+    public void llenarformulariodeContratoNuevo(DataTable table) throws Throwable {
+        List<Map<String, String>> data = table.asMaps(String.class, String.class);
+        formContract.registerContract(data);
+    }
+
+    @And("^seleccionar Boton 'Enviar' para grabar los datos del formulario$")
+    public void SeleccionarBotonformulario() throws Throwable {
+        formContract.enviarFormulario();
+    }
+
+    @And("^seleccionar boton Editar del primer item lista contratos$")
+    public void seleccionarEditar() throws Throwable {
+        formContract = listContract.btnEditar();
+    }
+
+    @And("^modificar datos del 'formulario de Contrato a Editar'$")
+    public void llenarformulariodeContratoEdit(DataTable table) throws Throwable {
+        List<Map<String, String>> data = table.asMaps(String.class, String.class);
+        formContract.registerContractEdit(data);
+    }
+
+    @And("^seleccionar boton 'Enviar' para grabar los datos editados del formulario$")
+    public void SeleccionarBotonformularioEdit() throws Throwable {
+        formContract.enviarFormularioEdit();
+    }
+
+    @And("^llenar la opcion filtro de contrato$")
+    public void llenarfiltroBusqueda(DataTable tables) throws Throwable {
+        List<Map<String, String>> lista = tables.asMaps(String.class, String.class);
+        formContract = new FormContract();
+        formContract.registerContractFind(lista);
+    }
+
+    @Then("^validar que la 'Lista de Contratos' este visible mostrando el filtro ingresado$")
+    public void listaFiltrada() throws Throwable {
+        boolean resultFind = listContract.isContractListVisible();
+    }
+
+    @And("^seleccionar boton Eliminar del primer item lista contratos$")
+    public void seleccionarEliminar() throws Throwable {
+        formContract = listContract.btnEliminar();
+    }
+
+    @Then("^validar que la 'Lista de Contratos' este visible sin el item eliminado$")
+    public void listaEliminados() throws Throwable {
+        boolean resultDelete = listContract.isContractListVisible();
+    }
+
+    @When("^seleccionar en boton siguiente de la lista$")
+    public  void seleccionarSiguienteContract(){
+        listContract.seleccionSiguiente();
+    }
+
+    @And("^seleccionar en boton de anterior de la lista$")
+    public void seleccionAnteriorContract(){
+        listContract.seleccionAnterior();
     }
 }
