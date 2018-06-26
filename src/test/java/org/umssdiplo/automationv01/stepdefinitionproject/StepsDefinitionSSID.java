@@ -6,6 +6,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.testng.Assert;
 import org.umssdiplo.automationv01.core.managepage.Equipment.ListEquipment;
+import org.umssdiplo.automationv01.core.managepage.Equipment.ViewEquipment;
 import org.umssdiplo.automationv01.core.managepage.Home.Home;
 import org.umssdiplo.automationv01.core.managepage.Incident.IncidentPage;
 import org.umssdiplo.automationv01.core.managepage.Login.Login;
@@ -29,6 +30,7 @@ public class StepsDefinitionSSID {
     private ListEquipment listEquipment;
     private Position position;
     private SubMenuOrganizationalStructure subMenuOrganizationalStructure;
+    private ViewEquipment viewEquipment;
 
     private void loadPageObjects() {
         login = LoadPage.loginPage();
@@ -96,6 +98,7 @@ public class StepsDefinitionSSID {
         Assert.assertTrue(incidentPage.isTableVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Incident title"));
     }
 
+    //BEGIN Equipments
     @And("^seleccionar menu 'Equipamiento' en la pagina 'Menu Principal'$")
     public void menuEquipamientoEstaSeleccionado() throws Throwable {
         menuEquipamiento = menu.selectEquipmentMenu();
@@ -110,4 +113,20 @@ public class StepsDefinitionSSID {
     public void validarListaDeEquipamientos() throws Throwable {
         Assert.assertTrue(listEquipment.isEquipmentListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
     }
+
+    @And("^click en boton Ver de 'Lista de Equipamientos'$")
+    public void clickBtnVer() throws  Throwable {
+        listEquipment.clickEquipmentViewBtn();
+    }
+
+    @When("^'Detalle de Equipamiento' correctamente cargado$")
+    public void detalleEquipaminetoCargado() throws Throwable {
+        viewEquipment = listEquipment.loadDetailEquipment();
+    }
+
+    @Then("^Verificar que el 'Detalle de Equipamiento' especifico sea mostrado correctamente$")
+    public void verificarDetalleEquiCorrecto() throws Throwable {
+        Assert.assertTrue(viewEquipment.checkEquipmentView(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "ViewEquipment Title"));
+    }
+    //END Equipments
 }
