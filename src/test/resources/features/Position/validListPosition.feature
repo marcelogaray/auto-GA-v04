@@ -2,7 +2,7 @@
 # RF02-TC-045 UI >Asignación de Funciones > Estructura organizacional >
 # Cargos de la empresa >
 # Verificar cabecera de lista de Cargos (Nombre cargo, Nivel, Depende de, Acciones) deben ser mostrados correctamente.
-@validList
+
 Feature: List Position
 
   Background: Pagina de inicio es mostrada una vez que se ponen los credenciales correctos de inicio de sesión
