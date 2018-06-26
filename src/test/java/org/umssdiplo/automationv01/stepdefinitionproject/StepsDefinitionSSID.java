@@ -12,6 +12,7 @@ import org.umssdiplo.automationv01.core.managepage.Login.Login;
 import org.umssdiplo.automationv01.core.managepage.Menu.*;
 import org.umssdiplo.automationv01.core.managepage.Position.Position;
 import org.umssdiplo.automationv01.core.managepage.Trainer.CreateTrainer;
+import org.umssdiplo.automationv01.core.managepage.Trainer.EditTrainer;
 import org.umssdiplo.automationv01.core.managepage.Trainer.ListTrainer;
 import org.umssdiplo.automationv01.core.managepage.Usuario.ListUser;
 import org.umssdiplo.automationv01.core.utils.ErrorMessage;
@@ -31,6 +32,7 @@ public class StepsDefinitionSSID {
     private SubMenuTrainer subMenuTrainer;
     private ListTrainer listTrainer;
     private CreateTrainer createTrainer;
+    private EditTrainer editTrainer;
 
     private void loadPageObjects() {
         login = LoadPage.loginPage();
@@ -140,9 +142,20 @@ public class StepsDefinitionSSID {
         listTrainer = createTrainer.clickAtrasButton();
     }
 
-    @And("^Verificar que la lista de capacitadores sea mostrada$")
+    @Then("^Verificar que la lista de capacitadores sea mostrada$")
     public void verificarListaDeCapacitadores() throws Throwable {
         Assert.assertTrue(listTrainer.isTrainerListVisible(),String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Trainers list"));
+
+    }
+
+    @And("^Click en el boton 'Editar' de Capacitador$")
+    public void clickEnElBotonEditarDelCapacitador() throws Throwable {
+        editTrainer = listTrainer.clickUpdateTrainerButton();
+    }
+
+    @Then("^Validar que el título del formulario de edicion de Capacitadores sea 'Modificar capacitador'$")
+    public void validarTituloCapacadoresModoEdicion() throws Throwable {
+        Assert.assertTrue(editTrainer.getTrainerTitleEditMode().equals("Modificar capacitador"),"Capacitador title is not the correct") ;
 
     }
 

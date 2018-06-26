@@ -17,6 +17,9 @@ public class ListTrainer extends BasePage {
     @FindBy(id = "btnDelete")
     private WebElement btnDeleteTrainer;
 
+    @FindBy(id = "btnUpdate")
+    private WebElement btnUpdateTrainer;
+
     public CreateTrainer clickCreateTrainerButton() {
         CommonEvents.clickButton(btnCreateTrainer);
         return new CreateTrainer();
@@ -25,5 +28,10 @@ public class ListTrainer extends BasePage {
     public boolean isTrainerListVisible() {
         return CommonEvents.isVisible(tableTrainers);
 
+    }
+
+    public EditTrainer clickUpdateTrainerButton() {
+        CommonEvents.clickButton(btnUpdateTrainer);
+        return new EditTrainer();
     }
 }
