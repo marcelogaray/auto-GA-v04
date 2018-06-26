@@ -121,7 +121,7 @@ public class StepsDefinitionSSID {
         Assert.assertTrue(listEquipment.isEquipmentListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
     }
 
-    @Given("^Menu principal este cargado en pagina de Inicio$")
+    @Given("^menu principal este cargado en pagina de Inicio$")
     public void seleccionarPaginaInicio() throws Throwable {
         menu = home.getHomeMenu();
     }
@@ -131,51 +131,49 @@ public class StepsDefinitionSSID {
         menuPersonalContract = menu.selectPersonalSubMenuContract();
     }
 
-    @And("^Seleccionar submenu 'Contratos' en menu 'Personal'$")
+    @And("^seleccionar submenu 'Contratos' en menu 'Personal'$")
     public void seleccionarContratos() throws Throwable {
         listContract = menuPersonalContract.selectSubMenuContract();
     }
 
-    @Then("^Validar que la 'Lista de Contratos' este visible$")
+    @Then("^validar que la 'Lista de Contratos' este visible$")
     public void validarListaDeContratos() throws Throwable {
         boolean result = listContract.isContractListVisible();
     }
 
-    @Given("^Pagina de inicio cargada correctamente$")
+    @Given("^pagina de inicio cargada correctamente$")
     public void seleccionarInicio() throws Throwable {
         menu = home.getHomeMenu();
     }
 
-    @And("^Ingresar a menu 'Personal' en la pagina del 'Menu Principal'$")
+    @And("^ingresar a menu 'Personal' en la pagina del 'Menu Principal'$")
     public void menuPersonal() throws Throwable {
         menuPersonalContract = menu.selectPersonalSubMenuContract();
     }
 
-    @And("^Ingresar al submenu 'Contratos' en menu 'Personal'$")
+    @And("^ingresar al submenu 'Contratos' en menu 'Personal'$")
     public void seleccionarContratosCrear() throws Throwable {
         listContract = menuPersonalContract.selectSubMenuContract();
     }
 
-    @And("^Mostrar 'Lista de Contratos'$")
+    @And("^mostrar 'Lista de Contratos'$")
     public void validarContratos() throws Throwable {
         boolean result = listContract.isContractListVisible();
     }
 
-    @And("^Seleccionar boton Agregar Nuevo Contrato del Area de contratos$")
+    @And("^seleccionar boton Agregar Nuevo Contrato del Area de contratos$")
     public void seleccionarAgregarContrato() throws Throwable {
         formContract = listContract.seleccionarBoton();
     }
 
-    @And("^Llenar 'formulario de Contrato Nuevo'$")
-    public void LlenarformulariodeContratoNuevo(DataTable table) throws Throwable {
+    @And("^llenar 'formulario de Contrato Nuevo'$")
+    public void llenarformulariodeContratoNuevo(DataTable table) throws Throwable {
         List<Map<String, String>> data = table.asMaps(String.class, String.class);
         formContract.registerContract(data);
     }
 
-    @And("^Seleccionar Boton 'Enviar' para grabar los datos del formulario$")
+    @And("^seleccionar Boton 'Enviar' para grabar los datos del formulario$")
     public void SeleccionarBotonformulario() throws Throwable {
         formContract.enviarFormulario();
     }
-
-
 }
