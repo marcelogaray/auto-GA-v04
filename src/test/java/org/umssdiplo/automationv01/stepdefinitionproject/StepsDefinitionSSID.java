@@ -1,5 +1,7 @@
 package org.umssdiplo.automationv01.stepdefinitionproject;
 
+import cucumber.api.DataTable;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -7,6 +9,7 @@ import cucumber.api.java.en.When;
 import org.testng.Assert;
 import org.umssdiplo.automationv01.core.managepage.Equipment.ListEquipment;
 import org.umssdiplo.automationv01.core.managepage.Home.Home;
+import org.umssdiplo.automationv01.core.managepage.Incident.CreateIncidentPage;
 import org.umssdiplo.automationv01.core.managepage.Incident.IncidentPage;
 import org.umssdiplo.automationv01.core.managepage.Login.Login;
 import org.umssdiplo.automationv01.core.managepage.Menu.Menu;
@@ -17,6 +20,9 @@ import org.umssdiplo.automationv01.core.managepage.Position.Position;
 import org.umssdiplo.automationv01.core.managepage.Usuario.ListUser;
 import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
+
+import java.util.List;
+import java.util.Map;
 
 public class StepsDefinitionSSID {
     private Login login;
@@ -29,6 +35,7 @@ public class StepsDefinitionSSID {
     private ListEquipment listEquipment;
     private Position position;
     private SubMenuOrganizationalStructure subMenuOrganizationalStructure;
+    private CreateIncidentPage createIncidentPage;
 
     private void loadPageObjects() {
         login = LoadPage.loginPage();
@@ -109,5 +116,38 @@ public class StepsDefinitionSSID {
     @Then("^Verificar que la 'Lista de Equipamientos' este visible$")
     public void validarListaDeEquipamientos() throws Throwable {
         Assert.assertTrue(listEquipment.isEquipmentListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
+    }
+
+    @And("^hacemos 'click' en el boton 'Incidentes' del 'Menu Principal'$")
+    public void hacemosClickEnElBotonIncidentesDelMenuPrincipal() throws Throwable {
+        createIncidentPage = incidentPage.clickOnAddNewIncidentBtn();
+    }
+
+    @When("^Llenamos los 'datos del formulario' dentro del formulario de 'Creacion de Incidentes'$")
+    public void llenamosLosDatosDelFormularioDentroDelFormularioDeCreacionDeIncidentes(DataTable table) throws Throwable {
+        List<Map<String, String>> data = table.asMaps(String.class, String. class);
+        createIncidentPage.setIncidentForm(data);
+    }
+
+    @And("^Hacemos clic en el boton de 'Guardar'$")
+    public void hacemosClicEnElBotonDeGuardar() throws Throwable {
+        createIncidentPage.clickSaveButton();
+        Assert.assertTrue(createIncidentPage.isVisibleToastMessage(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Toast Message Success"));
+    }
+
+    @And("^Verificamos que el titulo de 'Creacion de Incidentes' se muestre correctamente$")
+    public void verificamosQueElTituloDeCreacionDeIncidentesSeMuestreCorrectamente() throws Throwable {
+        Assert.assertTrue(createIncidentPage.isTitleVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Titulo 'Crear Incidente'"));
+    }
+
+    @When("^Llenamos el campo 'code' con un valor vacio$")
+    public void llenamosLosDatosRequeridosDelFormularioDeCreacionDeIncidentes() throws Throwable {
+        createIncidentPage.fillCodeInput("");
+        createIncidentPage.fillCheckReincident("true");
+    }
+
+    @Then("^Verificar que el boton de guardado no se deshabilita$")
+    public void verificarQueElBotonDeGuardadoNoSeDeshabilita() throws Throwable {
+        createIncidentPage.isButtonEnabled();
     }
 }
