@@ -10,8 +10,14 @@ public class ListEquipment extends BasePage {
     @FindBy(id = "crearEquipment")
     private WebElement btnCrearEquipment;
 
-    @FindBy(className = "mat-table")
+    @FindBy(xpath = "/html/body/ssi-root/ssi-equipment/div/div[1]/h1")
     private WebElement tableEquipments;
+
+    @FindBy(xpath = "/html/body/ssi-root/ssi-equipment/div/div[3]/div/div/mat-table/mat-header-row/mat-header-cell[1]")
+    private WebElement listNameRow;
+
+    @FindBy(xpath = "/html/body/ssi-root/ssi-equipment/div/div[3]/div/div/mat-table/mat-header-row/mat-header-cell[2]")
+    private WebElement listActionsRow;
 
     public ListEquipment() {
         CommonEvents.isVisible(btnCrearEquipment);
@@ -19,5 +25,9 @@ public class ListEquipment extends BasePage {
 
     public boolean isEquipmentListVisible() {
         return CommonEvents.isVisible(tableEquipments);
+    }
+
+    public boolean checkHeaderListEquipment() {
+        return CommonEvents.isVisible(listNameRow)&& CommonEvents.isVisible(listActionsRow);
     }
 }
