@@ -28,4 +28,12 @@ public class ResourceForm extends BasePage {
     public boolean isTitleValid(String title){
         return CommonEvents.isVisible(titleCreate) && titleCreate.getText().equalsIgnoreCase(title);
     }
+
+    public boolean isVisibleCostInputField(){
+        return CommonEvents.isVisible(costInputField);
+    }
+
+    public boolean isVisibleDetailInputField(){
+        return CommonEvents.isVisible(detailInputField);
+    }
 }

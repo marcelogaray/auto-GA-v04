@@ -127,6 +127,16 @@ public class StepsDefinitionSSID {
         Assert.assertTrue(resourceForm.isTitleValid("Crear Recurso"), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "title form resources"));
     }
 
+    @Then("^validar que el inputField 'Costo' este visible$")
+    public void ValidarTextFieldCost() throws Throwable {
+        Assert.assertTrue(resourceForm.isVisibleCostInputField(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Cost input field"));
+    }
+
+    @And("^validar que el inputField 'Detalle' este visible$")
+    public void ValidarTextFieldDetail() throws Throwable {
+        Assert.assertTrue(resourceForm.isVisibleCostInputField(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Cost input field"));
+    }
+
     //Position RF02-TC-071: Verify list of Positions load correctly
     @When("^seleccionar la opcion 'Estructura organizacional' en el menu principal$")
     public void seleccionarLaOpcionEstructuraOrganizacionalEnElMenuPrincipal() throws Throwable {
