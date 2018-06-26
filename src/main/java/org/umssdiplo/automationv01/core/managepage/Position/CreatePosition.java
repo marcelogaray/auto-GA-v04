@@ -24,6 +24,9 @@ public class CreatePosition extends BasePage {
     @FindBy(id = "btnPositions")
     private WebElement buttonBack;
 
+    @FindBy(id = "buttonSavePosition")
+    private WebElement buttonSend;
+
     public CreatePosition() {
         CommonEvents.isVisible(title);
     }
@@ -50,4 +53,8 @@ public class CreatePosition extends BasePage {
         CommonEvents.clickButton(buttonBack);
         return new Position();
     }
+
+    public boolean validIsEnabledButtonSend() { return CommonEvents.isEnabled(buttonSend); }
+
+    public boolean validButtonSend() { return CommonEvents.isVisible(buttonBack); }
 }

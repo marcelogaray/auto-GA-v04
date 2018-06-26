@@ -115,4 +115,13 @@ public class CommonEvents {
     public static void pressEnterKey(WebElement webElement) {
         webElement.sendKeys(Keys.ENTER);
     }
+
+    public static boolean isEnabled(WebElement webElement) {
+        try {
+            return webElement.isEnabled();
+        } catch (NoSuchElementException e) {
+            System.out.println("Element do not exits.");
+            return false;
+        }
+    }
 }

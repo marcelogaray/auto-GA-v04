@@ -221,4 +221,15 @@ public class StepsDefinitionSSID {
         Assert.assertTrue(position.validLoadPagePositions(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Page 'Cargos de la empresa' "));
     }
     // End Valid Back button in create position
+
+    // Valid send button disabled when go in to create new position
+    @Then("^verificar que exista el boton 'Enviar' en la pagina 'Crear nuevo cargo'$")
+    public void verificarQueExistaElBotonEnviarEnLaPaginaCrearNuevoCargo() throws Throwable {
+        Assert.assertTrue(createPosition.validButtonSend(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Button 'Enviar' "));
+    }
+
+    @And("^verificar que el boton 'Enviar' este deshabilitado en la pagina 'Crear nuevo cargo'$")
+    public void verificarQueElBotonEnviarEsteDeshabilitadoEnLaPaginaCrearNuevoCargo() throws Throwable {
+        Assert.assertTrue(!createPosition.validIsEnabledButtonSend(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_ENABLED, "Button 'Enviar' "));
+    }
 }
