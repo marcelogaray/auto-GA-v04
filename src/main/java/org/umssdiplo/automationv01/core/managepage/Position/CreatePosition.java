@@ -21,6 +21,9 @@ public class CreatePosition extends BasePage {
     @FindBy(id = "selParentPosition")
     private WebElement dropdownParentPosition;
 
+    @FindBy(id = "btnPositions")
+    private WebElement buttonBack;
+
     public CreatePosition() {
         CommonEvents.isVisible(title);
     }
@@ -39,5 +42,12 @@ public class CreatePosition extends BasePage {
 
     public boolean validDropdownParentPosition() {
         return CommonEvents.isVisible(dropdownParentPosition);
+    }
+
+    public boolean validButtonBack() { return CommonEvents.isVisible(buttonBack); }
+
+    public Position clickButtonBack() {
+        CommonEvents.clickButton(buttonBack);
+        return new Position();
     }
 }

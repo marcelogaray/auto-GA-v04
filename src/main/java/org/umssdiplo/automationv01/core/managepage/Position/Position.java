@@ -62,4 +62,8 @@ public class Position extends BasePage {
         CommonEvents.clickButton(buttonCreatePosition);
         return new CreatePosition();
     }
+
+    public boolean validLoadPagePositions() {
+        return CommonEvents.isVisible(title);
+    }
 }
