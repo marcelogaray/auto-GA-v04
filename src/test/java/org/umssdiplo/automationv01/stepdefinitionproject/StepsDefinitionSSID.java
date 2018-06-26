@@ -13,6 +13,7 @@ import org.umssdiplo.automationv01.core.managepage.Menu.Menu;
 import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuEquipment;
 import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuOrganizationalStructure;
 import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuPersonal;
+import org.umssdiplo.automationv01.core.managepage.Position.CreatePosition;
 import org.umssdiplo.automationv01.core.managepage.Position.Position;
 import org.umssdiplo.automationv01.core.managepage.StructureOrganizational.StructureOrganizational;
 import org.umssdiplo.automationv01.core.managepage.Usuario.ListUser;
@@ -31,6 +32,7 @@ public class StepsDefinitionSSID {
     private Position position;
     private SubMenuOrganizationalStructure subMenuOrganizationalStructure;
     private StructureOrganizational structureOrganizational;
+    private CreatePosition createPosition;
 
     private void loadPageObjects() {
         login = LoadPage.loginPage();
@@ -174,4 +176,31 @@ public class StepsDefinitionSSID {
     public void verificarQueSeCargueLaCabeceraAccionesEnLaTablaDeListaDeCargos() throws Throwable {
         Assert.assertTrue(position.validHeaderActionsPositionList(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Header 'Acciones' position list"));
     }
+
+    //Valid form Create position
+    @And("^seleccionar el boton 'Crear nuevo cargo' en la pagina 'Cargos de la empresa'$")
+    public void seleccionarElBotonCrearNuevoCargoEnLaPaginaCargosDeLaEmpresa() throws Throwable {
+        createPosition = position.clickButtonCreatePosition();
+    }
+
+    @Then("^verificar que exista el campo 'Nombre' en el formulario de crear cargo$")
+    public void verificarQueExistaElCampoNombreEnElFormularioDeCrearCargo() throws Throwable {
+        Assert.assertTrue(createPosition.validFieldName(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Field 'Nombre' "));
+    }
+
+    @And("^verificar que exista el campo 'Nivel' en el formulario de crear cargo$")
+    public void verificarQueExistaElCampoNivelEnElFormularioDeCrearCargo() throws Throwable {
+        Assert.assertTrue(createPosition.validFieldLevel(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Field 'Nivel' "));
+    }
+
+    @And("^verificar que exista el campo 'Descripcion' en el formulario de crear cargo$")
+    public void verificarQueExistaElCampoDescripcionEnElFormularioDeCrearCargo() throws Throwable {
+        Assert.assertTrue(createPosition.validFieldDescription(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Field 'Descripcion' "));
+    }
+
+    @And("^verificar que exista la lista desplegable 'Cargo padre' en el formulario de crear cargo$")
+    public void verificarQueExistaLaListaDesplegableCargoPadreEnElFormularioDeCrearCargo() throws Throwable {
+        Assert.assertTrue(createPosition.validDropdownParentPosition(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Dropdown 'Cargo padre' "));
+    }
+    //end Valid form Create position
 }
