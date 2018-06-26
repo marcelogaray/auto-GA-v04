@@ -19,6 +19,12 @@ public class ListContract extends BasePage {
     @FindBy(id = "eliminarContract")
     private WebElement btnEliminar;
 
+    @FindBy(xpath = "//button[@class='mat-paginator-navigation-next mat-icon-button']")
+    private WebElement btnSig;
+
+    @FindBy(xpath = "//button[@class='mat-paginator-navigation-previous mat-icon-button']")
+    private WebElement btnAnt;
+
     public ListContract() {
         CommonEvents.isVisible(btnAgregarContrato);
     }
@@ -40,4 +46,13 @@ public class ListContract extends BasePage {
         CommonEvents.clickButton(btnEliminar);
         return new FormContract();
     }
+
+    public void seleccionSiguiente(){
+        CommonEvents.clickButton(btnSig);
+    }
+
+    public void seleccionAnterior(){
+        CommonEvents.clickButton(btnAnt);
+    }
+
 }

@@ -199,4 +199,14 @@ public class StepsDefinitionSSID {
     public void listaEliminados() throws Throwable {
         boolean resultDelete = listContract.isContractListVisible();
     }
+
+    @When("^seleccionar en boton siguiente de la lista$")
+    public  void seleccionarSiguienteContract(){
+        listContract.seleccionSiguiente();
+    }
+
+    @And("^seleccionar en boton de anterior de la lista$")
+    public void seleccionAnteriorContract(){
+        listContract.seleccionAnterior();
+    }
 }
