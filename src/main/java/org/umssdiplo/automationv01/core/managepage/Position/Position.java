@@ -15,6 +15,21 @@ public class Position extends BasePage {
     @FindBy(xpath = "//div[contains(text(),'Items per page:')]")
     private WebElement paginator;
 
+    @FindBy(name = "colName")
+    private WebElement headerListName;
+
+    @FindBy(name = "colLevel")
+    private WebElement headerListLevel;
+
+    @FindBy(name = "colParent")
+    private WebElement headerListParent;
+
+    @FindBy(name = "colActions")
+    private WebElement headerListActions;
+
+    @FindBy(id = "btnCreatePosition")
+    private WebElement buttonCreatePosition;
+
     public Position() {
         CommonEvents.isVisible(title);
     }
@@ -25,5 +40,30 @@ public class Position extends BasePage {
 
     public boolean validPaginator() {
         return CommonEvents.isVisible(paginator);
+    }
+
+    public boolean validHeaderNamePositionList() {
+        return CommonEvents.isVisible(headerListName);
+    }
+
+    public boolean validHeaderLevelPositionList() {
+        return CommonEvents.isVisible(headerListLevel);
+    }
+
+    public boolean validHeaderDependencyPositionList() {
+        return CommonEvents.isVisible(headerListParent);
+    }
+
+    public boolean validHeaderActionsPositionList() {
+        return CommonEvents.isVisible(headerListActions);
+    }
+
+    public CreatePosition clickButtonCreatePosition() {
+        CommonEvents.clickButton(buttonCreatePosition);
+        return new CreatePosition();
+    }
+
+    public boolean validLoadPagePositions() {
+        return CommonEvents.isVisible(title);
     }
 }
