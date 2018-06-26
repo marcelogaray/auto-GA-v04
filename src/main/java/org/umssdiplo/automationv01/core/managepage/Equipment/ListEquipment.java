@@ -10,7 +10,7 @@ public class ListEquipment extends BasePage {
     @FindBy(id = "crearEquipment")
     private WebElement btnCrearEquipment;
 
-    @FindBy(xpath = "/html/body/ssi-root/ssi-equipment/div/div[1]/h1")
+    @FindBy(className = "mat-table")
     private WebElement tableEquipments;
 
     @FindBy(xpath = "/html/body/ssi-root/ssi-equipment/div/div[3]/div/div/mat-table/mat-header-row/mat-header-cell[1]")
