@@ -131,7 +131,8 @@ public class StepsDefinitionSSID {
 
     @And("^Hacemos clic en el boton de 'Guardar'$")
     public void hacemosClicEnElBotonDeGuardar() throws Throwable {
-        Assert.assertTrue(createIncidentPage.clickSaveButton(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Toast Message Success"));
+        createIncidentPage.clickSaveButton();
+        Assert.assertTrue(createIncidentPage.isVisibleToastMessage(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Toast Message Success"));
     }
 
     @And("^Verificamos que el titulo de 'Creacion de Incidentes' se muestre correctamente$")
@@ -143,10 +144,5 @@ public class StepsDefinitionSSID {
     public void llenamosLosDatosRequeridosDelFormularioDeCreacionDeIncidentes() throws Throwable {
         createIncidentPage.fillCodeInput("");
         createIncidentPage.fillCheckReincident("true");
-    }
-
-    @Then("^Verificar que el boton de guardado no se deshabilita$")
-    public void verificarQueSeMuestreElMensajeDeQueElCampoEsRequerido() throws Throwable {
-        Assert.assertFalse(createIncidentPage.isButtonEnabled(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_DISABLED, "Create Button"));
     }
 }

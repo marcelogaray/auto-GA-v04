@@ -62,7 +62,8 @@ public class CreateIncidentPage extends BasePage {
     private WebElement selectReportedBy;
 
     @FindAll({
-            @FindBy(id = "mat-option-16")
+            @FindBy(id = "mat-option-16"),
+            @FindBy(id = "mat-option-17")
     })
     private List<WebElement> selectedReportedByOptions;
 
@@ -75,7 +76,7 @@ public class CreateIncidentPage extends BasePage {
     @FindBy(id = "mat-input-3")
     private WebElement descriptionTextArea;
 
-    @FindBy(xpath = "//button/span[contains(text(), 'Guardar')]")
+    @FindBy(xpath = "//*[@id=\"form\"]/mat-card-actions/button[2]")
     private WebElement saveButton;
 
     @FindBy(xpath = "//div[contains(@class, 'toast-message')][contains(text(), 'El incidente se guardo satisfactoriamente')]")
@@ -99,7 +100,6 @@ public class CreateIncidentPage extends BasePage {
         fillCheckReincident(data.get(0).get("Reincident"));
         fillCheckTreatment(data.get(0).get("Treatment"));
         fillDescription(data.get(0).get("Description"));
-        clickSaveButton();
     }
 
     public void fillSeverityRadioBtn(String selectedRadioSeverity) {
@@ -149,17 +149,11 @@ public class CreateIncidentPage extends BasePage {
         CommonEvents.setInputField(descriptionTextArea, description);
     }
 
-    public boolean clickSaveButton() {
+    public void clickSaveButton() {
         CommonEvents.clickButton(saveButton);
-        return CommonEvents.isVisible(toastMessage);
     }
 
     public Boolean isVisibleToastMessage() {
         return CommonEvents.isVisible(toastMessage);
     }
-
-    public Boolean isButtonEnabled() {
-        return CommonEvents.isEnabled(saveButton);
-    }
-
 }
