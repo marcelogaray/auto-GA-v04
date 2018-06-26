@@ -159,5 +159,10 @@ public class StepsDefinitionSSID {
 
     }
 
+    @And("^Click en el boton 'Atras' de Capacitador$")
+    public void clickEnElBotonAtrasDelCapacitador() throws Throwable {
+        listTrainer = editTrainer.clickAtrasButton();
+    }
+
 
 }
