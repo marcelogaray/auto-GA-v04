@@ -13,10 +13,16 @@ import org.umssdiplo.automationv01.core.managepage.Menu.Menu;
 import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuEquipment;
 import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuOrganizationalStructure;
 import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuPersonal;
+import org.umssdiplo.automationv01.core.managepage.Menu.*;
 import org.umssdiplo.automationv01.core.managepage.Position.Position;
+import org.umssdiplo.automationv01.core.managepage.Trainer.CreateTrainer;
+import org.umssdiplo.automationv01.core.managepage.Trainer.ListTrainer;
 import org.umssdiplo.automationv01.core.managepage.Usuario.ListUser;
 import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
+
+
+
 
 public class StepsDefinitionSSID {
     private Login login;
@@ -29,6 +35,9 @@ public class StepsDefinitionSSID {
     private ListEquipment listEquipment;
     private Position position;
     private SubMenuOrganizationalStructure subMenuOrganizationalStructure;
+    private SubMenuTrainer subMenuTrainer;
+    private ListTrainer listTrainer;
+    private CreateTrainer createTrainer;
 
     private void loadPageObjects() {
         login = LoadPage.loginPage();
@@ -110,4 +119,28 @@ public class StepsDefinitionSSID {
     public void validarListaDeEquipamientos() throws Throwable {
         Assert.assertTrue(listEquipment.isEquipmentListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
     }
+
+    @And("^Presionar en la opcion 'ProgramSSO' del 'Menu Principal'$")
+    public void presionarEnLaOpcionProgramSSODelMenuPrincipal() throws Throwable {
+        subMenuTrainer = menu.clickMenuProgramSSO();
+
+    }
+
+    @And("^Presionar en la opcion 'Capacitadores' del 'SubMenu'$")
+    public void presionarEnLaOpcionCapacitadoresDelSubMenu() throws Throwable {
+        listTrainer = subMenuTrainer.selectSubMenuTrainer();
+    }
+
+    @And("^Click en el boton 'Crear Nuevo Capacitador'$")
+    public void clickEnElBotonCrearNuevoCapacitador() throws Throwable {
+        createTrainer = listTrainer.clickCreateTrainerButton();
+    }
+
+    @Then("^Validar que el título del formulario de creación de Capacitadores sea 'Crear capacitador'$")
+    public void validarTituloCapacadoresModoCreacion() throws Throwable {
+        Assert.assertTrue(createTrainer.getTrainerTitleCreateMode().equals("Crear capacitador"),String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Capacitador title") );
+
+    }
+
+
 }
