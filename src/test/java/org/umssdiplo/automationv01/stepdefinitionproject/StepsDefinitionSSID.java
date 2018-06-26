@@ -151,4 +151,14 @@ public class StepsDefinitionSSID {
     public void verificarQueElResultadoCoincidaConElDatoBuscado() throws Throwable {
         Assert.assertTrue(listUser.isUserListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "List Users"));
     }
+
+    @When("^Seleccionar en boton next de la lista$")
+    public void seleccionarEnBotonNextDeLaLista() throws Throwable {
+        listUser.clickOnNextButton();
+    }
+
+    @And("^Seleccionar en boton de previus de la lista$")
+    public void seleccionarEnBotonDePreviusDeLaLista() throws Throwable {
+        listUser.clickOnPreviusButton();
+    }
 }
