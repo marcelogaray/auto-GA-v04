@@ -79,6 +79,9 @@ public class CreateIncidentPage extends BasePage {
     @FindBy(xpath = "//*[@id=\"form\"]/mat-card-actions/button[2]")
     private WebElement saveButton;
 
+    @FindBy(xpath = "//*[@id=\"form\"]/mat-card-actions/button[1]")
+    private WebElement cancelButton;
+
     @FindBy(xpath = "//div[contains(@class, 'toast-message')][contains(text(), 'El incidente se guardo satisfactoriamente')]")
     private WebElement toastMessage;
 
@@ -159,5 +162,10 @@ public class CreateIncidentPage extends BasePage {
 
     public Boolean isButtonEnabled() {
         return CommonEvents.isEnabled(saveButton);
+    }
+
+    public IncidentPage clickOnCancelButton() {
+        CommonEvents.clickButton(cancelButton);
+        return new IncidentPage();
     }
 }

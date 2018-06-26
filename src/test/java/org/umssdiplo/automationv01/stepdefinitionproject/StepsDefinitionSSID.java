@@ -118,7 +118,7 @@ public class StepsDefinitionSSID {
         Assert.assertTrue(listEquipment.isEquipmentListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
     }
 
-    @And("^hacemos 'click' en el boton 'Incidentes' del 'Menu Principal'$")
+    @And("^hacemos 'click' en el boton 'Agregar nuevo incidente'$")
     public void hacemosClickEnElBotonIncidentesDelMenuPrincipal() throws Throwable {
         createIncidentPage = incidentPage.clickOnAddNewIncidentBtn();
     }
@@ -149,5 +149,10 @@ public class StepsDefinitionSSID {
     @Then("^Verificar que el boton de guardado no se deshabilita$")
     public void verificarQueElBotonDeGuardadoNoSeDeshabilita() throws Throwable {
         createIncidentPage.isButtonEnabled();
+    }
+
+    @When("^hacemos 'click' en el boton 'cancelar'$")
+    public void hacemosClickEnElBotonCancelar() throws Throwable {
+        incidentPage = createIncidentPage.clickOnCancelButton();
     }
 }
