@@ -1,6 +1,5 @@
 package org.umssdiplo.automationv01.stepdefinitionproject;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -150,29 +149,29 @@ public class StepsDefinitionSSID {
         Assert.assertTrue(structureOrganizational.validTreeAreas(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Areas tree "));
     }
 
-    //Verificar cabecera de lista de cargos
+    //Verify header positions list
     @Then("^Verificar que se cargue el listado de cargos en la pagina 'Cargos de la empresa'$")
     public void verificarQueSeCargueElListadoDeCargosEnLaPaginaCargosDeLaEmpresa() throws Throwable {
-        Assert.assertTrue(position.validListPositions(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Positions list"));
+        Assert.assertTrue(position.validListPositions(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Positions table list"));
     }
 
     @And("^verificar que se cargue la cabecera 'Nombre cargo' en la tabla de lista de cargos$")
     public void verificarQueSeCargueLaCabeceraNombreCargoEnLaTablaDeListaDeCargos() throws Throwable {
-        Assert.assertTrue(position.validHeaderNamePositionList(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Header Nombre position list"));
+        Assert.assertTrue(position.validHeaderNamePositionList(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Header 'Nombre' position list"));
     }
 
     @And("^verificar que se cargue la cabecera 'Nivel' en la tabla de lista de cargos$")
     public void verificarQueSeCargueLaCabeceraNivelEnLaTablaDeListaDeCargos() throws Throwable {
-        Assert.assertTrue(position.validHeaderLevelPositionList(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Header Nivel position list"));
+        Assert.assertTrue(position.validHeaderLevelPositionList(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Header 'Nivel' position list"));
     }
 
     @And("^verificar que se cargue la cabecera 'Depende de' en la tabla de lista de cargos$")
     public void verificarQueSeCargueLaCabeceraDependeDeEnLaTablaDeListaDeCargos() throws Throwable {
-        Assert.assertTrue(position.validHeaderDependencyPositionList(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Header Depende de position list"));
+        Assert.assertTrue(position.validHeaderDependencyPositionList(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Header 'Depende de' position list"));
     }
 
     @And("^verificar que se cargue la cabecera 'Acciones' en la tabla de lista de cargos$")
     public void verificarQueSeCargueLaCabeceraAccionesEnLaTablaDeListaDeCargos() throws Throwable {
-        Assert.assertTrue(position.validHeaderActionsPositionList(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Header Acciones position list"));
+        Assert.assertTrue(position.validHeaderActionsPositionList(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Header 'Acciones' position list"));
     }
 }

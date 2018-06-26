@@ -1,5 +1,5 @@
 # Position feature review the behavior in the feature
-# RF02-TC-045 UI >Asignación de Funciones > Estructura organizacional >
+# RF02-TC-045: UI >Asignación de Funciones > Estructura organizacional >
 # Cargos de la empresa >
 # Verificar cabecera de lista de Cargos (Nombre cargo, Nivel, Depende de, Acciones) deben ser mostrados correctamente.
 
