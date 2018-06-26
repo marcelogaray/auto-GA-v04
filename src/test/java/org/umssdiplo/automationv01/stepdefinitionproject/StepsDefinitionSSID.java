@@ -134,7 +134,12 @@ public class StepsDefinitionSSID {
 
     @And("^validar que el inputField 'Detalle' este visible$")
     public void ValidarTextFieldDetail() throws Throwable {
-        Assert.assertTrue(resourceForm.isVisibleCostInputField(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Cost input field"));
+        Assert.assertTrue(resourceForm.isVisibleDetailInputField(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Cost input field"));
+    }
+
+    @And("^click en el boton 'Atras' de la pagina agregar 'Recursos'$")
+    public void ClickBackButtonAddResources() throws Throwable{
+        resource = resourceForm.clickButtonBack();
     }
 
     //Position RF02-TC-071: Verify list of Positions load correctly

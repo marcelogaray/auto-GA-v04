@@ -18,6 +18,9 @@ public class ResourceForm extends BasePage {
     @FindBy(id = "titleFormCreate")
     private WebElement titleCreate;
 
+    @FindBy(id = "btnBack")
+    private WebElement backButton;
+
     public Resource fillResourceForm(String cost, String detail){
         CommonEvents.setInputField(costInputField, cost);
         CommonEvents.setInputField(detailInputField, detail);
@@ -35,5 +38,10 @@ public class ResourceForm extends BasePage {
 
     public boolean isVisibleDetailInputField(){
         return CommonEvents.isVisible(detailInputField);
+    }
+
+    public Resource clickButtonBack(){
+        CommonEvents.clickButton(backButton);
+        return new Resource();
     }
 }

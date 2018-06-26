@@ -13,7 +13,7 @@ public class Home extends BasePage {
     @FindBy(xpath = "//button/span[contains(text(),'Inicio')]")
     private WebElement mainMenu;
 
-    public Home(){
+    public Home() {
         CommonEvents.isVisible(title);
     }
 
