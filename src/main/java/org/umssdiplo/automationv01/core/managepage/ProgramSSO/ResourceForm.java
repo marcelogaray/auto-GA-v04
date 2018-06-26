@@ -21,6 +21,9 @@ public class ResourceForm extends BasePage {
     @FindBy(id = "btnBack")
     private WebElement backButton;
 
+    @FindBy(id = "btnCancel")
+    private WebElement cancelButton;
+
     public Resource fillResourceForm(String cost, String detail){
         CommonEvents.setInputField(costInputField, cost);
         CommonEvents.setInputField(detailInputField, detail);
@@ -42,6 +45,11 @@ public class ResourceForm extends BasePage {
 
     public Resource clickButtonBack(){
         CommonEvents.clickButton(backButton);
+        return new Resource();
+    }
+
+    public Resource clickCancelButton(){
+        CommonEvents.clickButton(cancelButton);
         return new Resource();
     }
 }

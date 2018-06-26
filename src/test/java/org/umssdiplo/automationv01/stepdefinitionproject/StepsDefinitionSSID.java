@@ -84,7 +84,7 @@ public class StepsDefinitionSSID {
     //ProgramSSO - Resources
     @And("^menu 'Programa SSO' este seleccionado de la pagina 'Home'$")
     public void clickMenuProgramSSO() throws Throwable {
-         subMenuProgramSSO = menu.clickProgramSSOMenu();
+        subMenuProgramSSO = menu.clickProgramSSOMenu();
     }
 
     @And("^seleccionar sub menu 'Recursos'")
@@ -99,11 +99,11 @@ public class StepsDefinitionSSID {
 
     @And("^validar si columna 'Detalle' es visible en la pagina 'Recursos'$")
     public void visibilityDetailHeader() throws Throwable {
-        Assert.assertTrue(resource.visibilityDetailHeader(),"No se encuentra la columna 'Detalle' en la pagina 'Recursos'");
+        Assert.assertTrue(resource.visibilityDetailHeader(), "No se encuentra la columna 'Detalle' en la pagina 'Recursos'");
     }
 
     @And("^validar si columna 'Accion' es visible en la pagina 'Recursos'$")
-    public void visibilityActionHeader()  throws Throwable {
+    public void visibilityActionHeader() throws Throwable {
         Assert.assertTrue(resource.visibilityActionHeader(), "No se encuentra la columna 'Accion' en la pagina 'Recursos'");
     }
 
@@ -113,12 +113,12 @@ public class StepsDefinitionSSID {
     }
 
     @And("^llenar el formulario con valores validos de la pagiga 'Agregar Recursos' costo = \"(.*)\" y detalle = \"(.*)\"$")
-    public void fillResourcesForm(String cost, String detail)throws Throwable {
-        resource = resourceForm.fillResourceForm(cost,detail);
+    public void fillResourcesForm(String cost, String detail) throws Throwable {
+        resource = resourceForm.fillResourceForm(cost, detail);
     }
 
     @Then("^validar que la lista de la pagina 'Recursos' este visible$")
-    public void ValidateListOfResources() throws Throwable {
+    public void validateListOfResources() throws Throwable {
         Assert.assertTrue(resource.isVisibleListResource(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "list resources"));
     }
 
@@ -128,18 +128,23 @@ public class StepsDefinitionSSID {
     }
 
     @Then("^validar que el inputField 'Costo' este visible$")
-    public void ValidarTextFieldCost() throws Throwable {
+    public void validarTextFieldCost() throws Throwable {
         Assert.assertTrue(resourceForm.isVisibleCostInputField(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Cost input field"));
     }
 
     @And("^validar que el inputField 'Detalle' este visible$")
-    public void ValidarTextFieldDetail() throws Throwable {
+    public void validarTextFieldDetail() throws Throwable {
         Assert.assertTrue(resourceForm.isVisibleDetailInputField(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Cost input field"));
     }
 
-    @And("^click en el boton 'Atras' de la pagina agregar 'Recursos'$")
-    public void ClickBackButtonAddResources() throws Throwable{
+    @And("^click en el boton 'Atras' de la pagina 'Agregar Recursos'$")
+    public void clickBackButtonAddResources() throws Throwable {
         resource = resourceForm.clickButtonBack();
+    }
+
+    @And("^click en el boton 'Cancelar' de la pagina 'Agregar Recursos'$")
+    public void clickCancelButtonAddResources() throws Throwable {
+        resource = resourceForm.clickCancelButton();
     }
 
     //Position RF02-TC-071: Verify list of Positions load correctly
