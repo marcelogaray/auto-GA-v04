@@ -13,7 +13,11 @@ import org.umssdiplo.automationv01.core.managepage.Menu.Menu;
 import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuEquipment;
 import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuOrganizationalStructure;
 import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuPersonal;
+import org.umssdiplo.automationv01.core.managepage.Menu.*;
 import org.umssdiplo.automationv01.core.managepage.Position.Position;
+import org.umssdiplo.automationv01.core.managepage.Trainer.CreateTrainer;
+import org.umssdiplo.automationv01.core.managepage.Trainer.EditTrainer;
+import org.umssdiplo.automationv01.core.managepage.Trainer.ListTrainer;
 import org.umssdiplo.automationv01.core.managepage.Usuario.ListUser;
 import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
@@ -29,6 +33,10 @@ public class StepsDefinitionSSID {
     private ListEquipment listEquipment;
     private Position position;
     private SubMenuOrganizationalStructure subMenuOrganizationalStructure;
+    private SubMenuTrainer subMenuTrainer;
+    private ListTrainer listTrainer;
+    private CreateTrainer createTrainer;
+    private EditTrainer editTrainer;
 
     private void loadPageObjects() {
         login = LoadPage.loginPage();
@@ -110,4 +118,55 @@ public class StepsDefinitionSSID {
     public void validarListaDeEquipamientos() throws Throwable {
         Assert.assertTrue(listEquipment.isEquipmentListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
     }
+
+    @And("^Presionar en la opcion 'ProgramSSO' del 'Menu Principal'$")
+    public void presionarEnLaOpcionProgramSSODelMenuPrincipal() throws Throwable {
+        subMenuTrainer = menu.clickMenuProgramSSO();
+
+    }
+
+    @And("^Presionar en la opcion 'Capacitadores' del 'SubMenu'$")
+    public void presionarEnLaOpcionCapacitadoresDelSubMenu() throws Throwable {
+        listTrainer = subMenuTrainer.selectSubMenuTrainer();
+    }
+
+    @And("^Click en el boton 'Crear Nuevo Capacitador'$")
+    public void clickEnElBotonCrearNuevoCapacitador() throws Throwable {
+        createTrainer = listTrainer.clickCreateTrainerButton();
+    }
+
+    @Then("^Validar que el título del formulario de creación de Capacitadores sea 'Crear capacitador'$")
+    public void validarTituloCapacadoresModoCreacion() throws Throwable {
+        Assert.assertTrue(createTrainer.getTrainerTitleCreateMode().equals("Crear capacitador"),String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Capacitador title") );
+
+    }
+
+    @And("^Click en el boton 'Atras' del modo creacion de Capacitador$")
+    public void clickEnElBotonAtrasDelModoCreacionCapacitador() throws Throwable {
+        listTrainer = createTrainer.clickAtrasButton();
+    }
+
+    @Then("^Verificar que la lista de capacitadores sea mostrada$")
+    public void verificarListaDeCapacitadores() throws Throwable {
+        Assert.assertTrue(listTrainer.isTrainerListVisible(),String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Trainers list"));
+
+    }
+
+    @And("^Click en el boton 'Editar' de Capacitador$")
+    public void clickEnElBotonEditarDelCapacitador() throws Throwable {
+        editTrainer = listTrainer.clickUpdateTrainerButton();
+    }
+
+    @Then("^Validar que el título del formulario de edicion de Capacitadores sea 'Modificar capacitador'$")
+    public void validarTituloCapacadoresModoEdicion() throws Throwable {
+        Assert.assertTrue(editTrainer.getTrainerTitleEditMode().equals("Modificar capacitador"),"Capacitador title is not the correct") ;
+
+    }
+
+    @And("^Click en el boton 'Atras' de Capacitador$")
+    public void clickEnElBotonAtrasDelCapacitador() throws Throwable {
+        listTrainer = editTrainer.clickAtrasButton();
+    }
+
+
 }
