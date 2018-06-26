@@ -1,5 +1,5 @@
 # Navegacion de tabla contratos
-@nav
+
 Feature: Contract navigation list
 
   Background: Pagina de inicio es mostrada una vez que se ponen los credenciales correctos de inicio de sesión

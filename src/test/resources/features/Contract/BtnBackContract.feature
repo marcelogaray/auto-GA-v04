@@ -1,6 +1,6 @@
 # Boton atraz crear contratos
-@atras
-Feature: Create Contract
+
+Feature: Back button contract
 
   Background: Pagina de inicio es mostrada una vez que se ponen los credenciales correctos de inicio de sesión
     Given 'SSI-D' pagina de inicio de sesion es cargada

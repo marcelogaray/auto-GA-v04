@@ -1,5 +1,5 @@
 # Listar contratos
-@contract
+
 Feature: List Contract
 
   Background: Pagina de inicio es mostrada una vez que se ponen los credenciales correctos de inicio de sesión
@@ -9,5 +9,5 @@ Feature: List Contract
   Scenario: Verificar lista de Contratos este correctamente cargado
     Given menu principal este cargado en pagina de Inicio
     And seleccionar menu 'Personal' para contract en la pagina 'Menu Principal'
-    And Seleccionar submenu 'Contratos' en menu 'Personal'
+    And seleccionar submenu 'Contratos' en menu 'Personal'
     Then validar que la 'Lista de Contratos' este visible

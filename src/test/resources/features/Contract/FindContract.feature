@@ -1,5 +1,5 @@
 # Buscar contratos
-@find
+
 Feature: Find Contract
 
   Background: Pagina de inicio es mostrada una vez que se ponen los credenciales correctos de inicio de sesión
@@ -13,5 +13,5 @@ Feature: Find Contract
     And mostrar 'Lista de Contratos'
     And llenar la opcion filtro de contrato
       | contractCodes |
-      | 0007          |
+      | 0028         |
     Then validar que la 'Lista de Contratos' este visible mostrando el filtro ingresado

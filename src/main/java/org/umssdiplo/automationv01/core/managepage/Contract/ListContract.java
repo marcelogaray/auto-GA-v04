@@ -28,6 +28,9 @@ public class ListContract extends BasePage {
     @FindBy(id = "btnAtras")
     private WebElement btnAtras;
 
+    @FindBy(id = "titleCreateContract")
+    private WebElement titleContract;
+
     public ListContract() {
         CommonEvents.isVisible(btnAgregarContrato);
     }
@@ -58,7 +61,11 @@ public class ListContract extends BasePage {
         CommonEvents.clickButton(btnAnt);
     }
 
-    public void seleccionBtnAtrasContract(){CommonEvents.clickButton(btnAtras);}
+    public void seleccionBtnAtrasContract(){
+        CommonEvents.clickButton(btnAtras);
+    }
 
-
+    public String getTitulo(){
+        return CommonEvents.getTextContent(titleContract);
+    }
 }

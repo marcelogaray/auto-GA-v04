@@ -1,6 +1,6 @@
 # Editar contratos
-@update
-Feature: Create Contract
+
+Feature: Update Contract
 
   Background: Pagina de inicio es mostrada una vez que se ponen los credenciales correctos de inicio de sesión
     Given 'SSI-D' pagina de inicio de sesion es cargada

@@ -214,4 +214,9 @@ public class StepsDefinitionSSID {
     public void seleccionBtnAtrasContract(){
         listContract.seleccionBtnAtrasContract();
     }
+
+    @Then("^validar que el título del formulario de creación contratos sea 'Nuevo Contrato'$")
+    public void validarTitulo() throws Throwable {
+        Assert.assertTrue(listContract.getTitulo().equals("Nuevo Contrato"),String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Contract Title") );
+    }
 }
