@@ -1,10 +1,12 @@
 package org.umssdiplo.automationv01.stepdefinitionproject;
 
+import cucumber.api.DataTable;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.testng.Assert;
+import org.umssdiplo.automationv01.core.managepage.Equipment.FormEquipment;
 import org.umssdiplo.automationv01.core.managepage.Equipment.ListEquipment;
 import org.umssdiplo.automationv01.core.managepage.Home.Home;
 import org.umssdiplo.automationv01.core.managepage.Incident.IncidentPage;
@@ -27,6 +29,7 @@ public class StepsDefinitionSSID {
     private IncidentPage incidentPage;
     private SubMenuEquipment menuEquipamiento;
     private ListEquipment listEquipment;
+    private FormEquipment formEquipment;
     private Position position;
     private SubMenuOrganizationalStructure subMenuOrganizationalStructure;
 
@@ -96,6 +99,7 @@ public class StepsDefinitionSSID {
         Assert.assertTrue(incidentPage.isTableVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Incident title"));
     }
 
+    //BEGIN Equipment
     @And("^seleccionar menu 'Equipamiento' en la pagina 'Menu Principal'$")
     public void menuEquipamientoEstaSeleccionado() throws Throwable {
         menuEquipamiento = menu.selectEquipmentMenu();
@@ -110,4 +114,19 @@ public class StepsDefinitionSSID {
     public void validarListaDeEquipamientos() throws Throwable {
         Assert.assertTrue(listEquipment.isEquipmentListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
     }
+
+    @And("^Hacer Click en el boton 'Crear nuevo Equipamiento'$")
+    public void hacerClickBotonCrearEquipamiento() throws Throwable {
+        listEquipment.createNewEquipment();
+    }
+
+    @When("^Formulario de 'Registro de nuevo Equipamiento' esta cargado$")
+    public void formularioRegistroNuevoEquipaminetoCargado() throws Throwable {
+        formEquipment = listEquipment.isFormEquipmentVisible();
+    }
+    @And("^Registrar equipamiento con datos validos como ser$")
+    public void registrarEquipamientoConDatosValidosComoSer (DataTable dataTable) throws Throwable {
+        formEquipment.createNewEquipmentDataTable(dataTable);
+    }
+    //END Equipment
 }
