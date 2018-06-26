@@ -135,5 +135,16 @@ public class StepsDefinitionSSID {
 
     }
 
+    @And("^Click en el boton 'Atras' del modo creacion de Capacitador$")
+    public void clickEnElBotonAtrasDelModoCreacionCapacitador() throws Throwable {
+        listTrainer = createTrainer.clickAtrasButton();
+    }
+
+    @And("^Verificar que la lista de capacitadores sea mostrada$")
+    public void verificarListaDeCapacitadores() throws Throwable {
+        Assert.assertTrue(listTrainer.isTrainerListVisible(),String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Trainers list"));
+
+    }
+
 
 }
