@@ -11,3 +11,5 @@ Feature: Capacitadores
       And Presionar en la opcion 'Capacitadores' del 'SubMenu'
       And Click en el boton 'Editar' de Capacitador
       Then Validar que el título del formulario de edicion de Capacitadores sea 'Modificar capacitador'
+
+
