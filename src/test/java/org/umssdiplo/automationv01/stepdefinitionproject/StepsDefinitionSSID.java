@@ -1,6 +1,7 @@
 package org.umssdiplo.automationv01.stepdefinitionproject;
 
 import cucumber.api.DataTable;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -139,5 +140,15 @@ public class StepsDefinitionSSID {
     @Then("^Verificar que el 'Formulario de Asignacion Personal' es visible$")
     public void verificarQueElFormularioDeAsignacionPersonalEsVisible() throws Throwable {
         Assert.assertTrue(formAssignPersonal.isFormAssignPersonalVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Form Assign Equipament Personal"));
+    }
+
+    @And("^Completar campo 'Buscar Usuario' con los siguientes datos$")
+    public void completarCampoBuscarUsuarioConLosSiguientesDatos(DataTable searchUserTable) throws Throwable {
+        listUser.fillSeachFildWithData(searchUserTable);
+    }
+
+    @Then("^Verificar que el resultado coincida con el dato buscado$")
+    public void verificarQueElResultadoCoincidaConElDatoBuscado() throws Throwable {
+        Assert.assertTrue(listUser.isUserListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "List Users"));
     }
 }
