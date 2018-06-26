@@ -25,6 +25,9 @@ public class ListContract extends BasePage {
     @FindBy(xpath = "//button[@class='mat-paginator-navigation-previous mat-icon-button']")
     private WebElement btnAnt;
 
+    @FindBy(id = "btnAtras")
+    private WebElement btnAtras;
+
     public ListContract() {
         CommonEvents.isVisible(btnAgregarContrato);
     }
@@ -54,5 +57,8 @@ public class ListContract extends BasePage {
     public void seleccionAnterior(){
         CommonEvents.clickButton(btnAnt);
     }
+
+    public void seleccionBtnAtrasContract(){CommonEvents.clickButton(btnAtras);}
+
 
 }

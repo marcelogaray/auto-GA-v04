@@ -209,4 +209,9 @@ public class StepsDefinitionSSID {
     public void seleccionAnteriorContract(){
         listContract.seleccionAnterior();
     }
+
+    @And("^seleccionar el boton 'Atras' del formulario creacion de contratos$")
+    public void seleccionBtnAtrasContract(){
+        listContract.seleccionBtnAtrasContract();
+    }
 }
