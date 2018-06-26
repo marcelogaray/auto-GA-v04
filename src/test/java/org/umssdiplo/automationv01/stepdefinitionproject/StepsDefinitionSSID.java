@@ -1,5 +1,6 @@
 package org.umssdiplo.automationv01.stepdefinitionproject;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -14,6 +15,7 @@ import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuEquipment;
 import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuOrganizationalStructure;
 import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuPersonal;
 import org.umssdiplo.automationv01.core.managepage.Position.Position;
+import org.umssdiplo.automationv01.core.managepage.StructureOrganizational.StructureOrganizational;
 import org.umssdiplo.automationv01.core.managepage.Usuario.ListUser;
 import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
@@ -29,6 +31,7 @@ public class StepsDefinitionSSID {
     private ListEquipment listEquipment;
     private Position position;
     private SubMenuOrganizationalStructure subMenuOrganizationalStructure;
+    private StructureOrganizational structureOrganizational;
 
     private void loadPageObjects() {
         login = LoadPage.loginPage();
@@ -109,5 +112,67 @@ public class StepsDefinitionSSID {
     @Then("^Verificar que la 'Lista de Equipamientos' este visible$")
     public void validarListaDeEquipamientos() throws Throwable {
         Assert.assertTrue(listEquipment.isEquipmentListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
+    }
+
+    //Structure organizational
+    @And("^seleccionar la opcion 'Estructura organizacional' en el sub menu de 'Estructura organizacional'$")
+    public void seleccionarLaOpcionEstructuraOrganizacionalEnElSubMenuDeEstructuraOrganizacional() throws Throwable {
+        structureOrganizational = subMenuOrganizationalStructure.clickOrganizationalStrucureSubMenu();
+    }
+
+    @Then("^verificar que el boton 'Departamentos' este cargado en la pagina 'Estructura organizacional'$")
+    public void verificarQueElBotonDepartamentosEsteCargadoEnLaPaginaEstructuraOrganizacional() throws Throwable {
+        Assert.assertTrue(structureOrganizational.validButtonDepartments(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Departments button "));
+    }
+
+    @And("^verificar que el boton 'Cargos laborales' este cargado en la pagina 'Estructura organizacional'$")
+    public void verificarQueElBotonCargosLaboralesEsteCargadoEnLaPaginaEstructuraOrganizacional() throws Throwable {
+        Assert.assertTrue(structureOrganizational.validButtonPositions(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Cargos button "));
+    }
+
+    @And("^verificar que el boton 'Areas de trabajo' este cargado en la pagina 'Estructura organizacional'$")
+    public void verificarQueElBotonAreasDeTrabajoEsteCargadoEnLaPaginaEstructuraOrganizacional() throws Throwable {
+        Assert.assertTrue(structureOrganizational.validButtonAreas(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Areas button "));
+    }
+
+    @And("^verificar que el arbol 'Departamentos' este cargado en la pagina 'Estructura organizacional'$")
+    public void verificarQueElArbolDepartamentosEsteCargadoEnLaPaginaEstructuraOrganizacional() throws Throwable {
+        Assert.assertTrue(structureOrganizational.validTreeDepartments(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Departments tree "));
+    }
+
+    @And("^verificar que el arbol 'Cargos laborales' este cargado en la pagina 'Estructura organizacional'$")
+    public void verificarQueElArbolCargosLaboralesEsteCargadoEnLaPaginaEstructuraOrganizacional() throws Throwable {
+        Assert.assertTrue(structureOrganizational.validTreePositions(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Cargos tree "));
+    }
+
+    @And("^verificar que el arbol 'Areas de trabajo' este cargado en la pagina 'Estructura organizacional'$")
+    public void verificarQueElArbolAreasDeTrabajoEsteCargadoEnLaPaginaEstructuraOrganizacional() throws Throwable {
+        Assert.assertTrue(structureOrganizational.validTreeAreas(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Areas tree "));
+    }
+
+    //Verificar cabecera de lista de cargos
+    @Then("^Verificar que se cargue el listado de cargos en la pagina 'Cargos de la empresa'$")
+    public void verificarQueSeCargueElListadoDeCargosEnLaPaginaCargosDeLaEmpresa() throws Throwable {
+        Assert.assertTrue(position.validListPositions(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Positions list"));
+    }
+
+    @And("^verificar que se cargue la cabecera 'Nombre cargo' en la tabla de lista de cargos$")
+    public void verificarQueSeCargueLaCabeceraNombreCargoEnLaTablaDeListaDeCargos() throws Throwable {
+        Assert.assertTrue(position.validHeaderNamePositionList(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Header Nombre position list"));
+    }
+
+    @And("^verificar que se cargue la cabecera 'Nivel' en la tabla de lista de cargos$")
+    public void verificarQueSeCargueLaCabeceraNivelEnLaTablaDeListaDeCargos() throws Throwable {
+        Assert.assertTrue(position.validHeaderLevelPositionList(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Header Nivel position list"));
+    }
+
+    @And("^verificar que se cargue la cabecera 'Depende de' en la tabla de lista de cargos$")
+    public void verificarQueSeCargueLaCabeceraDependeDeEnLaTablaDeListaDeCargos() throws Throwable {
+        Assert.assertTrue(position.validHeaderDependencyPositionList(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Header Depende de position list"));
+    }
+
+    @And("^verificar que se cargue la cabecera 'Acciones' en la tabla de lista de cargos$")
+    public void verificarQueSeCargueLaCabeceraAccionesEnLaTablaDeListaDeCargos() throws Throwable {
+        Assert.assertTrue(position.validHeaderActionsPositionList(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Header Acciones position list"));
     }
 }
