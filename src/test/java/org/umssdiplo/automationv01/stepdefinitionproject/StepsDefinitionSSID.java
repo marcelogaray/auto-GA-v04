@@ -1,5 +1,6 @@
 package org.umssdiplo.automationv01.stepdefinitionproject;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -203,4 +204,21 @@ public class StepsDefinitionSSID {
         Assert.assertTrue(createPosition.validDropdownParentPosition(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Dropdown 'Cargo padre' "));
     }
     //end Valid form Create position
+
+    // Valid Back button in create position
+    @Then("^verificar que exista el boton 'Atras' en la pagina 'Crear nuevo cargo'$")
+    public void verificarQueExistaElBotonAtrasEnLaPaginaCrearNuevoCargo() throws Throwable {
+        Assert.assertTrue(createPosition.validButtonBack(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Button 'Atras' "));
+    }
+
+    @And("^presionar el boton 'Atras' en la pagina 'Crear nuevo cargo'$")
+    public void presionarElBotonAtrasEnLaPaginaCrearNuevoCargo() throws Throwable {
+        position = createPosition.clickButtonBack();
+    }
+
+    @And("^verificar que se cargue la pagina 'Cargos de la empresa'$")
+    public void verificarQueSeCargueLaPaginaCargosDeLaEmpresa() throws Throwable {
+        Assert.assertTrue(position.validLoadPagePositions(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Page 'Cargos de la empresa' "));
+    }
+    // End Valid Back button in create position
 }
