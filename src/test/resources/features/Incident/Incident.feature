@@ -16,6 +16,12 @@ Feature: Lista de Incidentes
     And Verificar que la tabla de incidentes se muestre correctamente
     And hacemos 'click' en el boton 'Incidentes' del 'Menu Principal'
     When Llenamos los 'datos del formulario' dentro del formulario de 'Creacion de Incidentes'
-    | Severity | Code   | IncidentType | State     | Area           | ReportedBy | Reincident | Treatment | Description           |
-    | Media    | ACC-02 | enfermedad   | entregado | Remodelaciones   | juan       | true       | true     | this is a description |
+      | Severity | Code   | IncidentType | State     | Area           | ReportedBy | Reincident | Treatment | Description           |
+      | Media    | ACC-02 | enfermedad   | entregado | Remodelaciones | juan       | true       | true      | this is a description |
     And Hacemos clic en el boton de 'Guardar'
+
+  Scenario: RF05-TC-003 - Verificar que el titulo se cargue correctamente
+    Given 'Menu principal' estee cargado
+    And Presionar en la opcion 'Incidentes' del 'Menu Principal'
+    And hacemos 'click' en el boton 'Incidentes' del 'Menu Principal'
+    And Verificamos que el titulo de 'Creacion de Incidentes' se muestre correctamente
