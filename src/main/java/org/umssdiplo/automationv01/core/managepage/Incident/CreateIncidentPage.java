@@ -152,9 +152,10 @@ public class CreateIncidentPage extends BasePage {
         CommonEvents.setInputField(descriptionTextArea, description);
     }
 
-    public void clickSaveButton() {
+    public Boolean clickSaveButton() {
         CommonEvents.clickButton(saveButton);
-    }
+        return CommonEvents.isVisible(toastMessage);
+}
 
     public Boolean isVisibleToastMessage() {
         return CommonEvents.isVisible(toastMessage);

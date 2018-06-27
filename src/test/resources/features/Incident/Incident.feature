@@ -1,4 +1,5 @@
 # Incident Feature
+
 Feature: Lista de Incidentes
 
   Background: Pagina de inicio es mostrada una vez que se ponen los credenciales correctos de inicio de sesión
@@ -34,7 +35,7 @@ Feature: Lista de Incidentes
     When Llenamos el campo 'code' con un valor vacio
     Then Verificar que el boton de guardado no se deshabilita
 
-  Scenario: RF05-TC-002 - Verificar que el sistema pueda crear incidentes correctamente.
+  Scenario: RF05-TC-012 - Verificar que el boton 'cancelar' regresa a la 'lista de incidntes'.
     Given 'Menu principal' estee cargado
     And Presionar en la opcion 'Incidentes' del 'Menu Principal'
     And Verificar que la tabla de incidentes se muestre correctamente

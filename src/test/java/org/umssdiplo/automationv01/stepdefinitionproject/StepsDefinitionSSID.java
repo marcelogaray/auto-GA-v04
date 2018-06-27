@@ -118,8 +118,8 @@ public class StepsDefinitionSSID {
         Assert.assertTrue(listEquipment.isEquipmentListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
     }
 
-    @And("^hacemos 'click' en el boton 'Agregar nuevo incidente'$")
-    public void hacemosClickEnElBotonIncidentesDelMenuPrincipal() throws Throwable {
+    @And("^hacemos 'click' en el boton 'Agregar nuevo Incidente'$")
+    public void hacemosClickEnElBotonAgregarNuevoIncidente() throws Throwable {
         createIncidentPage = incidentPage.clickOnAddNewIncidentBtn();
     }
 
@@ -132,7 +132,7 @@ public class StepsDefinitionSSID {
     @And("^Hacemos clic en el boton de 'Guardar'$")
     public void hacemosClicEnElBotonDeGuardar() throws Throwable {
         createIncidentPage.clickSaveButton();
-        Assert.assertTrue(createIncidentPage.isVisibleToastMessage(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Toast Message Success"));
+        Assert.assertFalse(createIncidentPage.isButtonEnabled(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Toast Message Success"));
     }
 
     @And("^Verificamos que el titulo de 'Creacion de Incidentes' se muestre correctamente$")
@@ -148,11 +148,12 @@ public class StepsDefinitionSSID {
 
     @Then("^Verificar que el boton de guardado no se deshabilita$")
     public void verificarQueElBotonDeGuardadoNoSeDeshabilita() throws Throwable {
-        createIncidentPage.isButtonEnabled();
+        Assert.assertFalse(createIncidentPage.isButtonEnabled(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_DISABLED, "is enabled"));
     }
 
     @When("^hacemos 'click' en el boton 'cancelar'$")
     public void hacemosClickEnElBotonCancelar() throws Throwable {
         incidentPage = createIncidentPage.clickOnCancelButton();
     }
+
 }
