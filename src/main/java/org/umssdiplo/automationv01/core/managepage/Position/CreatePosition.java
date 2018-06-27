@@ -31,30 +31,30 @@ public class CreatePosition extends BasePage {
         CommonEvents.isVisible(title);
     }
 
-    public boolean validFieldName() {
+    public boolean validFieldNameIsVisible() {
         return CommonEvents.isVisible(fieldName);
     }
 
-    public boolean validFieldLevel() {
+    public boolean validFieldLevelIsVisible() {
         return CommonEvents.isVisible(fieldLevel);
     }
 
-    public boolean validFieldDescription() {
+    public boolean validFieldDescriptionIsVisible() {
         return CommonEvents.isVisible(fieldDescription);
     }
 
-    public boolean validDropdownParentPosition() {
+    public boolean validDropdownParentPositionIsVisible() {
         return CommonEvents.isVisible(dropdownParentPosition);
     }
 
-    public boolean validButtonBack() { return CommonEvents.isVisible(buttonBack); }
+    public boolean validateButtonBackIsVisible() { return CommonEvents.isVisible(buttonBack); }
 
     public Position clickButtonBack() {
         CommonEvents.clickButton(buttonBack);
         return new Position();
     }
 
-    public boolean validIsEnabledButtonSend() { return CommonEvents.isEnabled(buttonSend); }
+    public boolean validateButtonSendIsEnabled() { return CommonEvents.isEnabled(buttonSend); }
 
-    public boolean validButtonSend() { return CommonEvents.isVisible(buttonBack); }
+    public boolean validateButtonSendIsVisible() { return CommonEvents.isVisible(buttonBack); }
 }

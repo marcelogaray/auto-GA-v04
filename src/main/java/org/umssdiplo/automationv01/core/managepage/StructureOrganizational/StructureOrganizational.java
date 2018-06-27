@@ -31,23 +31,23 @@ public class StructureOrganizational extends BasePage {
         CommonEvents.isVisible(title);
     }
 
-    public boolean validButtonDepartments() {
+    public boolean validateDepartmentsButtonIsVisible() {
         return CommonEvents.isVisible(buttonDepartments);
     }
 
-    public boolean validButtonPositions() {
+    public boolean validatePositionsButtonIsVisible() {
         return CommonEvents.isVisible(buttonPositions);
     }
 
-    public boolean validButtonAreas() {
+    public boolean validateAreasButtonIsVisible() {
         return CommonEvents.isVisible(buttonAreas);
     }
 
-    public boolean validTreeDepartments() { return CommonEvents.isVisible(treeDepartments); }
+    public boolean validateDepartmentsTreeIsVisible() { return CommonEvents.isVisible(treeDepartments); }
 
-    public boolean validTreePositions() {
+    public boolean validatePositionsTreeIsVisible() {
         return CommonEvents.isVisible(treePositions);
     }
 
-    public boolean validTreeAreas() { return CommonEvents.isVisible(treeAreas); }
+    public boolean validateAreasTreeIsVisible() { return CommonEvents.isVisible(treeAreas); }
 }

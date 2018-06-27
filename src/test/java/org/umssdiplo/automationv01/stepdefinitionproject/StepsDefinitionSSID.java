@@ -124,32 +124,32 @@ public class StepsDefinitionSSID {
 
     @Then("^verificar que el boton 'Departamentos' este cargado en la pagina 'Estructura organizacional'$")
     public void verificarQueElBotonDepartamentosEsteCargadoEnLaPaginaEstructuraOrganizacional() throws Throwable {
-        Assert.assertTrue(structureOrganizational.validButtonDepartments(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Departments button "));
+        Assert.assertTrue(structureOrganizational.validateDepartmentsButtonIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Departments button "));
     }
 
     @And("^verificar que el boton 'Cargos laborales' este cargado en la pagina 'Estructura organizacional'$")
     public void verificarQueElBotonCargosLaboralesEsteCargadoEnLaPaginaEstructuraOrganizacional() throws Throwable {
-        Assert.assertTrue(structureOrganizational.validButtonPositions(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Cargos button "));
+        Assert.assertTrue(structureOrganizational.validatePositionsButtonIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Cargos button "));
     }
 
     @And("^verificar que el boton 'Areas de trabajo' este cargado en la pagina 'Estructura organizacional'$")
     public void verificarQueElBotonAreasDeTrabajoEsteCargadoEnLaPaginaEstructuraOrganizacional() throws Throwable {
-        Assert.assertTrue(structureOrganizational.validButtonAreas(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Areas button "));
+        Assert.assertTrue(structureOrganizational.validateAreasButtonIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Areas button "));
     }
 
     @And("^verificar que el arbol 'Departamentos' este cargado en la pagina 'Estructura organizacional'$")
     public void verificarQueElArbolDepartamentosEsteCargadoEnLaPaginaEstructuraOrganizacional() throws Throwable {
-        Assert.assertTrue(structureOrganizational.validTreeDepartments(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Departments tree "));
+        Assert.assertTrue(structureOrganizational.validateDepartmentsTreeIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Departments tree "));
     }
 
     @And("^verificar que el arbol 'Cargos laborales' este cargado en la pagina 'Estructura organizacional'$")
     public void verificarQueElArbolCargosLaboralesEsteCargadoEnLaPaginaEstructuraOrganizacional() throws Throwable {
-        Assert.assertTrue(structureOrganizational.validTreePositions(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Cargos tree "));
+        Assert.assertTrue(structureOrganizational.validatePositionsTreeIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Cargos tree "));
     }
 
     @And("^verificar que el arbol 'Areas de trabajo' este cargado en la pagina 'Estructura organizacional'$")
     public void verificarQueElArbolAreasDeTrabajoEsteCargadoEnLaPaginaEstructuraOrganizacional() throws Throwable {
-        Assert.assertTrue(structureOrganizational.validTreeAreas(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Areas tree "));
+        Assert.assertTrue(structureOrganizational.validateAreasTreeIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Areas tree "));
     }
 
     //Verify header positions list
@@ -186,29 +186,29 @@ public class StepsDefinitionSSID {
 
     @Then("^verificar que exista el campo 'Nombre' en el formulario de crear cargo$")
     public void verificarQueExistaElCampoNombreEnElFormularioDeCrearCargo() throws Throwable {
-        Assert.assertTrue(createPosition.validFieldName(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Field 'Nombre' "));
+        Assert.assertTrue(createPosition.validFieldNameIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Field 'Nombre' "));
     }
 
     @And("^verificar que exista el campo 'Nivel' en el formulario de crear cargo$")
     public void verificarQueExistaElCampoNivelEnElFormularioDeCrearCargo() throws Throwable {
-        Assert.assertTrue(createPosition.validFieldLevel(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Field 'Nivel' "));
+        Assert.assertTrue(createPosition.validFieldLevelIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Field 'Nivel' "));
     }
 
     @And("^verificar que exista el campo 'Descripcion' en el formulario de crear cargo$")
     public void verificarQueExistaElCampoDescripcionEnElFormularioDeCrearCargo() throws Throwable {
-        Assert.assertTrue(createPosition.validFieldDescription(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Field 'Descripcion' "));
+        Assert.assertTrue(createPosition.validFieldDescriptionIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Field 'Descripcion' "));
     }
 
     @And("^verificar que exista la lista desplegable 'Cargo padre' en el formulario de crear cargo$")
     public void verificarQueExistaLaListaDesplegableCargoPadreEnElFormularioDeCrearCargo() throws Throwable {
-        Assert.assertTrue(createPosition.validDropdownParentPosition(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Dropdown 'Cargo padre' "));
+        Assert.assertTrue(createPosition.validDropdownParentPositionIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Dropdown 'Cargo padre' "));
     }
     //end Valid form Create position
 
     // Valid Back button in create position
     @Then("^verificar que exista el boton 'Atras' en la pagina 'Crear nuevo cargo'$")
     public void verificarQueExistaElBotonAtrasEnLaPaginaCrearNuevoCargo() throws Throwable {
-        Assert.assertTrue(createPosition.validButtonBack(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Button 'Atras' "));
+        Assert.assertTrue(createPosition.validateButtonBackIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Button 'Atras' "));
     }
 
     @And("^presionar el boton 'Atras' en la pagina 'Crear nuevo cargo'$")
@@ -225,11 +225,11 @@ public class StepsDefinitionSSID {
     // Valid send button disabled when go in to create new position
     @Then("^verificar que exista el boton 'Enviar' en la pagina 'Crear nuevo cargo'$")
     public void verificarQueExistaElBotonEnviarEnLaPaginaCrearNuevoCargo() throws Throwable {
-        Assert.assertTrue(createPosition.validButtonSend(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Button 'Enviar' "));
+        Assert.assertTrue(createPosition.validateButtonSendIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Button 'Enviar' "));
     }
 
     @And("^verificar que el boton 'Enviar' este deshabilitado en la pagina 'Crear nuevo cargo'$")
     public void verificarQueElBotonEnviarEsteDeshabilitadoEnLaPaginaCrearNuevoCargo() throws Throwable {
-        Assert.assertTrue(!createPosition.validIsEnabledButtonSend(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_ENABLED, "Button 'Enviar' "));
+        Assert.assertFalse(createPosition.validateButtonSendIsEnabled(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_ENABLED, "Button 'Enviar' "));
     }
 }
