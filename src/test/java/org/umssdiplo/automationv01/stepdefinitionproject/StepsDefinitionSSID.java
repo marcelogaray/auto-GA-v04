@@ -143,6 +143,7 @@ public class StepsDefinitionSSID {
     @When("^Llenamos el campo 'code' con un valor vacio$")
     public void llenamosLosDatosRequeridosDelFormularioDeCreacionDeIncidentes() throws Throwable {
         createIncidentPage.fillCodeInput("");
+        createIncidentPage.fillDescription("");
         createIncidentPage.fillCheckReincident("true");
     }
 
