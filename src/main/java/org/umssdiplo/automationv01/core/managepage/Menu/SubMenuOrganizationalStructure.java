@@ -24,7 +24,7 @@ public class SubMenuOrganizationalStructure extends BasePage {
         return new Position();
     }
 
-    public StructureOrganizational clickOrganizationalStrucureSubMenu() {
+    public StructureOrganizational clickSubMenuOrganizationalStrucure() {
         CommonEvents.clickButton(subMenuOrganizationalStructure);
         return new StructureOrganizational();
     }
