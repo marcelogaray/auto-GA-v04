@@ -8,19 +8,19 @@ import org.umssdiplo.automationv01.core.utils.CommonEvents;
 public class ListEquipment extends BasePage {
 
     @FindBy(id = "crearEquipment")
-    private WebElement btnCrearEquipment;
+    private WebElement buttonCreateEquipment;
 
     @FindBy(className = "mat-table")
     private WebElement tableEquipments;
 
     @FindBy(xpath = "/html/body/ssi-root/ssi-equipment/div/div[3]/div/div/mat-table/mat-header-row/mat-header-cell[1]")
-    private WebElement listNameRow;
+    private WebElement columnListName;
 
     @FindBy(xpath = "/html/body/ssi-root/ssi-equipment/div/div[3]/div/div/mat-table/mat-header-row/mat-header-cell[2]")
-    private WebElement listActionsRow;
+    private WebElement columnListAction;
 
     public ListEquipment() {
-        CommonEvents.isVisible(btnCrearEquipment);
+        CommonEvents.isVisible(buttonCreateEquipment);
     }
 
     public boolean isEquipmentListVisible() {
@@ -28,6 +28,6 @@ public class ListEquipment extends BasePage {
     }
 
     public boolean checkHeaderListEquipment() {
-        return CommonEvents.isVisible(listNameRow)&& CommonEvents.isVisible(listActionsRow);
+        return CommonEvents.isVisible(columnListName)&& CommonEvents.isVisible(columnListAction);
     }
 }

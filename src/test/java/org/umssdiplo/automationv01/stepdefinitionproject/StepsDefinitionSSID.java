@@ -174,7 +174,6 @@ public class StepsDefinitionSSID {
     //End Positions
 
     //BEGIN Equipment
-
     @And("^seleccionar menu 'Equipamiento' en la pagina 'Menu Principal'$")
     public void menuEquipamientoEstaSeleccionado() throws Throwable {
         menuEquipamiento = menu.selectEquipmentMenu();
