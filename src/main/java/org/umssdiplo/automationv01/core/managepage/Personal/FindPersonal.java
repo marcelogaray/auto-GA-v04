@@ -8,25 +8,25 @@ import org.umssdiplo.automationv01.core.utils.CommonEvents;
 public class FindPersonal extends BasePage {
 
     @FindBy(name = "buscarPersonal")
-    private WebElement itBuscarPersonal;
+    private WebElement inputFindPerson;
 
     @FindBy(css = ".mat-paginator-range-label")
     private WebElement paginator;
 
     public FindPersonal(){
-        CommonEvents.isVisible(itBuscarPersonal);
+        CommonEvents.isVisible(inputFindPerson);
         CommonEvents.isVisible(paginator);
     }
 
-    public boolean isFindPersonalVisible(){
-        return CommonEvents.isVisible(itBuscarPersonal);
+    public boolean validateInputFindPersonIsVisible(){
+        return CommonEvents.isVisible(inputFindPerson);
     }
 
-    public void buscarPersonal(String personal){
-        CommonEvents.setInputField(itBuscarPersonal, personal);
+    public void setTextFindPerson(String personal){
+        CommonEvents.setInputField(inputFindPerson, personal);
     }
 
-    public int personalEncontrado(int x){
+    public int validatePersonFound(int x){
         int encontrado = -1;
         String paginadorTexto = paginator.getText();
         String[] listaDeValores = paginadorTexto.split("of");

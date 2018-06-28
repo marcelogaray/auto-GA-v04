@@ -9,23 +9,23 @@ import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
 public class SubMenuPersonal extends BasePage {
 
-    @FindBy(xpath = "//button[@id='users']")
-    private WebElement usuarioSubMenu;
+    @FindBy(id = "users")
+    private WebElement subMenuUsuario;
 
-    @FindBy(xpath = "//button[@id='personal']")
-    private WebElement personalSubMenu;
+    @FindBy(id = "personal")
+    private WebElement subMenuPersonal;
 
     public SubMenuPersonal() {
-        CommonEvents.isVisible(usuarioSubMenu);
+        CommonEvents.isVisible(subMenuUsuario);
     }
 
     public ListUser selectSubMenuUsuario() {
-        CommonEvents.clickButton(usuarioSubMenu);
+        CommonEvents.clickButton(subMenuUsuario);
         return new ListUser();
     }
 
     public FindPersonal selectSubMenuPersonal() {
-        CommonEvents.clickButton(personalSubMenu);
+        CommonEvents.clickButton(subMenuPersonal);
         return new FindPersonal();
     }
 }

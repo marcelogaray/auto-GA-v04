@@ -113,20 +113,20 @@ public class StepsDefinitionSSID {
         Assert.assertTrue(listEquipment.isEquipmentListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
     }
 
-    @And("^Seleccionar submenu 'Personal' en menu 'Personal'$")
+    @And("^seleccionar submenu 'Personal' en menu 'Personal'$")
     public void seleccionarSubMenuPersonal() throws Throwable {
         findPersonal = menuPersonal.selectSubMenuPersonal();
-        Assert.assertTrue(findPersonal.isFindPersonalVisible());
+        Assert.assertTrue(findPersonal.validateInputFindPersonIsVisible());
     }
 
-    @When("^Ingresar (.*) para 'Buscar Personal' en la tabla$")
+    @When("^ingresar (.*) para 'Buscar Personal' en la tabla$")
     public void buscarPersonal(String personal){
-        findPersonal.buscarPersonal(personal);
+        findPersonal.setTextFindPerson(personal);
     }
 
-    @Then("^El resultado de 'Buscar Personal' deberia ser (\\d+)$")
+    @Then("^el resultado de 'Buscar Personal' deberia ser (\\d+)$")
     public void resultador(int resultado){
-        int encontrado = findPersonal.personalEncontrado(resultado);
+        int encontrado = findPersonal.validatePersonFound(resultado);
         Assert.assertEquals(encontrado, resultado);
     }
 }
