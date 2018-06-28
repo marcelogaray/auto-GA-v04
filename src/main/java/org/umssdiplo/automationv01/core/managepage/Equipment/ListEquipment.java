@@ -18,8 +18,7 @@ public class ListEquipment extends BasePage {
     }
 
     public boolean isEquipmentListVisible() {
-        //return CommonEvents.isVisible(tableEquipments);
-        return true;
+        return CommonEvents.isVisible(tableEquipments);
     }
 
     public void createNewEquipment() {
