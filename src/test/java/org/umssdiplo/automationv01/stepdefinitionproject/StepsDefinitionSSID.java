@@ -31,7 +31,7 @@ public class StepsDefinitionSSID {
     private SubMenuProgramSSO subMenuProgramSSO;
     private Resource resource;
     private IncidentPage incidentPage;
-    private FindPersonal findPersonal;
+    private FindPersonal personnelSearch;
     private SubMenuEquipment menuEquipamiento;
     private ListEquipment listEquipment;
     private Position position;
@@ -192,18 +192,18 @@ public class StepsDefinitionSSID {
 
     @And("^seleccionar submenu 'Personal' en menu 'Personal'$")
     public void seleccionarSubMenuPersonal() throws Throwable {
-        findPersonal = menuPersonal.selectSubMenuPersonal();
-        Assert.assertTrue(findPersonal.validateInputFindPersonIsVisible());
+        personnelSearch = menuPersonal.selectSubMenuPersonnel();
+        Assert.assertTrue(personnelSearch.validateInputFindPersonIsVisible());
     }
 
     @When("^ingresar (.*) para 'Buscar Personal' en la tabla$")
     public void buscarPersonal(String personal){
-        findPersonal.setTextFindPerson(personal);
+        personnelSearch.setTextFindPerson(personal);
     }
 
     @Then("^el resultado de 'Buscar Personal' deberia ser (\\d+)$")
     public void resultador(int resultado){
-        int encontrado = findPersonal.validatePersonFound(resultado);
+        int encontrado = personnelSearch.validatePersonnelFound(resultado);
         Assert.assertEquals(encontrado, resultado);
     }
 }
