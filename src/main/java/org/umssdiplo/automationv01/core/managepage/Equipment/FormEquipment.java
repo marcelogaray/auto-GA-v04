@@ -12,25 +12,25 @@ import java.util.List;
 public class FormEquipment extends BasePage {
 
     @FindBy(id = "newEquipment")
-    private WebElement newEquipmentBtn;
+    private WebElement buttonNewEquipment;
 
     @FindBy(id = "nombreEquipment")
-    private WebElement equipmentName;
+    private WebElement inputEquipmentName;
 
     @FindBy(id= "typeEquipment")
-    private WebElement equipmentType;
+    private WebElement selectEquipmentType;
 
     @FindBy(id="mat-option-1")
-    private WebElement equipmentSelectType;
+    private WebElement optionEquipmentType;
 
     @FindBy(id="descEquipment")
-    private WebElement equipmentDesc;
+    private WebElement textAreaEquipmentDesc;
 
     @FindBy(id="imageEquipment")
-    private WebElement equipmentImage;
+    private WebElement fileEquipmentImage;
 
     public FormEquipment() {
-        CommonEvents.isVisible(newEquipmentBtn);
+        CommonEvents.isVisible(buttonNewEquipment);
     }
 
 
@@ -49,26 +49,26 @@ public class FormEquipment extends BasePage {
     }
 
     private void setDataEquipmentNameInputField(String nameEquipment) {
-        CommonEvents.setInputField(equipmentName, nameEquipment);
+        CommonEvents.setInputField(inputEquipmentName, nameEquipment);
     }
 
     private void setDataEquipmentTypeOption(String typeEquipment) {
-        CommonEvents.clickButton(equipmentType);
+        CommonEvents.clickButton(selectEquipmentType);
         if(typeEquipment.equalsIgnoreCase("equipo")) {
-            CommonEvents.clickButton(equipmentSelectType);
+            CommonEvents.clickButton(optionEquipmentType);
         }
 
     }
 
     private void setDataEquipmentDescArea(String descEquipment) {
-        CommonEvents.setInputField(equipmentDesc, descEquipment);
+        CommonEvents.setInputField(textAreaEquipmentDesc, descEquipment);
     }
 
     private void setDataEquipmentImageFile(String imageEquipment) {
-        CommonEvents.setInputField(equipmentImage, imageEquipment);
+        CommonEvents.setInputField(fileEquipmentImage, imageEquipment);
     }
 
     private void saveEquipmentButton() {
-        CommonEvents.clickButton(newEquipmentBtn);
+        CommonEvents.clickButton(buttonNewEquipment);
     }
 }

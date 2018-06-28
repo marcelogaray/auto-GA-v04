@@ -8,10 +8,10 @@
     Scenario: Verificar el registro de un nuevo usuario desde 'Formulario de Equipamiento'
       Given 'Menu principal' estee cargado
       And seleccionar menu 'Equipamiento' en la pagina 'Menu Principal'
-      And Seleccionar submenu 'Equipamiento' en menu 'Equipamiento'
-      And Hacer Click en el boton 'Crear nuevo Equipamiento'
-      When Formulario de 'Registro de nuevo Equipamiento' esta cargado
-      And Registrar equipamiento con datos validos como ser
+      And seleccionar submenu 'Equipamiento' en menu 'Equipamiento'
+      And hacer Click en el boton 'Crear nuevo Equipamiento'
+      When formulario de 'Registro de nuevo Equipamiento' esta cargado
+      And registrar equipamiento con datos validos como ser
         | equipmentName | equipmentType | equipmentDesc     | equipmentImage       |
         | Air Drill     | equipo        | Description Drill | C:\\Users\\drill.jpg |
-      Then Verificar que la 'Lista de Equipamientos' este visible
+      Then verificar que la 'Lista de Equipamientos' este visible
