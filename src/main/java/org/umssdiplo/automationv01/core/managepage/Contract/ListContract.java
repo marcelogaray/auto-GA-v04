@@ -8,9 +8,9 @@ import org.umssdiplo.automationv01.core.utils.CommonEvents;
 public class ListContract extends BasePage {
 
     @FindBy(id = "ContractTable")
-    private WebElement paginElement;
+    private WebElement paginaContrato;
 
-    public boolean isContractListVisible() {
-        return CommonEvents.isVisible(paginElement);
+    public boolean validarListaContrato() {
+        return CommonEvents.isVisible(paginaContrato);
     }
 }

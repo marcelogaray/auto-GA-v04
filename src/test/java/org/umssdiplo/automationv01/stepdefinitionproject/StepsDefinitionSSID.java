@@ -132,6 +132,6 @@ public class StepsDefinitionSSID {
 
     @Then("^validar que la 'Lista de Contratos' este visible$")
     public void validarListaDeContratos() throws Throwable {
-        boolean result = listContract.isContractListVisible();
+        boolean result = listContract.validarListaContrato();
     }
 }
