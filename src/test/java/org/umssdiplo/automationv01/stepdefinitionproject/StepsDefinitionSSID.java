@@ -18,7 +18,7 @@ import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuPersonal;
 import org.umssdiplo.automationv01.core.managepage.Position.Position;
 import org.umssdiplo.automationv01.core.managepage.ProgramSSO.ResourceForm;
 import org.umssdiplo.automationv01.core.managepage.Usuario.ListUser;
-import org.umssdiplo.automationv01.core.managepage.Personal.FindPersonal;
+import org.umssdiplo.automationv01.core.managepage.Personnel.PersonnelSearch;
 import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
@@ -31,7 +31,7 @@ public class StepsDefinitionSSID {
     private SubMenuProgramSSO subMenuProgramSSO;
     private Resource resource;
     private IncidentPage incidentPage;
-    private FindPersonal personnelSearch;
+    private PersonnelSearch personnelSearch;
     private SubMenuEquipment menuEquipamiento;
     private ListEquipment listEquipment;
     private Position position;
@@ -196,13 +196,13 @@ public class StepsDefinitionSSID {
         Assert.assertTrue(personnelSearch.validateInputFindPersonIsVisible());
     }
 
-    @When("^ingresar (.*) para 'Buscar Personal' en la tabla$")
-    public void buscarPersonal(String personal){
+    @When("^ingresar (.*) en 'Buscar Personal'$")
+    public void ingresarEnBuscarPersonal(String personal){
         personnelSearch.setTextFindPerson(personal);
     }
 
     @Then("^el resultado de 'Buscar Personal' deberia ser (\\d+)$")
-    public void resultador(int resultado){
+    public void elResultadoDeBuscarPersonalDeberiaSer(int resultado){
         int encontrado = personnelSearch.validatePersonnelFound(resultado);
         Assert.assertEquals(encontrado, resultado);
     }

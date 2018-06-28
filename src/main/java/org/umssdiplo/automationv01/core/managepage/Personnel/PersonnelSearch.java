@@ -1,11 +1,11 @@
-package org.umssdiplo.automationv01.core.managepage.Personal;
+package org.umssdiplo.automationv01.core.managepage.Personnel;
 
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.umssdiplo.automationv01.core.managepage.BasePage;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
-public class FindPersonal extends BasePage {
+public class PersonnelSearch extends BasePage {
 
     @FindBy(name = "buscarPersonal")
     private WebElement inputFindPersonnel;
@@ -13,7 +13,7 @@ public class FindPersonal extends BasePage {
     @FindBy(css = ".mat-paginator-range-label")
     private WebElement paginator;
 
-    public FindPersonal(){
+    public PersonnelSearch(){
         CommonEvents.isVisible(inputFindPersonnel);
         CommonEvents.isVisible(paginator);
     }

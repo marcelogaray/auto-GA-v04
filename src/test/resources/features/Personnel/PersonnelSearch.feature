@@ -1,5 +1,5 @@
 
-Feature: Personal
+Feature: Personnel search
 
   Background: Pagina de inicio es mostrada una vez que se ponen los credenciales correctos de inicio de sesión
     Given 'SSI-D' pagina de inicio de sesion es cargada
@@ -9,7 +9,7 @@ Feature: Personal
     Given 'Menu principal' estee cargado
     And seleccionar menu 'Personal' en la pagina 'Menu Principal'
     And seleccionar submenu 'Personal' en menu 'Personal'
-    When ingresar <correo> para 'Buscar Personal' en la tabla
+    When ingresar <correo> en 'Buscar Personal'
     Then el resultado de 'Buscar Personal' deberia ser <resultado>
     Examples:
             | correo                 | resultado |
