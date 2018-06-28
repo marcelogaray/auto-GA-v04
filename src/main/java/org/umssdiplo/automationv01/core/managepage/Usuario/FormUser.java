@@ -42,13 +42,13 @@ public class FormUser extends BasePage {
         CommonEvents.setInputField(inputFieldPassword, password);
     }
 
-    private void clickUserActiveCheck(boolean userActive) {
+    private void clickCheckUserActive(boolean userActive) {
         if (userActive) {
             CommonEvents.clickButton(inputUserActive);
         }
     }
 
-    public void clickButtonSaveUserButton() {
+    public void clickButtonSaveUser() {
         CommonEvents.clickButton(buttonSaveUser);
     }
 }

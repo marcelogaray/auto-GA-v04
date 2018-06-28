@@ -204,6 +204,6 @@ public class StepsDefinitionSSID {
 
     @And("^Presionar en el Boton de 'Guardar' para guardar la informacion$")
     public void presionarEnElBotonDeGuardarParaGuardarLaInformacion() throws Throwable {
-        formUser.clickButtonSaveUserButton();
+        formUser.clickButtonSaveUser();
     }
 }
