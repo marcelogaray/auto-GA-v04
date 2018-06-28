@@ -210,5 +210,7 @@ public class StepsDefinitionSSID {
     @Then("^validar que la 'Lista de Contratos' este visible$")
     public void validarListaDeContratos() throws Throwable {
         boolean result = listContract.validateContractList();
+        Assert.assertTrue(result, String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Contract List"));
+
     }
 }
