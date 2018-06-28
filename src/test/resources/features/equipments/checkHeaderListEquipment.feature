@@ -7,5 +7,5 @@ Feature: Check header of list equipments
   Scenario: Verificar cabecera de 'Lista de Equipamientos' Nombre Acciones
     Given 'Menu principal' estee cargado
     And seleccionar menu 'Equipamiento' en la pagina 'Menu Principal'
-    And Seleccionar submenu 'Equipamiento' en menu 'Equipamiento'
-    Then Verificar cabecera de 'Lista de Equipamientos' Nombre-Acciones esten cargados
+    And seleccionar submenu 'Equipamiento' en menu 'Equipamiento'
+    Then verificar cabecera 'Nombre' y 'Acciones' de la pagina 'Lista de Equipamientos' esten cargados
