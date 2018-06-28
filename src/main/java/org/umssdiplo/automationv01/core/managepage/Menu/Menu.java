@@ -37,7 +37,7 @@ public class Menu extends BasePage {
         return new SubMenuPersonal();
     }
 
-    public SubMenuProgramSSO clickProgramSSOMenu() {
+    public SubMenuProgramSSO clickMenuProgramSSO() {
         CommonEvents.clickButton(menuProgramaSSO);
         return new SubMenuProgramSSO();
     }

@@ -83,7 +83,7 @@ public class StepsDefinitionSSID {
     //ProgramSSO - Resources
     @And("^seleccionar la opcion 'Programa SSO' del menu principal de la pagina 'Home'$")
     public void clickMenuProgramSSO() throws Throwable {
-        subMenuProgramSSO = menu.clickProgramSSOMenu();
+        subMenuProgramSSO = menu.clickMenuProgramSSO();
     }
 
     @And("^seleccionar la opcion 'Recursos' en el sub menu de 'Programa SSO'")
