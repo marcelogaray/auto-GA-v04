@@ -9,14 +9,14 @@ import org.umssdiplo.automationv01.core.utils.CommonEvents;
 public class SubMenuPersonalContract extends BasePage {
 
     @FindBy(id = "smContract")
-    private WebElement subMenuContrato;
+    private WebElement subMenuContract;
 
     public SubMenuPersonalContract() {
-        CommonEvents.isVisible(subMenuContrato);
+        CommonEvents.isVisible(subMenuContract);
     }
 
     public ListContract selectSubMenuContract() {
-        CommonEvents.clickButton(subMenuContrato);
+        CommonEvents.clickButton(subMenuContract);
         return new ListContract();
     }
 }
