@@ -7,9 +7,9 @@
       And Ingresar los credenciales validos en la pagina 'Login' para ingresar al sistema
 
   # RF04-TC-128 feature review title form create resource
-    Scenario: RF04-TC-127 - Verificar la creacion de nuevos de Recursos
+    Scenario: RF04-TC-127 - Verificar el título del formulario de creación de un nuevos de Recursos
       Given 'Menu principal' estee cargado
-      And menu 'Programa SSO' este seleccionado de la pagina 'Home'
-      And seleccionar sub menu 'Recursos'
+      And seleccionar la opcion 'Programa SSO' del menu principal de la pagina 'Home'
+      And seleccionar la opcion 'Recursos' en el sub menu de 'Programa SSO'
       And click en el boton 'Agregrar nuevo recurso' de la pagina 'Recursos'
-      Then validar si el titulo 'Crear Recurso' de la pagina de 'Agregar Recursos'
+      Then validar si el titulo 'Crear Recurso' es visible en la pagina de 'Agregar Recursos'

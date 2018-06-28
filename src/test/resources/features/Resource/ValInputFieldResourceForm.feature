@@ -9,8 +9,8 @@
   # RF04-TC-129 Validar componentes del formulario de creación de Recurso (Costo inputField, Detalle inputField)
     Scenario: RF04-TC-127 - Verificar la creacion de nuevos de Recursos
       Given 'Menu principal' estee cargado
-      And menu 'Programa SSO' este seleccionado de la pagina 'Home'
-      And seleccionar sub menu 'Recursos'
+      And seleccionar la opcion 'Programa SSO' del menu principal de la pagina 'Home'
+      And seleccionar la opcion 'Recursos' en el sub menu de 'Programa SSO'
       And click en el boton 'Agregrar nuevo recurso' de la pagina 'Recursos'
       Then validar que el inputField 'Costo' este visible
       And validar que el inputField 'Detalle' este visible

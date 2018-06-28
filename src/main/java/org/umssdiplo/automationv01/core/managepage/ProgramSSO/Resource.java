@@ -7,45 +7,45 @@ import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
 public class Resource extends BasePage {
     @FindBy(xpath = "//mat-header-cell[text()='Costo']")
-    private WebElement costHeader;
+    private WebElement headerCost;
 
     @FindBy(xpath = "//mat-header-cell[text()='Detalle']")
-    private WebElement detailHeader;
+    private WebElement headerDetail;
 
     @FindBy(xpath = "//mat-header-cell[text()='Accion']")
-    private WebElement actionHeader;
+    private WebElement headerAction;
 
     @FindBy(id = "btnAddResource")
-    private WebElement addResourceButton;
+    private WebElement buttonAddResource;
 
     @FindBy(id = "titleResource")
     private WebElement titleResource;
 
     @FindBy(id = "resourceList")
-    private WebElement resourceList;
+    private WebElement listResource;
 
     public Resource(){
         CommonEvents.isVisible(titleResource);
     }
 
-    public boolean visibilityCostHeader() {
-        return CommonEvents.isVisible(costHeader);
+    public boolean validateHeaderCostIsVisible() {
+        return CommonEvents.isVisible(headerCost);
     }
 
-    public boolean visibilityDetailHeader() {
-        return CommonEvents.isVisible(detailHeader);
+    public boolean validateHeaderDetailIsVisible() {
+        return CommonEvents.isVisible(headerDetail);
     }
 
-    public boolean visibilityActionHeader() {
-        return CommonEvents.isVisible(actionHeader);
+    public boolean validateHeaderActionIsVisible() {
+        return CommonEvents.isVisible(headerAction);
     }
 
-    public ResourceForm clickAddResourceButton(){
-        CommonEvents.clickButton(addResourceButton);
+    public ResourceForm clickButtonAddResource(){
+        CommonEvents.clickButton(buttonAddResource);
         return new ResourceForm();
     }
 
-    public boolean isVisibleListResource(){
-        return CommonEvents.isVisible(resourceList);
+    public boolean validateListResourceIsVisible(){
+        return CommonEvents.isVisible(listResource);
     }
 }

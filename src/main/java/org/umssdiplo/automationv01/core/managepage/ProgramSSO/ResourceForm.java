@@ -7,49 +7,52 @@ import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
 public class ResourceForm extends BasePage {
     @FindBy(className = "txtCost")
-    private WebElement costInputField;
+    private WebElement inputFieldCost;
 
     @FindBy(className = "txtDetail")
-    private WebElement detailInputField;
+    private WebElement inputFieldDetail;
 
     @FindBy(className = "btnGuardar")
-    private WebElement saveBtn;
+    private WebElement buttonSave;
 
     @FindBy(id = "titleFormCreate")
     private WebElement titleCreate;
 
     @FindBy(id = "btnBack")
-    private WebElement backButton;
+    private WebElement buttonBack;
 
     @FindBy(id = "btnCancel")
-    private WebElement cancelButton;
+    private WebElement buttonCancel;
 
-    public Resource fillResourceForm(String cost, String detail){
-        CommonEvents.setInputField(costInputField, cost);
-        CommonEvents.setInputField(detailInputField, detail);
-        CommonEvents.clickButton(saveBtn);
+    public void fillResourceForm(String cost, String detail){
+        CommonEvents.setInputField(inputFieldCost, cost);
+        CommonEvents.setInputField(inputFieldDetail, detail);
+    }
+
+    public Resource clickButtonSave(){
+        CommonEvents.clickButton(buttonSave);
         return new Resource();
     }
 
-    public boolean isTitleValid(String title){
+    public boolean validateTitleIsVisible(String title){
         return CommonEvents.isVisible(titleCreate) && titleCreate.getText().equalsIgnoreCase(title);
     }
 
-    public boolean isVisibleCostInputField(){
-        return CommonEvents.isVisible(costInputField);
+    public boolean validateInputFieldCostIsVisible(){
+        return CommonEvents.isVisible(inputFieldCost);
     }
 
-    public boolean isVisibleDetailInputField(){
-        return CommonEvents.isVisible(detailInputField);
+    public boolean validateInputFieldDetailIsVisible(){
+        return CommonEvents.isVisible(inputFieldDetail);
     }
 
     public Resource clickButtonBack(){
-        CommonEvents.clickButton(backButton);
+        CommonEvents.clickButton(buttonBack);
         return new Resource();
     }
 
-    public Resource clickCancelButton(){
-        CommonEvents.clickButton(cancelButton);
+    public Resource clickButtonCancel(){
+        CommonEvents.clickButton(buttonCancel);
         return new Resource();
     }
 }

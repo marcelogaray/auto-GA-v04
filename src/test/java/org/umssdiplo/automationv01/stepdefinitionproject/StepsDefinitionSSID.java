@@ -4,7 +4,6 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import cucumber.api.java.en_scouse.An;
 import org.testng.Assert;
 import org.umssdiplo.automationv01.core.managepage.Equipment.ListEquipment;
 import org.umssdiplo.automationv01.core.managepage.Home.Home;
@@ -82,59 +81,64 @@ public class StepsDefinitionSSID {
     }
 
     //ProgramSSO - Resources
-    @And("^menu 'Programa SSO' este seleccionado de la pagina 'Home'$")
+    @And("^seleccionar la opcion 'Programa SSO' del menu principal de la pagina 'Home'$")
     public void clickMenuProgramSSO() throws Throwable {
         subMenuProgramSSO = menu.clickProgramSSOMenu();
     }
 
-    @And("^seleccionar sub menu 'Recursos'")
+    @And("^seleccionar la opcion 'Recursos' en el sub menu de 'Programa SSO'")
     public void clickSubMenuResources() throws Throwable {
         resource = subMenuProgramSSO.clickSubMenuResources();
     }
 
     @Then("^validar si columna 'Costo' es visible en la pagina 'Recursos'$")
     public void visibilityCostHeader() throws Throwable {
-        Assert.assertTrue(resource.visibilityCostHeader(), "No se encuentra la columna 'Costo' en la pagina 'Recursos'");
+        Assert.assertTrue(resource.validateHeaderCostIsVisible(), "No se encuentra la columna 'Costo' en la pagina 'Recursos'");
     }
 
     @And("^validar si columna 'Detalle' es visible en la pagina 'Recursos'$")
     public void visibilityDetailHeader() throws Throwable {
-        Assert.assertTrue(resource.visibilityDetailHeader(), "No se encuentra la columna 'Detalle' en la pagina 'Recursos'");
+        Assert.assertTrue(resource.validateHeaderDetailIsVisible(), "No se encuentra la columna 'Detalle' en la pagina 'Recursos'");
     }
 
     @And("^validar si columna 'Accion' es visible en la pagina 'Recursos'$")
     public void visibilityActionHeader() throws Throwable {
-        Assert.assertTrue(resource.visibilityActionHeader(), "No se encuentra la columna 'Accion' en la pagina 'Recursos'");
+        Assert.assertTrue(resource.validateHeaderActionIsVisible(), "No se encuentra la columna 'Accion' en la pagina 'Recursos'");
     }
 
     @And("^click en el boton 'Agregrar nuevo recurso' de la pagina 'Recursos'$")
     public void clickAddNewResource() throws Throwable {
-        resourceForm = resource.clickAddResourceButton();
+        resourceForm = resource.clickButtonAddResource();
     }
 
     @And("^llenar el formulario con valores validos de la pagiga 'Agregar Recursos' costo = \"(.*)\" y detalle = \"(.*)\"$")
     public void fillResourcesForm(String cost, String detail) throws Throwable {
-        resource = resourceForm.fillResourceForm(cost, detail);
+        resourceForm.fillResourceForm(cost, detail);
+    }
+
+    @And("^click en el boton 'Guardar' de la pagina 'Agregar Recursos'$")
+    public void saveResourceForm() throws Throwable {
+        resource = resourceForm.clickButtonSave();
     }
 
     @Then("^validar que la lista de la pagina 'Recursos' este visible$")
     public void validateListOfResources() throws Throwable {
-        Assert.assertTrue(resource.isVisibleListResource(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "list resources"));
+        Assert.assertTrue(resource.validateListResourceIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "list resources"));
     }
 
     @Then("^validar si el titulo 'Crear Recurso' de la pagina de 'Agregar Recursos'$")
     public void ValidateTitleRecourceForm() throws Throwable {
-        Assert.assertTrue(resourceForm.isTitleValid("Crear Recurso"), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "title form resources"));
+        Assert.assertTrue(resourceForm.validateTitleIsVisible("Crear Recurso"), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "title form resources"));
     }
 
     @Then("^validar que el inputField 'Costo' este visible$")
     public void validarTextFieldCost() throws Throwable {
-        Assert.assertTrue(resourceForm.isVisibleCostInputField(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Cost input field"));
+        Assert.assertTrue(resourceForm.validateInputFieldCostIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Cost input field"));
     }
 
     @And("^validar que el inputField 'Detalle' este visible$")
     public void validarTextFieldDetail() throws Throwable {
-        Assert.assertTrue(resourceForm.isVisibleDetailInputField(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Cost input field"));
+        Assert.assertTrue(resourceForm.validateInputFieldDetailIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Cost input field"));
     }
 
     @And("^click en el boton 'Atras' de la pagina 'Agregar Recursos'$")
@@ -144,7 +148,7 @@ public class StepsDefinitionSSID {
 
     @And("^click en el boton 'Cancelar' de la pagina 'Agregar Recursos'$")
     public void clickCancelButtonAddResources() throws Throwable {
-        resource = resourceForm.clickCancelButton();
+        resource = resourceForm.clickButtonCancel();
     }
 
     //Position RF02-TC-071: Verify list of Positions load correctly
