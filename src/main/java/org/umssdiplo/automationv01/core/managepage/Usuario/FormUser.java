@@ -12,7 +12,7 @@ import java.util.List;
 public class FormUser extends BasePage {
 
     @FindBy(xpath = "//button/span[contains(text(),'Guardar')]")
-    private WebElement btnSaveUser;
+    private WebElement buttonSaveUser;
 
     @FindBy(id = "username-form")
     private WebElement inputFieldUsername;
@@ -24,7 +24,7 @@ public class FormUser extends BasePage {
     private WebElement inputUserActive;
 
     public FormUser() {
-        CommonEvents.isVisible(btnSaveUser);
+        CommonEvents.isVisible(buttonSaveUser);
     }
 
     public void createNewUserFromTable(DataTable userTable) {
@@ -49,6 +49,6 @@ public class FormUser extends BasePage {
     }
 
     public void clickButtonSaveUserButton() {
-        CommonEvents.clickButton(btnSaveUser);
+        CommonEvents.clickButton(buttonSaveUser);
     }
 }

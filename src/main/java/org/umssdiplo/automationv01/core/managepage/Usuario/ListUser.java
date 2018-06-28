@@ -8,24 +8,31 @@ import org.umssdiplo.automationv01.core.utils.CommonEvents;
 public class ListUser extends BasePage {
 
     @FindBy(xpath = "//button/span[contains(text(),'Agregar Nuevo Usuario')]")
-    private WebElement btnAgregarUsuario;
+    private WebElement buttonAgregarUsuario;
 
     @FindBy(xpath = "//div/div[contains(text(),'Items per page:')]")
     private WebElement paginElement;
 
+    @FindBy(xpath = "//mat-table[@class='mat-table']")
+    private WebElement tableListUser;
+
     public ListUser() {
-        CommonEvents.isVisible(btnAgregarUsuario);
+        CommonEvents.isVisible(buttonAgregarUsuario);
     }
 
     public boolean isUserListVisible() {
-        return CommonEvents.isVisible(paginElement);
+        return CommonEvents.isVisible(tableListUser);
     }
 
-    public void clickAddNewUser() {
-        CommonEvents.clickButton(btnAgregarUsuario);
+    public void clickButtonAddNewUser() {
+        CommonEvents.clickButton(buttonAgregarUsuario);
     }
 
     public FormUser isFormUserVisible() {
         return new FormUser();
+    }
+
+    public void clickAddNewUser() {
+        CommonEvents.clickButton(buttonAgregarUsuario);
     }
 }
