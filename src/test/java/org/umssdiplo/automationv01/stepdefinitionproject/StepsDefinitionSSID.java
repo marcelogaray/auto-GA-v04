@@ -93,17 +93,17 @@ public class StepsDefinitionSSID {
 
     @Then("^validar si columna 'Costo' es visible en la pagina 'Recursos'$")
     public void visibilityCostHeader() throws Throwable {
-        Assert.assertTrue(resource.validateHeaderCostIsVisible(), "No se encuentra la columna 'Costo' en la pagina 'Recursos'");
+        Assert.assertTrue(resource.validateHeaderCostIsVisible(),  String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "columna 'Costo'"));
     }
 
     @And("^validar si columna 'Detalle' es visible en la pagina 'Recursos'$")
     public void visibilityDetailHeader() throws Throwable {
-        Assert.assertTrue(resource.validateHeaderDetailIsVisible(), "No se encuentra la columna 'Detalle' en la pagina 'Recursos'");
+        Assert.assertTrue(resource.validateHeaderDetailIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "columna 'Detalle'"));
     }
 
     @And("^validar si columna 'Accion' es visible en la pagina 'Recursos'$")
     public void visibilityActionHeader() throws Throwable {
-        Assert.assertTrue(resource.validateHeaderActionIsVisible(), "No se encuentra la columna 'Accion' en la pagina 'Recursos'");
+        Assert.assertTrue(resource.validateHeaderActionIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "columna 'Accion'"));
     }
 
     @And("^click en el boton 'Agregrar nuevo recurso' de la pagina 'Recursos'$")
