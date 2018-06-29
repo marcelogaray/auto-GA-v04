@@ -7,6 +7,7 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.testng.Assert;
 import org.umssdiplo.automationv01.core.managepage.Assign.FormAssignPersonal;
+import org.umssdiplo.automationv01.core.managepage.Contract.ListContract;
 import org.umssdiplo.automationv01.core.managepage.Equipment.ListEquipment;
 import org.umssdiplo.automationv01.core.managepage.Home.Home;
 import org.umssdiplo.automationv01.core.managepage.Incident.IncidentPage;
@@ -38,6 +39,8 @@ public class StepsDefinitionSSID {
     private ResourceForm resourceForm;
     private FormUser formUser;
     private FormAssignPersonal formAssignPersonal;
+    private SubMenuPersonalContract menuPersonalContract;
+    private ListContract listContract;
 
     private void loadPageObjects() {
         login = LoadPage.loginPage();
@@ -250,5 +253,24 @@ public class StepsDefinitionSSID {
     public void verificarQueElFormularioDeAsignacionPersonalEsVisible() throws Throwable {
         Assert.assertTrue(formAssignPersonal.isFormAssignPersonalVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Form Assign Equipament Personal"));
     }
-}
 
+    @Given("^menu principal este cargado en pagina de inicio$")
+    public void seleccionarPaginaInicio() throws Throwable {
+        menu = home.getHomeMenu();
+    }
+
+    @And("^seleccionar la opcion 'Personal' en la pagina 'menu principal'$")
+    public void menuPersonalSeleccionado() throws Throwable {
+        menuPersonalContract = menu.selectSubMenuPersonalContract();
+    }
+
+    @And("^seleccionar el submenu 'Contratos' del menu 'Personal'$")
+    public void seleccionarContratos() throws Throwable {
+        listContract = menuPersonalContract.selectSubMenuContract();
+    }
+
+    @Then("^validar que la 'Lista de Contratos' este visible$")
+    public void validarListaDeContratos() throws Throwable {
+        Assert.assertTrue(listContract.validateContractList(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Contract List"));
+    }
+}
