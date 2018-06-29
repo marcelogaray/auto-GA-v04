@@ -13,10 +13,10 @@ public class ListEquipment extends BasePage {
     @FindBy(className = "mat-table")
     private WebElement tableEquipments;
 
-    @FindBy(xpath = "/html/body/ssi-root/ssi-equipment/div/div[3]/div/div/mat-table/mat-header-row/mat-header-cell[1]")
+    @FindBy(xpath = "//div/div[3]/div/div/mat-table/mat-header-row/mat-header-cell[contains(text(),'Nombre')]")
     private WebElement columnListName;
 
-    @FindBy(xpath = "/html/body/ssi-root/ssi-equipment/div/div[3]/div/div/mat-table/mat-header-row/mat-header-cell[2]")
+    @FindBy(xpath = "//div/div[3]/div/div/mat-table/mat-header-row/mat-header-cell[contains(text(),'Acciones')]")
     private WebElement columnListAction;
 
     public ListEquipment() {
