@@ -59,27 +59,27 @@ public class StepsDefinitionSSID {
         menuPersonal = menu.selectPersonalSubMenu();
     }
 
-    @And("^Seleccionar submenu 'Usuario' en menu 'Personal'$")
+    @And("^seleccionar submenu 'Usuario' en menu 'Personal'$")
     public void seleccionarSubMenuUsuario() throws Throwable {
         listUser = menuPersonal.selectSubMenuUsuario();
     }
 
-    @Then("^Validar que la 'Lista de Usuarios' este visible$")
+    @Then("^validar que la 'Lista de Usuarios' este visible$")
     public void validarListaDeUsuarios() throws Throwable {
         Assert.assertTrue(listUser.isUserListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Usuario"));
     }
 
-    @And("^Hacer clic en el boton 'Agregar Nuevo Usuario'$")
+    @And("^hacer clic en el boton 'Agregar Nuevo Usuario'$")
     public void hacerClicEnElBotonAgregarNuevoUsuario() throws Throwable {
         listUser.clickButtonAddNewUser();
     }
 
-    @When("^Formulario de 'Registro Nuevo Usuario' este cargado$")
+    @When("^formulario de 'Registro Nuevo Usuario' este cargado$")
     public void formularioDeRegistroNuevoUsuarioEsteeCargado() throws Throwable {
         formUser = listUser.isFormUserVisible();
     }
 
-    @And("^Registrar usuarios con username, password con los siguiente datos$")
+    @And("^registrar usuarios con username, password con los siguiente datos$")
     public void registrarUsuariosConUsernamePasswordYQueEsteenEnEstadoActivado(DataTable usersTable) throws Throwable {
         formUser.createNewUserFromTable(usersTable);
     }
@@ -202,7 +202,7 @@ public class StepsDefinitionSSID {
         Assert.assertTrue(listEquipment.isEquipmentListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
     }
 
-    @And("^Presionar en el Boton de 'Guardar' para guardar la informacion$")
+    @And("^presionar en el Boton de 'Guardar' para guardar la informacion$")
     public void presionarEnElBotonDeGuardarParaGuardarLaInformacion() throws Throwable {
         formUser.clickButtonSaveUser();
     }
