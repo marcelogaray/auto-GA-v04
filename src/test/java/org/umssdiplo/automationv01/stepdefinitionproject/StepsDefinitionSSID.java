@@ -1,5 +1,6 @@
 package org.umssdiplo.automationv01.stepdefinitionproject;
 
+import cucumber.api.DataTable;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -9,14 +10,11 @@ import org.umssdiplo.automationv01.core.managepage.Equipment.ListEquipment;
 import org.umssdiplo.automationv01.core.managepage.Home.Home;
 import org.umssdiplo.automationv01.core.managepage.Incident.IncidentPage;
 import org.umssdiplo.automationv01.core.managepage.Login.Login;
-import org.umssdiplo.automationv01.core.managepage.Menu.Menu;
-import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuProgramSSO;
-import org.umssdiplo.automationv01.core.managepage.ProgramSSO.Resource;
-import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuEquipment;
-import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuOrganizationalStructure;
-import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuPersonal;
+import org.umssdiplo.automationv01.core.managepage.Menu.*;
 import org.umssdiplo.automationv01.core.managepage.Position.Position;
+import org.umssdiplo.automationv01.core.managepage.ProgramSSO.Resource;
 import org.umssdiplo.automationv01.core.managepage.ProgramSSO.ResourceForm;
+import org.umssdiplo.automationv01.core.managepage.Usuario.FormUser;
 import org.umssdiplo.automationv01.core.managepage.Usuario.ListUser;
 import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
@@ -35,6 +33,7 @@ public class StepsDefinitionSSID {
     private Position position;
     private SubMenuOrganizationalStructure subMenuOrganizationalStructure;
     private ResourceForm resourceForm;
+    private FormUser formUser;
 
     private void loadPageObjects() {
         login = LoadPage.loginPage();
@@ -60,14 +59,29 @@ public class StepsDefinitionSSID {
         menuPersonal = menu.selectPersonalSubMenu();
     }
 
-    @And("^Seleccionar submenu 'Usuario' en menu 'Personal'$")
+    @And("^seleccionar submenu 'Usuario' en menu 'Personal'$")
     public void seleccionarSubMenuUsuario() throws Throwable {
         listUser = menuPersonal.selectSubMenuUsuario();
     }
 
-    @Then("^Validar que la 'Lista de Usuarios' este visible$")
+    @Then("^validar que la 'Lista de Usuarios' este visible$")
     public void validarListaDeUsuarios() throws Throwable {
-        boolean result = listUser.isUserListVisible();
+        Assert.assertTrue(listUser.isUserListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Usuario"));
+    }
+
+    @And("^hacer clic en el boton 'Agregar Nuevo Usuario'$")
+    public void hacerClicEnElBotonAgregarNuevoUsuario() throws Throwable {
+        listUser.clickButtonAddNewUser();
+    }
+
+    @When("^formulario de 'Registro Nuevo Usuario' este cargado$")
+    public void formularioDeRegistroNuevoUsuarioEsteeCargado() throws Throwable {
+        formUser = listUser.isFormUserVisible();
+    }
+
+    @And("^registrar usuarios con username, password con los siguiente datos$")
+    public void registrarUsuariosConUsernamePasswordYQueEsteenEnEstadoActivado(DataTable usersTable) throws Throwable {
+        formUser.createNewUserFromTable(usersTable);
     }
 
     @And("^Presionar en la opcion 'Incidentes' del 'Menu Principal'$")
@@ -93,7 +107,7 @@ public class StepsDefinitionSSID {
 
     @Then("^validar si columna 'Costo' es visible en la pagina 'Recursos'$")
     public void visibilityCostHeader() throws Throwable {
-        Assert.assertTrue(resource.validateHeaderCostIsVisible(),  String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "columna 'Costo'"));
+        Assert.assertTrue(resource.validateHeaderCostIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "columna 'Costo'"));
     }
 
     @And("^validar si columna 'Detalle' es visible en la pagina 'Recursos'$")
@@ -194,4 +208,8 @@ public class StepsDefinitionSSID {
         Assert.assertTrue(listEquipment.checkHeaderListEquipment(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equiment title"));
     }
     //END Equipment
+    @And("^presionar en el Boton de 'Guardar' para guardar la informacion$")
+    public void presionarEnElBotonDeGuardarParaGuardarLaInformacion() throws Throwable {
+        formUser.clickButtonSaveUser();
+    }
 }
