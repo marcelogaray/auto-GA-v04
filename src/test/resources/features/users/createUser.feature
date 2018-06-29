@@ -8,11 +8,12 @@ Feature: Create user
   Scenario: Verificar la creacion de usuarios desde 'Formulario de Usuario'
     Given 'Menu principal' estee cargado
     And seleccionar menu 'Personal' en la pagina 'Menu Principal'
-    And Seleccionar submenu 'Usuario' en menu 'Personal'
-    And Hacer clic en el boton 'Agregar Nuevo Usuario'
-    When Formulario de 'Registro Nuevo Usuario' este cargado
-    And Registrar usuarios con username, password con los siguiente datos
+    And seleccionar submenu 'Usuario' en menu 'Personal'
+    And hacer clic en el boton 'Agregar Nuevo Usuario'
+    When formulario de 'Registro Nuevo Usuario' este cargado
+    And registrar usuarios con username, password con los siguiente datos
       | username | password  | userActive |
       | tom      | password1 | true       |
-    Then Validar que la 'Lista de Usuarios' este visible
+    And presionar en el Boton de 'Guardar' para guardar la informacion
+    Then validar que la 'Lista de Usuarios' este visible
 
