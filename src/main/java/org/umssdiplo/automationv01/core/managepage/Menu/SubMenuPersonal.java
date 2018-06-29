@@ -24,8 +24,15 @@ public class SubMenuPersonal extends BasePage {
         return new ListUser();
     }
 
-    public PersonnelSearch selectSubMenuPersonnel() {
-        CommonEvents.clickButton(subMenuPersonnel);
+    public boolean selectSubMenuPersonnel() {
+        boolean res = CommonEvents.isVisible(subMenuUser);
+        if (res) {
+            CommonEvents.clickButton(subMenuPersonnel);
+        }
+        return res;
+    }
+
+    public PersonnelSearch getPersonnelSearch() {
         return new PersonnelSearch();
     }
 }

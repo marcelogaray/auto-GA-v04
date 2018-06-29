@@ -206,7 +206,8 @@ public class StepsDefinitionSSID {
 
     @And("^seleccionar submenu 'Personal' en menu 'Personal'$")
     public void seleccionarSubMenuPersonal() throws Throwable {
-        personnelSearch = menuPersonal.selectSubMenuPersonnel();
+        Assert.assertTrue(menuPersonal.selectSubMenuPersonnel());
+        personnelSearch = menuPersonal.getPersonnelSearch();
         Assert.assertTrue(personnelSearch.validateInputFindPersonIsVisible());
     }
 
