@@ -247,11 +247,6 @@ public class StepsDefinitionSSID {
         Assert.assertEquals(encontrado, resultado);
     }
 
-    @And("^presionar en el Boton de 'Guardar' para guardar la informacion$")
-    public void presionarEnElBotonDeGuardarParaGuardarLaInformacion() throws Throwable {
-        formUser.clickButtonSaveUser();
-    }
-
     @And("^presionar en la opcion 'ProgramSSO' del 'Menu Principal'$")
     public void presionarEnLaOpcionProgramSSODelMenuPrincipal() throws Throwable {
         subMenuTrainer = menu.clickMenuProgramSSOTrainer();
