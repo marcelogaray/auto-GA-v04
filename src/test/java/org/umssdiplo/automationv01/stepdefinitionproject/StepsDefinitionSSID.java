@@ -10,19 +10,17 @@ import org.umssdiplo.automationv01.core.managepage.Equipment.ListEquipment;
 import org.umssdiplo.automationv01.core.managepage.Home.Home;
 import org.umssdiplo.automationv01.core.managepage.Incident.IncidentPage;
 import org.umssdiplo.automationv01.core.managepage.Login.Login;
-import org.umssdiplo.automationv01.core.managepage.Menu.Menu;
-import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuEquipment;
-import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuOrganizationalStructure;
-import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuPersonal;
+import org.umssdiplo.automationv01.core.managepage.Menu.*;
 import org.umssdiplo.automationv01.core.managepage.Position.Position;
+import org.umssdiplo.automationv01.core.managepage.ProgramSSO.Resource;
+import org.umssdiplo.automationv01.core.managepage.ProgramSSO.ResourceForm;
+import org.umssdiplo.automationv01.core.managepage.Usuario.FormUser;
 import org.umssdiplo.automationv01.core.managepage.Usuario.ListUser;
+import org.umssdiplo.automationv01.core.managepage.Personnel.PersonnelSearch;
 import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 import org.umssdiplo.automationv01.core.managepage.Contract.ListContract;
 import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuPersonalContract;
-import org.umssdiplo.automationv01.core.managepage.Contract.FormContract;
-import java.util.List;
-import java.util.Map;
 
 public class StepsDefinitionSSID {
     private Login login;
@@ -30,14 +28,18 @@ public class StepsDefinitionSSID {
     private Menu menu;
     private SubMenuPersonal menuPersonal;
     private ListUser listUser;
+    private SubMenuProgramSSO subMenuProgramSSO;
+    private Resource resource;
     private IncidentPage incidentPage;
+    private PersonnelSearch personnelSearch;
     private SubMenuEquipment menuEquipamiento;
     private ListEquipment listEquipment;
     private Position position;
     private SubMenuOrganizationalStructure subMenuOrganizationalStructure;
+    private ResourceForm resourceForm;
+    private FormUser formUser;
     private SubMenuPersonalContract menuPersonalContract;
     private ListContract listContract;
-    private FormContract formContract;
 
     private void loadPageObjects() {
         login = LoadPage.loginPage();
@@ -63,14 +65,115 @@ public class StepsDefinitionSSID {
         menuPersonal = menu.selectPersonalSubMenu();
     }
 
-    @And("^Seleccionar submenu 'Usuario' en menu 'Personal'$")
+    @And("^seleccionar submenu 'Usuario' en menu 'Personal'$")
     public void seleccionarSubMenuUsuario() throws Throwable {
-        listUser = menuPersonal.selectSubMenuUsuario();
+        listUser = menuPersonal.selectSubMenuUser();
     }
 
-    @Then("^Validar que la 'Lista de Usuarios' este visible$")
+    @Then("^validar que la 'Lista de Usuarios' este visible$")
     public void validarListaDeUsuarios() throws Throwable {
-        boolean result = listUser.isUserListVisible();
+        Assert.assertTrue(listUser.isUserListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Usuario"));
+    }
+
+    @And("^hacer clic en el boton 'Agregar Nuevo Usuario'$")
+    public void hacerClicEnElBotonAgregarNuevoUsuario() throws Throwable {
+        listUser.clickButtonAddNewUser();
+    }
+
+    @When("^formulario de 'Registro Nuevo Usuario' este cargado$")
+    public void formularioDeRegistroNuevoUsuarioEsteeCargado() throws Throwable {
+        formUser = listUser.isFormUserVisible();
+    }
+
+    @And("^registrar usuarios con username, password con los siguiente datos$")
+    public void registrarUsuariosConUsernamePasswordYQueEsteenEnEstadoActivado(DataTable usersTable) throws Throwable {
+        formUser.createNewUserFromTable(usersTable);
+    }
+
+    @And("^presionar en el Boton de 'Guardar' para guardar la informacion$")
+    public void presionarEnElBotonDeGuardarParaGuardarLaInformacion() throws Throwable {
+        formUser.clickButtonSaveUser();
+    }
+
+    @And("^Presionar en la opcion 'Incidentes' del 'Menu Principal'$")
+    public void presionarEnLaOpcionIncidentesDelMenuPrincipal() throws Throwable {
+        incidentPage = menu.clickMenuIncident();
+    }
+
+    @Then("^Verificar que la tabla de incidentes se muestre correctamente$")
+    public void verificarQueLaTablaDeIncidentesSeMuestreCorrectamente() throws Throwable {
+        Assert.assertTrue(incidentPage.isTableVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Incident"));
+    }
+
+    //ProgramSSO - Resources
+    @And("^seleccionar la opcion 'Programa SSO' del menu principal de la pagina 'Home'$")
+    public void clickMenuProgramSSO() throws Throwable {
+        subMenuProgramSSO = menu.clickMenuProgramSSO();
+    }
+
+    @And("^seleccionar la opcion 'Recursos' en el sub menu de 'Programa SSO'")
+    public void clickSubMenuResources() throws Throwable {
+        resource = subMenuProgramSSO.clickSubMenuResources();
+    }
+
+    @Then("^validar si columna 'Costo' es visible en la pagina 'Recursos'$")
+    public void visibilityCostHeader() throws Throwable {
+        Assert.assertTrue(resource.validateHeaderCostIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "columna 'Costo'"));
+    }
+
+    @And("^validar si columna 'Detalle' es visible en la pagina 'Recursos'$")
+    public void visibilityDetailHeader() throws Throwable {
+        Assert.assertTrue(resource.validateHeaderDetailIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "columna 'Detalle'"));
+    }
+
+    @And("^validar si columna 'Accion' es visible en la pagina 'Recursos'$")
+    public void visibilityActionHeader() throws Throwable {
+        Assert.assertTrue(resource.validateHeaderActionIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "columna 'Accion'"));
+    }
+
+    @And("^click en el boton 'Agregrar nuevo recurso' de la pagina 'Recursos'$")
+    public void clickAddNewResource() throws Throwable {
+        resourceForm = resource.clickButtonAddResource();
+    }
+
+    @And("^llenar el formulario con valores validos de la pagiga 'Agregar Recursos' costo = \"(.*)\" y detalle = \"(.*)\"$")
+    public void fillResourcesForm(String cost, String detail) throws Throwable {
+        resourceForm.fillResourceForm(cost, detail);
+    }
+
+    @And("^click en el boton 'Guardar' de la pagina 'Agregar Recursos'$")
+    public void saveResourceForm() throws Throwable {
+        resource = resourceForm.clickButtonSave();
+    }
+
+    @Then("^validar que la lista de la pagina 'Recursos' este visible$")
+    public void validateListOfResources() throws Throwable {
+        Assert.assertTrue(resource.validateListResourceIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "list resources"));
+    }
+
+    @Then("^validar si el titulo 'Crear Recurso' de la pagina de 'Agregar Recursos'$")
+    public void ValidateTitleRecourceForm() throws Throwable {
+        Assert.assertTrue(resourceForm.validateTitleIsVisible("Crear Recurso"), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "title form resources"));
+    }
+
+    @Then("^validar que el inputField 'Costo' este visible$")
+    public void validarTextFieldCost() throws Throwable {
+        Assert.assertTrue(resourceForm.validateInputFieldCostIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Cost input field"));
+    }
+
+    @And("^validar que el inputField 'Detalle' este visible$")
+    public void validarTextFieldDetail() throws Throwable {
+        Assert.assertTrue(resourceForm.validateInputFieldDetailIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Cost input field"));
+    }
+
+    @And("^click en el boton 'Atras' de la pagina 'Agregar Recursos'$")
+    public void clickBackButtonAddResources() throws Throwable {
+        resource = resourceForm.clickButtonBack();
+    }
+
+    @And("^click en el boton 'Cancelar' de la pagina 'Agregar Recursos'$")
+    public void clickCancelButtonAddResources() throws Throwable {
+        resource = resourceForm.clickButtonCancel();
     }
 
     //Position RF02-TC-071: Verify list of Positions load correctly
@@ -95,22 +198,13 @@ public class StepsDefinitionSSID {
     }
     //End Positions
 
-    @And("^Presionar en la opcion 'Incidentes' del 'Menu Principal'$")
-    public void presionarEnLaOpcionIncidentesDelMenuPrincipal() throws Throwable {
-        incidentPage = menu.clickMenuIncident();
-    }
-
-    @Then("^Verificar que la tabla de incidentes se muestre correctamente$")
-    public void verificarQueLaTablaDeIncidentesSeMuestreCorrectamente() throws Throwable {
-        Assert.assertTrue(incidentPage.isTableVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Incident title"));
-    }
-
+    //BEGIN Equipment
     @And("^seleccionar menu 'Equipamiento' en la pagina 'Menu Principal'$")
     public void menuEquipamientoEstaSeleccionado() throws Throwable {
         menuEquipamiento = menu.selectEquipmentMenu();
     }
 
-    @And("^Seleccionar submenu 'Equipamiento' en menu 'Equipamiento'$")
+    @And("^seleccionar submenu 'Equipamiento' en menu 'Equipamiento'$")
     public void seleccionarSubMenuEquipamiento() throws Throwable {
         listEquipment = menuEquipamiento.selectSubMenuEquipment();
     }
@@ -120,15 +214,43 @@ public class StepsDefinitionSSID {
         Assert.assertTrue(listEquipment.isEquipmentListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
     }
 
-    //Contract element
-    @Given("menu principal este cargado en pagina de Inicio$")
+    @Then("^verificar cabecera 'Nombre' de la pagina 'Lista de Equipamientos' esten cargados$")
+    public void verificarCabeceraNombreListaEquipamientos() throws Throwable {
+        Assert.assertTrue(listEquipment.checkNameHeaderListEquipment(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equiment title"));
+    }
+
+    @And("^verificar cabecera 'Acciones' de la pagina 'Lista de Equipamientos' esten cargados$")
+    public void verificarCabeceraAccionListaEquipamientos() throws Throwable {
+        Assert.assertTrue(listEquipment.checkActionsHeaderListEquipment(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equiment title"));
+    }
+
+    //END Equipment
+
+    @And("^seleccionar submenu 'Personal' en menu 'Personal'$")
+    public void seleccionarSubMenuPersonal() throws Throwable {
+        personnelSearch = menuPersonal.selectSubMenuPersonnel();
+        Assert.assertTrue(personnelSearch.validateInputFindPersonIsVisible());
+    }
+
+    @When("^ingresar (.*) en 'Buscar Personal'$")
+    public void ingresarEnBuscarPersonal(String personal){
+        personnelSearch.setTextFindPerson(personal);
+    }
+
+    @Then("^el resultado de 'Buscar Personal' deberia ser (\\d+)$")
+    public void elResultadoDeBuscarPersonalDeberiaSer(int resultado){
+        int encontrado = personnelSearch.validatePersonnelFound(resultado);
+        Assert.assertEquals(encontrado, resultado);
+    }
+
+    @Given("^menu principal este cargado en pagina de inicio$")
     public void seleccionarPaginaInicio() throws Throwable {
         menu = home.getHomeMenu();
     }
 
     @And("^seleccionar la opcion 'Personal' en la pagina 'menu principal'$")
     public void menuPersonalSeleccionado() throws Throwable {
-        menuPersonalContract = menu.selectPersonalSubMenuContract();
+        menuPersonalContract = menu.selectSubMenuPersonalContract();
     }
 
     @And("^seleccionar el submenu 'Contratos' del menu 'Personal'$")
@@ -139,84 +261,5 @@ public class StepsDefinitionSSID {
     @Then("^validar que la 'Lista de Contratos' este visible$")
     public void validarListaDeContratos() throws Throwable {
         Assert.assertTrue(listContract.validateContractList(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Contract List"));
-    }
-
-    @And("^mostrar 'Lista de Contratos'$")
-    public void validarContratos() throws Throwable {
-        Assert.assertTrue(listContract.validateContractList(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Contract List"));
-    }
-
-    @And("^seleccionar boton Agregar Nuevo Contrato del Area de contratos$")
-    public void seleccionarAgregarContrato() throws Throwable {
-        formContract = listContract.selectBtnAddContract();
-    }
-
-    @And("^llenar 'formulario de Contrato Nuevo'$")
-    public void llenarformulariodeContratoNuevo(DataTable table) throws Throwable {
-        List<Map<String, String>> data = table.asMaps(String.class, String.class);
-        formContract.newContractRegistration(data);
-    }
-
-    @Then("^seleccionar Boton 'Enviar' para grabar los datos del formulario$")
-    public void SeleccionarBotonformulario() throws Throwable {
-        Assert.assertTrue(formContract.btnSendForm(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Send Form Add"));
-    }
-
-    @And("^seleccionar boton Editar del primer item lista contratos$")
-    public void seleccionarEditar() throws Throwable {
-        formContract = listContract.selectBtnEditContract();
-    }
-
-    @And("^modificar datos del 'formulario de Contrato a Editar'$")
-    public void llenarformulariodeContratoEdit(DataTable table) throws Throwable {
-        List<Map<String, String>> data = table.asMaps(String.class, String.class);
-        formContract.editContractRegistration(data);
-    }
-
-    @Then("^seleccionar boton 'Enviar' para grabar los datos editados del formulario$")
-    public void SeleccionarBotonformularioEditar() throws Throwable {
-        Assert.assertTrue(formContract.btnSendFormEdit(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Send Form Edit"));
-    }
-
-    @And("^llenar la opcion filtro de contrato$")
-    public void llenarfiltroBusqueda(DataTable tables) throws Throwable {
-        List<Map<String, String>> lista = tables.asMaps(String.class, String.class);
-        formContract = new FormContract();
-        formContract.editContractRegistration(lista);
-    }
-
-    @Then("^validar que la 'Lista de Contratos' este visible mostrando el filtro ingresado$")
-    public void listaFiltrada() throws Throwable {
-        Assert.assertTrue(listContract.validateContractList(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Contract List Fill"));
-    }
-
-    @And("^seleccionar boton Eliminar del primer item lista contratos$")
-    public void seleccionarEliminar() throws Throwable {
-        formContract = listContract.selectBtnDeleteContract();
-    }
-
-    @Then("^validar que la 'Lista de Contratos' este visible sin el item eliminado$")
-    public void listaContratoActualizado() throws Throwable {
-        Assert.assertTrue(listContract.validateContractList(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Contract List Delete"));
-    }
-
-    @When("^seleccionar en boton siguiente de la lista$")
-    public  void seleccionarSiguienteListaContrato(){
-        listContract.selectNextListcontract();
-    }
-
-    @And("^seleccionar en boton de anterior de la lista$")
-    public void seleccionAnteriorListaContrato(){
-        listContract.selectBackListcontract();
-    }
-
-    @And("^seleccionar el boton 'Atras' del formulario creacion de contratos$")
-    public void seleccionBtnAtrasContract(){
-        listContract.selectBtnBackContarct();
-    }
-
-    @Then("^validar que el título del formulario de creación contratos sea 'Nuevo Contrato'$")
-    public void validarTitulo() throws Throwable {
-        Assert.assertTrue(listContract.getTitle().equals("Nuevo Contrato"),String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Contract Title") );
     }
 }

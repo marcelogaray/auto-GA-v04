@@ -38,7 +38,6 @@ public class ListContract extends BasePage {
     public boolean validateContractList() {
         return CommonEvents.isVisible(pageContract);
     }
-
     public FormContract selectBtnAddContract() {
         CommonEvents.clickButton(btnAddContract);
         return new FormContract();
@@ -65,7 +64,5 @@ public class ListContract extends BasePage {
         CommonEvents.clickButton(btnBackList);
     }
 
-    public String getTitle(){
-        return CommonEvents.getTextContent(titleContract);
-    }
+    public String getTitle() {return CommonEvents.getTextContent(titleContract); }
 }
