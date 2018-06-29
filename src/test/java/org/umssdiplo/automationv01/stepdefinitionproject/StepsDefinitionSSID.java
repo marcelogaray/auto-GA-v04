@@ -19,10 +19,6 @@ import org.umssdiplo.automationv01.core.managepage.Usuario.ListUser;
 import org.umssdiplo.automationv01.core.managepage.Personnel.PersonnelSearch;
 import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
-import org.umssdiplo.automationv01.core.managepage.Trainer.CreateTrainer;
-import org.umssdiplo.automationv01.core.managepage.Trainer.EditTrainer;
-import org.umssdiplo.automationv01.core.managepage.Trainer.ListTrainer;
-import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuTrainer;
 
 public class StepsDefinitionSSID {
     private Login login;
@@ -40,10 +36,6 @@ public class StepsDefinitionSSID {
     private SubMenuOrganizationalStructure subMenuOrganizationalStructure;
     private ResourceForm resourceForm;
     private FormUser formUser;
-    private SubMenuTrainer subMenuTrainer;
-    private ListTrainer listTrainer;
-    private CreateTrainer createTrainer;
-    private EditTrainer editTrainer;
 
     private void loadPageObjects() {
         login = LoadPage.loginPage();
@@ -92,6 +84,11 @@ public class StepsDefinitionSSID {
     @And("^registrar usuarios con username, password con los siguiente datos$")
     public void registrarUsuariosConUsernamePasswordYQueEsteenEnEstadoActivado(DataTable usersTable) throws Throwable {
         formUser.createNewUserFromTable(usersTable);
+    }
+
+    @And("^presionar en el Boton de 'Guardar' para guardar la informacion$")
+    public void presionarEnElBotonDeGuardarParaGuardarLaInformacion() throws Throwable {
+        formUser.clickButtonSaveUser();
     }
 
     @And("^Presionar en la opcion 'Incidentes' del 'Menu Principal'$")
@@ -197,12 +194,13 @@ public class StepsDefinitionSSID {
     }
     //End Positions
 
+    //BEGIN Equipment
     @And("^seleccionar menu 'Equipamiento' en la pagina 'Menu Principal'$")
     public void menuEquipamientoEstaSeleccionado() throws Throwable {
         menuEquipamiento = menu.selectEquipmentMenu();
     }
 
-    @And("^Seleccionar submenu 'Equipamiento' en menu 'Equipamiento'$")
+    @And("^seleccionar submenu 'Equipamiento' en menu 'Equipamiento'$")
     public void seleccionarSubMenuEquipamiento() throws Throwable {
         listEquipment = menuEquipamiento.selectSubMenuEquipment();
     }
@@ -211,6 +209,18 @@ public class StepsDefinitionSSID {
     public void validarListaDeEquipamientos() throws Throwable {
         Assert.assertTrue(listEquipment.isEquipmentListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
     }
+
+    @Then("^verificar cabecera 'Nombre' de la pagina 'Lista de Equipamientos' esten cargados$")
+    public void verificarCabeceraNombreListaEquipamientos() throws Throwable {
+        Assert.assertTrue(listEquipment.checkNameHeaderListEquipment(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equiment title"));
+    }
+
+    @And("^verificar cabecera 'Acciones' de la pagina 'Lista de Equipamientos' esten cargados$")
+    public void verificarCabeceraAccionListaEquipamientos() throws Throwable {
+        Assert.assertTrue(listEquipment.checkActionsHeaderListEquipment(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equiment title"));
+    }
+
+    //END Equipment
 
     @And("^seleccionar submenu 'Personal' en menu 'Personal'$")
     public void seleccionarSubMenuPersonal() throws Throwable {
@@ -227,74 +237,5 @@ public class StepsDefinitionSSID {
     public void elResultadoDeBuscarPersonalDeberiaSer(int resultado){
         int encontrado = personnelSearch.validatePersonnelFound(resultado);
         Assert.assertEquals(encontrado, resultado);
-    }
-
-    @And("^presionar en el Boton de 'Guardar' para guardar la informacion$")
-    public void presionarEnElBotonDeGuardarParaGuardarLaInformacion() throws Throwable {
-        formUser.clickButtonSaveUser();
-    }
-
-    @And("^presionar en la opcion 'ProgramSSO' del 'Menu Principal'$")
-    public void presionarEnLaOpcionProgramSSODelMenuPrincipal() throws Throwable {
-        subMenuTrainer = menu.clickMenuProgramSSOTrainer();
-
-    }
-
-    @And("^presionar en la opcion 'Capacitadores' del 'SubMenu'$")
-    public void presionarEnLaOpcionCapacitadoresDelSubMenu() throws Throwable {
-        listTrainer = subMenuTrainer.selectSubMenuTrainer();
-    }
-
-    @And("^presionar el boton 'Crear Nuevo Capacitador'$")
-    public void clickEnElBotonCrearNuevoCapacitador() throws Throwable {
-        createTrainer = listTrainer.clickOnCreateTrainerButton();
-    }
-
-    @Then("^validar que el título del formulario de creación de Capacitadores sea 'Crear capacitador'$")
-    public void validarTituloDeCapacitadoresEnModoCreacion() throws Throwable {
-        Assert.assertTrue(createTrainer.getTrainerTitleCreateMode().equals("Crear capacitador"),String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Capacitador title") );
-
-    }
-
-    @And("^presionar el boton 'Atras' del modo creacion de Capacitador$")
-    public void clickEnElBotonAtrasDelModoCreacionCapacitador() throws Throwable {
-        listTrainer = createTrainer.clickBackButton();
-    }
-
-    @Then("^verificar que la lista de capacitadores sea mostrada$")
-    public void verificarListaDeCapacitadores() throws Throwable {
-        Assert.assertTrue(listTrainer.verifyIfTrainerListIsVisible(),String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Trainers list"));
-
-    }
-
-    @And("^presionar el boton 'Editar' de Capacitador$")
-    public void clickEnElBotonEditarDelCapacitador() throws Throwable {
-        editTrainer = listTrainer.clickOnUpdateTrainerButton();
-    }
-
-    @Then("^validar que el título del formulario de edicion de Capacitadores sea 'Modificar capacitador'$")
-    public void validarTituloCapacitadoresEnModoEdicion() throws Throwable {
-        Assert.assertTrue(editTrainer.getTrainerTitleEditMode().equals("Modificar capacitador"),"Trainer title is not the correct") ;
-
-    }
-
-    @And("^presionar el boton 'Atras' del modo edicion de Capacitador$")
-    public void clickEnElBotonAtrasDeCapacitador() throws Throwable {
-        listTrainer = editTrainer.clickOnBackButton();
-    }
-
-    @And("^editar nombre de Capacitador$")
-    public void editarNombreDeCapacitador() throws Throwable {
-        editTrainer.setTrainerName();
-    }
-
-    @And("^presionar el boton  'guardar' Capacitador$")
-    public void guardarNombreEditadoDeCapacitador() throws Throwable {
-        listTrainer = editTrainer.clickOnSaveButton();
-    }
-
-    @And("^verififcar si el boton crear capacitador es visible$")
-    public void verificarSiElBotonCrearCapacitadorEsVisible() throws Throwable {
-        Assert.assertTrue(listTrainer.verifyIfCreateTrainerButtonIsVisibleAfterEditingTrainer(), "Create trainer button is not visible") ;
     }
 }
