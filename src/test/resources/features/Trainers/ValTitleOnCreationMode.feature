@@ -13,3 +13,4 @@
     And presionar en la opcion 'Capacitadores' del 'SubMenu'
     And presionar el boton 'Crear Nuevo Capacitador'
     Then validar que el título del formulario de creación de Capacitadores sea 'Crear capacitador'
+
