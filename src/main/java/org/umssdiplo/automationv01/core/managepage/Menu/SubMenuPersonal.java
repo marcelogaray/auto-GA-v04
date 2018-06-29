@@ -4,7 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.umssdiplo.automationv01.core.managepage.BasePage;
 import org.umssdiplo.automationv01.core.managepage.Usuario.ListUser;
-import org.umssdiplo.automationv01.core.managepage.Personal.BotonAgregarPersonal;
+import org.umssdiplo.automationv01.core.managepage.Personnel.ButtonAddPersonnel;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
 public class SubMenuPersonal extends BasePage {
@@ -24,8 +24,8 @@ public class SubMenuPersonal extends BasePage {
         return new ListUser();
     }
 
-    public BotonAgregarPersonal seleccionarSubMenuPersonal(){
+    public ButtonAddPersonnel selectSubMenuPersonnel(){
         CommonEvents.clickButton(personalSubMenu);
-        return new BotonAgregarPersonal();
+        return new ButtonAddPersonnel();
     }
 }

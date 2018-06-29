@@ -1,6 +1,5 @@
 
-@personal
-Feature: Personal
+Feature: Add new personnel
 
   Background: Pagina de inicio es mostrada una vez que se ponen los credenciales correctos de inicio de sesión
     Given 'SSI-D' pagina de inicio de sesion es cargada
@@ -16,8 +15,8 @@ Feature: Personal
     When llenar el campo email <email>
     When llenar el campo direccion <direccion>
     When llenar el campo telefono <telefono>
-    When llenar el campo area <area>
-    Then El resultado de 'Agregar nuevo personal' debe ser <resultado>
+    When seleccionar el 'Area' de instalaciones hidricas 
+    Then click en 'Enviar' el nuevo personal
     Examples:
-            | nombre | apellido     | email             | direccion       | telefono | area           | resultado |
-            | Romulo | Zoto torrez  | romu@gmail.com    | America Nro 345 | 69504113 | Remodelaciones | Agregado |
+            | nombre | apellido     | email             | direccion       | telefono |
+            | Romulo | Zoto torrez  | romu@gmail.com    | America Nro 345 | 69504113 |

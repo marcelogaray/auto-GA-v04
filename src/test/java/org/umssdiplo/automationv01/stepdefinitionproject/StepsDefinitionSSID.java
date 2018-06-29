@@ -15,8 +15,8 @@ import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuOrganizationalStr
 import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuPersonal;
 import org.umssdiplo.automationv01.core.managepage.Position.Position;
 import org.umssdiplo.automationv01.core.managepage.Usuario.ListUser;
-import org.umssdiplo.automationv01.core.managepage.Personal.AgregarPersonal;
-import org.umssdiplo.automationv01.core.managepage.Personal.BotonAgregarPersonal;
+import org.umssdiplo.automationv01.core.managepage.Personnel.AddPersonnel;
+import org.umssdiplo.automationv01.core.managepage.Personnel.ButtonAddPersonnel;
 import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
@@ -31,8 +31,8 @@ public class StepsDefinitionSSID {
     private ListEquipment listEquipment;
     private Position position;
     private SubMenuOrganizationalStructure subMenuOrganizationalStructure;
-    private AgregarPersonal agregarPersonal;
-    private BotonAgregarPersonal botonAgregarPersonal;
+    private AddPersonnel addPersonnel;
+    private ButtonAddPersonnel buttonAddPersonnel;
 
     private void loadPageObjects() {
         login = LoadPage.loginPage();
@@ -117,41 +117,48 @@ public class StepsDefinitionSSID {
 
     @And("^click en el submenu 'Personal'$")
     public void clickEnElSubmenuPersonal() throws Throwable {
-        botonAgregarPersonal = menuPersonal.seleccionarSubMenuPersonal();
+        buttonAddPersonnel = menuPersonal.selectSubMenuPersonnel();
     }
 
     @Given("^click en el boton 'Agregar nuevo personal'$")
     public void clickEnElBotonAgregarNuevoPersonal() throws Throwable {
-        agregarPersonal = botonAgregarPersonal.clickAgregarPersonal();
-    }
-    @When("^llenar el campo nombre (.*)$")
-    public void llenarElCampoNombre(String nombre) throws Throwable {
-        agregarPersonal.setNombre(nombre);
-    }
-    @When("^llenar el campo apellido (.*)$")
-    public void llenarElCampoApellido(String apellido) throws Throwable {
-        agregarPersonal.setApellido(apellido);
-    }
-    @When("^llenar el campo email (.*)$")
-    public void llenarElCampoEmail(String email) throws Throwable {
-        agregarPersonal.setEmail(email);
-    }
-    @When("^llenar el campo direccion (.*)$")
-    public void llenarElCampoDireccion(String direccion) throws Throwable {
-        agregarPersonal.setDireccion(direccion);
-    }
-    @When("^llenar el campo telefono (.*)$")
-    public void llenarElCampoTelefono(String telefono) throws Throwable {
-        agregarPersonal.setTelefono(telefono);
-    }
-    @When("^llenar el campo area (.*)$")
-    public void llenarElCampoArea(String area) throws Throwable {
-        agregarPersonal.setArea(area);
+        Assert.assertTrue(buttonAddPersonnel.validateButtonAddPersonnel());
+        addPersonnel = buttonAddPersonnel.clickAgregarPersonal();
     }
 
-    @Then("^El resultado de 'Agregar nuevo personal' debe ser (.*)$")
-    public void elResultadoDeAgregarNuevoPersonalDebeSer(String resultado) throws Throwable {
-        Assert.assertEquals(agregarPersonal.enviar(), resultado, String.format(ErrorMessage.ERROR_MESSAGE, "Agregar Personal"));
+    @When("^llenar el campo nombre (.*)$")
+    public void llenarElCampoNombre(String name) throws Throwable {
+        addPersonnel.setName(name);
+    }
+
+    @When("^llenar el campo apellido (.*)$")
+    public void llenarElCampoApellido(String lastName) throws Throwable {
+        addPersonnel.setLastName(lastName);
+    }
+
+    @When("^llenar el campo email (.*)$")
+    public void llenarElCampoEmail(String email) throws Throwable {
+        addPersonnel.setEmail(email);
+    }
+
+    @When("^llenar el campo direccion (.*)$")
+    public void llenarElCampoDireccion(String address) throws Throwable {
+        addPersonnel.setAddress(address);
+    }
+
+    @When("^llenar el campo telefono (.*)$")
+    public void llenarElCampoTelefono(String phone) throws Throwable {
+        addPersonnel.setPhone(phone);
+    }
+    
+    @When("^seleccionar el 'Area' de instalaciones hidricas$")
+    public void seleccionarElAreaDeInstalacionesHidricas() throws Throwable {
+        addPersonnel.setArea();
+    }
+
+    @Then("^click en 'Enviar' el nuevo personal$")
+    public void clickEnEnviarElNuevoPersonal() throws Throwable {
+        Assert.assertTrue(addPersonnel.send(), String.format(ErrorMessage.ERROR_MESSAGE, "Agregar Personal"));
         Thread.sleep(4000);
     }
 }

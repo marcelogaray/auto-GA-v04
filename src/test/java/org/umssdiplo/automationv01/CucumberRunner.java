@@ -11,7 +11,6 @@ import org.umssdiplo.automationv01.core.customwebdriver.ManageDriver;
                 "html:build/cucumber",
                 "json:build/cucumber/cucumber.json",
                 "junit:build/test-report.xml"}
-        ,tags = "@personal"
 )
 public class CucumberRunner extends AbstractTestNGCucumberTests {
     @AfterTest
