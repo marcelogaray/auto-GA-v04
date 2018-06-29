@@ -16,9 +16,3 @@
      And presionar el boton  'guardar' Capacitador
      Then verififcar si el boton crear capacitador es visible
 
-    Scenario: validar el título del formulario de edición de Capacitador
-      Given 'Menu principal' estee cargado
-      And presionar en la opcion 'ProgramSSO' del 'Menu Principal'
-      And presionar en la opcion 'Capacitadores' del 'SubMenu'
-      And presionar el boton 'Editar' de Capacitador
-      Then validar que el título del formulario de edicion de Capacitadores sea 'Modificar capacitador'

@@ -15,19 +15,3 @@
     And presionar el boton 'Atras' del modo edicion de Capacitador
     Then verificar que la lista de capacitadores sea mostrada
 
-
-  #  Scenario: Validar el botón Atrás en modo edicion Capacitador
-   #  Given 'Menu principal' estee cargado
-    #  And presionar en la opcion 'ProgramSSO' del 'Menu Principal'
-   #   And presionar en la opcion 'Capacitadores' del 'SubMenu'
-   #   And presionar el boton 'Editar' de Capacitador
-  #    And editar nombre de Capacitador
-   #   And presionar el boton  'guardar' Capacitador
-   #   Then verififcar si el boton crear capacitador es visible
-
-    Scenario: validar el título del formulario de edición de Capacitador
-      Given 'Menu principal' estee cargado
-      And presionar en la opcion 'ProgramSSO' del 'Menu Principal'
-      And presionar en la opcion 'Capacitadores' del 'SubMenu'
-      And presionar el boton 'Editar' de Capacitador
-      Then validar que el título del formulario de edicion de Capacitadores sea 'Modificar capacitador'
