@@ -16,6 +16,7 @@ import org.umssdiplo.automationv01.core.managepage.ProgramSSO.Resource;
 import org.umssdiplo.automationv01.core.managepage.ProgramSSO.ResourceForm;
 import org.umssdiplo.automationv01.core.managepage.Usuario.FormUser;
 import org.umssdiplo.automationv01.core.managepage.Usuario.ListUser;
+import org.umssdiplo.automationv01.core.managepage.Personnel.PersonnelSearch;
 import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
@@ -28,6 +29,7 @@ public class StepsDefinitionSSID {
     private SubMenuProgramSSO subMenuProgramSSO;
     private Resource resource;
     private IncidentPage incidentPage;
+    private PersonnelSearch personnelSearch;
     private SubMenuEquipment menuEquipamiento;
     private ListEquipment listEquipment;
     private Position position;
@@ -61,7 +63,7 @@ public class StepsDefinitionSSID {
 
     @And("^seleccionar submenu 'Usuario' en menu 'Personal'$")
     public void seleccionarSubMenuUsuario() throws Throwable {
-        listUser = menuPersonal.selectSubMenuUsuario();
+        listUser = menuPersonal.selectSubMenuUser();
     }
 
     @Then("^validar que la 'Lista de Usuarios' este visible$")
@@ -82,6 +84,11 @@ public class StepsDefinitionSSID {
     @And("^registrar usuarios con username, password con los siguiente datos$")
     public void registrarUsuariosConUsernamePasswordYQueEsteenEnEstadoActivado(DataTable usersTable) throws Throwable {
         formUser.createNewUserFromTable(usersTable);
+    }
+
+    @And("^presionar en el Boton de 'Guardar' para guardar la informacion$")
+    public void presionarEnElBotonDeGuardarParaGuardarLaInformacion() throws Throwable {
+        formUser.clickButtonSaveUser();
     }
 
     @And("^Presionar en la opcion 'Incidentes' del 'Menu Principal'$")
@@ -208,8 +215,21 @@ public class StepsDefinitionSSID {
         Assert.assertTrue(listEquipment.checkHeaderListEquipment(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equiment title"));
     }
     //END Equipment
-    @And("^presionar en el Boton de 'Guardar' para guardar la informacion$")
-    public void presionarEnElBotonDeGuardarParaGuardarLaInformacion() throws Throwable {
-        formUser.clickButtonSaveUser();
+
+    @And("^seleccionar submenu 'Personal' en menu 'Personal'$")
+    public void seleccionarSubMenuPersonal() throws Throwable {
+        personnelSearch = menuPersonal.selectSubMenuPersonnel();
+        Assert.assertTrue(personnelSearch.validateInputFindPersonIsVisible());
+    }
+
+    @When("^ingresar (.*) en 'Buscar Personal'$")
+    public void ingresarEnBuscarPersonal(String personal){
+        personnelSearch.setTextFindPerson(personal);
+    }
+
+    @Then("^el resultado de 'Buscar Personal' deberia ser (\\d+)$")
+    public void elResultadoDeBuscarPersonalDeberiaSer(int resultado){
+        int encontrado = personnelSearch.validatePersonnelFound(resultado);
+        Assert.assertEquals(encontrado, resultado);
     }
 }
