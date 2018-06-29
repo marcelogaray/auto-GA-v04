@@ -18,7 +18,6 @@ import org.umssdiplo.automationv01.core.managepage.ProgramSSO.Resource;
 import org.umssdiplo.automationv01.core.managepage.ProgramSSO.ResourceForm;
 import org.umssdiplo.automationv01.core.managepage.Usuario.FormUser;
 import org.umssdiplo.automationv01.core.managepage.Usuario.ListUser;
-import org.umssdiplo.automationv01.core.managepage.Personnel.PersonnelSearch;
 import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
@@ -232,12 +231,12 @@ public class StepsDefinitionSSID {
     }
 
     @When("^ingresar (.*) en 'Buscar Personal'$")
-    public void ingresarEnBuscarPersonal(String personal){
+    public void ingresarEnBuscarPersonal(String personal) {
         personnelSearch.setTextFindPerson(personal);
     }
 
     @Then("^el resultado de 'Buscar Personal' deberia ser (\\d+)$")
-    public void elResultadoDeBuscarPersonalDeberiaSer(int resultado){
+    public void elResultadoDeBuscarPersonalDeberiaSer(int resultado) {
         int encontrado = personnelSearch.validatePersonnelFound(resultado);
         Assert.assertEquals(encontrado, resultado);
     }
