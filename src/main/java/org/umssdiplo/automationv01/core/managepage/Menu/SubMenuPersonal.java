@@ -17,7 +17,7 @@ public class SubMenuPersonal extends BasePage {
     private WebElement subMenuPersonnel;
 
     @FindBy(xpath = "//button[@id='smAssign']")
-    private WebElement smAssignSubMenu;
+    private WebElement subMenuSmAssign;
 
     public SubMenuPersonal() {
         CommonEvents.isVisible(subMenuUser);
@@ -29,7 +29,7 @@ public class SubMenuPersonal extends BasePage {
     }
 
     public FormAssignPersonal selectSubMenuAssignPersonal() {
-        CommonEvents.clickButton(smAssignSubMenu);
+        CommonEvents.clickButton(subMenuSmAssign);
         return new FormAssignPersonal();
     }
 
