@@ -1,6 +1,6 @@
 package org.umssdiplo.automationv01.stepdefinitionproject;
 
-
+import cucumber.api.DataTable;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -10,15 +10,13 @@ import org.umssdiplo.automationv01.core.managepage.Equipment.ListEquipment;
 import org.umssdiplo.automationv01.core.managepage.Home.Home;
 import org.umssdiplo.automationv01.core.managepage.Incident.IncidentPage;
 import org.umssdiplo.automationv01.core.managepage.Login.Login;
-import org.umssdiplo.automationv01.core.managepage.Menu.Menu;
-import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuProgramSSO;
-import org.umssdiplo.automationv01.core.managepage.ProgramSSO.Resource;
-import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuEquipment;
-import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuOrganizationalStructure;
-import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuPersonal;
+import org.umssdiplo.automationv01.core.managepage.Menu.*;
 import org.umssdiplo.automationv01.core.managepage.Position.Position;
+import org.umssdiplo.automationv01.core.managepage.ProgramSSO.Resource;
 import org.umssdiplo.automationv01.core.managepage.ProgramSSO.ResourceForm;
+import org.umssdiplo.automationv01.core.managepage.Usuario.FormUser;
 import org.umssdiplo.automationv01.core.managepage.Usuario.ListUser;
+import org.umssdiplo.automationv01.core.managepage.Personnel.PersonnelSearch;
 import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 import org.umssdiplo.automationv01.core.managepage.Contract.ListContract;
@@ -33,11 +31,13 @@ public class StepsDefinitionSSID {
     private SubMenuProgramSSO subMenuProgramSSO;
     private Resource resource;
     private IncidentPage incidentPage;
+    private PersonnelSearch personnelSearch;
     private SubMenuEquipment menuEquipamiento;
     private ListEquipment listEquipment;
     private Position position;
     private SubMenuOrganizationalStructure subMenuOrganizationalStructure;
     private ResourceForm resourceForm;
+    private FormUser formUser;
     private SubMenuPersonalContract menuPersonalContract;
     private ListContract listContract;
 
@@ -65,14 +65,29 @@ public class StepsDefinitionSSID {
         menuPersonal = menu.selectPersonalSubMenu();
     }
 
-    @And("^Seleccionar submenu 'Usuario' en menu 'Personal'$")
+    @And("^seleccionar submenu 'Usuario' en menu 'Personal'$")
     public void seleccionarSubMenuUsuario() throws Throwable {
-        listUser = menuPersonal.selectSubMenuUsuario();
+        listUser = menuPersonal.selectSubMenuUser();
     }
 
-    @Then("^Validar que la 'Lista de Usuarios' este visible$")
+    @Then("^validar que la 'Lista de Usuarios' este visible$")
     public void validarListaDeUsuarios() throws Throwable {
-        boolean result = listUser.isUserListVisible();
+        Assert.assertTrue(listUser.isUserListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Usuario"));
+    }
+
+    @And("^hacer clic en el boton 'Agregar Nuevo Usuario'$")
+    public void hacerClicEnElBotonAgregarNuevoUsuario() throws Throwable {
+        listUser.clickButtonAddNewUser();
+    }
+
+    @When("^formulario de 'Registro Nuevo Usuario' este cargado$")
+    public void formularioDeRegistroNuevoUsuarioEsteeCargado() throws Throwable {
+        formUser = listUser.isFormUserVisible();
+    }
+
+    @And("^registrar usuarios con username, password con los siguiente datos$")
+    public void registrarUsuariosConUsernamePasswordYQueEsteenEnEstadoActivado(DataTable usersTable) throws Throwable {
+        formUser.createNewUserFromTable(usersTable);
     }
 
     @And("^Presionar en la opcion 'Incidentes' del 'Menu Principal'$")
@@ -98,7 +113,7 @@ public class StepsDefinitionSSID {
 
     @Then("^validar si columna 'Costo' es visible en la pagina 'Recursos'$")
     public void visibilityCostHeader() throws Throwable {
-        Assert.assertTrue(resource.validateHeaderCostIsVisible(),  String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "columna 'Costo'"));
+        Assert.assertTrue(resource.validateHeaderCostIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "columna 'Costo'"));
     }
 
     @And("^validar si columna 'Detalle' es visible en la pagina 'Recursos'$")
@@ -192,6 +207,28 @@ public class StepsDefinitionSSID {
     public void validarListaDeEquipamientos() throws Throwable {
         Assert.assertTrue(listEquipment.isEquipmentListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
     }
+
+    @And("^seleccionar submenu 'Personal' en menu 'Personal'$")
+    public void seleccionarSubMenuPersonal() throws Throwable {
+        personnelSearch = menuPersonal.selectSubMenuPersonnel();
+        Assert.assertTrue(personnelSearch.validateInputFindPersonIsVisible());
+    }
+
+    @When("^ingresar (.*) en 'Buscar Personal'$")
+    public void ingresarEnBuscarPersonal(String personal){
+        personnelSearch.setTextFindPerson(personal);
+    }
+
+    @Then("^el resultado de 'Buscar Personal' deberia ser (\\d+)$")
+    public void elResultadoDeBuscarPersonalDeberiaSer(int resultado){
+        int encontrado = personnelSearch.validatePersonnelFound(resultado);
+        Assert.assertEquals(encontrado, resultado);
+    }
+
+    @And("^presionar en el Boton de 'Guardar' para guardar la informacion$")
+    public void presionarEnElBotonDeGuardarParaGuardarLaInformacion() throws Throwable {
+        formUser.clickButtonSaveUser();
+    }
     @Given("^menu principal este cargado en pagina de inicio$")
     public void seleccionarPaginaInicio() throws Throwable {
         menu = home.getHomeMenu();
@@ -211,6 +248,5 @@ public class StepsDefinitionSSID {
     public void validarListaDeContratos() throws Throwable {
         boolean result = listContract.validateContractList();
         Assert.assertTrue(result, String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Contract List"));
-
     }
 }
