@@ -22,6 +22,7 @@ import org.umssdiplo.automationv01.core.utils.LoadPage;
 import org.umssdiplo.automationv01.core.managepage.Trainer.CreateTrainer;
 import org.umssdiplo.automationv01.core.managepage.Trainer.EditTrainer;
 import org.umssdiplo.automationv01.core.managepage.Trainer.ListTrainer;
+import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuTrainer;
 
 public class StepsDefinitionSSID {
     private Login login;
