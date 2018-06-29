@@ -25,7 +25,7 @@ public class SubMenuPersonal extends BasePage {
     }
 
     public boolean selectSubMenuPersonnel() {
-        boolean res = CommonEvents.isVisible(subMenuUser);
+        boolean res = CommonEvents.isVisible(subMenuPersonnel);
         if (res) {
             CommonEvents.clickButton(subMenuPersonnel);
         }
