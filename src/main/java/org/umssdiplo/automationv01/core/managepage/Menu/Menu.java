@@ -52,7 +52,7 @@ public class Menu extends BasePage {
         return new SubMenuEquipment();
     }
 
-    public SubMenuPersonalContract selectPersonalSubMenuContract() {
+    public SubMenuPersonalContract selectSubMenuPersonalContract() {
         CommonEvents.clickButton(menuPersonal);
         return new SubMenuPersonalContract();
     }

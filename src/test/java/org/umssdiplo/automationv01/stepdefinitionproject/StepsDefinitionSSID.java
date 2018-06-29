@@ -250,7 +250,7 @@ public class StepsDefinitionSSID {
 
     @And("^seleccionar la opcion 'Personal' en la pagina 'menu principal'$")
     public void menuPersonalSeleccionado() throws Throwable {
-        menuPersonalContract = menu.selectPersonalSubMenuContract();
+        menuPersonalContract = menu.selectSubMenuPersonalContract();
     }
 
     @And("^seleccionar el submenu 'Contratos' del menu 'Personal'$")
@@ -260,7 +260,6 @@ public class StepsDefinitionSSID {
 
     @Then("^validar que la 'Lista de Contratos' este visible$")
     public void validarListaDeContratos() throws Throwable {
-        boolean result = listContract.validateContractList();
-        Assert.assertTrue(result, String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Contract List"));
+        Assert.assertTrue(listContract.validateContractList(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Contract List"));
     }
 }
