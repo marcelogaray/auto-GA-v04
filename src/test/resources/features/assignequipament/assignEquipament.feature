@@ -8,5 +8,5 @@ Feature: Verificar si formulario de asignacion se muestra
   Scenario: Verificar la creacion de usuarios desde 'Formulario de Usuario'
     Given 'Menu principal' estee cargado
     And seleccionar menu 'Personal' en la pagina 'Menu Principal'
-    And Seleccionar submenu 'Asignacion' en menu 'Personal'
-    Then Verificar que el 'Formulario de Asignacion Personal' es visible
+    And seleccionar submenu 'Asignacion' en menu 'Personal'
+    Then verificar que el 'Formulario de Asignacion Personal' es visible
