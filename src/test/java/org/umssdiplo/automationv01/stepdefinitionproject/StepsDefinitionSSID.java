@@ -6,6 +6,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.testng.Assert;
+import org.umssdiplo.automationv01.core.managepage.Contract.ListContract;
 import org.umssdiplo.automationv01.core.managepage.Equipment.ListEquipment;
 import org.umssdiplo.automationv01.core.managepage.Home.Home;
 import org.umssdiplo.automationv01.core.managepage.Incident.IncidentPage;
@@ -19,11 +20,8 @@ import org.umssdiplo.automationv01.core.managepage.ProgramSSO.ResourceForm;
 import org.umssdiplo.automationv01.core.managepage.StructureOrganizational.StructureOrganizational;
 import org.umssdiplo.automationv01.core.managepage.Usuario.FormUser;
 import org.umssdiplo.automationv01.core.managepage.Usuario.ListUser;
-import org.umssdiplo.automationv01.core.managepage.Equipment.ListEquipment;
 import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
-import org.umssdiplo.automationv01.core.managepage.Contract.ListContract;
-import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuPersonalContract;
 
 public class StepsDefinitionSSID {
     private Login login;
@@ -308,7 +306,7 @@ public class StepsDefinitionSSID {
     public void validarListaDeContratos() throws Throwable {
         Assert.assertTrue(listContract.validateContractList(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Contract List"));
     }
-}
+
     @And("^verificar que se cargue la cabecera 'Nombre cargo' en la tabla de lista de cargos$")
     public void verificarQueSeCargueLaCabeceraNombreCargoEnLaTablaDeListaDeCargos() throws Throwable {
         Assert.assertTrue(position.validHeaderNamePositionList(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Header 'Nombre' position list"));
