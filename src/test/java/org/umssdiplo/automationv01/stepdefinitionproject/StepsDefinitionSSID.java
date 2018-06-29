@@ -1,6 +1,5 @@
 package org.umssdiplo.automationv01.stepdefinitionproject;
 
-import cucumber.api.DataTable;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -65,29 +64,14 @@ public class StepsDefinitionSSID {
         menuPersonal = menu.selectPersonalSubMenu();
     }
 
-    @And("^seleccionar submenu 'Usuario' en menu 'Personal'$")
+    @And("^Seleccionar submenu 'Usuario' en menu 'Personal'$")
     public void seleccionarSubMenuUsuario() throws Throwable {
-        listUser = menuPersonal.selectSubMenuUser();
+        listUser = menuPersonal.selectSubMenuUsuario();
     }
 
-    @Then("^validar que la 'Lista de Usuarios' este visible$")
+    @Then("^Validar que la 'Lista de Usuarios' este visible$")
     public void validarListaDeUsuarios() throws Throwable {
-        Assert.assertTrue(listUser.isUserListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Usuario"));
-    }
-
-    @And("^hacer clic en el boton 'Agregar Nuevo Usuario'$")
-    public void hacerClicEnElBotonAgregarNuevoUsuario() throws Throwable {
-        listUser.clickButtonAddNewUser();
-    }
-
-    @When("^formulario de 'Registro Nuevo Usuario' este cargado$")
-    public void formularioDeRegistroNuevoUsuarioEsteeCargado() throws Throwable {
-        formUser = listUser.isFormUserVisible();
-    }
-
-    @And("^registrar usuarios con username, password con los siguiente datos$")
-    public void registrarUsuariosConUsernamePasswordYQueEsteenEnEstadoActivado(DataTable usersTable) throws Throwable {
-        formUser.createNewUserFromTable(usersTable);
+        boolean result = listUser.isUserListVisible();
     }
 
     @And("^Presionar en la opcion 'Incidentes' del 'Menu Principal'$")
@@ -113,7 +97,7 @@ public class StepsDefinitionSSID {
 
     @Then("^validar si columna 'Costo' es visible en la pagina 'Recursos'$")
     public void visibilityCostHeader() throws Throwable {
-        Assert.assertTrue(resource.validateHeaderCostIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "columna 'Costo'"));
+        Assert.assertTrue(resource.validateHeaderCostIsVisible(),  String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "columna 'Costo'"));
     }
 
     @And("^validar si columna 'Detalle' es visible en la pagina 'Recursos'$")
@@ -206,47 +190,5 @@ public class StepsDefinitionSSID {
     @Then("^Verificar que la 'Lista de Equipamientos' este visible$")
     public void validarListaDeEquipamientos() throws Throwable {
         Assert.assertTrue(listEquipment.isEquipmentListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
-    }
-
-    @And("^seleccionar submenu 'Personal' en menu 'Personal'$")
-    public void seleccionarSubMenuPersonal() throws Throwable {
-        personnelSearch = menuPersonal.selectSubMenuPersonnel();
-        Assert.assertTrue(personnelSearch.validateInputFindPersonIsVisible());
-    }
-
-    @When("^ingresar (.*) en 'Buscar Personal'$")
-    public void ingresarEnBuscarPersonal(String personal){
-        personnelSearch.setTextFindPerson(personal);
-    }
-
-    @Then("^el resultado de 'Buscar Personal' deberia ser (\\d+)$")
-    public void elResultadoDeBuscarPersonalDeberiaSer(int resultado){
-        int encontrado = personnelSearch.validatePersonnelFound(resultado);
-        Assert.assertEquals(encontrado, resultado);
-    }
-
-    @And("^presionar en el Boton de 'Guardar' para guardar la informacion$")
-    public void presionarEnElBotonDeGuardarParaGuardarLaInformacion() throws Throwable {
-        formUser.clickButtonSaveUser();
-    }
-    @Given("^menu principal este cargado en pagina de inicio$")
-    public void seleccionarPaginaInicio() throws Throwable {
-        menu = home.getHomeMenu();
-    }
-
-    @And("^seleccionar la opcion 'Personal' en la pagina 'menu principal'$")
-    public void menuPersonalSeleccionado() throws Throwable {
-        menuPersonalContract = menu.selectPersonalSubMenuContract();
-    }
-
-    @And("^seleccionar el submenu 'Contratos' del menu 'Personal'$")
-    public void seleccionarContratos() throws Throwable {
-        listContract = menuPersonalContract.selectSubMenuContract();
-    }
-
-    @Then("^validar que la 'Lista de Contratos' este visible$")
-    public void validarListaDeContratos() throws Throwable {
-        boolean result = listContract.validateContractList();
-        Assert.assertTrue(result, String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Contract List"));
     }
 }
