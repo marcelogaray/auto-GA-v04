@@ -119,7 +119,7 @@ public class StepsDefinitionSSID {
     //Structure organizational
     @And("^seleccionar la opcion 'Estructura organizacional' en el sub menu de 'Estructura organizacional'$")
     public void seleccionarLaOpcionEstructuraOrganizacionalEnElSubMenuDeEstructuraOrganizacional() throws Throwable {
-        structureOrganizational = subMenuOrganizationalStructure.clickOrganizationalStrucureSubMenu();
+        structureOrganizational = subMenuOrganizationalStructure.clickSubMenuOrganizationalStrucure();
     }
 
     @Then("^verificar que el boton 'Departamentos' este cargado en la pagina 'Estructura organizacional'$")
@@ -153,7 +153,7 @@ public class StepsDefinitionSSID {
     }
 
     //Verify header positions list
-    @Then("^Verificar que se cargue el listado de cargos en la pagina 'Cargos de la empresa'$")
+    @Then("^verificar que se cargue el listado de cargos en la pagina 'Cargos de la empresa'$")
     public void verificarQueSeCargueElListadoDeCargosEnLaPaginaCargosDeLaEmpresa() throws Throwable {
         Assert.assertTrue(position.validListPositions(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Positions table list"));
     }
