@@ -8,45 +8,55 @@ import org.umssdiplo.automationv01.core.utils.CommonEvents;
 public class FormEquipment extends BasePage {
 
     @FindBy(id = "newEquipment")
-    private WebElement newEquipmentBtn;
+    private WebElement buttonNewEquipment;
 
     @FindBy(id = "nombreEquipment")
-    private WebElement equipmentName;
+    private WebElement inputEquipmentName;
 
     @FindBy(id= "typeEquipment")
-    private WebElement equipmentType;
-
-    @FindBy(id="mat-option-1")
-    private WebElement equipmentSelectType;
+    private WebElement selectEquipmentType;
 
     @FindBy(id="descEquipment")
-    private WebElement equipmentDesc;
+    private WebElement textAreaEquipmentDesc;
 
     @FindBy(id="imageEquipment")
-    private WebElement equipmentImage;
+    private WebElement fileEquipmentImage;
 
     public FormEquipment() {
-        CommonEvents.isVisible(newEquipmentBtn);
+        CommonEvents.isVisible(buttonNewEquipment);
     }
 
-   public boolean checkFieldsForm() {
-       return checkFieldName() && checkFieldType() && checkFieldDesc()&&checkFieldImage();
-   }
 
-    private boolean checkFieldName() {
-       return CommonEvents.isVisible(equipmentName);
+    public boolean verifyInputNameForm() {
+        return checkFieldName();
     }
 
-    private boolean checkFieldType() {
-       return CommonEvents.isVisible(equipmentType);
+    public boolean verifyInputTypeForm() {
+        return checkFieldType();
     }
 
-    private boolean checkFieldDesc() {
-       return CommonEvents.isVisible(equipmentDesc);
+    public boolean verifyInputDescriptionForm() {
+        return checkFieldDesc();
     }
 
-    private boolean checkFieldImage() {
-       return CommonEvents.isVisible(equipmentImage);
+    public boolean verifyInputImageForm() {
+        return checkFieldImage();
+    }
+
+    public boolean checkFieldName() {
+       return CommonEvents.isVisible(inputEquipmentName);
+    }
+
+    public boolean checkFieldType() {
+       return CommonEvents.isVisible(selectEquipmentType);
+    }
+
+    public boolean checkFieldDesc() {
+       return CommonEvents.isVisible(textAreaEquipmentDesc);
+    }
+
+    public boolean checkFieldImage() {
+       return CommonEvents.isVisible(fileEquipmentImage);
     }
 
 }

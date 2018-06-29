@@ -8,13 +8,13 @@ import org.umssdiplo.automationv01.core.utils.CommonEvents;
 public class ListEquipment extends BasePage {
 
     @FindBy(id = "crearEquipment")
-    private WebElement btnCrearEquipment;
+    private WebElement buttonCreateEquipment;
 
     @FindBy(className = "mat-table")
     private WebElement tableEquipments;
 
     public ListEquipment() {
-        CommonEvents.isVisible(btnCrearEquipment);
+        CommonEvents.isVisible(buttonCreateEquipment);
     }
 
     public boolean isEquipmentListVisible() {
@@ -22,7 +22,7 @@ public class ListEquipment extends BasePage {
     }
 
     public void createNewEquipment() {
-        CommonEvents.clickButton(btnCrearEquipment);
+        CommonEvents.clickButton(buttonCreateEquipment);
     }
 
     public FormEquipment isFormEquipmentVisible() {

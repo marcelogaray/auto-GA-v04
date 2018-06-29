@@ -10,4 +10,7 @@ Feature: Check fields creation
     And Seleccionar submenu 'Equipamiento' en menu 'Equipamiento'
     And Hacer Click en el boton 'Crear nuevo Equipamiento'
     When Formulario de 'Registro de nuevo Equipamiento' esta cargado
-    Then Validar componentes del 'Formulario de creación de Equipamiento' cargados
+    Then Verificar componente 'Nombre' del 'Formulario de creación de Equipamiento' cargado
+    And Verificar componente 'Tipo' del 'Formulario de creación de Equipamiento' cargado
+    And Verificar componente 'Descripcion' del 'Formulario de creación de Equipamiento' cargado
+    And Verificar componente 'Imagen' del 'Formulario de creación de Equipamiento' cargado
