@@ -62,9 +62,8 @@ public class ListContract extends BasePage {
         return CommonEvents.isVisible(btnBackListcontract);
     }
 
-    public boolean selectBtnBackContarct(){
+    public void selectBtnBackContarct(){
         CommonEvents.clickButton(btnBackList);
-        return CommonEvents.isVisible(btnBackList);
     }
 
     public String getTitle() {return CommonEvents.getTextContent(titleContract); }

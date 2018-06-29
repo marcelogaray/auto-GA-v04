@@ -7,11 +7,11 @@ Feature: Find Contract
     And Ingresar los credenciales validos en la pagina 'Login' para ingresar al sistema
 
   Scenario: Verificar lista de Contratos este correctamente cargado
-    Given menu principal este cargado en pagina de Inicio
+    Given menu principal este cargado en pagina de inicio
     And seleccionar la opcion 'Personal' en la pagina 'menu principal'
     And seleccionar el submenu 'Contratos' del menu 'Personal'
     And mostrar 'Lista de Contratos'
     And llenar la opcion filtro de contrato
-      | contractCodes |
+      | contractCode |
       | 101         |
     Then validar que la 'Lista de Contratos' este visible mostrando el filtro ingresado

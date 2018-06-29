@@ -75,7 +75,7 @@ public class FormContract extends BasePage {
     }
 
     public void findContractList(List<Map<String, String>> data) {
-        CommonEvents.setInputField(fillContract, data.get(0).get("contractCodes"));
+        CommonEvents.setInputField(fillContract, data.get(0).get("contractCode"));
     }
 
     public void selectCityContract(){

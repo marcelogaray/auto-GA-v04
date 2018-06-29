@@ -306,9 +306,9 @@ public class StepsDefinitionSSID {
 
     @And("^llenar la opcion filtro de contrato$")
     public void llenarfiltroBusqueda(DataTable tables) throws Throwable {
-        List<Map<String, String>> lista = tables.asMaps(String.class, String.class);
+        List<Map<String, String>> data = tables.asMaps(String.class, String.class);
         formContract = new FormContract();
-        formContract.editContractRegistration(lista);
+        formContract.findContractList(data);
     }
 
     @Then("^validar que la 'Lista de Contratos' este visible mostrando el filtro ingresado$")
@@ -338,7 +338,7 @@ public class StepsDefinitionSSID {
 
     @And("^seleccionar el boton 'Atras' del formulario creacion de contratos$")
     public void seleccionBtnAtrasContract(){
-        Assert.assertTrue(listContract.selectBtnBackContarct(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Button Back Add Contract"));
+        listContract.selectBtnBackContarct();
     }
 
     @Then("^validar que el título del formulario de creación contratos sea 'Nuevo Contrato'$")
