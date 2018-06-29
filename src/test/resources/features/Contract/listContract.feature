@@ -6,7 +6,7 @@ Feature: List Contract
     Given 'SSI-D' pagina de inicio de sesion es cargada
     And Ingresar los credenciales validos en la pagina 'Login' para ingresar al sistema
 
-  Scenario: verificar lista de vontratos este correctamente cargado
+  Scenario: verificar lista de contratos este correctamente cargado
     Given menu principal este cargado en pagina de inicio
     And seleccionar la opcion 'Personal' en la pagina 'menu principal'
     And seleccionar el submenu 'Contratos' del menu 'Personal'
