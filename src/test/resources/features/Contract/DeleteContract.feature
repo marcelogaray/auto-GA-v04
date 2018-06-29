@@ -8,8 +8,8 @@ Feature: Delete Contract
 
   Scenario: Verificar lista de Contratos este correctamente cargado
     Given menu principal este cargado en pagina de Inicio
-    And seleccionar menu 'Personal' para contract en la pagina 'Menu Principal'
-    And seleccionar submenu 'Contratos' en menu 'Personal'
+    And seleccionar la opcion 'Personal' en la pagina 'menu principal'
+    And seleccionar el submenu 'Contratos' del menu 'Personal'
     And mostrar 'Lista de Contratos'
     And seleccionar boton Eliminar del primer item lista contratos
     Then validar que la 'Lista de Contratos' este visible sin el item eliminado

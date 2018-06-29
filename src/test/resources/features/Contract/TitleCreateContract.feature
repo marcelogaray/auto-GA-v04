@@ -8,8 +8,8 @@ Feature: Title create Contract
 
   Scenario: Agregar nuevo contrato
     Given menu principal este cargado en pagina de Inicio
-    And seleccionar menu 'Personal' para contract en la pagina 'Menu Principal'
-    And seleccionar submenu 'Contratos' en menu 'Personal'
+    And seleccionar la opcion 'Personal' en la pagina 'menu principal'
+    And seleccionar el submenu 'Contratos' del menu 'Personal'
     And mostrar 'Lista de Contratos'
     And seleccionar boton Agregar Nuevo Contrato del Area de contratos
     Then validar que el título del formulario de creación contratos sea 'Nuevo Contrato'

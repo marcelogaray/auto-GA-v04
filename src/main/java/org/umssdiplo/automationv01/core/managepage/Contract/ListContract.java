@@ -8,64 +8,64 @@ import org.umssdiplo.automationv01.core.utils.CommonEvents;
 public class ListContract extends BasePage {
 
     @FindBy(id = "ContractTable")
-    private WebElement paginElement;
+    private WebElement pageContract;
 
     @FindBy(id = "btnAgregarContrato")
-    private WebElement btnAgregarContrato;
+    private WebElement btnAddContract;
 
     @FindBy(id = "editarContract")
-    private WebElement btnEditar;
+    private WebElement btnEditContract;
 
     @FindBy(id = "eliminarContract")
-    private WebElement btnEliminar;
+    private WebElement btnDeleteContract;
 
     @FindBy(xpath = "//button[@class='mat-paginator-navigation-next mat-icon-button']")
-    private WebElement btnSig;
+    private WebElement btnNextListcontract;
 
     @FindBy(xpath = "//button[@class='mat-paginator-navigation-previous mat-icon-button']")
-    private WebElement btnAnt;
+    private WebElement btnBackListcontract;
 
     @FindBy(id = "btnAtras")
-    private WebElement btnAtras;
+    private WebElement btnBackList;
 
     @FindBy(id = "titleCreateContract")
     private WebElement titleContract;
 
     public ListContract() {
-        CommonEvents.isVisible(btnAgregarContrato);
+        CommonEvents.isVisible(btnAddContract);
     }
 
-    public boolean isContractListVisible() {
-        return CommonEvents.isVisible(paginElement);
+    public boolean validateContractList() {
+        return CommonEvents.isVisible(pageContract);
     }
 
-    public FormContract seleccionarBoton() {
-        CommonEvents.clickButton(btnAgregarContrato);
+    public FormContract selectBtnAddContract() {
+        CommonEvents.clickButton(btnAddContract);
         return new FormContract();
     }
-    public FormContract btnEditar() {
-        CommonEvents.clickButton(btnEditar);
-        return new FormContract();
-    }
-
-    public FormContract btnEliminar() {
-        CommonEvents.clickButton(btnEliminar);
+    public FormContract selectBtnEditContract() {
+        CommonEvents.clickButton(btnEditContract);
         return new FormContract();
     }
 
-    public void seleccionSiguiente(){
-        CommonEvents.clickButton(btnSig);
+    public FormContract selectBtnDeleteContract() {
+        CommonEvents.clickButton(btnDeleteContract);
+        return new FormContract();
     }
 
-    public void seleccionAnterior(){
-        CommonEvents.clickButton(btnAnt);
+    public void selectNextListcontract(){
+        CommonEvents.clickButton(btnNextListcontract);
     }
 
-    public void seleccionBtnAtrasContract(){
-        CommonEvents.clickButton(btnAtras);
+    public void selectBackListcontract(){
+        CommonEvents.clickButton(btnBackListcontract);
     }
 
-    public String getTitulo(){
+    public void selectBtnBackContarct(){
+        CommonEvents.clickButton(btnBackList);
+    }
+
+    public String getTitle(){
         return CommonEvents.getTextContent(titleContract);
     }
 }

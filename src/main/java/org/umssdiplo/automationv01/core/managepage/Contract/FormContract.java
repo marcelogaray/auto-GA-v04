@@ -10,87 +10,91 @@ import java.util.Map;
 public class FormContract extends BasePage {
 
     @FindBy(id = "mat-input-3")
-    private WebElement contractCode;
+    private WebElement inputCodeContract;
 
     @FindBy(id = "mat-select-1")
-    private WebElement contractCity;
+    private WebElement inputCityContract;
 
     @FindBy(id = "mat-option-5")
-    private WebElement seleccionCity;
+    private WebElement selectCityContract;
 
     @FindBy(id = "mat-input-4")
-    private WebElement contractDescription;
+    private WebElement inputDescriptionContract;
 
     @FindBy(id = "mat-select-2")
-    private WebElement contractType;
+    private WebElement inputTypeContract;
 
     @FindBy(id = "mat-option-14")
-    private WebElement seleccionType;
+    private WebElement selectTypeContract;
 
     @FindBy(id = "mat-input-6")
-    private WebElement contractDate;
+    private WebElement inputDateContract;
 
     @FindBy(id = "mat-input-5")
-    private WebElement contractSalary;
+    private WebElement inputSalaryContract;
 
     @FindBy(id = "btnEnviarContract")
-    private WebElement enviar;
+    private WebElement btnSendContract;
 
     @FindBy(id = "mat-input-4")
-    private WebElement contractCodeEdit;
+    private WebElement inputCodeEditContract;
 
     @FindBy(id = "mat-input-5")
-    private WebElement contractDescriptionEdit;
+    private WebElement inputDescriptionEditContract;
 
     @FindBy(id = "mat-input-6")
-    private WebElement contractSalaryEdit;
+    private WebElement inputSalaryEditContract;
 
     @FindBy(id = "mat-input-7")
-    private WebElement contractDateEdit;
+    private WebElement inputDateEditContract;
 
     @FindBy(id = "btnEnviarEdit")
-    private WebElement enviarEdit;
+    private WebElement btnSendEdit;
 
     @FindBy(id = "find-contract")
-    private WebElement filtro;
+    private WebElement fillContract;
 
-    public void registerContract(List<Map<String, String>> data){
-        CommonEvents.setInputField(contractCode, data.get(0).get("contractCodes"));
-        CommonEvents.setInputField(contractDescription, data.get(0).get("contractDescriptions"));
-        CommonEvents.setInputField(contractSalary, data.get(0).get("contractSalarys"));
-        CommonEvents.setInputField(contractDate, data.get(0).get("contractDates"));
-        seleccionarTypeContract();
-        seleccionCityContract();
+    public FormContract() {}
+
+    public void newContractRegistration(List<Map<String, String>> data){
+        CommonEvents.setInputField(inputCodeContract, data.get(0).get("contractCodes"));
+        CommonEvents.setInputField(inputDescriptionContract, data.get(0).get("contractDescriptions"));
+        CommonEvents.setInputField(inputSalaryContract, data.get(0).get("contractSalarys"));
+        CommonEvents.setInputField(inputDateContract, data.get(0).get("contractDates"));
+        selectTypeContract();
+        selectCityContract();
     }
 
-    public void registerContractEdit(List<Map<String, String>> data){
-        CommonEvents.setInputField(contractCodeEdit, data.get(0).get("contractCodesEdit"));
-        CommonEvents.setInputField(contractDescriptionEdit, data.get(0).get("contractDescriptionsEdit"));
-        CommonEvents.setInputField(contractSalaryEdit, data.get(0).get("contractSalarysEdit"));
-        CommonEvents.setInputField(contractDateEdit, data.get(0).get("contractDatesEdit"));
-        seleccionarTypeContract();
-        seleccionCityContract();
+    public void editContractRegistration(List<Map<String, String>> data){
+        CommonEvents.setInputField(inputCodeEditContract, data.get(0).get("contractCodesEdit"));
+        CommonEvents.setInputField(inputDescriptionEditContract, data.get(0).get("contractDescriptionsEdit"));
+        CommonEvents.setInputField(inputSalaryEditContract, data.get(0).get("contractSalarysEdit"));
+        CommonEvents.setInputField(inputDateEditContract, data.get(0).get("contractDatesEdit"));
+        selectTypeContract();
+        selectCityContract();
     }
 
-    public void registerContractFind(List<Map<String, String>> data) {
-        CommonEvents.setInputField(filtro, data.get(0).get("contractCodes"));
+    public void findContractList(List<Map<String, String>> data) {
+        CommonEvents.setInputField(fillContract, data.get(0).get("contractCodes"));
     }
 
-    public void seleccionCityContract(){
-        CommonEvents.clickButton(contractCity);
-        seleccionCity.click();
+    public void selectCityContract(){
+        CommonEvents.clickButton(inputCityContract);
+        selectCityContract.click();
     }
 
-    public void seleccionarTypeContract(){
-        CommonEvents.clickButton(contractType);
-        seleccionType.click();
+    public void selectTypeContract(){
+        CommonEvents.clickButton(inputTypeContract);
+        selectTypeContract.click();
     }
 
-    public void enviarFormulario(){
-        CommonEvents.clickButton(enviar);
+    public boolean btnSendForm(){
+        CommonEvents.clickButton(btnSendContract);
+        return  CommonEvents.isVisible(btnSendContract);
     }
 
-    public void enviarFormularioEdit(){
-        CommonEvents.clickButton(enviarEdit);
+    public boolean btnSendFormEdit(){
+        CommonEvents.clickButton(btnSendEdit);
+        return CommonEvents.isVisible(btnSendEdit);
     }
 }

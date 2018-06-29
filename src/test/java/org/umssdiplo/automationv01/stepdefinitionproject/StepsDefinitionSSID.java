@@ -126,97 +126,97 @@ public class StepsDefinitionSSID {
         menu = home.getHomeMenu();
     }
 
-    @And("^seleccionar menu 'Personal' para contract en la pagina 'Menu Principal'$")
+    @And("^seleccionar la opcion 'Personal' en la pagina 'menu principal'$")
     public void menuPersonalSeleccionado() throws Throwable {
         menuPersonalContract = menu.selectPersonalSubMenuContract();
     }
 
-    @And("^seleccionar submenu 'Contratos' en menu 'Personal'$")
+    @And("^seleccionar el submenu 'Contratos' del menu 'Personal'$")
     public void seleccionarContratos() throws Throwable {
         listContract = menuPersonalContract.selectSubMenuContract();
     }
 
     @Then("^validar que la 'Lista de Contratos' este visible$")
     public void validarListaDeContratos() throws Throwable {
-        boolean result = listContract.isContractListVisible();
+        Assert.assertTrue(listContract.validateContractList(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Contract List"));
     }
 
     @And("^mostrar 'Lista de Contratos'$")
     public void validarContratos() throws Throwable {
-        boolean result = listContract.isContractListVisible();
+        Assert.assertTrue(listContract.validateContractList(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Contract List"));
     }
 
     @And("^seleccionar boton Agregar Nuevo Contrato del Area de contratos$")
     public void seleccionarAgregarContrato() throws Throwable {
-        formContract = listContract.seleccionarBoton();
+        formContract = listContract.selectBtnAddContract();
     }
 
     @And("^llenar 'formulario de Contrato Nuevo'$")
     public void llenarformulariodeContratoNuevo(DataTable table) throws Throwable {
         List<Map<String, String>> data = table.asMaps(String.class, String.class);
-        formContract.registerContract(data);
+        formContract.newContractRegistration(data);
     }
 
-    @And("^seleccionar Boton 'Enviar' para grabar los datos del formulario$")
+    @Then("^seleccionar Boton 'Enviar' para grabar los datos del formulario$")
     public void SeleccionarBotonformulario() throws Throwable {
-        formContract.enviarFormulario();
+        Assert.assertTrue(formContract.btnSendForm(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Send Form Add"));
     }
 
     @And("^seleccionar boton Editar del primer item lista contratos$")
     public void seleccionarEditar() throws Throwable {
-        formContract = listContract.btnEditar();
+        formContract = listContract.selectBtnEditContract();
     }
 
     @And("^modificar datos del 'formulario de Contrato a Editar'$")
     public void llenarformulariodeContratoEdit(DataTable table) throws Throwable {
         List<Map<String, String>> data = table.asMaps(String.class, String.class);
-        formContract.registerContractEdit(data);
+        formContract.editContractRegistration(data);
     }
 
-    @And("^seleccionar boton 'Enviar' para grabar los datos editados del formulario$")
-    public void SeleccionarBotonformularioEdit() throws Throwable {
-        formContract.enviarFormularioEdit();
+    @Then("^seleccionar boton 'Enviar' para grabar los datos editados del formulario$")
+    public void SeleccionarBotonformularioEditar() throws Throwable {
+        Assert.assertTrue(formContract.btnSendFormEdit(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Send Form Edit"));
     }
 
     @And("^llenar la opcion filtro de contrato$")
     public void llenarfiltroBusqueda(DataTable tables) throws Throwable {
         List<Map<String, String>> lista = tables.asMaps(String.class, String.class);
         formContract = new FormContract();
-        formContract.registerContractFind(lista);
+        formContract.editContractRegistration(lista);
     }
 
     @Then("^validar que la 'Lista de Contratos' este visible mostrando el filtro ingresado$")
     public void listaFiltrada() throws Throwable {
-        boolean resultFind = listContract.isContractListVisible();
+        Assert.assertTrue(listContract.validateContractList(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Contract List Fill"));
     }
 
     @And("^seleccionar boton Eliminar del primer item lista contratos$")
     public void seleccionarEliminar() throws Throwable {
-        formContract = listContract.btnEliminar();
+        formContract = listContract.selectBtnDeleteContract();
     }
 
     @Then("^validar que la 'Lista de Contratos' este visible sin el item eliminado$")
-    public void listaEliminados() throws Throwable {
-        boolean resultDelete = listContract.isContractListVisible();
+    public void listaContratoActualizado() throws Throwable {
+        Assert.assertTrue(listContract.validateContractList(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Contract List Delete"));
     }
 
     @When("^seleccionar en boton siguiente de la lista$")
-    public  void seleccionarSiguienteContract(){
-        listContract.seleccionSiguiente();
+    public  void seleccionarSiguienteListaContrato(){
+        listContract.selectNextListcontract();
     }
 
     @And("^seleccionar en boton de anterior de la lista$")
-    public void seleccionAnteriorContract(){
-        listContract.seleccionAnterior();
+    public void seleccionAnteriorListaContrato(){
+        listContract.selectBackListcontract();
     }
 
     @And("^seleccionar el boton 'Atras' del formulario creacion de contratos$")
     public void seleccionBtnAtrasContract(){
-        listContract.seleccionBtnAtrasContract();
+        listContract.selectBtnBackContarct();
     }
 
     @Then("^validar que el título del formulario de creación contratos sea 'Nuevo Contrato'$")
     public void validarTitulo() throws Throwable {
-        Assert.assertTrue(listContract.getTitulo().equals("Nuevo Contrato"),String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Contract Title") );
+        Assert.assertTrue(listContract.getTitle().equals("Nuevo Contrato"),String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Contract Title") );
     }
 }

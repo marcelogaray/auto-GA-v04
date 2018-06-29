@@ -8,12 +8,12 @@ Feature: Create Contract
 
   Scenario: Agregar nuevo contrato
     Given menu principal este cargado en pagina de Inicio
-    And seleccionar menu 'Personal' para contract en la pagina 'Menu Principal'
-    And seleccionar submenu 'Contratos' en menu 'Personal'
+    And seleccionar la opcion 'Personal' en la pagina 'menu principal'
+    And seleccionar el submenu 'Contratos' del menu 'Personal'
     And mostrar 'Lista de Contratos'
     And seleccionar boton Agregar Nuevo Contrato del Area de contratos
     And llenar 'formulario de Contrato Nuevo'
       | contractCodes | contractDescriptions   | contractSalarys | contractDates     |
-      | 0002         | contrato seguro            | 3800           | 06/22/2018        |
-     And seleccionar Boton 'Enviar' para grabar los datos del formulario
+      | 111         | contrato seguro            | 3800           | 06/22/2018        |
+    Then seleccionar Boton 'Enviar' para grabar los datos del formulario
 
