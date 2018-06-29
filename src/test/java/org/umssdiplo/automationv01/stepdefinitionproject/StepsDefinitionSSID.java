@@ -86,6 +86,11 @@ public class StepsDefinitionSSID {
         formUser.createNewUserFromTable(usersTable);
     }
 
+    @And("^presionar en el Boton de 'Guardar' para guardar la informacion$")
+    public void presionarEnElBotonDeGuardarParaGuardarLaInformacion() throws Throwable {
+        formUser.clickButtonSaveUser();
+    }
+
     @And("^Presionar en la opcion 'Incidentes' del 'Menu Principal'$")
     public void presionarEnLaOpcionIncidentesDelMenuPrincipal() throws Throwable {
         incidentPage = menu.clickMenuIncident();
@@ -189,12 +194,13 @@ public class StepsDefinitionSSID {
     }
     //End Positions
 
+    //BEGIN Equipment
     @And("^seleccionar menu 'Equipamiento' en la pagina 'Menu Principal'$")
     public void menuEquipamientoEstaSeleccionado() throws Throwable {
         menuEquipamiento = menu.selectEquipmentMenu();
     }
 
-    @And("^Seleccionar submenu 'Equipamiento' en menu 'Equipamiento'$")
+    @And("^seleccionar submenu 'Equipamiento' en menu 'Equipamiento'$")
     public void seleccionarSubMenuEquipamiento() throws Throwable {
         listEquipment = menuEquipamiento.selectSubMenuEquipment();
     }
@@ -203,6 +209,18 @@ public class StepsDefinitionSSID {
     public void validarListaDeEquipamientos() throws Throwable {
         Assert.assertTrue(listEquipment.isEquipmentListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
     }
+
+    @Then("^verificar cabecera 'Nombre' de la pagina 'Lista de Equipamientos' esten cargados$")
+    public void verificarCabeceraNombreListaEquipamientos() throws Throwable {
+        Assert.assertTrue(listEquipment.checkNameHeaderListEquipment(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equiment title"));
+    }
+
+    @And("^verificar cabecera 'Acciones' de la pagina 'Lista de Equipamientos' esten cargados$")
+    public void verificarCabeceraAccionListaEquipamientos() throws Throwable {
+        Assert.assertTrue(listEquipment.checkActionsHeaderListEquipment(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equiment title"));
+    }
+
+    //END Equipment
 
     @And("^seleccionar submenu 'Personal' en menu 'Personal'$")
     public void seleccionarSubMenuPersonal() throws Throwable {
@@ -219,10 +237,5 @@ public class StepsDefinitionSSID {
     public void elResultadoDeBuscarPersonalDeberiaSer(int resultado){
         int encontrado = personnelSearch.validatePersonnelFound(resultado);
         Assert.assertEquals(encontrado, resultado);
-    }
-
-    @And("^presionar en el Boton de 'Guardar' para guardar la informacion$")
-    public void presionarEnElBotonDeGuardarParaGuardarLaInformacion() throws Throwable {
-        formUser.clickButtonSaveUser();
     }
 }
