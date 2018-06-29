@@ -223,7 +223,6 @@ public class StepsDefinitionSSID {
     public void verificarCabeceraAccionListaEquipamientos() throws Throwable {
         Assert.assertTrue(listEquipment.checkActionsHeaderListEquipment(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equiment title"));
     }
-
     //END Equipment
 
     @And("^seleccionar submenu 'Personal' en menu 'Personal'$")
@@ -241,11 +240,6 @@ public class StepsDefinitionSSID {
     public void elResultadoDeBuscarPersonalDeberiaSer(int resultado) {
         int encontrado = personnelSearch.validatePersonnelFound(resultado);
         Assert.assertEquals(encontrado, resultado);
-    }
-
-    @And("^presionar en el Boton de 'Guardar' para guardar la informacion$")
-    public void presionarEnElBotonDeGuardarParaGuardarLaInformacion() throws Throwable {
-        formUser.clickButtonSaveUser();
     }
 
     //Structure organizational
