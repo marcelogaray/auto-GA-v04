@@ -19,7 +19,7 @@ public class SubMenuPersonal extends BasePage {
         CommonEvents.isVisible(subMenuUser);
     }
 
-    public ListUser selectSubMenuUsuario() {
+    public ListUser selectSubMenuUser() {
         CommonEvents.clickButton(subMenuUser);
         return new ListUser();
     }

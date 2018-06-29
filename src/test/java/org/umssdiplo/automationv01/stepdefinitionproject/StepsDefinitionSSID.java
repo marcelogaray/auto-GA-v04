@@ -64,7 +64,7 @@ public class StepsDefinitionSSID {
 
     @And("^Seleccionar submenu 'Usuario' en menu 'Personal'$")
     public void seleccionarSubMenuUsuario() throws Throwable {
-        listUser = menuPersonal.selectSubMenuUsuario();
+        listUser = menuPersonal.selectSubMenuUser();
     }
 
     @Then("^Validar que la 'Lista de Usuarios' este visible$")
