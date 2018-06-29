@@ -236,7 +236,7 @@ public class StepsDefinitionSSID {
 
     @And("^presionar en la opcion 'ProgramSSO' del 'Menu Principal'$")
     public void presionarEnLaOpcionProgramSSODelMenuPrincipal() throws Throwable {
-        subMenuTrainer = menu.clickMenuProgramSSO();
+        subMenuTrainer = menu.clickMenuProgramSSOTrainer();
 
     }
 
