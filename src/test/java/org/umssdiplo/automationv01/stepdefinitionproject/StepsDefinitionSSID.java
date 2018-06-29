@@ -210,10 +210,16 @@ public class StepsDefinitionSSID {
         Assert.assertTrue(listEquipment.isEquipmentListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
     }
 
-    @Then("^verificar cabecera 'Nombre' y 'Acciones' de la pagina 'Lista de Equipamientos' esten cargados$")
-    public void verificarCabeceraListaEquipamientos() throws Throwable {
-        Assert.assertTrue(listEquipment.checkHeaderListEquipment(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equiment title"));
+    @Then("^verificar cabecera 'Nombre' de la pagina 'Lista de Equipamientos' esten cargados$")
+    public void verificarCabeceraNombreListaEquipamientos() throws Throwable {
+        Assert.assertTrue(listEquipment.checkNameHeaderListEquipment(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equiment title"));
     }
+
+    @And("^verificar cabecera 'Acciones' de la pagina 'Lista de Equipamientos' esten cargados$")
+    public void verificarCabeceraAccionListaEquipamientos() throws Throwable {
+        Assert.assertTrue(listEquipment.checkActionsHeaderListEquipment(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equiment title"));
+    }
+
     //END Equipment
 
     @And("^seleccionar submenu 'Personal' en menu 'Personal'$")

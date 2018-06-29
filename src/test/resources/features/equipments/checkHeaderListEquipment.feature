@@ -8,4 +8,5 @@ Feature: Check header of list equipments
     Given 'Menu principal' estee cargado
     And seleccionar menu 'Equipamiento' en la pagina 'Menu Principal'
     And seleccionar submenu 'Equipamiento' en menu 'Equipamiento'
-    Then verificar cabecera 'Nombre' y 'Acciones' de la pagina 'Lista de Equipamientos' esten cargados
+    Then verificar cabecera 'Nombre' de la pagina 'Lista de Equipamientos' esten cargados
+    And verificar cabecera 'Acciones' de la pagina 'Lista de Equipamientos' esten cargados
