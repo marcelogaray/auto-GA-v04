@@ -1,6 +1,5 @@
 package org.umssdiplo.automationv01.stepdefinitionproject;
 
-import cucumber.api.PendingException;
 import cucumber.api.DataTable;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
@@ -11,19 +10,15 @@ import org.umssdiplo.automationv01.core.managepage.Equipment.ListEquipment;
 import org.umssdiplo.automationv01.core.managepage.Home.Home;
 import org.umssdiplo.automationv01.core.managepage.Incident.IncidentPage;
 import org.umssdiplo.automationv01.core.managepage.Login.Login;
-import org.umssdiplo.automationv01.core.managepage.Menu.Menu;
-import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuEquipment;
-import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuOrganizationalStructure;
-import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuPersonal;
-import org.umssdiplo.automationv01.core.managepage.Position.CreatePosition;
 import org.umssdiplo.automationv01.core.managepage.Menu.*;
+import org.umssdiplo.automationv01.core.managepage.Personnel.PersonnelSearch;
+import org.umssdiplo.automationv01.core.managepage.Position.CreatePosition;
 import org.umssdiplo.automationv01.core.managepage.Position.Position;
-import org.umssdiplo.automationv01.core.managepage.StructureOrganizational.StructureOrganizational;
 import org.umssdiplo.automationv01.core.managepage.ProgramSSO.Resource;
 import org.umssdiplo.automationv01.core.managepage.ProgramSSO.ResourceForm;
+import org.umssdiplo.automationv01.core.managepage.StructureOrganizational.StructureOrganizational;
 import org.umssdiplo.automationv01.core.managepage.Usuario.FormUser;
 import org.umssdiplo.automationv01.core.managepage.Usuario.ListUser;
-import org.umssdiplo.automationv01.core.managepage.Personnel.PersonnelSearch;
 import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
@@ -220,12 +215,12 @@ public class StepsDefinitionSSID {
     }
 
     @When("^ingresar (.*) en 'Buscar Personal'$")
-    public void ingresarEnBuscarPersonal(String personal){
+    public void ingresarEnBuscarPersonal(String personal) {
         personnelSearch.setTextFindPerson(personal);
     }
 
     @Then("^el resultado de 'Buscar Personal' deberia ser (\\d+)$")
-    public void elResultadoDeBuscarPersonalDeberiaSer(int resultado){
+    public void elResultadoDeBuscarPersonalDeberiaSer(int resultado) {
         int encontrado = personnelSearch.validatePersonnelFound(resultado);
         Assert.assertEquals(encontrado, resultado);
     }
