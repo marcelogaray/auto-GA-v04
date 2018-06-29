@@ -19,6 +19,8 @@ import org.umssdiplo.automationv01.core.managepage.Usuario.ListUser;
 import org.umssdiplo.automationv01.core.managepage.Personnel.PersonnelSearch;
 import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
+import org.umssdiplo.automationv01.core.managepage.Contract.ListContract;
+import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuPersonalContract;
 
 public class StepsDefinitionSSID {
     private Login login;
@@ -36,6 +38,8 @@ public class StepsDefinitionSSID {
     private SubMenuOrganizationalStructure subMenuOrganizationalStructure;
     private ResourceForm resourceForm;
     private FormUser formUser;
+    private SubMenuPersonalContract menuPersonalContract;
+    private ListContract listContract;
 
     private void loadPageObjects() {
         login = LoadPage.loginPage();
@@ -237,5 +241,26 @@ public class StepsDefinitionSSID {
     public void elResultadoDeBuscarPersonalDeberiaSer(int resultado){
         int encontrado = personnelSearch.validatePersonnelFound(resultado);
         Assert.assertEquals(encontrado, resultado);
+    }
+
+    @Given("^menu principal este cargado en pagina de inicio$")
+    public void seleccionarPaginaInicio() throws Throwable {
+        menu = home.getHomeMenu();
+    }
+
+    @And("^seleccionar la opcion 'Personal' en la pagina 'menu principal'$")
+    public void menuPersonalSeleccionado() throws Throwable {
+        menuPersonalContract = menu.selectPersonalSubMenuContract();
+    }
+
+    @And("^seleccionar el submenu 'Contratos' del menu 'Personal'$")
+    public void seleccionarContratos() throws Throwable {
+        listContract = menuPersonalContract.selectSubMenuContract();
+    }
+
+    @Then("^validar que la 'Lista de Contratos' este visible$")
+    public void validarListaDeContratos() throws Throwable {
+        boolean result = listContract.validateContractList();
+        Assert.assertTrue(result, String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Contract List"));
     }
 }
