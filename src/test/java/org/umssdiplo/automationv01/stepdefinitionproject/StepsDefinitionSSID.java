@@ -117,7 +117,8 @@ public class StepsDefinitionSSID {
 
     @And("^click en el submenu 'Personal'$")
     public void clickEnElSubmenuPersonal() throws Throwable {
-        buttonAddPersonnel = menuPersonal.selectSubMenuPersonnel();
+        Assert.assertTrue(menuPersonal.selectSubMenuPersonnel());
+        buttonAddPersonnel = menuPersonal.getButtonAddPersonnel();
     }
 
     @Given("^click en el boton 'Agregar nuevo personal'$")
