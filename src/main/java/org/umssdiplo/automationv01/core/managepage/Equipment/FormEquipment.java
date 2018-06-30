@@ -26,7 +26,6 @@ public class FormEquipment extends BasePage {
         CommonEvents.isVisible(buttonNewEquipment);
     }
 
-
     public boolean verifyInputNameForm() {
         return checkFieldName();
     }
