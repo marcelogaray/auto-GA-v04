@@ -6,21 +6,21 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.testng.Assert;
+import org.umssdiplo.automationv01.core.managepage.Assign.FormAssignPersonal;
+import org.umssdiplo.automationv01.core.managepage.Contract.ListContract;
 import org.umssdiplo.automationv01.core.managepage.Equipment.ListEquipment;
 import org.umssdiplo.automationv01.core.managepage.Home.Home;
 import org.umssdiplo.automationv01.core.managepage.Incident.IncidentPage;
 import org.umssdiplo.automationv01.core.managepage.Login.Login;
 import org.umssdiplo.automationv01.core.managepage.Menu.*;
+import org.umssdiplo.automationv01.core.managepage.Personnel.PersonnelSearch;
 import org.umssdiplo.automationv01.core.managepage.Position.Position;
 import org.umssdiplo.automationv01.core.managepage.ProgramSSO.Resource;
 import org.umssdiplo.automationv01.core.managepage.ProgramSSO.ResourceForm;
 import org.umssdiplo.automationv01.core.managepage.Usuario.FormUser;
 import org.umssdiplo.automationv01.core.managepage.Usuario.ListUser;
-import org.umssdiplo.automationv01.core.managepage.Personnel.PersonnelSearch;
 import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
-import org.umssdiplo.automationv01.core.managepage.Contract.ListContract;
-import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuPersonalContract;
 
 public class StepsDefinitionSSID {
     private Login login;
@@ -38,6 +38,7 @@ public class StepsDefinitionSSID {
     private SubMenuOrganizationalStructure subMenuOrganizationalStructure;
     private ResourceForm resourceForm;
     private FormUser formUser;
+    private FormAssignPersonal formAssignPersonal;
     private SubMenuPersonalContract menuPersonalContract;
     private ListContract listContract;
 
@@ -233,14 +234,24 @@ public class StepsDefinitionSSID {
     }
 
     @When("^ingresar (.*) en 'Buscar Personal'$")
-    public void ingresarEnBuscarPersonal(String personal){
+    public void ingresarEnBuscarPersonal(String personal) {
         personnelSearch.setTextFindPerson(personal);
     }
 
     @Then("^el resultado de 'Buscar Personal' deberia ser (\\d+)$")
-    public void elResultadoDeBuscarPersonalDeberiaSer(int resultado){
+    public void elResultadoDeBuscarPersonalDeberiaSer(int resultado) {
         int encontrado = personnelSearch.validatePersonnelFound(resultado);
         Assert.assertEquals(encontrado, resultado);
+    }
+
+    @And("^seleccionar submenu 'Asignacion' en menu 'Personal'$")
+    public void seleccionarSubmenuAsignacionEnMenuPersonal() throws Throwable {
+        formAssignPersonal = menuPersonal.selectSubMenuAssignPersonal();
+    }
+
+    @Then("^verificar que el 'Formulario de Asignacion Personal' es visible$")
+    public void verificarQueElFormularioDeAsignacionPersonalEsVisible() throws Throwable {
+        Assert.assertTrue(formAssignPersonal.isFormAssignPersonalVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Form Assign Equipament Personal"));
     }
 
     @Given("^menu principal este cargado en pagina de inicio$")
