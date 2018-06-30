@@ -11,6 +11,9 @@ public class SubMenuPersonal extends BasePage {
     @FindBy(xpath = "//button[@id='users']")
     private WebElement usuarioSubMenu;
 
+    @FindBy(xpath = "//button[@id='personal']")
+    private WebElement personalSubMenu;
+
     public SubMenuPersonal() {
         CommonEvents.isVisible(usuarioSubMenu);
     }
@@ -18,5 +21,9 @@ public class SubMenuPersonal extends BasePage {
     public ListUser selectSubMenuUsuario() {
         CommonEvents.clickButton(usuarioSubMenu);
         return new ListUser();
+    }
+
+    public void seleccionarSubMenuPersonal(){
+        CommonEvents.clickButton(personalSubMenu);
     }
 }

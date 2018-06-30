@@ -15,6 +15,7 @@ import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuOrganizationalStr
 import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuPersonal;
 import org.umssdiplo.automationv01.core.managepage.Position.Position;
 import org.umssdiplo.automationv01.core.managepage.Usuario.ListUser;
+import org.umssdiplo.automationv01.core.managepage.Personnel.ListPersonnel;
 import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
@@ -29,6 +30,7 @@ public class StepsDefinitionSSID {
     private ListEquipment listEquipment;
     private Position position;
     private SubMenuOrganizationalStructure subMenuOrganizationalStructure;
+    private ListPersonnel listPersonnel;
 
     private void loadPageObjects() {
         login = LoadPage.loginPage();
@@ -109,5 +111,47 @@ public class StepsDefinitionSSID {
     @Then("^Verificar que la 'Lista de Equipamientos' este visible$")
     public void validarListaDeEquipamientos() throws Throwable {
         Assert.assertTrue(listEquipment.isEquipmentListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
+    }
+
+    @And("^click en el submenu 'Personal'$")
+    public void clickEnElSubmenuPersonal() throws Throwable {
+        menuPersonal.seleccionarSubMenuPersonal();
+        Thread.sleep(4000);
+    }
+
+    @Then("^verificar que la tabla lista de 'Personal' este visible$")
+    public void verificarQueLaTablaListaDePersonalEsteVisible() throws Throwable {
+        listPersonnel = new ListPersonnel();
+        Assert.assertTrue(listPersonnel.validateListPersonnel());
+    }
+
+    @And("^verificar que la tabla lista de 'Personal' contenga 'Nombre'$")
+    public void verificarQueLaTablaListaDePersonalContengaNombre() throws Throwable {
+        Assert.assertTrue(listPersonnel.validateName());
+    }
+
+    @And("^verificar que la tabla lista de 'Personal' contenga 'Apellido'$")
+    public void verificarQueLaTablaListaDePersonalContengaApellido() throws Throwable {
+        Assert.assertTrue(listPersonnel.validateLastName());
+    }
+
+    @And("^verificar que la tabla lista de 'Personal' contenga 'Email'$")
+    public void verificarQueLaTablaListaDePersonalContengaEmail() throws Throwable {
+        Assert.assertTrue(listPersonnel.validateEmail());
+    }
+
+    @And("^verificar que la tabla lista de 'Personal' contenga 'Direccion'$")
+    public void verificarQueLaTablaListaDePersonalContengaDireccion() throws Throwable {
+        Assert.assertTrue(listPersonnel.validateAddress());
+    }
+
+    @And("^verificar que la tabla lista de 'Personal' contenga 'Telefono'$")
+    public void verificarQueLaTablaListaDePersonalContengaTelefono() throws Throwable {
+        Assert.assertTrue(listPersonnel.validatePhone());
+    }
+
+    @And("^verificar que la tabla lista de 'Personal' contenga 'Accion'$")
+    public void verificarQueLaTablaListaDePersonalContengaAccion() throws Throwable {
+        Assert.assertTrue(listPersonnel.validateAction());
     }
 }
