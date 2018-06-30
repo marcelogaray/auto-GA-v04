@@ -270,17 +270,17 @@ public class StepsDefinitionSSID {
         equipmentDetail = listEquipment.isEquipmentDetailVisible();
     }
 
-    @Then("^verificar titulo de 'Nombre' en el  'Detalle de Equipamiento' sea mostrado correctamente$")
+    @Then("^verificar titulo de 'Nombre' en el  'Detalle de Equipamiento' este visible$")
     public void verificarNombreEnDetalleEquipamiento() throws Throwable {
         Assert.assertTrue(equipmentDetail.verifyEquipmentNameIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "EquipmentDetail Title"));
     }
 
-    @And("^verificar titulo de 'Tipo' en el  'Detalle de Equipamiento' sea mostrado correctamente$")
+    @And("^verificar titulo de 'Tipo' en el  'Detalle de Equipamiento' este visible$")
     public void verificarTipoEnDetalleEquipamiento() throws Throwable {
         Assert.assertTrue(equipmentDetail.verifyEquipmentTypeIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "EquipmentDetail Title"));
     }
 
-    @And("^verificar contenido de 'Imagen' en el  'Detalle de Equipamiento' sea mostrado correctamente$")
+    @And("^verificar contenido de 'Imagen' en el  'Detalle de Equipamiento' este visible$")
     public void verificarImagenEnDetalleEquipamiento() throws Throwable {
         Assert.assertTrue(equipmentDetail.verifyEquipmentImageIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "EquipmentDetail Title"));
     }
