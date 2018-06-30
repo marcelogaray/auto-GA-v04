@@ -6,17 +6,19 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.testng.Assert;
+import org.umssdiplo.automationv01.core.managepage.Assign.FormAssignPersonal;
+import org.umssdiplo.automationv01.core.managepage.Contract.ListContract;
 import org.umssdiplo.automationv01.core.managepage.Equipment.ListEquipment;
 import org.umssdiplo.automationv01.core.managepage.Home.Home;
 import org.umssdiplo.automationv01.core.managepage.Incident.IncidentPage;
 import org.umssdiplo.automationv01.core.managepage.Login.Login;
 import org.umssdiplo.automationv01.core.managepage.Menu.*;
+import org.umssdiplo.automationv01.core.managepage.Personnel.PersonnelSearch;
 import org.umssdiplo.automationv01.core.managepage.Position.Position;
 import org.umssdiplo.automationv01.core.managepage.ProgramSSO.Resource;
 import org.umssdiplo.automationv01.core.managepage.ProgramSSO.ResourceForm;
 import org.umssdiplo.automationv01.core.managepage.Usuario.FormUser;
 import org.umssdiplo.automationv01.core.managepage.Usuario.ListUser;
-import org.umssdiplo.automationv01.core.managepage.Personnel.PersonnelSearch;
 import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 
@@ -36,6 +38,9 @@ public class StepsDefinitionSSID {
     private SubMenuOrganizationalStructure subMenuOrganizationalStructure;
     private ResourceForm resourceForm;
     private FormUser formUser;
+    private FormAssignPersonal formAssignPersonal;
+    private SubMenuPersonalContract menuPersonalContract;
+    private ListContract listContract;
 
     private void loadPageObjects() {
         login = LoadPage.loginPage();
@@ -84,6 +89,11 @@ public class StepsDefinitionSSID {
     @And("^registrar usuarios con username, password con los siguiente datos$")
     public void registrarUsuariosConUsernamePasswordYQueEsteenEnEstadoActivado(DataTable usersTable) throws Throwable {
         formUser.createNewUserFromTable(usersTable);
+    }
+
+    @And("^presionar en el Boton de 'Guardar' para guardar la informacion$")
+    public void presionarEnElBotonDeGuardarParaGuardarLaInformacion() throws Throwable {
+        formUser.clickButtonSaveUser();
     }
 
     @And("^Presionar en la opcion 'Incidentes' del 'Menu Principal'$")
@@ -189,12 +199,13 @@ public class StepsDefinitionSSID {
     }
     //End Positions
 
+    //BEGIN Equipment
     @And("^seleccionar menu 'Equipamiento' en la pagina 'Menu Principal'$")
     public void menuEquipamientoEstaSeleccionado() throws Throwable {
         menuEquipamiento = menu.selectEquipmentMenu();
     }
 
-    @And("^Seleccionar submenu 'Equipamiento' en menu 'Equipamiento'$")
+    @And("^seleccionar submenu 'Equipamiento' en menu 'Equipamiento'$")
     public void seleccionarSubMenuEquipamiento() throws Throwable {
         listEquipment = menuEquipamiento.selectSubMenuEquipment();
     }
@@ -204,6 +215,18 @@ public class StepsDefinitionSSID {
         Assert.assertTrue(listEquipment.isEquipmentListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
     }
 
+    @Then("^verificar cabecera 'Nombre' de la pagina 'Lista de Equipamientos' esten cargados$")
+    public void verificarCabeceraNombreListaEquipamientos() throws Throwable {
+        Assert.assertTrue(listEquipment.checkNameHeaderListEquipment(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equiment title"));
+    }
+
+    @And("^verificar cabecera 'Acciones' de la pagina 'Lista de Equipamientos' esten cargados$")
+    public void verificarCabeceraAccionListaEquipamientos() throws Throwable {
+        Assert.assertTrue(listEquipment.checkActionsHeaderListEquipment(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equiment title"));
+    }
+
+    //END Equipment
+
     @And("^seleccionar submenu 'Personal' en menu 'Personal'$")
     public void seleccionarSubMenuPersonal() throws Throwable {
         personnelSearch = menuPersonal.selectSubMenuPersonnel();
@@ -211,18 +234,43 @@ public class StepsDefinitionSSID {
     }
 
     @When("^ingresar (.*) en 'Buscar Personal'$")
-    public void ingresarEnBuscarPersonal(String personal){
+    public void ingresarEnBuscarPersonal(String personal) {
         personnelSearch.setTextFindPerson(personal);
     }
 
     @Then("^el resultado de 'Buscar Personal' deberia ser (\\d+)$")
-    public void elResultadoDeBuscarPersonalDeberiaSer(int resultado){
+    public void elResultadoDeBuscarPersonalDeberiaSer(int resultado) {
         int encontrado = personnelSearch.validatePersonnelFound(resultado);
         Assert.assertEquals(encontrado, resultado);
     }
 
-    @And("^presionar en el Boton de 'Guardar' para guardar la informacion$")
-    public void presionarEnElBotonDeGuardarParaGuardarLaInformacion() throws Throwable {
-        formUser.clickButtonSaveUser();
+    @And("^seleccionar submenu 'Asignacion' en menu 'Personal'$")
+    public void seleccionarSubmenuAsignacionEnMenuPersonal() throws Throwable {
+        formAssignPersonal = menuPersonal.selectSubMenuAssignPersonal();
+    }
+
+    @Then("^verificar que el 'Formulario de Asignacion Personal' es visible$")
+    public void verificarQueElFormularioDeAsignacionPersonalEsVisible() throws Throwable {
+        Assert.assertTrue(formAssignPersonal.isFormAssignPersonalVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Form Assign Equipament Personal"));
+    }
+
+    @Given("^menu principal este cargado en pagina de inicio$")
+    public void seleccionarPaginaInicio() throws Throwable {
+        menu = home.getHomeMenu();
+    }
+
+    @And("^seleccionar la opcion 'Personal' en la pagina 'menu principal'$")
+    public void menuPersonalSeleccionado() throws Throwable {
+        menuPersonalContract = menu.selectSubMenuPersonalContract();
+    }
+
+    @And("^seleccionar el submenu 'Contratos' del menu 'Personal'$")
+    public void seleccionarContratos() throws Throwable {
+        listContract = menuPersonalContract.selectSubMenuContract();
+    }
+
+    @Then("^validar que la 'Lista de Contratos' este visible$")
+    public void validarListaDeContratos() throws Throwable {
+        Assert.assertTrue(listContract.validateContractList(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Contract List"));
     }
 }
