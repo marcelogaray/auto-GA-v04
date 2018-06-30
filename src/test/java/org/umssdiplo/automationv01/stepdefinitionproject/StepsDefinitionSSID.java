@@ -71,6 +71,16 @@ public class StepsDefinitionSSID {
         boolean result = listUser.isUserListVisible();
     }
 
+    @And("^Presionar en la opcion 'Incidentes' del 'Menu Principal'$")
+    public void presionarEnLaOpcionIncidentesDelMenuPrincipal() throws Throwable {
+        incidentPage = menu.clickMenuIncident();
+    }
+
+    @Then("^Verificar que la tabla de incidentes se muestre correctamente$")
+    public void verificarQueLaTablaDeIncidentesSeMuestreCorrectamente() throws Throwable {
+        Assert.assertTrue(incidentPage.isTableVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Incident title"));
+    }
+
     //Position RF02-TC-071: Verify list of Positions load correctly
     @When("^seleccionar la opcion 'Estructura organizacional' en el menu principal$")
     public void seleccionarLaOpcionEstructuraOrganizacionalEnElMenuPrincipal() throws Throwable {
@@ -93,17 +103,7 @@ public class StepsDefinitionSSID {
     }
     //End Positions
 
-    @And("^Presionar en la opcion 'Incidentes' del 'Menu Principal'$")
-    public void presionarEnLaOpcionIncidentesDelMenuPrincipal() throws Throwable {
-        incidentPage = menu.clickMenuIncident();
-    }
-
-    @Then("^Verificar que la tabla de incidentes se muestre correctamente$")
-    public void verificarQueLaTablaDeIncidentesSeMuestreCorrectamente() throws Throwable {
-        Assert.assertTrue(incidentPage.isTableVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Incident title"));
-    }
-
-    //Equipments
+    //BEGIN Equipments
     @And("^seleccionar menu 'Equipamiento' en la pagina 'Menu Principal'$")
     public void menuEquipamientoEstaSeleccionado() throws Throwable {
         List<BasePage> subMenusEquipments = menu.selectEquipmentMenu();
@@ -111,12 +111,12 @@ public class StepsDefinitionSSID {
         menuInventory = (SubMenuInventory) subMenusEquipments.get(1);
     }
 
-    @And("^Seleccionar submenu 'Equipamiento' en menu 'Equipamiento'$")
+    @And("^seleccionar submenu 'Equipamiento' en menu 'Equipamiento'$")
     public void seleccionarSubMenuEquipamiento() throws Throwable {
         listEquipment = menuEquipamiento.selectSubMenuEquipment();
     }
 
-    @Then("^Verificar que la 'Lista de Equipamientos' este visible$")
+    @Then("^verificar que la 'Lista de Equipamientos' este visible$")
     public void validarListaDeEquipamientos() throws Throwable {
         Assert.assertTrue(listEquipment.isEquipmentListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
     }
@@ -126,8 +126,19 @@ public class StepsDefinitionSSID {
         listInventory = menuInventory.selectSubMenuInventory();
     }
 
-    @Then("^verificar que 'Reporte de Inventario' debe mostrarse correctamente$")
+    @Then("^verificar que 'Reporte de Inventario' este visible$")
     public void verificarInformacionReporteInventarios() throws Throwable {
         Assert.assertTrue(listInventory.isInventoryListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Inventory title"));
     }
+
+    @Then("^verificar 'Titulo' del 'Reporte de Inventario' este visible$")
+    public void verificarTituloCabeceraReporteInventario() throws Throwable {
+        Assert.assertTrue(listInventory.verifyTitleReportHeaderInventoryIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Inventory title"));
+    }
+
+    @And("^verificar 'Imagen' del 'Reporte de Inventario' este visible$")
+    public void verificarImagenCabeceraReporteInventario() throws Throwable {
+        Assert.assertTrue(listInventory.verifyImageReportHeaderInventoryIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Inventory title"));
+    }
+    //END Equipments
 }
