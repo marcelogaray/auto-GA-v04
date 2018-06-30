@@ -34,27 +34,27 @@ public class Position extends BasePage {
         CommonEvents.isVisible(title);
     }
 
-    public boolean validListPositions() {
+    public boolean validListPositionsIsVisible() {
         return CommonEvents.isVisible(table);
     }
 
-    public boolean validPaginator() {
+    public boolean validPaginatorIsVisible() {
         return CommonEvents.isVisible(paginator);
     }
 
-    public boolean validHeaderNamePositionList() {
+    public boolean validHeaderNamePositionListIsVisible() {
         return CommonEvents.isVisible(headerListName);
     }
 
-    public boolean validHeaderLevelPositionList() {
+    public boolean validHeaderLevelPositionListIsVisible() {
         return CommonEvents.isVisible(headerListLevel);
     }
 
-    public boolean validHeaderDependencyPositionList() {
+    public boolean validHeaderDependencyPositionListIsVisible() {
         return CommonEvents.isVisible(headerListParent);
     }
 
-    public boolean validHeaderActionsPositionList() {
+    public boolean validHeaderActionsPositionListIsVisible() {
         return CommonEvents.isVisible(headerListActions);
     }
 
@@ -63,7 +63,7 @@ public class Position extends BasePage {
         return new CreatePosition();
     }
 
-    public boolean validLoadPagePositions() {
+    public boolean validLoadPagePositionsIsVisible() {
         return CommonEvents.isVisible(title);
     }
 }

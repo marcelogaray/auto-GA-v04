@@ -192,12 +192,12 @@ public class StepsDefinitionSSID {
 
     @Then("^validar que se cargue el listado de cargos en la pagina 'Cargos de la empresa'$")
     public void validarQueSeCargueElListadoDeCargosEnLaPaginaCargosDeLaEmpresa() throws Throwable {
-        Assert.assertTrue(position.validListPositions(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Positions list"));
+        Assert.assertTrue(position.validListPositionsIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Positions list"));
     }
 
     @And("^validar que 'Paginador' se muestra debajo de la tabla 'Lista de Cargo'$")
     public void validarQuePaginadorSeMuestraDebajoDeLaTablaListaDeCargo() throws Throwable {
-        Assert.assertTrue(position.validPaginator(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Positions paginator list"));
+        Assert.assertTrue(position.validPaginatorIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Positions paginator list"));
     }
     //End Positions
 
@@ -294,7 +294,7 @@ public class StepsDefinitionSSID {
     //Verify header positions list
     @Then("^verificar que se cargue el listado de cargos en la pagina 'Cargos de la empresa'$")
     public void verificarQueSeCargueElListadoDeCargosEnLaPaginaCargosDeLaEmpresa() throws Throwable {
-        Assert.assertTrue(position.validListPositions(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Positions table list"));
+        Assert.assertTrue(position.validListPositionsIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Positions table list"));
     }
 
     @And("^seleccionar el submenu 'Contratos' del menu 'Personal'$")
@@ -309,22 +309,22 @@ public class StepsDefinitionSSID {
 
     @And("^verificar que se cargue la cabecera 'Nombre cargo' en la tabla de lista de cargos$")
     public void verificarQueSeCargueLaCabeceraNombreCargoEnLaTablaDeListaDeCargos() throws Throwable {
-        Assert.assertTrue(position.validHeaderNamePositionList(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Header 'Nombre' position list"));
+        Assert.assertTrue(position.validHeaderNamePositionListIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Header 'Nombre' position list"));
     }
 
     @And("^verificar que se cargue la cabecera 'Nivel' en la tabla de lista de cargos$")
     public void verificarQueSeCargueLaCabeceraNivelEnLaTablaDeListaDeCargos() throws Throwable {
-        Assert.assertTrue(position.validHeaderLevelPositionList(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Header 'Nivel' position list"));
+        Assert.assertTrue(position.validHeaderLevelPositionListIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Header 'Nivel' position list"));
     }
 
     @And("^verificar que se cargue la cabecera 'Depende de' en la tabla de lista de cargos$")
     public void verificarQueSeCargueLaCabeceraDependeDeEnLaTablaDeListaDeCargos() throws Throwable {
-        Assert.assertTrue(position.validHeaderDependencyPositionList(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Header 'Depende de' position list"));
+        Assert.assertTrue(position.validHeaderDependencyPositionListIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Header 'Depende de' position list"));
     }
 
     @And("^verificar que se cargue la cabecera 'Acciones' en la tabla de lista de cargos$")
     public void verificarQueSeCargueLaCabeceraAccionesEnLaTablaDeListaDeCargos() throws Throwable {
-        Assert.assertTrue(position.validHeaderActionsPositionList(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Header 'Acciones' position list"));
+        Assert.assertTrue(position.validHeaderActionsPositionListIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Header 'Acciones' position list"));
     }
 
     //Valid form Create position
@@ -367,7 +367,7 @@ public class StepsDefinitionSSID {
 
     @And("^verificar que se cargue la pagina 'Cargos de la empresa'$")
     public void verificarQueSeCargueLaPaginaCargosDeLaEmpresa() throws Throwable {
-        Assert.assertTrue(position.validLoadPagePositions(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Page 'Cargos de la empresa' "));
+        Assert.assertTrue(position.validLoadPagePositionsIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Page 'Cargos de la empresa' "));
     }
     // End Valid Back button in create position
 
