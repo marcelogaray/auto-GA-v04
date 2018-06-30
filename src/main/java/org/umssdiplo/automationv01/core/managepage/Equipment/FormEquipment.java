@@ -26,36 +26,22 @@ public class FormEquipment extends BasePage {
         CommonEvents.isVisible(buttonNewEquipment);
     }
 
-    public boolean verifyInputNameForm() {
-        return checkFieldName();
+    public boolean verifyInputNameFormIsVisible() {
+        return CommonEvents.isVisible(inputEquipmentName);
     }
 
-    public boolean verifyInputTypeForm() {
-        return checkFieldType();
+    public boolean verifySelectTypeFormIsVisible() {
+        return CommonEvents.isVisible(selectEquipmentType);
     }
 
-    public boolean verifyInputDescriptionForm() {
-        return checkFieldDesc();
+    public boolean verifyInputDescriptionFormIsVisible() {
+        return CommonEvents.isVisible(textAreaEquipmentDesc);
     }
 
-    public boolean verifyInputImageForm() {
-        return checkFieldImage();
+    public boolean verifyInputImageFormIsVisible() {
+        return CommonEvents.isVisible(fileEquipmentImage);
     }
 
-    public boolean checkFieldName() {
-       return CommonEvents.isVisible(inputEquipmentName);
-    }
 
-    public boolean checkFieldType() {
-       return CommonEvents.isVisible(selectEquipmentType);
-    }
-
-    public boolean checkFieldDesc() {
-       return CommonEvents.isVisible(textAreaEquipmentDesc);
-    }
-
-    public boolean checkFieldImage() {
-       return CommonEvents.isVisible(fileEquipmentImage);
-    }
 
 }

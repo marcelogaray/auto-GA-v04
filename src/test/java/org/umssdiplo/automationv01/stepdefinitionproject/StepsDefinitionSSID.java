@@ -240,22 +240,22 @@ public class StepsDefinitionSSID {
 
     @Then("^verificar componente 'Nombre' del 'Formulario de creación de Equipamiento' cargado$")
     public void validarComponenteNombreFormularioRegistroEquipamiento() throws Throwable {
-        Assert.assertTrue(formEquipment.checkFieldName(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
+        Assert.assertTrue(formEquipment.verifyInputNameFormIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
     }
 
     @And("^verificar componente 'Tipo' del 'Formulario de creación de Equipamiento' cargado$")
     public void validarComponenteTipoFormularioRegistroEquipamiento() throws Throwable {
-        Assert.assertTrue(formEquipment.checkFieldType(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
+        Assert.assertTrue(formEquipment.verifySelectTypeFormIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
     }
 
     @And("^verificar componente 'Descripcion' del 'Formulario de creación de Equipamiento' cargado$")
     public void validarComponenteDescripcionFormularioRegistroEquipamiento() throws Throwable {
-        Assert.assertTrue(formEquipment.checkFieldDesc(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
+        Assert.assertTrue(formEquipment.verifyInputDescriptionFormIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
     }
 
     @And("^verificar componente 'Imagen' del 'Formulario de creación de Equipamiento' cargado$")
     public void validarComponenteImagenFormularioRegistroEquipamiento() throws Throwable {
-        Assert.assertTrue(formEquipment.checkFieldImage(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
+        Assert.assertTrue(formEquipment.verifyInputImageFormIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
     }
     //END Equipment
 
