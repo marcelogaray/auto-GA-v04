@@ -16,7 +16,7 @@ public class SubMenuPersonal extends BasePage {
     @FindBy(id = "personal")
     private WebElement subMenuPersonnel;
 
-    @FindBy(xpath = "//button[@id='smAssign']")
+    @FindBy(id = "smAssign")
     private WebElement subMenuSmAssign;
 
     public SubMenuPersonal() {
