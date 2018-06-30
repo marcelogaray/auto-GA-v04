@@ -35,7 +35,7 @@ public class ListEquipment extends BasePage {
         return CommonEvents.isVisible(columnListAction);
     }
 
-    public void createNewEquipment() {
+    public void clickButtonCreateEquipment() {
         CommonEvents.clickButton(buttonCreateEquipment);
     }
 

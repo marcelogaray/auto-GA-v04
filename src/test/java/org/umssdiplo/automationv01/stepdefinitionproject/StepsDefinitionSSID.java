@@ -230,7 +230,7 @@ public class StepsDefinitionSSID {
 
     @And("^hacer Click en el boton 'Crear nuevo Equipamiento'$")
     public void hacerClickBotonCrearEquipamiento() throws Throwable {
-        listEquipment.createNewEquipment();
+        listEquipment.clickButtonCreateEquipment();
     }
 
     @When("^formulario de 'Registro de nuevo Equipamiento' esta cargado$")

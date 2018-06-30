@@ -41,7 +41,4 @@ public class FormEquipment extends BasePage {
     public boolean verifyInputImageFormIsVisible() {
         return CommonEvents.isVisible(fileEquipmentImage);
     }
-
-
-
 }
