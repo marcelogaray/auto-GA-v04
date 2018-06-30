@@ -8,59 +8,63 @@ import org.umssdiplo.automationv01.core.utils.CommonEvents;
 public class FormEquipment extends BasePage {
 
     @FindBy(id = "newEquipment")
-    private WebElement newEquipmentBtn;
+    private WebElement buttonNewEquipment;
 
     @FindBy(id = "nombreEquipment")
-    private WebElement equipmentName;
+    private WebElement inputEquipmentName;
 
     @FindBy(id= "typeEquipment")
-    private WebElement equipmentType;
-
-    @FindBy(id="mat-option-1")
-    private WebElement equipmentSelectType;
+    private WebElement selectEquipmentType;
 
     @FindBy(id="descEquipment")
-    private WebElement equipmentDesc;
+    private WebElement textAreaEquipmentDesc;
 
     @FindBy(id="imageEquipment")
-    private WebElement equipmentImage;
+    private WebElement fileEquipmentImage;
 
-    @FindBy(xpath = "//*[@id=\"form\"]/p[4]/button")
-    private WebElement createBtn;
+    @FindBy(xpath = "//p[4]/button")
+    private WebElement buttonClearImage;
 
-    //Message component required
     @FindBy(id="mat-hint-0")
-    private WebElement requiredName;
-
-    @FindBy(id="mat-hint-1")
-    private WebElement requiredType;
+    private WebElement hintMessageInputName;
 
     @FindBy(id="mat-hint-2")
-    private WebElement requiredDesc;
+    private WebElement hintMessageInputDescription;
 
     public FormEquipment() {
-        CommonEvents.isVisible(newEquipmentBtn);
+        CommonEvents.isVisible(buttonNewEquipment);
     }
 
-    public void activeCheckRequiredField() {
-        CommonEvents.clickButton(equipmentName);
-        CommonEvents.clickButton(equipmentDesc);
-        CommonEvents.clickButton(createBtn);
+    public boolean verifyInputNameFormIsVisible() {
+        return CommonEvents.isVisible(inputEquipmentName);
     }
 
-    public boolean checkRequiredsForm() {
-       return checkRequiredName() && checkRequiredDesc();
+    public boolean verifySelectTypeFormIsVisible() {
+        return CommonEvents.isVisible(selectEquipmentType);
     }
 
-    private boolean checkRequiredName() {
-       return CommonEvents.isVisible(requiredName);
+    public boolean verifyInputDescriptionFormIsVisible() {
+        return CommonEvents.isVisible(textAreaEquipmentDesc);
     }
 
-    private boolean checkRequiredType() {
-       return CommonEvents.isVisible(requiredType);
+    public boolean verifyInputImageFormIsVisible() {
+        return CommonEvents.isVisible(fileEquipmentImage);
     }
 
-    private boolean checkRequiredDesc() {
-       return CommonEvents.isVisible(requiredDesc);
+    public void clickInputFieldName() {
+        CommonEvents.clickButton(inputEquipmentName);
+    }
+
+    public void clickTextDescription() {
+        CommonEvents.clickButton(textAreaEquipmentDesc);
+        CommonEvents.clickButton(buttonClearImage);
+    }
+
+    public boolean verifyHintMessageInputNameIsVisible() {
+        return CommonEvents.isVisible(hintMessageInputName);
+    }
+
+    public boolean verifyHintMessageInputDescriptionIsVisible() {
+        return CommonEvents.isVisible(hintMessageInputDescription);
     }
 }
