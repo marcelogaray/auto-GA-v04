@@ -9,5 +9,5 @@ Feature: List Equipments
     Scenario: Verificar lista de Equipamientos este correctamente cargado
       Given 'Menu principal' estee cargado
       And seleccionar menu 'Equipamiento' en la pagina 'Menu Principal'
-      And Seleccionar submenu 'Equipamiento' en menu 'Equipamiento'
-      Then Verificar que la 'Lista de Equipamientos' este visible
+      And seleccionar submenu 'Equipamiento' en menu 'Equipamiento'
+      Then verificar que la 'Lista de Equipamientos' este visible
