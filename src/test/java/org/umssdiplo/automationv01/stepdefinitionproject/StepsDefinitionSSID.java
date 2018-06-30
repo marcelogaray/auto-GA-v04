@@ -307,7 +307,7 @@ public class StepsDefinitionSSID {
         Assert.assertTrue(listContract.validateContractList(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Contract List"));
     }
 
-    @And("^completar campo 'Buscar Usuario' con los siguientes datos$")
+    @And("^insertar los siguientes datos en el cuadro de texto 'Buscar Usuario' en la pagina 'Lista de Usuarios'$")
     public void completarCampoBuscarUsuarioConLosSiguientesDatos(DataTable searchUserTable) throws Throwable {
         listUser.fillFieldSearchWithData(searchUserTable);
     }

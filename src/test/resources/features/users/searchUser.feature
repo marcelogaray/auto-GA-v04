@@ -1,5 +1,5 @@
 #Search user
-Feature: verificar la busqueda de usuarios
+Feature: check the users search
 
   Background: Pagina de inicio es mostrada una vez que se ponen los credenciales correctos de inicio de sesión
     Given 'SSI-D' pagina de inicio de sesion es cargada
@@ -9,7 +9,7 @@ Feature: verificar la busqueda de usuarios
     Given 'Menu principal' estee cargado
     And seleccionar menu 'Personal' en la pagina 'Menu Principal'
     And seleccionar submenu 'Usuario' en menu 'Personal'
-    And completar campo 'Buscar Usuario' con los siguientes datos
+    And insertar los siguientes datos en el cuadro de texto 'Buscar Usuario' en la pagina 'Lista de Usuarios'
       | username |
       | admin    |
       | tom      |
