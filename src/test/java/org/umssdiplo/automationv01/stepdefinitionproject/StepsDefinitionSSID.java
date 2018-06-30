@@ -220,12 +220,12 @@ public class StepsDefinitionSSID {
 
     @Then("^verificar cabecera 'Nombre' de la pagina 'Lista de Equipamientos' esten cargados$")
     public void verificarCabeceraNombreListaEquipamientos() throws Throwable {
-        Assert.assertTrue(listEquipment.checkNameHeaderListEquipment(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equiment title"));
+        Assert.assertTrue(listEquipment.verifyNameHeaderListEquipmentIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equiment title"));
     }
 
     @And("^verificar cabecera 'Acciones' de la pagina 'Lista de Equipamientos' esten cargados$")
     public void verificarCabeceraAccionListaEquipamientos() throws Throwable {
-        Assert.assertTrue(listEquipment.checkActionsHeaderListEquipment(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equiment title"));
+        Assert.assertTrue(listEquipment.verifyActionsHeaderListEquipmentIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equiment title"));
     }
 
     @And("^hacer Click en el boton 'Crear nuevo Equipamiento'$")
