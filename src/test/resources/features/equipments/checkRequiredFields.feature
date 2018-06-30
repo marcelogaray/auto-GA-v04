@@ -1,10 +1,10 @@
-Feature: Verify mandatory fields in Creation Form
+Feature: Verify mandatory fields error message in Creation Form
 
   Background: Pagina de inicio es mostrada una vez que se ponen los credenciales correctos de inicio de sesión
     Given 'SSI-D' pagina de inicio de sesion es cargada
     And Ingresar los credenciales validos en la pagina 'Login' para ingresar al sistema
 
-  Scenario: Validar componentes del 'formulario de creación de Equipamiento'
+  Scenario: Verificar el mensaje de error de campos obligatorios en el Formulario de creación
     Given 'Menu principal' estee cargado
     And seleccionar menu 'Equipamiento' en la pagina 'Menu Principal'
     And seleccionar submenu 'Equipamiento' en menu 'Equipamiento'
