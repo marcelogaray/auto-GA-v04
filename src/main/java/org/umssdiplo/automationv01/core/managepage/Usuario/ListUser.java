@@ -1,9 +1,13 @@
 package org.umssdiplo.automationv01.core.managepage.Usuario;
 
+import cucumber.api.DataTable;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.umssdiplo.automationv01.core.managepage.BasePage;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ListUser extends BasePage {
 
@@ -15,6 +19,9 @@ public class ListUser extends BasePage {
 
     @FindBy(xpath = "//mat-table[@class='mat-table']")
     private WebElement tableListUser;
+
+    @FindBy(id = "mat-input-2")
+    private WebElement textFieldSearch;
 
     public ListUser() {
         CommonEvents.isVisible(buttonAddUser);
@@ -32,7 +39,20 @@ public class ListUser extends BasePage {
         return new FormUser();
     }
 
+
     public void clickAddNewUser() {
         CommonEvents.clickButton(buttonAddUser);
+    }
+
+    public void fillSeachFildWithData(DataTable searchUserTable) {
+        List<User> users = new ArrayList<>();
+        users = searchUserTable.asList(User.class);
+        for (User user : users) {
+            fillSearchField(user);
+        }
+    }
+
+    private void fillSearchField(User user) {
+        CommonEvents.setInputField(textFieldSearch, user.getUsername());
     }
 }
