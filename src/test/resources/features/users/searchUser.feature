@@ -5,7 +5,7 @@ Feature: check the users search
     Given 'SSI-D' pagina de inicio de sesion es cargada
     And Ingresar los credenciales validos en la pagina 'Login' para ingresar al sistema
 
-  Scenario: Verificar la busqueda de usuarios
+  Scenario: verificar la busqueda de usuarios
     Given 'Menu principal' estee cargado
     And seleccionar menu 'Personal' en la pagina 'Menu Principal'
     And seleccionar submenu 'Usuario' en menu 'Personal'
