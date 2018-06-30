@@ -93,12 +93,12 @@ public class StepsDefinitionSSID {
     }
     //End Positions
 
-    @And("^Presionar en la opcion 'Incidentes' del 'Menu Principal'$")
+    @And("^presionar en la opcion 'Incidentes' del 'Menu Principal'$")
     public void presionarEnLaOpcionIncidentesDelMenuPrincipal() throws Throwable {
         incidentPage = menu.clickMenuIncident();
     }
 
-    @Then("^Verificar que la tabla de incidentes se muestre correctamente$")
+    @Then("^verificar que la tabla de incidentes se muestre correctamente$")
     public void verificarQueLaTablaDeIncidentesSeMuestreCorrectamente() throws Throwable {
         Assert.assertTrue(incidentPage.isTableVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Incident title"));
     }
@@ -123,31 +123,29 @@ public class StepsDefinitionSSID {
         createIncidentPage = incidentPage.clickOnAddNewIncidentBtn();
     }
 
-    @When("^Llenamos los 'datos del formulario' dentro del formulario de 'Creacion de Incidentes'$")
-    public void llenamosLosDatosDelFormularioDentroDelFormularioDeCreacionDeIncidentes(DataTable table) throws Throwable {
+    @When("^insertamos informacion valida en el formulario de 'Creacion de Incidentes$")
+    public void insertamosInformacionValidaEnElFormularioDeCreacionDeIncidentes(DataTable table) throws Throwable {
         List<Map<String, String>> data = table.asMaps(String.class, String. class);
-        createIncidentPage.setIncidentForm(data);
+        createIncidentPage.setFormIncident(data);
     }
 
-    @And("^Hacemos clic en el boton de 'Guardar'$")
+    @And("^hacemos clic en el boton de 'Guardar'$")
     public void hacemosClicEnElBotonDeGuardar() throws Throwable {
-        createIncidentPage.clickSaveButton();
-        Assert.assertFalse(createIncidentPage.isButtonEnabled(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Toast Message Success"));
+        incidentPage =  createIncidentPage.clickSaveButton();
     }
 
-    @And("^Verificamos que el titulo de 'Creacion de Incidentes' se muestre correctamente$")
+    @And("^verificamos que el titulo de 'Creacion de Incidentes' se muestre correctamente$")
     public void verificamosQueElTituloDeCreacionDeIncidentesSeMuestreCorrectamente() throws Throwable {
         Assert.assertTrue(createIncidentPage.isTitleVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Titulo 'Crear Incidente'"));
     }
 
-    @When("^Llenamos el campo 'code' con un valor vacio$")
+    @When("^llenamos el campo 'code' y el campo 'description' con valores vacios$")
     public void llenamosLosDatosRequeridosDelFormularioDeCreacionDeIncidentes() throws Throwable {
-        createIncidentPage.fillCodeInput("");
+        createIncidentPage.fillInputCode("");
         createIncidentPage.fillDescription("");
-        createIncidentPage.fillCheckReincident("true");
     }
 
-    @Then("^Verificar que el boton de guardado no se deshabilita$")
+    @Then("^verificar que el boton de guardado no se deshabilita$")
     public void verificarQueElBotonDeGuardadoNoSeDeshabilita() throws Throwable {
         Assert.assertFalse(createIncidentPage.isButtonEnabled(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_DISABLED, "is enabled"));
     }

@@ -8,16 +8,16 @@ import org.umssdiplo.automationv01.core.utils.CommonEvents;
 public class IncidentPage extends BasePage {
 
     @FindBy(xpath = "//h1[contains(text(),'Incidentes')]")
-    private WebElement title;
+    private WebElement titleIncident;
 
     @FindBy(css = ".mat-table .mat-header-row")
     private WebElement headerTable;
 
     @FindBy(id = "add-new-incident-btn")
-    private WebElement addNewIncidentBtn;
+    private WebElement buttonAddNewIncident;
 
     public IncidentPage() {
-        CommonEvents.isVisible(title);
+        CommonEvents.isVisible(titleIncident);
     }
 
     public boolean isTableVisible() {
@@ -25,7 +25,7 @@ public class IncidentPage extends BasePage {
     }
 
     public CreateIncidentPage clickOnAddNewIncidentBtn() {
-        CommonEvents.clickButton(addNewIncidentBtn);
+        CommonEvents.clickButton(buttonAddNewIncident);
         return new CreateIncidentPage();
     }
 }

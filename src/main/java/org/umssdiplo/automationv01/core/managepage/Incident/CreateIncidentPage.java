@@ -18,7 +18,7 @@ public class CreateIncidentPage extends BasePage {
     private List<WebElement> radioGroupSeverity;
 
     @FindBy(name = "code")
-    private WebElement codeInput;
+    private WebElement inputFieldCode;
 
     @FindBy(id = "mat-select-0")
     private WebElement selectIncidentType;
@@ -77,7 +77,7 @@ public class CreateIncidentPage extends BasePage {
     private WebElement descriptionTextArea;
 
     @FindBy(xpath = "//*[@id=\"form\"]/mat-card-actions/button[2]")
-    private WebElement saveButton;
+    private WebElement buttonSave;
 
     @FindBy(xpath = "//*[@id=\"form\"]/mat-card-actions/button[1]")
     private WebElement cancelButton;
@@ -86,64 +86,64 @@ public class CreateIncidentPage extends BasePage {
     private WebElement toastMessage;
 
     public CreateIncidentPage() {
-        CommonEvents.isVisible(saveButton);
+        CommonEvents.isVisible(buttonSave);
     }
 
     public boolean isTitleVisible() {
         return CommonEvents.isVisible(title);
     }
 
-    public void setIncidentForm(List<Map<String, String>> data) {
-        fillSeverityRadioBtn(data.get(0).get("Severity"));
-        fillCodeInput(data.get(0).get("Code"));
-        fillSelectIncidentType(data.get(0).get("IncidentType"));
-        fillSelectState(data.get(0).get("State"));
-        fillSelectArea(data.get(0).get("Area"));
-        fillReportedBy(data.get(0).get("ReportedBy"));
-        fillCheckReincident(data.get(0).get("Reincident"));
-        fillCheckTreatment(data.get(0).get("Treatment"));
+    public void setFormIncident(List<Map<String, String>> data) {
+        fillRadioButtonSeverity(data.get(0).get("Severity"));
+        fillInputCode(data.get(0).get("Code"));
+        selectOptionIncidentType(data.get(0).get("IncidentType"));
+        selectOptionState(data.get(0).get("State"));
+        selectOptionArea(data.get(0).get("Area"));
+        selectOptionReportedBy(data.get(0).get("ReportedBy"));
+        checkReincident(data.get(0).get("Reincident"));
+        checkTreatment(data.get(0).get("Treatment"));
         fillDescription(data.get(0).get("Description"));
     }
 
-    public void fillSeverityRadioBtn(String selectedRadioSeverity) {
+    public void fillRadioButtonSeverity(String selectedRadioSeverity) {
         WebElement radioSelected = CommonEvents.findWebElement( radioGroupSeverity, selectedRadioSeverity);
         CommonEvents.clickButton(radioSelected);
     }
 
-    public void fillCodeInput(String code) {
-        CommonEvents.setInputField(codeInput, code);
+    public void fillInputCode(String code) {
+        CommonEvents.setInputField(inputFieldCode, code);
     }
 
-    public void fillSelectIncidentType(String incidentTypeSelected) {
+    public void selectOptionIncidentType(String incidentTypeSelected) {
         CommonEvents.clickButton(selectIncidentType);
         WebElement optionSelected = CommonEvents.findWebElement( selectIncidentTypeOptions, incidentTypeSelected);
         CommonEvents.clickButton(optionSelected);
     }
 
-    public void fillSelectState(String stateSelected) {
+    public void selectOptionState(String stateSelected) {
         CommonEvents.clickButton(selectState);
         WebElement optionSelected = CommonEvents.findWebElement( selectStateOptions, stateSelected);
         CommonEvents.clickButton(optionSelected);
     }
 
-    public void fillSelectArea(String areaSelected) {
+    public void selectOptionArea(String areaSelected) {
         CommonEvents.clickButton(selectArea);
         WebElement optionSelected = CommonEvents.findWebElement( selectAreaOptions, areaSelected);
         CommonEvents.clickButton(optionSelected);
     }
 
-    public void fillReportedBy(String reportedBySelected) {
+    public void selectOptionReportedBy(String reportedBySelected) {
         CommonEvents.clickButton(selectReportedBy);
         WebElement optionSelected = CommonEvents.findWebElement(selectedReportedByOptions, reportedBySelected);
         CommonEvents.clickButton(optionSelected);
     }
 
-    public void fillCheckReincident(String reincident) {
+    public void checkReincident(String reincident) {
         if(Boolean.parseBoolean(reincident))
             CommonEvents.clickButton(checkReincident);
     }
 
-    public void fillCheckTreatment(String treatment) {
+    public void checkTreatment(String treatment) {
         if(Boolean.parseBoolean(treatment))
             CommonEvents.clickButton(checkTreatment);
     }
@@ -152,17 +152,13 @@ public class CreateIncidentPage extends BasePage {
         CommonEvents.setInputField(descriptionTextArea, description);
     }
 
-    public Boolean clickSaveButton() {
-        CommonEvents.clickButton(saveButton);
-        return CommonEvents.isVisible(toastMessage);
-}
-
-    public Boolean isVisibleToastMessage() {
-        return CommonEvents.isVisible(toastMessage);
+    public IncidentPage clickSaveButton() {
+        CommonEvents.clickButton(buttonSave);
+        return new IncidentPage();
     }
 
     public Boolean isButtonEnabled() {
-        return CommonEvents.isEnabled(saveButton);
+        return CommonEvents.isEnabled(buttonSave);
     }
 
     public IncidentPage clickOnCancelButton() {
