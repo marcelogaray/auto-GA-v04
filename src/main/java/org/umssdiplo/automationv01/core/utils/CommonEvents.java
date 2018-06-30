@@ -116,12 +116,43 @@ public class CommonEvents {
         webElement.sendKeys(Keys.ENTER);
     }
 
+    /**
+     * This method verifies if a web element is enabled.
+     *
+     * @param webElement is the web element.
+     * @return true if web element is enabled or false if it isn't enabled.
+     */
     public static boolean isEnabled(WebElement webElement) {
         try {
             return webElement.isEnabled();
         } catch (NoSuchElementException e) {
             System.out.println("Element do not exits.");
             return false;
+        }
+    }
+
+    /**
+     * This method return the text value of a WebElement.
+     *
+     * @param webElement is the WebElement to extract the text.
+     * @return the text value of the WebElement.
+     */
+    public static String getTextValue(WebElement webElement) {
+        ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElement));
+        return webElement.getAttribute("value");
+    }
+
+    /**
+     * This method return the boolean value of a WebElement.
+     *
+     * @param webElement is the WebElement to valid the text is empty.
+     * @return the boolean value if text is empty of the WebElement.
+     */
+    public static boolean isInputEmpty(WebElement webElement) {
+        if (CommonEvents.getTextValue(webElement) != null && !CommonEvents.getTextValue(webElement).isEmpty()) {
+            return false;
+        } else {
+            return true;
         }
     }
 }

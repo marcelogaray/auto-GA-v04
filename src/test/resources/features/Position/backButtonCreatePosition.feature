@@ -11,7 +11,7 @@ Feature: Validar boton Atras en creacion de cargos
   Scenario: Validar boton Atras en modo creacion de Cargo
     Given 'Menu principal' estee cargado
     When seleccionar la opcion 'Estructura organizacional' en el menu principal
-    And seleccionar la opcion 'Cargos del personal' en el sub menu de estructura organizacional
+    And seleccionar la opcion 'Cargos del personal' en el sub menu de 'Estructura organizacional'
     And seleccionar el boton 'Crear nuevo cargo' en la pagina 'Cargos de la empresa'
     Then verificar que exista el boton 'Atras' en la pagina 'Crear nuevo cargo'
     And presionar el boton 'Atras' en la pagina 'Crear nuevo cargo'

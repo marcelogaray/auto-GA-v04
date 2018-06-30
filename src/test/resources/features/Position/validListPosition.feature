@@ -12,9 +12,9 @@ Feature: Cabeceras del listado de cargos
   Scenario: Verificar cabecera de lista de Cargos
     Given 'Menu principal' estee cargado
     When seleccionar la opcion 'Estructura organizacional' en el menu principal
-    And seleccionar la opcion 'Cargos del personal' en el sub menu de estructura organizacional
+    And seleccionar la opcion 'Cargos del personal' en el sub menu de 'Estructura organizacional'
     Then verificar que se cargue el listado de cargos en la pagina 'Cargos de la empresa'
-    And verificar que se cargue la cabecera 'Nombre cargo' en la tabla de lista de cargos
-    And verificar que se cargue la cabecera 'Nivel' en la tabla de lista de cargos
-    And verificar que se cargue la cabecera 'Depende de' en la tabla de lista de cargos
-    And verificar que se cargue la cabecera 'Acciones' en la tabla de lista de cargos
+    And verificar que se cargue la cabecera 'Nombre cargo' en la tabla de 'lista de cargos'
+    And verificar que se cargue la cabecera 'Nivel' en la tabla de 'lista de cargos'
+    And verificar que se cargue la cabecera 'Depende de' en la tabla de 'lista de cargos'
+    And verificar que se cargue la cabecera 'Acciones' en la tabla de 'lista de cargos'

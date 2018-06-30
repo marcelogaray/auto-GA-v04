@@ -57,4 +57,22 @@ public class CreatePosition extends BasePage {
     public boolean validateButtonSendIsEnabled() { return CommonEvents.isEnabled(buttonSend); }
 
     public boolean validateButtonSendIsVisible() { return CommonEvents.isVisible(buttonBack); }
+
+    public boolean validateFormCreatePositionIsEmpty() {
+        boolean result = true;
+
+        if (!CommonEvents.isInputEmpty(fieldName)) {
+            result = false;
+        }
+
+        if (!CommonEvents.isInputEmpty(fieldLevel)) {
+            result = false;
+        }
+
+        if (!CommonEvents.isInputEmpty(fieldDescription)) {
+            result = false;
+        }
+
+        return result;
+    }
 }

@@ -189,7 +189,7 @@ public class StepsDefinitionSSID {
         subMenuOrganizationalStructure = menu.clickMenuOrganizationalStructure();
     }
 
-    @And("^seleccionar la opcion 'Cargos del personal' en el sub menu de estructura organizacional$")
+    @And("^seleccionar la opcion 'Cargos del personal' en el sub menu de 'Estructura organizacional'$")
     public void seleccionarLaOpcionCargosDelPersonalEnElSubMenuDeEstructuraOrganizacional() throws Throwable {
         position = subMenuOrganizationalStructure.clickSubMenuPositions();
     }
@@ -351,22 +351,22 @@ public class StepsDefinitionSSID {
         Assert.assertTrue(listContract.validateContractList(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Contract List"));
     }
 
-    @And("^verificar que se cargue la cabecera 'Nombre cargo' en la tabla de lista de cargos$")
+    @And("^verificar que se cargue la cabecera 'Nombre cargo' en la tabla de 'lista de cargos'$")
     public void verificarQueSeCargueLaCabeceraNombreCargoEnLaTablaDeListaDeCargos() throws Throwable {
         Assert.assertTrue(position.validHeaderNamePositionListIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Header 'Nombre' position list"));
     }
 
-    @And("^verificar que se cargue la cabecera 'Nivel' en la tabla de lista de cargos$")
+    @And("^verificar que se cargue la cabecera 'Nivel' en la tabla de 'lista de cargos'$")
     public void verificarQueSeCargueLaCabeceraNivelEnLaTablaDeListaDeCargos() throws Throwable {
         Assert.assertTrue(position.validHeaderLevelPositionListIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Header 'Nivel' position list"));
     }
 
-    @And("^verificar que se cargue la cabecera 'Depende de' en la tabla de lista de cargos$")
+    @And("^verificar que se cargue la cabecera 'Depende de' en la tabla de 'lista de cargos'$")
     public void verificarQueSeCargueLaCabeceraDependeDeEnLaTablaDeListaDeCargos() throws Throwable {
         Assert.assertTrue(position.validHeaderDependencyPositionListIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Header 'Depende de' position list"));
     }
 
-    @And("^verificar que se cargue la cabecera 'Acciones' en la tabla de lista de cargos$")
+    @And("^verificar que se cargue la cabecera 'Acciones' en la tabla de 'lista de cargos'$")
     public void verificarQueSeCargueLaCabeceraAccionesEnLaTablaDeListaDeCargos() throws Throwable {
         Assert.assertTrue(position.validHeaderActionsPositionListIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Header 'Acciones' position list"));
     }
@@ -416,7 +416,12 @@ public class StepsDefinitionSSID {
     // End Valid Back button in create position
 
     // Valid send button disabled when go in to create new position
-    @Then("^verificar que exista el boton 'Enviar' en la pagina 'Crear nuevo cargo'$")
+    @Then("^verificar que el formulario de creacion de cargo este vacio$")
+    public void verificarQueElFormularioDeCreacionDeCargoEsteVacio() throws Throwable {
+        Assert.assertTrue(createPosition.validateFormCreatePositionIsEmpty(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_EMPTY, "Create position form "));
+    }
+
+    @And("^verificar que exista el boton 'Enviar' en la pagina 'Crear nuevo cargo'$")
     public void verificarQueExistaElBotonEnviarEnLaPaginaCrearNuevoCargo() throws Throwable {
         Assert.assertTrue(createPosition.validateButtonSendIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Button 'Enviar' "));
     }
