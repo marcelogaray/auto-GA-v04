@@ -11,59 +11,59 @@ public class ListContract extends BasePage {
     private WebElement pageContract;
 
     @FindBy(id = "btnAgregarContrato")
-    private WebElement btnAddContract;
+    private WebElement buttonAddContract;
 
     @FindBy(id = "editarContract")
-    private WebElement btnEditContract;
+    private WebElement buttonEditContract;
 
     @FindBy(id = "eliminarContract")
-    private WebElement btnDeleteContract;
+    private WebElement buttonDeleteContract;
 
     @FindBy(xpath = "//button[@class='mat-paginator-navigation-next mat-icon-button']")
-    private WebElement btnNextListcontract;
+    private WebElement buttonNextListcontract;
 
     @FindBy(xpath = "//button[@class='mat-paginator-navigation-previous mat-icon-button']")
-    private WebElement btnBackListcontract;
+    private WebElement buttonBackListcontract;
 
     @FindBy(id = "btnAtras")
-    private WebElement btnBackList;
+    private WebElement buttonBackList;
 
     @FindBy(id = "titleCreateContract")
     private WebElement titleContract;
 
     public ListContract() {
-        CommonEvents.isVisible(btnAddContract);
+        CommonEvents.isVisible(buttonAddContract);
     }
 
     public boolean validateContractList() {
         return CommonEvents.isVisible(pageContract);
     }
     public FormContract selectBtnAddContract() {
-        CommonEvents.clickButton(btnAddContract);
+        CommonEvents.clickButton(buttonAddContract);
         return new FormContract();
     }
     public FormContract selectBtnEditContract() {
-        CommonEvents.clickButton(btnEditContract);
+        CommonEvents.clickButton(buttonEditContract);
         return new FormContract();
     }
 
     public FormContract selectBtnDeleteContract() {
-        CommonEvents.clickButton(btnDeleteContract);
+        CommonEvents.clickButton(buttonDeleteContract);
         return new FormContract();
     }
 
     public boolean selectNextListcontract(){
-        CommonEvents.clickButton(btnNextListcontract);
-        return CommonEvents.isVisible(btnNextListcontract);
+        CommonEvents.clickButton(buttonNextListcontract);
+        return CommonEvents.isVisible(buttonNextListcontract);
     }
 
     public boolean selectBackListcontract(){
-        CommonEvents.clickButton(btnBackListcontract);
-        return CommonEvents.isVisible(btnBackListcontract);
+        CommonEvents.clickButton(buttonBackListcontract);
+        return CommonEvents.isVisible(buttonBackListcontract);
     }
 
     public void selectBtnBackContarct(){
-        CommonEvents.clickButton(btnBackList);
+        CommonEvents.clickButton(buttonBackList);
     }
 
     public String getTitle() {return CommonEvents.getTextContent(titleContract); }

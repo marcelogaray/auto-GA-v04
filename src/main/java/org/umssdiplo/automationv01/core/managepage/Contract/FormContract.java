@@ -34,7 +34,7 @@ public class FormContract extends BasePage {
     private WebElement inputSalaryContract;
 
     @FindBy(id = "btnEnviarContract")
-    private WebElement btnSendContract;
+    private WebElement buttonSendContract;
 
     @FindBy(id = "mat-input-4")
     private WebElement inputCodeEditContract;
@@ -49,7 +49,7 @@ public class FormContract extends BasePage {
     private WebElement inputDateEditContract;
 
     @FindBy(id = "btnEnviarEdit")
-    private WebElement btnSendEdit;
+    private WebElement buttonSendEdit;
 
     @FindBy(id = "find-contract")
     private WebElement fillContract;
@@ -89,12 +89,12 @@ public class FormContract extends BasePage {
     }
 
     public boolean btnSendForm(){
-        CommonEvents.clickButton(btnSendContract);
-        return  CommonEvents.isVisible(btnSendContract);
+        CommonEvents.clickButton(buttonSendContract);
+        return  CommonEvents.isVisible(buttonSendContract);
     }
 
     public boolean btnSendFormEdit(){
-        CommonEvents.clickButton(btnSendEdit);
-        return CommonEvents.isVisible(btnSendEdit);
+        CommonEvents.clickButton(buttonSendEdit);
+        return CommonEvents.isVisible(buttonSendEdit);
     }
 }
