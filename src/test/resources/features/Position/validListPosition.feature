@@ -3,7 +3,7 @@
 # Cargos de la empresa >
 # Verificar cabecera de lista de Cargos (Nombre cargo, Nivel, Depende de, Acciones) deben ser mostrados correctamente.
 
-Feature: List Position
+Feature: Cabeceras del listado de cargos
 
   Background: Pagina de inicio es mostrada una vez que se ponen los credenciales correctos de inicio de sesión
     Given 'SSI-D' pagina de inicio de sesion es cargada

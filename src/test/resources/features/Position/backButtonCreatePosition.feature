@@ -2,7 +2,7 @@
 # RF02-TC-053 UI > Asignación de Funciones > Estructura organizacional >
 # Cargos de la Empresa > Validar botón Atrás en modo creación Cargo
 
-Feature: Valid Back button in create position
+Feature: Validar boton Atras en creacion de cargos
 
   Background: Pagina de inicio es mostrada una vez que se ponen los credenciales correctos de inicio de sesión
     Given 'SSI-D' pagina de inicio de sesion es cargada

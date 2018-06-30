@@ -2,7 +2,7 @@
 # RF02-TC-071 UI > Asignación de funciones > Estructura organizacional >
 # Cargos de la empresa > Verificar la carga del listado de los cargos con un paginador de la lista
 
-Feature: List Position
+Feature: Listado de cargos
 
   Background: Pagina de inicio es mostrada una vez que se ponen los credenciales correctos de inicio de sesión
     Given 'SSI-D' pagina de inicio de sesion es cargada

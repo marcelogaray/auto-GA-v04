@@ -2,7 +2,7 @@
 # RF02-TC-054 UI > Asignación de Funciones > Estructura organizacional >
 # Cargos de la Empresa > Validar que no permita crear un Cargo sin datos obligatorios.
 
-Feature: Valid Send button in create position
+Feature: Validar boton Enviar en creacion de cargos
 
   Background: Pagina de inicio es mostrada una vez que se ponen los credenciales correctos de inicio de sesión
     Given 'SSI-D' pagina de inicio de sesion es cargada
