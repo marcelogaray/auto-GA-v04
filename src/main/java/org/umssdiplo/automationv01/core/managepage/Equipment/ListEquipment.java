@@ -27,11 +27,19 @@ public class ListEquipment extends BasePage {
         return CommonEvents.isVisible(tableEquipments);
     }
 
-    public boolean checkNameHeaderListEquipment() {
+    public boolean verifyNameHeaderListEquipmentIsVisible() {
         return CommonEvents.isVisible(columnListName);
     }
 
-    public boolean checkActionsHeaderListEquipment() {
+    public boolean verifyActionsHeaderListEquipmentIsVisible() {
         return CommonEvents.isVisible(columnListAction);
+    }
+
+    public void clickButtonCreateEquipment() {
+        CommonEvents.clickButton(buttonCreateEquipment);
+    }
+
+    public FormEquipment isFormEquipmentVisible() {
+        return new FormEquipment();
     }
 }
