@@ -44,15 +44,15 @@ public class ListUser extends BasePage {
         CommonEvents.clickButton(buttonAddUser);
     }
 
-    public void fillSeachFildWithData(DataTable searchUserTable) {
+    public void fillFieldSearchWithData(DataTable searchUserTable) {
         List<User> users = new ArrayList<>();
         users = searchUserTable.asList(User.class);
         for (User user : users) {
-            fillSearchField(user);
+            fillFieldSearch(user);
         }
     }
 
-    private void fillSearchField(User user) {
+    private void fillFieldSearch(User user) {
         CommonEvents.setInputField(textFieldSearch, user.getUsername());
     }
 }

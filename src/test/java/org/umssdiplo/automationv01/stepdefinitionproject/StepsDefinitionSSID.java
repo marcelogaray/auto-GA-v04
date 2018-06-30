@@ -277,7 +277,7 @@ public class StepsDefinitionSSID {
 
     @And("^completar campo 'Buscar Usuario' con los siguientes datos$")
     public void completarCampoBuscarUsuarioConLosSiguientesDatos(DataTable searchUserTable) throws Throwable {
-        listUser.fillSeachFildWithData(searchUserTable);
+        listUser.fillFieldSearchWithData(searchUserTable);
     }
 
     @Then("^verificar que el resultado coincida con el dato buscado$")
