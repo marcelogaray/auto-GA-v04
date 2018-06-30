@@ -6,8 +6,10 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.testng.Assert;
+
 import org.umssdiplo.automationv01.core.managepage.Assign.FormAssignPersonal;
 import org.umssdiplo.automationv01.core.managepage.Contract.ListContract;
+import org.umssdiplo.automationv01.core.managepage.Equipment.FormEquipment;
 import org.umssdiplo.automationv01.core.managepage.Equipment.ListEquipment;
 import org.umssdiplo.automationv01.core.managepage.Home.Home;
 import org.umssdiplo.automationv01.core.managepage.Incident.IncidentPage;
@@ -34,6 +36,7 @@ public class StepsDefinitionSSID {
     private PersonnelSearch personnelSearch;
     private SubMenuEquipment menuEquipamiento;
     private ListEquipment listEquipment;
+    private FormEquipment formEquipment;
     private Position position;
     private SubMenuOrganizationalStructure subMenuOrganizationalStructure;
     private ResourceForm resourceForm;
@@ -210,21 +213,50 @@ public class StepsDefinitionSSID {
         listEquipment = menuEquipamiento.selectSubMenuEquipment();
     }
 
-    @Then("^Verificar que la 'Lista de Equipamientos' este visible$")
+    @Then("^verificar que la 'Lista de Equipamientos' este visible$")
     public void validarListaDeEquipamientos() throws Throwable {
         Assert.assertTrue(listEquipment.isEquipmentListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
     }
 
     @Then("^verificar cabecera 'Nombre' de la pagina 'Lista de Equipamientos' esten cargados$")
     public void verificarCabeceraNombreListaEquipamientos() throws Throwable {
-        Assert.assertTrue(listEquipment.checkNameHeaderListEquipment(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equiment title"));
+        Assert.assertTrue(listEquipment.verifyNameHeaderListEquipmentIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equiment title"));
     }
 
     @And("^verificar cabecera 'Acciones' de la pagina 'Lista de Equipamientos' esten cargados$")
     public void verificarCabeceraAccionListaEquipamientos() throws Throwable {
-        Assert.assertTrue(listEquipment.checkActionsHeaderListEquipment(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equiment title"));
+        Assert.assertTrue(listEquipment.verifyActionsHeaderListEquipmentIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equiment title"));
     }
 
+    @And("^hacer Click en el boton 'Crear nuevo Equipamiento'$")
+    public void hacerClickBotonCrearEquipamiento() throws Throwable {
+        listEquipment.clickButtonCreateEquipment();
+    }
+
+    @When("^formulario de 'Registro de nuevo Equipamiento' esta cargado$")
+    public void formularioRegistroNuevoEquipaminetoCargado() throws Throwable {
+        formEquipment = listEquipment.isFormEquipmentVisible();
+    }
+
+    @Then("^verificar el campo 'Nombre' del 'Formulario de creación de Equipamiento' este visible$")
+    public void validarComponenteNombreFormularioRegistroEquipamiento() throws Throwable {
+        Assert.assertTrue(formEquipment.verifyInputNameFormIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
+    }
+
+    @And("^verificar el selector de 'Tipo' del 'Formulario de creación de Equipamiento' este visible$")
+    public void validarComponenteTipoFormularioRegistroEquipamiento() throws Throwable {
+        Assert.assertTrue(formEquipment.verifySelectTypeFormIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
+    }
+
+    @And("^verificar campo de 'Descripcion' del 'Formulario de creación de Equipamiento' este visible$")
+    public void validarComponenteDescripcionFormularioRegistroEquipamiento() throws Throwable {
+        Assert.assertTrue(formEquipment.verifyInputDescriptionFormIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
+    }
+
+    @And("^verificar la opcion de carga de 'Imagen' del 'Formulario de creación de Equipamiento' este visible$")
+    public void validarComponenteImagenFormularioRegistroEquipamiento() throws Throwable {
+        Assert.assertTrue(formEquipment.verifyInputImageFormIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
+    }
     //END Equipment
 
     @And("^seleccionar submenu 'Personal' en menu 'Personal'$")
