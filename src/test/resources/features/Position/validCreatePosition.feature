@@ -14,7 +14,7 @@ Feature: Validar componentes creacion de cargos
     When seleccionar la opcion 'Estructura organizacional' en el menu principal
     And seleccionar la opcion 'Cargos del personal' en el sub menu de 'Estructura organizacional'
     And seleccionar el boton 'Crear nuevo cargo' en la pagina 'Cargos de la empresa'
-    Then verificar que exista el campo 'Nombre' en el formulario de crear cargo
-    And verificar que exista el campo 'Nivel' en el formulario de crear cargo
-    And verificar que exista el campo 'Descripcion' en el formulario de crear cargo
-    And verificar que exista la lista desplegable 'Cargo padre' en el formulario de crear cargo
+    Then verificar que exista el campo 'Nombre' en el formulario de 'crear cargo'
+    And verificar que exista el campo 'Nivel' en el formulario de 'crear cargo'
+    And verificar que exista el campo 'Descripcion' en el formulario de 'crear cargo'
+    And verificar que exista la lista desplegable 'Cargo padre' en el formulario de 'crear cargo'

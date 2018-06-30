@@ -377,22 +377,22 @@ public class StepsDefinitionSSID {
         createPosition = position.clickButtonCreatePosition();
     }
 
-    @Then("^verificar que exista el campo 'Nombre' en el formulario de crear cargo$")
+    @Then("^verificar que exista el campo 'Nombre' en el formulario de 'crear cargo'$")
     public void verificarQueExistaElCampoNombreEnElFormularioDeCrearCargo() throws Throwable {
         Assert.assertTrue(createPosition.validFieldNameIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Field 'Nombre' "));
     }
 
-    @And("^verificar que exista el campo 'Nivel' en el formulario de crear cargo$")
+    @And("^verificar que exista el campo 'Nivel' en el formulario de 'crear cargo'$")
     public void verificarQueExistaElCampoNivelEnElFormularioDeCrearCargo() throws Throwable {
         Assert.assertTrue(createPosition.validFieldLevelIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Field 'Nivel' "));
     }
 
-    @And("^verificar que exista el campo 'Descripcion' en el formulario de crear cargo$")
+    @And("^verificar que exista el campo 'Descripcion' en el formulario de 'crear cargo'$")
     public void verificarQueExistaElCampoDescripcionEnElFormularioDeCrearCargo() throws Throwable {
         Assert.assertTrue(createPosition.validFieldDescriptionIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Field 'Descripcion' "));
     }
 
-    @And("^verificar que exista la lista desplegable 'Cargo padre' en el formulario de crear cargo$")
+    @And("^verificar que exista la lista desplegable 'Cargo padre' en el formulario de 'crear cargo'$")
     public void verificarQueExistaLaListaDesplegableCargoPadreEnElFormularioDeCrearCargo() throws Throwable {
         Assert.assertTrue(createPosition.validDropdownParentPositionIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Dropdown 'Cargo padre' "));
     }
