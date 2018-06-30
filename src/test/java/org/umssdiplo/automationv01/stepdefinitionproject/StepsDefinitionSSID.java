@@ -121,13 +121,13 @@ public class StepsDefinitionSSID {
         Assert.assertTrue(listEquipment.isEquipmentListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
     }
 
-    @And("^Seleccionar submenu 'Inventory' en menu 'Equipamiento'$")
+    @And("^seleccionar submenu 'Inventory' en menu 'Equipamiento'$")
     public void seleccionarSubMenuInventory() throws Throwable {
         listInventory = menuInventory.selectSubMenuInventory();
     }
 
-    @Then("^Verificar Campos de 'Reporte de Inventario' deben mostrarse correctamente$")
-    public void verificarCamposReporteInventarios() throws Throwable {
+    @Then("^verificar que 'Reporte de Inventario' debe mostrarse correctamente$")
+    public void verificarInformacionReporteInventarios() throws Throwable {
         Assert.assertTrue(listInventory.isInventoryListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Inventory title"));
     }
 }

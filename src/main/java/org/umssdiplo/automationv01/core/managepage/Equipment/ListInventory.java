@@ -10,13 +10,13 @@ import java.util.List;
 public class ListInventory extends BasePage{
 
     @FindBy(className = "mat-button mat-primary")
-    private WebElement aceptarBtn;
+    private WebElement buttonAccept;
 
     @FindBy(className = "mat-table")
     private WebElement tableInventory;
 
     public ListInventory() {
-        CommonEvents.isVisible(aceptarBtn);
+        CommonEvents.isVisible(buttonAccept);
     }
 
     public boolean isInventoryListVisible() {
