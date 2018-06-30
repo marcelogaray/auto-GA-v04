@@ -238,22 +238,22 @@ public class StepsDefinitionSSID {
         formEquipment = listEquipment.isFormEquipmentVisible();
     }
 
-    @Then("^verificar componente 'Nombre' del 'Formulario de creación de Equipamiento' cargado$")
+    @Then("^verificar el campo 'Nombre' del 'Formulario de creación de Equipamiento' este visible$")
     public void validarComponenteNombreFormularioRegistroEquipamiento() throws Throwable {
         Assert.assertTrue(formEquipment.verifyInputNameFormIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
     }
 
-    @And("^verificar componente 'Tipo' del 'Formulario de creación de Equipamiento' cargado$")
+    @And("^verificar el selector de 'Tipo' del 'Formulario de creación de Equipamiento' este visible$")
     public void validarComponenteTipoFormularioRegistroEquipamiento() throws Throwable {
         Assert.assertTrue(formEquipment.verifySelectTypeFormIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
     }
 
-    @And("^verificar componente 'Descripcion' del 'Formulario de creación de Equipamiento' cargado$")
+    @And("^verificar campo de 'Descripcion' del 'Formulario de creación de Equipamiento' este visible$")
     public void validarComponenteDescripcionFormularioRegistroEquipamiento() throws Throwable {
         Assert.assertTrue(formEquipment.verifyInputDescriptionFormIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
     }
 
-    @And("^verificar componente 'Imagen' del 'Formulario de creación de Equipamiento' cargado$")
+    @And("^verificar la opcion de carga de 'Imagen' del 'Formulario de creación de Equipamiento' este visible$")
     public void validarComponenteImagenFormularioRegistroEquipamiento() throws Throwable {
         Assert.assertTrue(formEquipment.verifyInputImageFormIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
     }
