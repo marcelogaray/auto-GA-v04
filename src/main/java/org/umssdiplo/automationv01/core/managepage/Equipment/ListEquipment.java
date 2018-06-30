@@ -13,12 +13,26 @@ public class ListEquipment extends BasePage {
     @FindBy(className = "mat-table")
     private WebElement tableEquipments;
 
+    @FindBy(xpath = "//mat-header-cell[contains(text(),'Nombre')]")
+    private WebElement columnListName;
+
+    @FindBy(xpath = "//mat-header-cell[contains(text(),'Acciones')]")
+    private WebElement columnListAction;
+
     public ListEquipment() {
         CommonEvents.isVisible(buttonCreateEquipment);
     }
 
     public boolean isEquipmentListVisible() {
         return CommonEvents.isVisible(tableEquipments);
+    }
+
+    public boolean checkNameHeaderListEquipment() {
+        return CommonEvents.isVisible(columnListName);
+    }
+
+    public boolean checkActionsHeaderListEquipment() {
+        return CommonEvents.isVisible(columnListAction);
     }
 
     public void createNewEquipment() {

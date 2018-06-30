@@ -7,10 +7,10 @@ Feature: Check fields creation
   Scenario: Validar componentes del 'formulario de creación de Equipamiento'
     Given 'Menu principal' estee cargado
     And seleccionar menu 'Equipamiento' en la pagina 'Menu Principal'
-    And Seleccionar submenu 'Equipamiento' en menu 'Equipamiento'
-    And Hacer Click en el boton 'Crear nuevo Equipamiento'
-    When Formulario de 'Registro de nuevo Equipamiento' esta cargado
-    Then Verificar componente 'Nombre' del 'Formulario de creación de Equipamiento' cargado
-    And Verificar componente 'Tipo' del 'Formulario de creación de Equipamiento' cargado
-    And Verificar componente 'Descripcion' del 'Formulario de creación de Equipamiento' cargado
-    And Verificar componente 'Imagen' del 'Formulario de creación de Equipamiento' cargado
+    And seleccionar submenu 'Equipamiento' en menu 'Equipamiento'
+    And hacer Click en el boton 'Crear nuevo Equipamiento'
+    When formulario de 'Registro de nuevo Equipamiento' esta cargado
+    Then verificar componente 'Nombre' del 'Formulario de creación de Equipamiento' cargado
+    And verificar componente 'Tipo' del 'Formulario de creación de Equipamiento' cargado
+    And verificar componente 'Descripcion' del 'Formulario de creación de Equipamiento' cargado
+    And verificar componente 'Imagen' del 'Formulario de creación de Equipamiento' cargado
