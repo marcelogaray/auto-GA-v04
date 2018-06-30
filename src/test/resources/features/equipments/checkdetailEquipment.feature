@@ -10,5 +10,7 @@ Feature: Check Detail Equipment
       And seleccionar menu 'Equipamiento' en la pagina 'Menu Principal'
       And Seleccionar submenu 'Equipamiento' en menu 'Equipamiento'
       And click en boton Ver de 'Lista de Equipamientos'
-      When 'Detalle de Equipamiento' correctamente cargado
-      Then Verificar que el 'Detalle de Equipamiento' especifico sea mostrado correctamente
+      When 'detalle de Equipamiento' correctamente cargado
+      Then verificar titulo de 'Nombre' en el  'Detalle de Equipamiento' sea mostrado correctamente
+      And verificar titulo de 'Tipo' en el  'Detalle de Equipamiento' sea mostrado correctamente
+      And verificar contenido de 'Imagen' en el  'Detalle de Equipamiento' sea mostrado correctamente

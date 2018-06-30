@@ -8,27 +8,27 @@ import org.umssdiplo.automationv01.core.utils.CommonEvents;
 public class ListEquipment extends BasePage {
 
     @FindBy(id = "crearEquipment")
-    private WebElement btnCrearEquipment;
+    private WebElement buttonCreateEquipment;
 
     @FindBy(className = "mat-table")
     private WebElement tableEquipments;
 
-    @FindBy(xpath = "/html/body/ssi-root/ssi-equipment/div/div[3]/div/div/mat-table/mat-row[1]/mat-cell[2]/a[1]")
-    private WebElement viewEquipmentBtn;
+    @FindBy(xpath = "//mat-cell[2]/a[1]")
+    private WebElement buttonViewEquipment;
 
     public ListEquipment() {
-        CommonEvents.isVisible(btnCrearEquipment);
+        CommonEvents.isVisible(buttonCreateEquipment);
     }
 
     public boolean isEquipmentListVisible() {
         return CommonEvents.isVisible(tableEquipments);
     }
 
-    public void clickEquipmentViewBtn() {
-        CommonEvents.clickButton(viewEquipmentBtn);
+    public void clickbuttonViewEquipment() {
+        CommonEvents.clickButton(buttonViewEquipment);
     }
 
-    public ViewEquipment loadDetailEquipment() {
-        return new ViewEquipment();
+    public EquipmentDetail isEquipmentDetailVisible() {
+        return new EquipmentDetail();
     }
 }
