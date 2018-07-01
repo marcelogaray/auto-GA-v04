@@ -6,7 +6,7 @@ Feature: Editar contratos
     Given 'SSI-D' pagina de inicio de sesion es cargada
     And Ingresar los credenciales validos en la pagina 'Login' para ingresar al sistema
 
-  Scenario: Editar los datos de un item 
+  Scenario: Editar los datos de un item
     Given menu principal este cargado en pagina de inicio
     And seleccionar la opcion 'Personal' en la pagina 'menu principal'
     And seleccionar el submenu 'Contratos' del menu 'Personal'
@@ -15,5 +15,6 @@ Feature: Editar contratos
     And modificar datos del 'formulario de Contrato a Editar'
       | contractCodesEdit | contractDescriptionsEdit   | contractSalarysEdit | contractDatesEdit     |
       | 0028          | descripcion Pruebas          | 3500            | 06/25/2018        |
-    Then seleccionar boton 'Enviar' para grabar los datos editados del formulario
+    And seleccionar boton 'Enviar' para grabar los datos editados del formulario
+    Then validar que la 'Lista de Contratos' este visible
 

@@ -15,5 +15,6 @@ Feature: Crear contratos
     And llenar 'formulario de Contrato Nuevo'
       | contractCodes | contractDescriptions   | contractSalarys | contractDates     |
       | 111         | contrato seguro            | 3800           | 06/22/2018        |
-    Then seleccionar Boton 'Enviar' para grabar los datos del formulario
+    And seleccionar Boton 'Enviar' para grabar los datos del formulario
+    Then verificar 'Lista de Contratos' con item creado
 

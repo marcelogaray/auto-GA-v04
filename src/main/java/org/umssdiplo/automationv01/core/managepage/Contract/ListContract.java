@@ -38,10 +38,12 @@ public class ListContract extends BasePage {
     public boolean validateContractList() {
         return CommonEvents.isVisible(pageContract);
     }
+
     public FormContract selectBtnAddContract() {
         CommonEvents.clickButton(buttonAddContract);
         return new FormContract();
     }
+
     public FormContract selectBtnEditContract() {
         CommonEvents.clickButton(buttonEditContract);
         return new FormContract();

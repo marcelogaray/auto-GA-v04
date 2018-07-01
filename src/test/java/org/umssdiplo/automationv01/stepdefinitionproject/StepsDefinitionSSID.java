@@ -462,9 +462,9 @@ public class StepsDefinitionSSID {
         formContract.newContractRegistration(data);
     }
 
-    @Then("^seleccionar Boton 'Enviar' para grabar los datos del formulario$")
+    @And("^seleccionar Boton 'Enviar' para grabar los datos del formulario$")
     public void SeleccionarBotonformulario() throws Throwable {
-        Assert.assertTrue(formContract.clickButtonSendForm(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Send Form Add"));
+        formContract.clickButtonSendForm();
     }
 
     @And("^seleccionar boton Editar del primer item lista contratos$")
@@ -478,9 +478,9 @@ public class StepsDefinitionSSID {
         formContract.editContractRegistration(data);
     }
 
-    @Then("^seleccionar boton 'Enviar' para grabar los datos editados del formulario$")
+    @And("^seleccionar boton 'Enviar' para grabar los datos editados del formulario$")
     public void SeleccionarBotonformularioEditar() throws Throwable {
-        Assert.assertTrue(formContract.clickButtonSendFormEdit(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Send Form Edit"));
+        formContract.clickButtonSendFormEdit();
     }
 
     @And("^llenar la opcion filtro de contrato$")
@@ -495,6 +495,11 @@ public class StepsDefinitionSSID {
         Assert.assertTrue(listContract.validateContractList(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Contract List Fill"));
     }
 
+    @Then("^verificar 'Lista de Contratos' con item editado$")
+    public void listaContratoEditado() throws Throwable {
+        Assert.assertTrue(listContract.validateContractList(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Contract List Edit"));
+    }
+
     @And("^seleccionar boton Eliminar del primer item lista contratos$")
     public void seleccionarEliminar() throws Throwable {
         formContract = listContract.selectBtnDeleteContract();
@@ -507,12 +512,12 @@ public class StepsDefinitionSSID {
 
     @When("^seleccionar en boton siguiente de la lista$")
     public  void seleccionarSiguienteListaContrato(){
-        Assert.assertTrue(listContract.selectNextListcontract(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Button Next Contract"));
+        listContract.selectNextListcontract();
     }
 
     @And("^seleccionar en boton de anterior de la lista$")
     public void seleccionAnteriorListaContrato(){
-        Assert.assertTrue(listContract.selectBackListcontract(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Button Back Contract"));
+        listContract.selectBackListcontract();
     }
 
     @And("^seleccionar el boton 'Atras' del formulario creacion de contratos$")
