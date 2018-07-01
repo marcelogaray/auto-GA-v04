@@ -263,6 +263,26 @@ public class StepsDefinitionSSID {
         Assert.assertTrue(formEquipment.verifyInputImageFormIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
     }
 
+    @And("^activar campo requerido 'Nombre' sin ingresar informacion en 'Formulario de creación de Equipamiento'$")
+    public void activarCamposNombreEnRegistroEquipamiento() throws Throwable {
+        formEquipment.setInputFieldName();
+    }
+
+    @And("^activar campo requerido 'Descripcion' sin ingresar informacion en 'Formulario de creación de Equipamiento'$")
+    public void activarCampoDescripcionEnRegistroEquipamiento() throws Throwable {
+        formEquipment.setTextDescription();
+    }
+
+    @Then("^verificar mensaje de 'campo requerido' en 'Formulario de creación de Equipamiento' con el campo 'Nombre' vacio$")
+    public void verificarMensajeNombreRequeridoEnRegistroequipamiento() throws Throwable {
+        Assert.assertTrue(formEquipment.verifyHintMessageInputNameIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipment title"));
+    }
+
+    @And("^verificar mensaje de 'campo requerido' en 'Formulario de creación de Equipamiento' con el campo 'Descripcion' vacio$")
+    public void verificarMensajeDescripcionRequeridoEnRegistroequipamiento() throws Throwable {
+        Assert.assertTrue(formEquipment.verifyHintMessageInputDescriptionIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipment title"));
+    }
+
     @And("^seleccionar submenu 'Inventory' en menu 'Equipamiento'$")
     public void seleccionarSubMenuInventory() throws Throwable {
         listInventory = menuEquipamiento.selectSubMenuInventory();
@@ -282,7 +302,6 @@ public class StepsDefinitionSSID {
     public void verificarImagenCabeceraReporteInventario() throws Throwable {
         Assert.assertTrue(listInventory.verifyImageReportHeaderInventoryIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Inventory title"));
     }
-
     //END Equipment
 
     @And("^seleccionar submenu 'Personal' en menu 'Personal'$")
