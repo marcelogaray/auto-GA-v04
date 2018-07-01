@@ -8,7 +8,7 @@ Feature: Verificar paginacion next y previus en lista de usuarios
   Scenario: Verificar la paginacion de la lista de usuario
     Given 'Menu principal' estee cargado
     And seleccionar menu 'Personal' en la pagina 'Menu Principal'
-    And Seleccionar submenu 'Usuario' en menu 'Personal'
+    And seleccionar submenu 'Usuario' en menu 'Personal'
     When seleccionar en boton next de la lista
     And seleccionar en boton de previus de la lista
     Then validar que la 'Lista de Usuarios' este visible
