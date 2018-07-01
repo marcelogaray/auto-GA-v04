@@ -10,7 +10,6 @@ import org.testng.Assert;
 import org.umssdiplo.automationv01.core.managepage.Assign.FormAssignPersonal;
 import org.umssdiplo.automationv01.core.managepage.Contract.ListContract;
 import org.umssdiplo.automationv01.core.managepage.Equipment.FormEquipment;
-import org.umssdiplo.automationv01.core.managepage.BasePage;
 import org.umssdiplo.automationv01.core.managepage.Equipment.ListEquipment;
 import org.umssdiplo.automationv01.core.managepage.Equipment.ListInventory;
 import org.umssdiplo.automationv01.core.managepage.Home.Home;
@@ -19,10 +18,6 @@ import org.umssdiplo.automationv01.core.managepage.Login.Login;
 import org.umssdiplo.automationv01.core.managepage.Menu.*;
 import org.umssdiplo.automationv01.core.managepage.Personnel.PersonnelSearch;
 import org.umssdiplo.automationv01.core.managepage.Position.CreatePosition;
-import org.umssdiplo.automationv01.core.managepage.Menu.Menu;
-import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuEquipment;
-import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuOrganizationalStructure;
-import org.umssdiplo.automationv01.core.managepage.Menu.SubMenuPersonal;
 import org.umssdiplo.automationv01.core.managepage.Position.Position;
 import org.umssdiplo.automationv01.core.managepage.ProgramSSO.Resource;
 import org.umssdiplo.automationv01.core.managepage.ProgramSSO.ResourceForm;
@@ -42,8 +37,9 @@ public class StepsDefinitionSSID {
     private Resource resource;
     private IncidentPage incidentPage;
     private PersonnelSearch personnelSearch;
-    private SubMenuEquipment subMenuEquipmento;
+    private SubMenuEquipment menuEquipamiento;
     private ListEquipment listEquipment;
+    private ListInventory listInventory;
     private FormEquipment formEquipment;
     private Position position;
     private SubMenuOrganizationalStructure subMenuOrganizationalStructure;
@@ -54,7 +50,6 @@ public class StepsDefinitionSSID {
     private FormAssignPersonal formAssignPersonal;
     private SubMenuPersonalContract menuPersonalContract;
     private ListContract listContract;
-    private ListInventory listInventory;
 
     private void loadPageObjects() {
         login = LoadPage.loginPage();
@@ -213,15 +208,15 @@ public class StepsDefinitionSSID {
     }
     //End Positions
 
-    //BEGIN Equipments
+    //BEGIN Equipment
     @And("^seleccionar menu 'Equipamiento' en la pagina 'Menu Principal'$")
     public void menuEquipamientoEstaSeleccionado() throws Throwable {
-        subMenuEquipmento = menu.selectEquipmentMenu();
+        menuEquipamiento = menu.selectEquipmentMenu();
     }
 
     @And("^seleccionar submenu 'Equipamiento' en menu 'Equipamiento'$")
     public void seleccionarSubMenuEquipamiento() throws Throwable {
-        listEquipment = subMenuEquipmento.selectSubMenuEquipment();
+        listEquipment = menuEquipamiento.selectSubMenuEquipment();
     }
 
     @Then("^verificar que la 'Lista de Equipamientos' este visible$")
@@ -271,7 +266,7 @@ public class StepsDefinitionSSID {
 
     @And("^seleccionar submenu 'Inventory' en menu 'Equipamiento'$")
     public void seleccionarSubMenuInventory() throws Throwable {
-        listInventory = subMenuEquipmento.selectSubMenuInventory();
+        listInventory = menuEquipamiento.selectSubMenuInventory();
     }
 
     @Then("^verificar que 'Reporte de Inventario' este visible$")
@@ -288,7 +283,8 @@ public class StepsDefinitionSSID {
     public void verificarImagenCabeceraReporteInventario() throws Throwable {
         Assert.assertTrue(listInventory.verifyImageReportHeaderInventoryIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Inventory title"));
     }
-    //END Equipments
+
+    //END Equipment
 
     @And("^seleccionar submenu 'Personal' en menu 'Personal'$")
     public void seleccionarSubMenuPersonal() throws Throwable {
@@ -469,4 +465,3 @@ public class StepsDefinitionSSID {
         Assert.assertFalse(createPosition.validateButtonSendIsEnabled(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_ENABLED, "Button 'Enviar' "));
     }
 }
-
