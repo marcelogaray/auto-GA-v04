@@ -10,22 +10,22 @@ import org.umssdiplo.automationv01.core.utils.CommonEvents;
 public class SubMenuEquipment extends BasePage {
 
     @FindBy(id = "smEquipament")
-    private WebElement equipmentSubMenu;
+    private WebElement subMenuEquipment;
 
     @FindBy(id = "smInventory")
-    private WebElement inventorySubMenu;
+    private WebElement subMenuInventory;
 
     public SubMenuEquipment() {
-        CommonEvents.isVisible(equipmentSubMenu);
+        CommonEvents.isVisible(subMenuEquipment);
     }
 
     public ListEquipment selectSubMenuEquipment() {
-        CommonEvents.clickButton(equipmentSubMenu);
+        CommonEvents.clickButton(subMenuEquipment);
         return new ListEquipment();
     }
 
     public ListInventory selectSubMenuInventory() {
-        CommonEvents.clickButton(inventorySubMenu);
+        CommonEvents.clickButton(subMenuInventory);
         return new ListInventory();
     }
 }
