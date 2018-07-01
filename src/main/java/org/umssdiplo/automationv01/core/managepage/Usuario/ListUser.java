@@ -27,7 +27,7 @@ public class ListUser extends BasePage {
     private WebElement buttonNextPagination;
 
     @FindBy(className = "mat-paginator-navigation-previous")
-    private WebElement buttonPreviusPagination;
+    private WebElement buttonPreviousPagination;
 
     public ListUser() {
         CommonEvents.isVisible(buttonAddUser);
@@ -65,7 +65,7 @@ public class ListUser extends BasePage {
         CommonEvents.clickButton(buttonNextPagination);
     }
 
-    public void clickButtonPrevius() {
-        CommonEvents.clickButton(buttonPreviusPagination);
+    public void clickButtonPrevious() {
+        CommonEvents.clickButton(buttonPreviousPagination);
     }
 }

@@ -1,5 +1,6 @@
 package org.umssdiplo.automationv01.core.utils;
 
+import org.apache.log4j.Logger;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.NoSuchElementException;
@@ -10,6 +11,8 @@ import org.umssdiplo.automationv01.core.customwebdriver.ManageDriver;
 import java.util.List;
 
 public class CommonEvents {
+
+    final static Logger logger = Logger.getLogger(CommonEvents.class);
 
     /**
      * This method set text content to web element.
@@ -54,7 +57,7 @@ public class CommonEvents {
             ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.elementToBeClickable(webElement));
             return webElement.isDisplayed();
         } catch (NoSuchElementException e) {
-            System.out.println("Element do not exits.");
+            logger.error("Element do not exits!");
             return false;
         }
     }
@@ -69,7 +72,7 @@ public class CommonEvents {
         try {
             return webElement.isEnabled();
         } catch (NoSuchElementException e) {
-            System.out.println("Element do not exits.");
+            logger.error("Element do not exists!");
             return false;
         }
     }
@@ -127,7 +130,7 @@ public class CommonEvents {
         try {
             return webElement.isEnabled();
         } catch (NoSuchElementException e) {
-            System.out.println("Element do not exits.");
+            logger.error("Element do not exists!");
             return false;
         }
     }

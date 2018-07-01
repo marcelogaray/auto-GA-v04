@@ -368,7 +368,7 @@ public class StepsDefinitionSSID {
 
     @And("^seleccionar en boton de 'previus' del paginador de la 'lista de usuarios'$")
     public void seleccionarEnBotonDePreviusDeLaLista() throws Throwable {
-        listUser.clickButtonPrevius();
+        listUser.clickButtonPrevious();
     }
 
     @And("^verificar que se cargue la cabecera 'Nombre cargo' en la tabla de 'lista de cargos'$")
