@@ -11,7 +11,7 @@ Feature: Buscar contratos de la lista general
     And seleccionar la opcion 'Personal' en la pagina 'menu principal'
     And seleccionar el submenu 'Contratos' del menu 'Personal'
     And mostrar 'Lista de Contratos'
-    And llenar la opcion filtro de contrato
+    And insertar la siguiente informacion para realizar el filtro en la 'lista de contrato'
       | contractCode |
       | 101         |
-    Then validar que la 'Lista de Contratos' este visible mostrando el filtro ingresado
+    Then validar que la 'lista de contratos' se haya filtrado correctamente

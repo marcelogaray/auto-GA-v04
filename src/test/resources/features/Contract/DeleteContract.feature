@@ -11,7 +11,7 @@ Feature: Eliminar contratos
     And seleccionar la opcion 'Personal' en la pagina 'menu principal'
     And seleccionar el submenu 'Contratos' del menu 'Personal'
     And mostrar 'Lista de Contratos'
-    And seleccionar boton Eliminar del primer item lista contratos
+    And click en el boton 'Eliminar' del primer item lista contratos
     Then validar que la 'Lista de Contratos' este visible sin el item eliminado
 
 

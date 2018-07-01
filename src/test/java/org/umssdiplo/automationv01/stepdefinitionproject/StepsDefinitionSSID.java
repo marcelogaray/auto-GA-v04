@@ -524,7 +524,7 @@ public class StepsDefinitionSSID {
         Assert.assertTrue(listContract.validateContractList(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Contract List"));
     }
 
-    @And("^seleccionar boton Agregar Nuevo Contrato del Area de contratos$")
+    @And("^seleccionar boton 'Agregar Nuevo Contrato' del 'Area de contratos'$")
     public void seleccionarAgregarContrato() throws Throwable {
         formContract = listContract.selectBtnAddContract();
     }
@@ -556,14 +556,14 @@ public class StepsDefinitionSSID {
         formContract.clickButtonSendFormEdit();
     }
 
-    @And("^llenar la opcion filtro de contrato$")
+    @And("^insertar la siguiente informacion para realizar el filtro en la 'lista de contrato'$")
     public void llenarfiltroBusqueda(DataTable tables) throws Throwable {
         List<Map<String, String>> data = tables.asMaps(String.class, String.class);
         formContract = new FormContract();
         formContract.findContractList(data);
     }
 
-    @Then("^validar que la 'Lista de Contratos' este visible mostrando el filtro ingresado$")
+    @Then("^validar que la 'lista de contratos' se haya filtrado correctamente$")
     public void listaFiltrada() throws Throwable {
         Assert.assertTrue(listContract.validateContractList(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Contract List Fill"));
     }
@@ -573,7 +573,7 @@ public class StepsDefinitionSSID {
         Assert.assertTrue(listContract.validateContractList(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Contract List Edit"));
     }
 
-    @And("^seleccionar boton Eliminar del primer item lista contratos$")
+    @And("^click en el boton 'Eliminar' del primer item lista contratos$")
     public void seleccionarEliminar() throws Throwable {
         formContract = listContract.selectBtnDeleteContract();
     }
