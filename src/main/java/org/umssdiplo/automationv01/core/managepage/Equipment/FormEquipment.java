@@ -22,6 +22,15 @@ public class FormEquipment extends BasePage {
     @FindBy(id="imageEquipment")
     private WebElement fileEquipmentImage;
 
+    @FindBy(xpath = ".//button[contains(text(),'limpiar imagen')]")
+    private WebElement buttonClearImage;
+
+    @FindBy(id="mat-hint-0")
+    private WebElement hiddenMessageInputName;
+
+    @FindBy(id="mat-hint-2")
+    private WebElement hiddenMessageInputDescription;
+
     public FormEquipment() {
         CommonEvents.isVisible(buttonNewEquipment);
     }
@@ -40,5 +49,22 @@ public class FormEquipment extends BasePage {
 
     public boolean verifyInputImageFormIsVisible() {
         return CommonEvents.isVisible(fileEquipmentImage);
+    }
+
+    public void setInputFieldName() {
+        CommonEvents.setInputField(inputEquipmentName, "");
+    }
+
+    public void setTextDescription() {
+        CommonEvents.setInputField(textAreaEquipmentDesc, "");
+        CommonEvents.clickButton(buttonClearImage);
+    }
+
+    public boolean verifyHintMessageInputNameIsVisible() {
+        return CommonEvents.isVisible(hiddenMessageInputName);
+    }
+
+    public boolean verifyHintMessageInputDescriptionIsVisible() {
+        return CommonEvents.isVisible(hiddenMessageInputDescription);
     }
 }
