@@ -15,6 +15,6 @@ Feature: Editar contratos
     And modificar datos del 'formulario de Contrato a Editar'
       | contractCodesEdit | contractDescriptionsEdit   | contractSalarysEdit | contractDatesEdit     |
       | 0028          | descripcion Pruebas          | 3500            | 06/25/2018        |
-    And seleccionar boton 'Enviar' para grabar los datos editados del formulario
+    And click en el boton 'Enviar' para grabar los datos editados del formulario
     Then validar que la 'Lista de Contratos' este visible
 

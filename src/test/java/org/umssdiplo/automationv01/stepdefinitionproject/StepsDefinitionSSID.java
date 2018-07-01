@@ -487,7 +487,7 @@ public class StepsDefinitionSSID {
         formContract.editContractRegistration(data);
     }
 
-    @And("^seleccionar boton 'Enviar' para grabar los datos editados del formulario$")
+    @And("^click en el boton 'Enviar' para grabar los datos editados del formulario$")
     public void SeleccionarBotonformularioEditar() throws Throwable {
         formContract.clickButtonSendFormEdit();
     }
