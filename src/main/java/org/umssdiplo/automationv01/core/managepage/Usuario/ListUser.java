@@ -24,10 +24,10 @@ public class ListUser extends BasePage {
     private WebElement textFieldSearch;
 
     @FindBy(xpath = "//button[@class='mat-paginator-navigation-next mat-icon-button']")
-    private WebElement btnNextPagination;
+    private WebElement buttonNextPagination;
 
     @FindBy(xpath = "//button[@class='mat-paginator-navigation-previous mat-icon-button']")
-    private WebElement btnPreviusPagination;
+    private WebElement buttonPreviusPagination;
 
     public ListUser() {
         CommonEvents.isVisible(buttonAddUser);
@@ -61,11 +61,11 @@ public class ListUser extends BasePage {
         CommonEvents.setInputField(textFieldSearch, user.getUsername());
     }
 
-    public void clickOnNextButton() {
-        CommonEvents.clickButton(btnNextPagination);
+    public void clickButtonNext() {
+        CommonEvents.clickButton(buttonNextPagination);
     }
 
-    public void clickOnPreviusButton() {
-        CommonEvents.clickButton(btnPreviusPagination);
+    public void clickButtonPrevius() {
+        CommonEvents.clickButton(buttonPreviusPagination);
     }
 }

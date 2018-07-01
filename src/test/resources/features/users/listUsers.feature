@@ -9,4 +9,4 @@ Feature: List User
     Given 'Menu principal' estee cargado
     And seleccionar menu 'Personal' en la pagina 'Menu Principal'
     And seleccionar submenu 'Usuario' en menu 'Personal'
-    Then validar que la 'Lista de Usuarios' este visible
+    Then validar que la 'Lista de Usuarios' este visible en la pagina 'usuarios'

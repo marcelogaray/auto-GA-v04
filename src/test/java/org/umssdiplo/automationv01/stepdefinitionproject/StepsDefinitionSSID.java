@@ -77,7 +77,7 @@ public class StepsDefinitionSSID {
         listUser = menuPersonal.selectSubMenuUser();
     }
 
-    @Then("^validar que la 'Lista de Usuarios' este visible$")
+    @Then("^validar que la 'Lista de Usuarios' este visible en la pagina 'usuarios'$")
     public void validarListaDeUsuarios() throws Throwable {
         Assert.assertTrue(listUser.isUserListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Usuario"));
     }
@@ -361,14 +361,14 @@ public class StepsDefinitionSSID {
         Assert.assertTrue(listUser.isUserListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "List Users"));
     }
 
-    @When("^seleccionar en boton next de la lista$")
+    @When("^seleccionar en boton 'next' del paginador de la 'lista de usuarios'$")
     public void seleccionarEnBotonNextDeLaLista() throws Throwable {
-        listUser.clickOnNextButton();
+        listUser.clickButtonNext();
     }
 
-    @And("^seleccionar en boton de previus de la lista$")
+    @And("^seleccionar en boton de 'previus' del paginador de la 'lista de usuarios'$")
     public void seleccionarEnBotonDePreviusDeLaLista() throws Throwable {
-        listUser.clickOnPreviusButton();
+        listUser.clickButtonPrevius();
     }
 
     @And("^verificar que se cargue la cabecera 'Nombre cargo' en la tabla de 'lista de cargos'$")
