@@ -1,7 +1,6 @@
 package org.umssdiplo.automationv01.stepdefinitionproject;
 
 import cucumber.api.DataTable;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -11,6 +10,8 @@ import org.umssdiplo.automationv01.core.managepage.Assign.FormAssignPersonal;
 import org.umssdiplo.automationv01.core.managepage.Contract.ListContract;
 import org.umssdiplo.automationv01.core.managepage.Equipment.FormEquipment;
 import org.umssdiplo.automationv01.core.managepage.Equipment.ListEquipment;
+import org.umssdiplo.automationv01.core.managepage.Equipment.EquipmentDetail;
+import org.umssdiplo.automationv01.core.managepage.Equipment.ListInventory;
 import org.umssdiplo.automationv01.core.managepage.Home.Home;
 import org.umssdiplo.automationv01.core.managepage.Incident.CreateIncidentPage;
 import org.umssdiplo.automationv01.core.managepage.Incident.IncidentPage;
@@ -41,6 +42,7 @@ public class StepsDefinitionSSID {
     private PersonnelSearch personnelSearch;
     private SubMenuEquipment menuEquipamiento;
     private ListEquipment listEquipment;
+    private ListInventory listInventory;
     private FormEquipment formEquipment;
     private Position position;
     private SubMenuOrganizationalStructure subMenuOrganizationalStructure;
@@ -52,6 +54,7 @@ public class StepsDefinitionSSID {
     private FormAssignPersonal formAssignPersonal;
     private SubMenuPersonalContract menuPersonalContract;
     private ListContract listContract;
+    private EquipmentDetail equipmentDetail;
 
     private void loadPageObjects() {
         login = LoadPage.loginPage();
@@ -82,7 +85,7 @@ public class StepsDefinitionSSID {
         listUser = menuPersonal.selectSubMenuUser();
     }
 
-    @Then("^validar que la 'Lista de Usuarios' este visible$")
+    @Then("^validar que la 'Lista de Usuarios' este visible en la pagina 'usuarios'$")
     public void validarListaDeUsuarios() throws Throwable {
         Assert.assertTrue(listUser.isUserListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Usuario"));
     }
@@ -222,7 +225,7 @@ public class StepsDefinitionSSID {
 
     @And("^click en el boton 'Agregar nuevo Incidente' de la pagina 'incidentes'$")
     public void hacemosClickEnElBotonAgregarNuevoIncidente() throws Throwable {
-        createIncidentPage = incidentPage.clickOnAddNewIncidentBtn();
+        createIncidentPage = incidentPage.clickOnButtonAddNewIncident();
     }
 
     @When("^insertamos información valida en el formulario de 'Creacion de Incidentes'$")
@@ -247,7 +250,7 @@ public class StepsDefinitionSSID {
         createIncidentPage.fillDescription("");
     }
 
-    @Then("^verificar que el boton de guardado no se deshabilita$")
+    @Then("^verificar que el boton 'guardar' no se deshabilita$")
     public void verificarQueElBotonDeGuardadoNoSeDeshabilita() throws Throwable {
         Assert.assertFalse(createIncidentPage.isButtonEnabled(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_DISABLED, "is enabled"));
     }
@@ -295,6 +298,66 @@ public class StepsDefinitionSSID {
     @And("^verificar la opcion de carga de 'Imagen' del 'Formulario de creación de Equipamiento' este visible$")
     public void validarComponenteImagenFormularioRegistroEquipamiento() throws Throwable {
         Assert.assertTrue(formEquipment.verifyInputImageFormIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
+    }
+
+    @And("^activar campo requerido 'Nombre' sin ingresar informacion en 'Formulario de creación de Equipamiento'$")
+    public void activarCamposNombreEnRegistroEquipamiento() throws Throwable {
+        formEquipment.setInputFieldName();
+    }
+
+    @And("^activar campo requerido 'Descripcion' sin ingresar informacion en 'Formulario de creación de Equipamiento'$")
+    public void activarCampoDescripcionEnRegistroEquipamiento() throws Throwable {
+        formEquipment.setTextDescription();
+    }
+
+    @Then("^verificar mensaje de 'campo requerido' en 'Formulario de creación de Equipamiento' con el campo 'Nombre' vacio$")
+    public void verificarMensajeNombreRequeridoEnRegistroequipamiento() throws Throwable {
+        Assert.assertTrue(formEquipment.verifyHintMessageInputNameIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipment title"));
+    }
+
+    @And("^verificar mensaje de 'campo requerido' en 'Formulario de creación de Equipamiento' con el campo 'Descripcion' vacio$")
+    public void verificarMensajeDescripcionRequeridoEnRegistroequipamiento() throws Throwable {
+        Assert.assertTrue(formEquipment.verifyHintMessageInputDescriptionIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipment title"));
+    }
+
+    @And("^click en el boton 'Ver' de 'Lista de Equipamientos'$")
+    public void clickBtnVer() throws  Throwable {
+        equipmentDetail = listEquipment.clickbuttonViewEquipment();
+    }
+
+    @Then("^verificar titulo de 'Nombre' en el 'Detalle de Equipamiento' este visible$")
+    public void verificarNombreEnDetalleEquipamiento() throws Throwable {
+        Assert.assertTrue(equipmentDetail.verifyEquipmentNameIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "EquipmentDetail Title"));
+    }
+
+    @And("^verificar titulo de 'Tipo' en el 'Detalle de Equipamiento' este visible$")
+    public void verificarTipoEnDetalleEquipamiento() throws Throwable {
+        Assert.assertTrue(equipmentDetail.verifyEquipmentTypeIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "EquipmentDetail Title"));
+    }
+
+    @And("^verificar contenido de 'Imagen' en el 'Detalle de Equipamiento' este visible$")
+    public void verificarImagenEnDetalleEquipamiento() throws Throwable {
+        Assert.assertTrue(equipmentDetail.verifyEquipmentImageIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "EquipmentDetail Title"));
+    }
+
+    @And("^seleccionar submenu 'Inventory' en menu 'Equipamiento'$")
+    public void seleccionarSubMenuInventory() throws Throwable {
+        listInventory = menuEquipamiento.selectSubMenuInventory();
+    }
+
+    @Then("^verificar que 'Reporte de Inventario' este visible$")
+    public void verificarInformacionReporteInventarios() throws Throwable {
+        Assert.assertTrue(listInventory.isInventoryListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Inventory title"));
+    }
+
+    @Then("^verificar 'Titulo' del 'Reporte de Inventario' este visible$")
+    public void verificarTituloCabeceraReporteInventario() throws Throwable {
+        Assert.assertTrue(listInventory.verifyTitleReportHeaderInventoryIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Inventory title"));
+    }
+
+    @And("^verificar 'Imagen' del 'Reporte de Inventario' este visible$")
+    public void verificarImagenCabeceraReporteInventario() throws Throwable {
+        Assert.assertTrue(listInventory.verifyImageReportHeaderInventoryIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Inventory title"));
     }
     //END Equipment
 
@@ -395,6 +458,16 @@ public class StepsDefinitionSSID {
     @Then("^verificar que el resultado coincida con el dato buscado$")
     public void verificarQueElResultadoCoincidaConElDatoBuscado() throws Throwable {
         Assert.assertTrue(listUser.isUserListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "List Users"));
+    }
+
+    @When("^seleccionar en boton 'next' del paginador de la 'lista de usuarios'$")
+    public void seleccionarEnBotonNextDeLaLista() throws Throwable {
+        listUser.clickButtonNext();
+    }
+
+    @And("^seleccionar en boton de 'previus' del paginador de la 'lista de usuarios'$")
+    public void seleccionarEnBotonDePreviusDeLaLista() throws Throwable {
+        listUser.clickButtonPrevious();
     }
 
     @And("^verificar que se cargue la cabecera 'Nombre cargo' en la tabla de 'lista de cargos'$")

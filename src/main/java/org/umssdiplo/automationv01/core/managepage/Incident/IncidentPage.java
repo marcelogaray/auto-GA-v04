@@ -28,7 +28,7 @@ public class IncidentPage extends BasePage {
         return CommonEvents.isVisible(headerTable);
     }
 
-    public CreateIncidentPage clickOnAddNewIncidentBtn() {
+    public CreateIncidentPage clickOnButtonAddNewIncident() {
         CommonEvents.clickButton(buttonAddNewIncident);
         return new CreateIncidentPage();
     }

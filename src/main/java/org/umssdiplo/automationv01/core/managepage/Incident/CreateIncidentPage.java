@@ -76,17 +76,17 @@ public class CreateIncidentPage extends BasePage {
     @FindBy(id = "mat-input-3")
     private WebElement textAreaDescription;
 
-    @FindBy(xpath = "//*[@id=\"form\"]/mat-card-actions/button[2]")
+    @FindBy(xpath = "//mat-card-actions/button[2]")
     private WebElement buttonSave;
 
-    @FindBy(xpath = "//*[@id=\"form\"]/mat-card-actions/button[1]")
+    @FindBy(xpath = "//mat-card-actions/button[1]")
     private WebElement cancelButton;
 
     @FindBy(xpath = "//div[contains(@class, 'toast-message')][contains(text(), 'El incidente se guardo satisfactoriamente')]")
     private WebElement toastMessage;
 
     public CreateIncidentPage() {
-        CommonEvents.isVisible(buttonSave);
+        CommonEvents.isVisible(title);
     }
 
     public boolean isTitleVisible() {

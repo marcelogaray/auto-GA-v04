@@ -34,7 +34,7 @@ Feature: Lista de Incidentes
     And verificar que la 'tabla de incidentes' este visible en la pagina 'Incidentes'
     And click en el boton 'Agregar nuevo Incidente' de la pagina 'incidentes'
     When llenamos el campo 'code' y el campo 'description' con valores vacios
-    Then verificar que el boton de guardado no se deshabilita
+    Then verificar que el boton 'guardar' no se deshabilita
 
   Scenario: RF05-TC-012 - Verificar que el boton 'cancelar' regresa a la 'lista de incidntes'.
     Given 'Menu principal' estee cargado
