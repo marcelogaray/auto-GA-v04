@@ -51,6 +51,7 @@ public class CommonEvents {
      */
     public static boolean isVisible(WebElement webElement) {
         try {
+            ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.elementToBeClickable(webElement));
             return webElement.isDisplayed();
         } catch (NoSuchElementException e) {
             System.out.println("Element do not exits.");

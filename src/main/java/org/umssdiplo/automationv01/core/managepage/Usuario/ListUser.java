@@ -14,7 +14,7 @@ public class ListUser extends BasePage {
     @FindBy(xpath = "//button/span[contains(text(),'Agregar Nuevo Usuario')]")
     private WebElement buttonAddUser;
 
-    @FindBy(xpath = "//mat-cell[@class='mat-cell cdk-column-UserName mat-column-UserName ng-star-inserted']")
+    @FindBy(className = "mat-column-UserName")
     private WebElement tableCellColumnUserName;
 
     @FindBy(xpath = "//mat-table[@class='mat-table']")
@@ -23,10 +23,10 @@ public class ListUser extends BasePage {
     @FindBy(id = "mat-input-2")
     private WebElement textFieldSearch;
 
-    @FindBy(xpath = "//button[@class='mat-paginator-navigation-next mat-icon-button']")
+    @FindBy(className = "mat-paginator-navigation-next")
     private WebElement buttonNextPagination;
 
-    @FindBy(xpath = "//button[@class='mat-paginator-navigation-previous mat-icon-button']")
+    @FindBy(className = "mat-paginator-navigation-previous")
     private WebElement buttonPreviusPagination;
 
     public ListUser() {
