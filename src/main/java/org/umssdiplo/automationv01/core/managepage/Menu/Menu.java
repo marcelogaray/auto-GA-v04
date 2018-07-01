@@ -20,7 +20,7 @@ public class Menu extends BasePage {
     private WebElement menuIncident;
 
     @FindBy(id = "menuEquipament")
-    private WebElement nemuEquipament;
+    private WebElement menuEquipament;
 
     @FindBy(id = "menuProgramSSO")
     private WebElement menuProgramaSSO;
@@ -50,12 +50,9 @@ public class Menu extends BasePage {
         return new IncidentPage();
     }
 
-    public List<BasePage> selectEquipmentMenu() {
-        CommonEvents.clickButton(nemuEquipament);
-        List<BasePage> equipamentMenuList = new ArrayList<>();
-        equipamentMenuList.add(new SubMenuEquipment());
-        equipamentMenuList.add(new SubMenuInventory());
-        return equipamentMenuList;
+    public SubMenuEquipment selectEquipmentMenu() {
+        CommonEvents.clickButton(menuEquipament);
+        return new SubMenuEquipment();
     }
 
     public SubMenuPersonalContract selectSubMenuPersonalContract() {

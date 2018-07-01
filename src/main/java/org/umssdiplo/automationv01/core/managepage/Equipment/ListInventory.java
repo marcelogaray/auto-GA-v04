@@ -17,7 +17,7 @@ public class ListInventory extends BasePage{
     private WebElement headerImageReport;
 
     @FindBy(xpath = ".//h1[contains(text(),'REPORTE DE ESTADO DE EQUIPAMIENTOS DE H.S.I')]")
-    private WebElement headerTitleReport;
+    private WebElement titleReport;
 
     public ListInventory() {
         CommonEvents.isVisible(buttonAccept);
@@ -28,7 +28,7 @@ public class ListInventory extends BasePage{
     }
 
     public boolean verifyTitleReportHeaderInventoryIsVisible() {
-        return CommonEvents.isVisible(headerTitleReport);
+        return CommonEvents.isVisible(titleReport);
     }
 
     public boolean verifyImageReportHeaderInventoryIsVisible() {
