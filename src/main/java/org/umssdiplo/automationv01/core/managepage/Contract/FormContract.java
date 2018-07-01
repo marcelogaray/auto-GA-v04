@@ -106,8 +106,7 @@ public class FormContract extends BasePage {
         CommonEvents.clickButton(buttonSendContract);
     }
 
-    public boolean clickButtonSendFormEdit(){
+    public void clickButtonSendFormEdit(){
         CommonEvents.clickButton(buttonSendEdit);
-        return CommonEvents.isVisible(buttonSendEdit);
     }
 }

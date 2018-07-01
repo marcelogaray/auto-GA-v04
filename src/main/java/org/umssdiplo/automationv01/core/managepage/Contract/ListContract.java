@@ -54,14 +54,12 @@ public class ListContract extends BasePage {
         return new FormContract();
     }
 
-    public boolean selectNextListcontract(){
+    public void selectNextListcontract(){
         CommonEvents.clickButton(buttonNextListcontract);
-        return CommonEvents.isVisible(buttonNextListcontract);
     }
 
-    public boolean selectBackListcontract(){
+    public void selectBackListcontract(){
         CommonEvents.clickButton(buttonBackListcontract);
-        return CommonEvents.isVisible(buttonBackListcontract);
     }
 
     public void selectBtnBackContarct(){
