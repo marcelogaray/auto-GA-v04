@@ -1,6 +1,6 @@
 # Navegacion de tabla contratos
 
-Feature: Navegacion de tabla contratos
+Feature: Navegacion de tabla contratos con los botones siuiente y anterior
 
   Background: Pagina de inicio es mostrada una vez que se ponen los credenciales correctos de inicio de sesión
     Given 'SSI-D' pagina de inicio de sesion es cargada
