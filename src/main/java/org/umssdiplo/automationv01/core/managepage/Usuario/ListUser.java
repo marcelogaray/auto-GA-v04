@@ -14,8 +14,8 @@ public class ListUser extends BasePage {
     @FindBy(xpath = "//button/span[contains(text(),'Agregar Nuevo Usuario')]")
     private WebElement btnAgregarUsuario;
 
-    @FindBy(xpath = "//div/div[contains(text(),'Items per page:')]")
-    private WebElement paginElement;
+    @FindBy(xpath = "//mat-cell[@class='mat-cell cdk-column-UserName mat-column-UserName ng-star-inserted']")
+    private WebElement tableCellColumnUserName;
 
     @FindBy(id = "mat-input-2")
     private WebElement textSearchField;
@@ -30,8 +30,8 @@ public class ListUser extends BasePage {
         CommonEvents.isVisible(btnAgregarUsuario);
     }
 
-    public boolean isUserListVisible() {
-        return CommonEvents.isVisible(paginElement);
+    public boolean  isUserListVisible() {
+        return CommonEvents.isVisible(tableCellColumnUserName);
     }
 
     public void clickAddNewUser() {

@@ -65,7 +65,7 @@ public class StepsDefinitionSSID {
         listUser = menuPersonal.selectSubMenuUsuario();
     }
 
-    @Then("^Validar que la 'Lista de Usuarios' este visible$")
+    @Then("^validar que la 'Lista de Usuarios' este visible$")
     public void validarListaDeUsuarios() throws Throwable {
         Assert.assertTrue(listUser.isUserListVisible());
     }
@@ -147,17 +147,17 @@ public class StepsDefinitionSSID {
         listUser.fillSeachFildWithData(searchUserTable);
     }
 
-    @Then("^Verificar que el resultado coincida con el dato buscado$")
+    @Then("^verificar que el resultado coincida con el dato buscado$")
     public void verificarQueElResultadoCoincidaConElDatoBuscado() throws Throwable {
         Assert.assertTrue(listUser.isUserListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "List Users"));
     }
 
-    @When("^Seleccionar en boton next de la lista$")
+    @When("^seleccionar en boton next de la lista$")
     public void seleccionarEnBotonNextDeLaLista() throws Throwable {
         listUser.clickOnNextButton();
     }
 
-    @And("^Seleccionar en boton de previus de la lista$")
+    @And("^seleccionar en boton de previus de la lista$")
     public void seleccionarEnBotonDePreviusDeLaLista() throws Throwable {
         listUser.clickOnPreviusButton();
     }

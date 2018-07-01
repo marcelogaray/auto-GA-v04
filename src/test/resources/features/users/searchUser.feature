@@ -13,4 +13,4 @@ Feature: Buscar usuario en la lista de usuario
       | username |
       | admin    |
       | tom      |
-    Then Verificar que el resultado coincida con el dato buscado
+    Then verificar que el resultado coincida con el dato buscado

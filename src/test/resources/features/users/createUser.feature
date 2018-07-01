@@ -14,5 +14,5 @@ Feature: Create user
     And Registrar usuarios con username, password con los siguiente datos
       | username | password  | userActive |
       | tom      | password1 | true       |
-    Then Validar que la 'Lista de Usuarios' este visible
+    Then validar que la 'Lista de Usuarios' este visible
 
