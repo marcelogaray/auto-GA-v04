@@ -10,4 +10,4 @@ Feature: Listar contratos almacenados
     Given menu principal este cargado en pagina de inicio
     And seleccionar la opcion 'Personal' en la pagina 'menu principal'
     And seleccionar el submenu 'Contratos' del menu 'Personal'
-    Then validar que la 'Lista de Contratos' este visible
+    Then validar que la 'Lista de Contratos' este visible en la pagina 'Contratos'

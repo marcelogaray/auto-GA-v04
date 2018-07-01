@@ -10,11 +10,11 @@ Feature: Crear contratos
     Given menu principal este cargado en pagina de inicio
     And seleccionar la opcion 'Personal' en la pagina 'menu principal'
     And seleccionar el submenu 'Contratos' del menu 'Personal'
-    And mostrar 'Lista de Contratos'
+    And visualizacion de la 'Lista de Contratos' en la pagina 'Contratos'
     And seleccionar boton 'Agregar Nuevo Contrato' del 'Area de contratos'
     And llenar 'formulario de Contrato Nuevo'
       | contractCodes | contractDescriptions   | contractSalarys | contractDates     |
       | 111         | contrato seguro            | 3800           | 06/22/2018        |
     And seleccionar Boton 'Enviar' para grabar los datos del formulario
-    Then verificar 'Lista de Contratos' con item creado
+    Then validar que la 'Lista de Contratos' este visible en la pagina 'Contratos'
 

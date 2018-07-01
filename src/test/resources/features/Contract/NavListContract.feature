@@ -10,6 +10,6 @@ Feature: Navegacion de tabla contratos con los botones siuiente y anterior
     Given menu principal este cargado en pagina de inicio
     And seleccionar la opcion 'Personal' en la pagina 'menu principal'
     And seleccionar el submenu 'Contratos' del menu 'Personal'
-    When seleccionar en boton siguiente de la lista
-    And seleccionar en boton de anterior de la lista
-    Then validar que la 'Lista de Contratos' este visible
+    When click en el boton siguiente de la lista de 'Contratos'
+    And click en el boton de anterior de la lista de 'Contratos'
+    Then validar que la 'Lista de Contratos' este visible en la pagina 'Contratos'

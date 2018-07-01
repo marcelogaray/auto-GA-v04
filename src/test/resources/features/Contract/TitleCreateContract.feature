@@ -10,7 +10,7 @@ Feature: validar el titulo en el formulario crear contratos
     Given menu principal este cargado en pagina de inicio
     And seleccionar la opcion 'Personal' en la pagina 'menu principal'
     And seleccionar el submenu 'Contratos' del menu 'Personal'
-    Then validar que la 'Lista de Contratos' este visible
-    And seleccionar boton Agregar Nuevo Contrato del Area de contratos
+    Then validar que la 'Lista de Contratos' este visible en la pagina 'Contratos'
+    And seleccionar boton 'Agregar Nuevo Contrato' del 'Area de contratos'
     Then validar que el título del formulario de creación contratos sea 'Nuevo Contrato'
 

@@ -10,11 +10,11 @@ Feature: Editar contratos de la la lista general
     Given menu principal este cargado en pagina de inicio
     And seleccionar la opcion 'Personal' en la pagina 'menu principal'
     And seleccionar el submenu 'Contratos' del menu 'Personal'
-    And mostrar 'Lista de Contratos'
+    And visualizacion de la 'Lista de Contratos' en la pagina 'Contratos'
     And click en el boton 'Editar' del primer item lista contratos
     And modificar datos del 'formulario de Contrato a Editar'
       | contractCodesEdit | contractDescriptionsEdit   | contractSalarysEdit | contractDatesEdit     |
       | 0028          | descripcion Pruebas          | 3500            | 06/25/2018        |
     And click en el boton 'Enviar' para grabar los datos editados del formulario
-    Then validar que la 'Lista de Contratos' este visible
+    Then validar que la 'Lista de Contratos' este visible en la pagina 'Contratos'
 

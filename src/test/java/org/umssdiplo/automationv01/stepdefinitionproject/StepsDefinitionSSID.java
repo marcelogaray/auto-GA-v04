@@ -414,7 +414,7 @@ public class StepsDefinitionSSID {
         listContract = menuPersonalContract.selectSubMenuContract();
     }
 
-    @Then("^validar que la 'Lista de Contratos' este visible$")
+    @Then("^validar que la 'Lista de Contratos' este visible en la pagina 'Contratos'$")
     public void validarListaDeContratos() throws Throwable {
         Assert.assertTrue(listContract.validateContractList(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Contract List"));
     }
@@ -519,7 +519,7 @@ public class StepsDefinitionSSID {
         Assert.assertFalse(createPosition.validateButtonSendIsEnabled(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_ENABLED, "Button 'Enviar' "));
     }
 
-    @And("^mostrar 'Lista de Contratos'$")
+    @And("^visualizacion de la 'Lista de Contratos' en la pagina 'Contratos'$")
     public void validarContratos() throws Throwable {
         Assert.assertTrue(listContract.validateContractList(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Contract List"));
     }
@@ -583,17 +583,17 @@ public class StepsDefinitionSSID {
         Assert.assertTrue(listContract.validateContractList(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Contract List Delete"));
     }
 
-    @When("^seleccionar en boton siguiente de la lista$")
+    @When("^click en el boton siguiente de la lista de 'Contratos'$")
     public  void seleccionarSiguienteListaContrato(){
         listContract.selectNextListcontract();
     }
 
-    @And("^seleccionar en boton de anterior de la lista$")
+    @And("^click en el boton de anterior de la lista de 'Contratos'$")
     public void seleccionAnteriorListaContrato(){
         listContract.selectBackListcontract();
     }
 
-    @And("^seleccionar el boton 'Atras' del formulario creacion de contratos$")
+    @And("^click en el boton 'Atras' del formulario 'creacion de contratos'$")
     public void seleccionBtnAtrasContract(){
         listContract.selectBtnBackContarct();
     }
