@@ -52,7 +52,7 @@ public class FormContract extends BasePage {
     private WebElement buttonSendEdit;
 
     @FindBy(id = "find-contract")
-    private WebElement fillContract;
+    private WebElement inputFillContract;
 
     public FormContract() {}
 
@@ -90,7 +90,7 @@ public class FormContract extends BasePage {
 
     private void setInputDataDateEdit(String data){ CommonEvents.setInputField(inputDateEditContract, data);}
 
-    public void findContractList(List<Map<String, String>> data) { CommonEvents.setInputField(fillContract, data.get(0).get("contractCode"));}
+    public void findContractList(List<Map<String, String>> data) { CommonEvents.setInputField(inputFillContract, data.get(0).get("contractCode"));}
 
     public void selectCityContract(){
         CommonEvents.clickButton(inputCityContract);
