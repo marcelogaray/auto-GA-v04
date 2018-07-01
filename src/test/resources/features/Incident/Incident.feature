@@ -9,37 +9,37 @@ Feature: Lista de Incidentes
   Scenario: RF05-TC-001 - Verificar que la cabecera de lista de Incidentes deben ser mostrados correctamente.
     Given 'Menu principal' estee cargado
     And presionar en la opcion 'Incidentes' del 'Menu Principal'
-    Then verificar que la tabla de incidentes se muestre correctamente
+    Then verificar que la 'tabla de incidentes' este visible en la pagina 'Incidentes'
 
   Scenario: RF05-TC-002 - Verificar que el sistema pueda crear incidentes correctamente.
     Given 'Menu principal' estee cargado
     And presionar en la opcion 'Incidentes' del 'Menu Principal'
-    And verificar que la tabla de incidentes se muestre correctamente
-    And hacemos 'click' en el boton 'Agregar nuevo Incidente'
-    When insertamos informacion valida en el formulario de 'Creacion de Incidentes
+    And verificar que la 'tabla de incidentes' este visible en la pagina 'Incidentes'
+    And click en el boton 'Agregar nuevo Incidente' de la pagina 'incidentes'
+    When insertamos información valida en el formulario de 'Creacion de Incidentes'
       | Severity | Code   | IncidentType | State     | Area           | ReportedBy | Reincident | Treatment | Description           |
-      | Media    | ACC-02 | enfermedad   | entregado | Remodelaciones | juan       | true       | true      | this is a description |
-    And hacemos clic en el boton de 'Guardar'
-    Then verificar que la tabla de incidentes se muestre correctamente
+      | Media    | ACC-02 | enfermedad   | entregado | Remodelaciones | jose       | true       | true      | this is a description |
+    And click en el boton 'guardar' en el 'formulario creación de incidentes'
+    Then verificar que la pagina 'incidentes' es cargada correctamente
 
   Scenario: RF05-TC-003 - Verificar que el titulo se cargue correctamente
     Given 'Menu principal' estee cargado
     And presionar en la opcion 'Incidentes' del 'Menu Principal'
-    And hacemos 'click' en el boton 'Agregar nuevo Incidente'
+    And click en el boton 'Agregar nuevo Incidente' de la pagina 'incidentes'
     And verificamos que el titulo de 'Creacion de Incidentes' se muestre correctamente
 
   Scenario: RF05-TC-006 Validar campos obligatorios en el formulario de creación de Recurso
     Given 'Menu principal' estee cargado
     And presionar en la opcion 'Incidentes' del 'Menu Principal'
-    And verificar que la tabla de incidentes se muestre correctamente
-    And hacemos 'click' en el boton 'Agregar nuevo Incidente'
+    And verificar que la 'tabla de incidentes' este visible en la pagina 'Incidentes'
+    And click en el boton 'Agregar nuevo Incidente' de la pagina 'incidentes'
     When llenamos el campo 'code' y el campo 'description' con valores vacios
     Then verificar que el boton de guardado no se deshabilita
 
   Scenario: RF05-TC-012 - Verificar que el boton 'cancelar' regresa a la 'lista de incidntes'.
     Given 'Menu principal' estee cargado
     And presionar en la opcion 'Incidentes' del 'Menu Principal'
-    And verificar que la tabla de incidentes se muestre correctamente
-    And hacemos 'click' en el boton 'Agregar nuevo Incidente'
+    And verificar que la 'tabla de incidentes' este visible en la pagina 'Incidentes'
+    And click en el boton 'Agregar nuevo Incidente' de la pagina 'incidentes'
     When hacemos 'click' en el boton 'cancelar'
-    Then verificar que la tabla de incidentes se muestre correctamente
+    Then verificar que la pagina 'incidentes' es cargada correctamente

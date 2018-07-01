@@ -26,7 +26,6 @@ import org.umssdiplo.automationv01.core.managepage.Usuario.FormUser;
 import org.umssdiplo.automationv01.core.managepage.Usuario.ListUser;
 import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
-
 import java.util.List;
 import java.util.Map;
 
@@ -201,7 +200,7 @@ public class StepsDefinitionSSID {
         incidentPage = menu.clickMenuIncident();
     }
 
-    @Then("^verificar que la tabla de incidentes se muestre correctamente$")
+    @Then("^verificar que la 'tabla de incidentes' este visible en la pagina 'Incidentes'$")
     public void verificarQueLaTablaDeIncidentesSeMuestreCorrectamente() throws Throwable {
         Assert.assertTrue(incidentPage.isTableVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Incident title"));
     }
@@ -221,20 +220,20 @@ public class StepsDefinitionSSID {
         Assert.assertTrue(listEquipment.isEquipmentListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
     }
 
-    @And("^hacemos 'click' en el boton 'Agregar nuevo Incidente'$")
+    @And("^click en el boton 'Agregar nuevo Incidente' de la pagina 'incidentes'$")
     public void hacemosClickEnElBotonAgregarNuevoIncidente() throws Throwable {
         createIncidentPage = incidentPage.clickOnAddNewIncidentBtn();
     }
 
-    @When("^insertamos informacion valida en el formulario de 'Creacion de Incidentes$")
+    @When("^insertamos información valida en el formulario de 'Creacion de Incidentes'$")
     public void insertamosInformacionValidaEnElFormularioDeCreacionDeIncidentes(DataTable table) throws Throwable {
         List<Map<String, String>> data = table.asMaps(String.class, String. class);
         createIncidentPage.setFormIncident(data);
     }
 
-    @And("^hacemos clic en el boton de 'Guardar'$")
+    @And("^click en el boton 'guardar' en el 'formulario creación de incidentes'$")
     public void hacemosClicEnElBotonDeGuardar() throws Throwable {
-        incidentPage =  createIncidentPage.clickSaveButton();
+        createIncidentPage.clickSaveButton();
     }
 
     @And("^verificamos que el titulo de 'Creacion de Incidentes' se muestre correctamente$")
@@ -476,5 +475,10 @@ public class StepsDefinitionSSID {
     @And("^verificar que el boton 'Enviar' este deshabilitado en la pagina 'Crear nuevo cargo'$")
     public void verificarQueElBotonEnviarEsteDeshabilitadoEnLaPaginaCrearNuevoCargo() throws Throwable {
         Assert.assertFalse(createPosition.validateButtonSendIsEnabled(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_ENABLED, "Button 'Enviar' "));
+    }
+
+    @Then("^verificar que la pagina 'incidentes' es cargada correctamente$")
+    public void verificarQueLaPaginaIncidentesEsCargadaCorrectamente() throws Throwable {
+        Assert.assertTrue(incidentPage.isTitleVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Incident"));
     }
 }

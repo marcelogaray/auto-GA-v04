@@ -20,6 +20,10 @@ public class IncidentPage extends BasePage {
         CommonEvents.isVisible(titleIncident);
     }
 
+    public boolean isTitleVisible() {
+        return CommonEvents.isVisible(titleIncident);
+    }
+
     public boolean isTableVisible() {
         return CommonEvents.isVisible(headerTable);
     }

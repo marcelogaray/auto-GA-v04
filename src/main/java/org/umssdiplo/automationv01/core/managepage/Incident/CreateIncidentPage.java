@@ -35,7 +35,6 @@ public class CreateIncidentPage extends BasePage {
 
     @FindAll({
             @FindBy(id = "mat-option-3"),
-            @FindBy(id = "mat-option-3"),
             @FindBy(id = "mat-option-4"),
             @FindBy(id = "mat-option-5"),
             @FindBy(id = "mat-option-6")
@@ -48,6 +47,7 @@ public class CreateIncidentPage extends BasePage {
     @FindAll({
             @FindBy(id = "mat-option-7"),
             @FindBy(id = "mat-option-8"),
+            @FindBy(id = "mat-option-9"),
             @FindBy(id = "mat-option-10"),
             @FindBy(id = "mat-option-11"),
             @FindBy(id = "mat-option-12"),
@@ -74,7 +74,7 @@ public class CreateIncidentPage extends BasePage {
     private WebElement checkTreatment;
 
     @FindBy(id = "mat-input-3")
-    private WebElement descriptionTextArea;
+    private WebElement textAreaDescription;
 
     @FindBy(xpath = "//*[@id=\"form\"]/mat-card-actions/button[2]")
     private WebElement buttonSave;
@@ -94,7 +94,7 @@ public class CreateIncidentPage extends BasePage {
     }
 
     public void setFormIncident(List<Map<String, String>> data) {
-        fillRadioButtonSeverity(data.get(0).get("Severity"));
+        checkRadioButtonSeverity(data.get(0).get("Severity"));
         fillInputCode(data.get(0).get("Code"));
         selectOptionIncidentType(data.get(0).get("IncidentType"));
         selectOptionState(data.get(0).get("State"));
@@ -105,7 +105,7 @@ public class CreateIncidentPage extends BasePage {
         fillDescription(data.get(0).get("Description"));
     }
 
-    public void fillRadioButtonSeverity(String selectedRadioSeverity) {
+    public void checkRadioButtonSeverity(String selectedRadioSeverity) {
         WebElement radioSelected = CommonEvents.findWebElement( radioGroupSeverity, selectedRadioSeverity);
         CommonEvents.clickButton(radioSelected);
     }
@@ -149,7 +149,7 @@ public class CreateIncidentPage extends BasePage {
     }
 
     public void fillDescription(String description) {
-        CommonEvents.setInputField(descriptionTextArea, description);
+        CommonEvents.setInputField(textAreaDescription, description);
     }
 
     public IncidentPage clickSaveButton() {
