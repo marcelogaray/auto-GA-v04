@@ -19,10 +19,10 @@ public class ListContract extends BasePage {
     @FindBy(id = "eliminarContract")
     private WebElement buttonDeleteContract;
 
-    @FindBy(xpath = "//button[@class='mat-paginator-navigation-next mat-icon-button']")
+    @FindBy(className = "mat-paginator-navigation-next mat-icon-button")
     private WebElement buttonNextListcontract;
 
-    @FindBy(xpath = "//button[@class='mat-paginator-navigation-previous mat-icon-button']")
+    @FindBy(className = "mat-paginator-navigation-previous mat-icon-button")
     private WebElement buttonBackListcontract;
 
     @FindBy(id = "btnAtras")

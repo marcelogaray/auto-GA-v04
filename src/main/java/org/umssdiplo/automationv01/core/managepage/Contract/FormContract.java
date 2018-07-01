@@ -57,26 +57,40 @@ public class FormContract extends BasePage {
     public FormContract() {}
 
     public void newContractRegistration(List<Map<String, String>> data){
-        CommonEvents.setInputField(inputCodeContract, data.get(0).get("contractCodes"));
-        CommonEvents.setInputField(inputDescriptionContract, data.get(0).get("contractDescriptions"));
-        CommonEvents.setInputField(inputSalaryContract, data.get(0).get("contractSalarys"));
-        CommonEvents.setInputField(inputDateContract, data.get(0).get("contractDates"));
+        setInputDataCode(data.get(0).get("contractCodes"));
+        setInputDataDescription(data.get(0).get("contractDescriptions"));
+        setInputDataSalary(data.get(0).get("contractSalarys"));
+        setInputDataDate(data.get(0).get("contractDates"));
         selectTypeContract();
         selectCityContract();
     }
+
+    private void setInputDataCode(String data){ CommonEvents.setInputField(inputCodeContract, data);}
+
+    private void setInputDataDescription(String data){ CommonEvents.setInputField(inputDescriptionContract, data);}
+
+    private void setInputDataSalary(String data){ CommonEvents.setInputField(inputSalaryContract, data);}
+
+    private void setInputDataDate(String data){ CommonEvents.setInputField(inputDateContract, data);}
 
     public void editContractRegistration(List<Map<String, String>> data){
-        CommonEvents.setInputField(inputCodeEditContract, data.get(0).get("contractCodesEdit"));
-        CommonEvents.setInputField(inputDescriptionEditContract, data.get(0).get("contractDescriptionsEdit"));
-        CommonEvents.setInputField(inputSalaryEditContract, data.get(0).get("contractSalarysEdit"));
-        CommonEvents.setInputField(inputDateEditContract, data.get(0).get("contractDatesEdit"));
+        setInputDataCodeEdit(data.get(0).get("contractCodesEdit"));
+        setInputDataDescriptionEdit(data.get(0).get("contractDescriptionsEdit"));
+        setInputDataSalaryEdit(data.get(0).get("contractSalarysEdit"));
+        setInputDataDateEdit(data.get(0).get("contractDatesEdit"));
         selectTypeContract();
         selectCityContract();
     }
 
-    public void findContractList(List<Map<String, String>> data) {
-        CommonEvents.setInputField(fillContract, data.get(0).get("contractCode"));
-    }
+    private void setInputDataCodeEdit(String data){ CommonEvents.setInputField(inputCodeEditContract, data);}
+
+    private void setInputDataDescriptionEdit(String data){ CommonEvents.setInputField(inputDescriptionEditContract, data);}
+
+    private void setInputDataSalaryEdit(String data){ CommonEvents.setInputField(inputSalaryEditContract, data);}
+
+    private void setInputDataDateEdit(String data){ CommonEvents.setInputField(inputDateEditContract, data);}
+
+    public void findContractList(List<Map<String, String>> data) { CommonEvents.setInputField(fillContract, data.get(0).get("contractCode"));}
 
     public void selectCityContract(){
         CommonEvents.clickButton(inputCityContract);
@@ -88,12 +102,12 @@ public class FormContract extends BasePage {
         selectTypeContract.click();
     }
 
-    public boolean btnSendForm(){
+    public boolean clickButtonSendForm(){
         CommonEvents.clickButton(buttonSendContract);
         return  CommonEvents.isVisible(buttonSendContract);
     }
 
-    public boolean btnSendFormEdit(){
+    public boolean clickButtonSendFormEdit(){
         CommonEvents.clickButton(buttonSendEdit);
         return CommonEvents.isVisible(buttonSendEdit);
     }
