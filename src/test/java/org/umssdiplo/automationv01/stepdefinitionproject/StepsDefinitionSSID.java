@@ -471,3 +471,4 @@ public class StepsDefinitionSSID {
         Assert.assertFalse(createPosition.validateButtonSendIsEnabled(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_ENABLED, "Button 'Enviar' "));
     }
 }
+
