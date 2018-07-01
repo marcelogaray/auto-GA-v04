@@ -10,7 +10,7 @@ Feature: Titulo crear contratos
     Given menu principal este cargado en pagina de inicio
     And seleccionar la opcion 'Personal' en la pagina 'menu principal'
     And seleccionar el submenu 'Contratos' del menu 'Personal'
-    And mostrar 'Lista de Contratos'
+    Then validar que la 'Lista de Contratos' este visible
     And seleccionar boton Agregar Nuevo Contrato del Area de contratos
     Then validar que el título del formulario de creación contratos sea 'Nuevo Contrato'
 
