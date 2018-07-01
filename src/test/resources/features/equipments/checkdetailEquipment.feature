@@ -9,6 +9,6 @@ Feature: Verify which detail Equipment is correctly displayed
       And seleccionar menu 'Equipamiento' en la pagina 'Menu Principal'
       And seleccionar submenu 'Equipamiento' en menu 'Equipamiento'
       And click en el boton 'Ver' de 'Lista de Equipamientos'
-      Then verificar titulo de 'Nombre' en el  'Detalle de Equipamiento' este visible
-      And verificar titulo de 'Tipo' en el  'Detalle de Equipamiento' este visible
-      And verificar contenido de 'Imagen' en el  'Detalle de Equipamiento' este visible
+      Then verificar titulo de 'Nombre' en el 'Detalle de Equipamiento' este visible
+      And verificar titulo de 'Tipo' en el 'Detalle de Equipamiento' este visible
+      And verificar contenido de 'Imagen' en el 'Detalle de Equipamiento' este visible

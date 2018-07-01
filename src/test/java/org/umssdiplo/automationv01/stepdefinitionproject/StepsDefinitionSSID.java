@@ -263,28 +263,6 @@ public class StepsDefinitionSSID {
         Assert.assertTrue(formEquipment.verifyInputImageFormIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
     }
 
-<<<<<<< HEAD
-    @And("^click en el boton 'Ver' de 'Lista de Equipamientos'$")
-    public void clickBtnVer() throws  Throwable {
-        equipmentDetail = listEquipment.clickbuttonViewEquipment();
-    }
-
-    @Then("^verificar titulo de 'Nombre' en el  'Detalle de Equipamiento' este visible$")
-    public void verificarNombreEnDetalleEquipamiento() throws Throwable {
-        Assert.assertTrue(equipmentDetail.verifyEquipmentNameIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "EquipmentDetail Title"));
-    }
-
-    @And("^verificar titulo de 'Tipo' en el  'Detalle de Equipamiento' este visible$")
-    public void verificarTipoEnDetalleEquipamiento() throws Throwable {
-        Assert.assertTrue(equipmentDetail.verifyEquipmentTypeIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "EquipmentDetail Title"));
-    }
-
-    @And("^verificar contenido de 'Imagen' en el  'Detalle de Equipamiento' este visible$")
-    public void verificarImagenEnDetalleEquipamiento() throws Throwable {
-        Assert.assertTrue(equipmentDetail.verifyEquipmentImageIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "EquipmentDetail Title"));
-    }
-    //END Equipments
-=======
     @And("^activar campo requerido 'Nombre' sin ingresar informacion en 'Formulario de creación de Equipamiento'$")
     public void activarCamposNombreEnRegistroEquipamiento() throws Throwable {
         formEquipment.setInputFieldName();
@@ -304,8 +282,27 @@ public class StepsDefinitionSSID {
     public void verificarMensajeDescripcionRequeridoEnRegistroequipamiento() throws Throwable {
         Assert.assertTrue(formEquipment.verifyHintMessageInputDescriptionIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipment title"));
     }
-    //END Equipment
->>>>>>> 8214145e67ca367ed456e354cfb490e36e62e45e
+
+    @And("^click en el boton 'Ver' de 'Lista de Equipamientos'$")
+    public void clickBtnVer() throws  Throwable {
+        equipmentDetail = listEquipment.clickbuttonViewEquipment();
+    }
+
+    @Then("^verificar titulo de 'Nombre' en el 'Detalle de Equipamiento' este visible$")
+    public void verificarNombreEnDetalleEquipamiento() throws Throwable {
+        Assert.assertTrue(equipmentDetail.verifyEquipmentNameIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "EquipmentDetail Title"));
+    }
+
+    @And("^verificar titulo de 'Tipo' en el 'Detalle de Equipamiento' este visible$")
+    public void verificarTipoEnDetalleEquipamiento() throws Throwable {
+        Assert.assertTrue(equipmentDetail.verifyEquipmentTypeIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "EquipmentDetail Title"));
+    }
+
+    @And("^verificar contenido de 'Imagen' en el 'Detalle de Equipamiento' este visible$")
+    public void verificarImagenEnDetalleEquipamiento() throws Throwable {
+        Assert.assertTrue(equipmentDetail.verifyEquipmentImageIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "EquipmentDetail Title"));
+    }
+    //END Equipments
 
     @And("^seleccionar submenu 'Personal' en menu 'Personal'$")
     public void seleccionarSubMenuPersonal() throws Throwable {
