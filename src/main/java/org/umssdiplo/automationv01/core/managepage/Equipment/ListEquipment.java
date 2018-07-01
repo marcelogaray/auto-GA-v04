@@ -19,6 +19,9 @@ public class ListEquipment extends BasePage {
     @FindBy(xpath = "//mat-header-cell[contains(text(),'Acciones')]")
     private WebElement columnListAction;
 
+    @FindBy(xpath = "//mat-cell[2]/a[1]")
+    private WebElement buttonViewEquipment;
+
     public ListEquipment() {
         CommonEvents.isVisible(buttonCreateEquipment);
     }
@@ -41,5 +44,10 @@ public class ListEquipment extends BasePage {
 
     public FormEquipment isFormEquipmentVisible() {
         return new FormEquipment();
+    }
+
+    public EquipmentDetail clickbuttonViewEquipment() {
+        CommonEvents.clickButton(buttonViewEquipment);
+        return new EquipmentDetail();
     }
 }
