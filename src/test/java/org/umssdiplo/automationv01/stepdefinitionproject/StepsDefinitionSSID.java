@@ -1,7 +1,6 @@
 package org.umssdiplo.automationv01.stepdefinitionproject;
 
 import cucumber.api.DataTable;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -82,7 +81,7 @@ public class StepsDefinitionSSID {
         listUser = menuPersonal.selectSubMenuUser();
     }
 
-    @Then("^validar que la 'Lista de Usuarios' este visible$")
+    @Then("^validar que la 'Lista de Usuarios' este visible en la pagina 'usuarios'$")
     public void validarListaDeUsuarios() throws Throwable {
         Assert.assertTrue(listUser.isUserListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Usuario"));
     }
@@ -364,6 +363,16 @@ public class StepsDefinitionSSID {
     @Then("^verificar que el resultado coincida con el dato buscado$")
     public void verificarQueElResultadoCoincidaConElDatoBuscado() throws Throwable {
         Assert.assertTrue(listUser.isUserListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "List Users"));
+    }
+
+    @When("^seleccionar en boton 'next' del paginador de la 'lista de usuarios'$")
+    public void seleccionarEnBotonNextDeLaLista() throws Throwable {
+        listUser.clickButtonNext();
+    }
+
+    @And("^seleccionar en boton de 'previus' del paginador de la 'lista de usuarios'$")
+    public void seleccionarEnBotonDePreviusDeLaLista() throws Throwable {
+        listUser.clickButtonPrevious();
     }
 
     @And("^verificar que se cargue la cabecera 'Nombre cargo' en la tabla de 'lista de cargos'$")
