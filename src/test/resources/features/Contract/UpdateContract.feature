@@ -11,7 +11,7 @@ Feature: Editar contratos
     And seleccionar la opcion 'Personal' en la pagina 'menu principal'
     And seleccionar el submenu 'Contratos' del menu 'Personal'
     And mostrar 'Lista de Contratos'
-    And seleccionar boton Editar del primer item lista contratos
+    And click en el boton 'Editar' del primer item lista contratos
     And modificar datos del 'formulario de Contrato a Editar'
       | contractCodesEdit | contractDescriptionsEdit   | contractSalarysEdit | contractDatesEdit     |
       | 0028          | descripcion Pruebas          | 3500            | 06/25/2018        |

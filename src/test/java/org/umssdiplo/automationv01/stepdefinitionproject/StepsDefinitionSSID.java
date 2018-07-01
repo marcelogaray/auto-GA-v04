@@ -476,7 +476,7 @@ public class StepsDefinitionSSID {
         formContract.clickButtonSendForm();
     }
 
-    @And("^seleccionar boton Editar del primer item lista contratos$")
+    @And("^click en el boton 'Editar' del primer item lista contratos$")
     public void seleccionarEditar() throws Throwable {
         formContract = listContract.selectBtnEditContract();
     }
