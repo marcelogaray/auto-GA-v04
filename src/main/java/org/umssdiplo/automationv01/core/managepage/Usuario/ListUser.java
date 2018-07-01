@@ -14,8 +14,8 @@ public class ListUser extends BasePage {
     @FindBy(xpath = "//button/span[contains(text(),'Agregar Nuevo Usuario')]")
     private WebElement buttonAddUser;
 
-    @FindBy(xpath = "//div/div[contains(text(),'Items per page:')]")
-    private WebElement paginElement;
+    @FindBy(className = "mat-column-UserName")
+    private WebElement tableCellColumnUserName;
 
     @FindBy(xpath = "//mat-table[@class='mat-table']")
     private WebElement tableListUser;
@@ -23,12 +23,18 @@ public class ListUser extends BasePage {
     @FindBy(id = "mat-input-2")
     private WebElement textFieldSearch;
 
+    @FindBy(className = "mat-paginator-navigation-next")
+    private WebElement buttonNextPagination;
+
+    @FindBy(className = "mat-paginator-navigation-previous")
+    private WebElement buttonPreviousPagination;
+
     public ListUser() {
         CommonEvents.isVisible(buttonAddUser);
     }
 
     public boolean isUserListVisible() {
-        return CommonEvents.isVisible(tableListUser);
+        return CommonEvents.isVisible(tableCellColumnUserName);
     }
 
     public void clickButtonAddNewUser() {
@@ -53,5 +59,13 @@ public class ListUser extends BasePage {
 
     private void fillFieldSearch(User user) {
         CommonEvents.setInputField(textFieldSearch, user.getUsername());
+    }
+
+    public void clickButtonNext() {
+        CommonEvents.clickButton(buttonNextPagination);
+    }
+
+    public void clickButtonPrevious() {
+        CommonEvents.clickButton(buttonPreviousPagination);
     }
 }
