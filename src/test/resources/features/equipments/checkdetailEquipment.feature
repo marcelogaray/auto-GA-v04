@@ -1,4 +1,4 @@
-Feature: Check Detail Equipment
+Feature: Verify which detail Equipment is correctly displayed
 
     Background: Pagina de inicio es mostrada una vez que se ponen los credenciales correctos de inicio de sesión
       Given 'SSI-D' pagina de inicio de sesion es cargada
@@ -9,7 +9,6 @@ Feature: Check Detail Equipment
       And seleccionar menu 'Equipamiento' en la pagina 'Menu Principal'
       And seleccionar submenu 'Equipamiento' en menu 'Equipamiento'
       And click en el boton 'Ver' de 'Lista de Equipamientos'
-      When 'detalle de Equipamiento' correctamente cargado
       Then verificar titulo de 'Nombre' en el  'Detalle de Equipamiento' este visible
       And verificar titulo de 'Tipo' en el  'Detalle de Equipamiento' este visible
       And verificar contenido de 'Imagen' en el  'Detalle de Equipamiento' este visible

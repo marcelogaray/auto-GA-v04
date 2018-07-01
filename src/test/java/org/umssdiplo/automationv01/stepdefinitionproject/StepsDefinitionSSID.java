@@ -262,12 +262,7 @@ public class StepsDefinitionSSID {
 
     @And("^click en el boton 'Ver' de 'Lista de Equipamientos'$")
     public void clickBtnVer() throws  Throwable {
-        listEquipment.clickbuttonViewEquipment();
-    }
-
-    @When("^'detalle de Equipamiento' correctamente cargado$")
-    public void detalleEquipaminetoCargado() throws Throwable {
-        equipmentDetail = listEquipment.isEquipmentDetailVisible();
+        equipmentDetail = listEquipment.clickbuttonViewEquipment();
     }
 
     @Then("^verificar titulo de 'Nombre' en el  'Detalle de Equipamiento' este visible$")

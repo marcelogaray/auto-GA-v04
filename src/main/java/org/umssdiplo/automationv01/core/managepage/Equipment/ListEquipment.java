@@ -46,11 +46,8 @@ public class ListEquipment extends BasePage {
         return new FormEquipment();
     }
 
-    public void clickbuttonViewEquipment() {
+    public EquipmentDetail clickbuttonViewEquipment() {
         CommonEvents.clickButton(buttonViewEquipment);
-    }
-
-    public EquipmentDetail isEquipmentDetailVisible() {
         return new EquipmentDetail();
     }
 }
