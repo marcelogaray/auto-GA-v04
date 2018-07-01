@@ -15,5 +15,5 @@ Feature: Create user
       | username | password  | userActive |
       | tom      | password1 | true       |
     And presionar en el Boton de 'Guardar' para guardar la informacion
-    Then validar que la 'Lista de Usuarios' este visible
+    Then validar que la 'Lista de Usuarios' este visible en la pagina 'usuarios'
 
