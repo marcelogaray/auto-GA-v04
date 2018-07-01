@@ -14,10 +14,10 @@ public class ListInventory extends BasePage{
     private WebElement tableInventory;
 
     @FindBy(xpath = ".//mat-card-header")
-    private WebElement imageReportHeader;
+    private WebElement headerImageReport;
 
-    @FindBy(xpath = ".//mat-card-content/h1")
-    private WebElement titleReportHeader;
+    @FindBy(xpath = ".//h1[contains(text(),'REPORTE DE ESTADO DE EQUIPAMIENTOS DE H.S.I')]")
+    private WebElement headerTitleReport;
 
     public ListInventory() {
         CommonEvents.isVisible(buttonAccept);
@@ -28,10 +28,10 @@ public class ListInventory extends BasePage{
     }
 
     public boolean verifyTitleReportHeaderInventoryIsVisible() {
-        return CommonEvents.isVisible(titleReportHeader);
+        return CommonEvents.isVisible(headerTitleReport);
     }
 
     public boolean verifyImageReportHeaderInventoryIsVisible() {
-        return CommonEvents.isVisible(imageReportHeader);
+        return CommonEvents.isVisible(headerImageReport);
     }
 }
