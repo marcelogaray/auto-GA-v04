@@ -1,6 +1,7 @@
 package org.umssdiplo.automationv01.stepdefinitionproject;
 
 import cucumber.api.DataTable;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -15,9 +16,11 @@ import org.umssdiplo.automationv01.core.managepage.Incident.IncidentPage;
 import org.umssdiplo.automationv01.core.managepage.Login.Login;
 import org.umssdiplo.automationv01.core.managepage.Menu.*;
 import org.umssdiplo.automationv01.core.managepage.Personnel.PersonnelSearch;
+import org.umssdiplo.automationv01.core.managepage.Position.CreatePosition;
 import org.umssdiplo.automationv01.core.managepage.Position.Position;
 import org.umssdiplo.automationv01.core.managepage.ProgramSSO.Resource;
 import org.umssdiplo.automationv01.core.managepage.ProgramSSO.ResourceForm;
+import org.umssdiplo.automationv01.core.managepage.StructureOrganizational.StructureOrganizational;
 import org.umssdiplo.automationv01.core.managepage.Usuario.FormUser;
 import org.umssdiplo.automationv01.core.managepage.Usuario.ListUser;
 import org.umssdiplo.automationv01.core.utils.ErrorMessage;
@@ -38,6 +41,8 @@ public class StepsDefinitionSSID {
     private FormEquipment formEquipment;
     private Position position;
     private SubMenuOrganizationalStructure subMenuOrganizationalStructure;
+    private StructureOrganizational structureOrganizational;
+    private CreatePosition createPosition;
     private ResourceForm resourceForm;
     private FormUser formUser;
     private FormAssignPersonal formAssignPersonal;
@@ -185,19 +190,19 @@ public class StepsDefinitionSSID {
         subMenuOrganizationalStructure = menu.clickMenuOrganizationalStructure();
     }
 
-    @And("^seleccionar la opcion 'Cargos del personal' en el sub menu de estructura organizacional$")
+    @And("^seleccionar la opcion 'Cargos del personal' en el sub menu de 'Estructura organizacional'$")
     public void seleccionarLaOpcionCargosDelPersonalEnElSubMenuDeEstructuraOrganizacional() throws Throwable {
         position = subMenuOrganizationalStructure.clickSubMenuPositions();
     }
 
     @Then("^validar que se cargue el listado de cargos en la pagina 'Cargos de la empresa'$")
     public void validarQueSeCargueElListadoDeCargosEnLaPaginaCargosDeLaEmpresa() throws Throwable {
-        Assert.assertTrue(position.validListPositions(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Positions list"));
+        Assert.assertTrue(position.validListPositionsIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Positions list"));
     }
 
     @And("^validar que 'Paginador' se muestra debajo de la tabla 'Lista de Cargo'$")
     public void validarQuePaginadorSeMuestraDebajoDeLaTablaListaDeCargo() throws Throwable {
-        Assert.assertTrue(position.validPaginator(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Positions paginator list"));
+        Assert.assertTrue(position.validPaginatorIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Positions paginator list"));
     }
     //End Positions
 
@@ -315,6 +320,48 @@ public class StepsDefinitionSSID {
         menuPersonalContract = menu.selectSubMenuPersonalContract();
     }
 
+    //Structure organizational
+    @And("^seleccionar la opcion 'Estructura organizacional' en el sub menu de 'Estructura organizacional'$")
+    public void seleccionarLaOpcionEstructuraOrganizacionalEnElSubMenuDeEstructuraOrganizacional() throws Throwable {
+        structureOrganizational = subMenuOrganizationalStructure.clickSubMenuOrganizationalStrucure();
+    }
+
+    @Then("^verificar que el boton 'Departamentos' este cargado en la pagina 'Estructura organizacional'$")
+    public void verificarQueElBotonDepartamentosEsteCargadoEnLaPaginaEstructuraOrganizacional() throws Throwable {
+        Assert.assertTrue(structureOrganizational.validateDepartmentsButtonIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Departments button "));
+    }
+
+    @And("^verificar que el boton 'Cargos laborales' este cargado en la pagina 'Estructura organizacional'$")
+    public void verificarQueElBotonCargosLaboralesEsteCargadoEnLaPaginaEstructuraOrganizacional() throws Throwable {
+        Assert.assertTrue(structureOrganizational.validatePositionsButtonIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Cargos button "));
+    }
+
+    @And("^verificar que el boton 'Areas de trabajo' este cargado en la pagina 'Estructura organizacional'$")
+    public void verificarQueElBotonAreasDeTrabajoEsteCargadoEnLaPaginaEstructuraOrganizacional() throws Throwable {
+        Assert.assertTrue(structureOrganizational.validateAreasButtonIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Areas button "));
+    }
+
+    @And("^verificar que el arbol 'Departamentos' este cargado en la pagina 'Estructura organizacional'$")
+    public void verificarQueElArbolDepartamentosEsteCargadoEnLaPaginaEstructuraOrganizacional() throws Throwable {
+        Assert.assertTrue(structureOrganizational.validateDepartmentsTreeIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Departments tree "));
+    }
+
+    @And("^verificar que el arbol 'Cargos laborales' este cargado en la pagina 'Estructura organizacional'$")
+    public void verificarQueElArbolCargosLaboralesEsteCargadoEnLaPaginaEstructuraOrganizacional() throws Throwable {
+        Assert.assertTrue(structureOrganizational.validatePositionsTreeIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Cargos tree "));
+    }
+
+    @And("^verificar que el arbol 'Areas de trabajo' este cargado en la pagina 'Estructura organizacional'$")
+    public void verificarQueElArbolAreasDeTrabajoEsteCargadoEnLaPaginaEstructuraOrganizacional() throws Throwable {
+        Assert.assertTrue(structureOrganizational.validateAreasTreeIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Areas tree "));
+    }
+
+    //Verify header positions list
+    @Then("^verificar que se cargue el listado de cargos en la pagina 'Cargos de la empresa'$")
+    public void verificarQueSeCargueElListadoDeCargosEnLaPaginaCargosDeLaEmpresa() throws Throwable {
+        Assert.assertTrue(position.validListPositionsIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Positions table list"));
+    }
+
     @And("^seleccionar el submenu 'Contratos' del menu 'Personal'$")
     public void seleccionarContratos() throws Throwable {
         listContract = menuPersonalContract.selectSubMenuContract();
@@ -323,6 +370,96 @@ public class StepsDefinitionSSID {
     @Then("^validar que la 'Lista de Contratos' este visible$")
     public void validarListaDeContratos() throws Throwable {
         Assert.assertTrue(listContract.validateContractList(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Contract List"));
+    }
+
+    @And("^insertar los siguientes datos en el cuadro de texto 'Buscar Usuario' en la pagina 'Lista de Usuarios'$")
+    public void completarCampoBuscarUsuarioConLosSiguientesDatos(DataTable searchUserTable) throws Throwable {
+        listUser.fillFieldSearchWithData(searchUserTable);
+    }
+
+    @Then("^verificar que el resultado coincida con el dato buscado$")
+    public void verificarQueElResultadoCoincidaConElDatoBuscado() throws Throwable {
+        Assert.assertTrue(listUser.isUserListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "List Users"));
+    }
+
+    @And("^verificar que se cargue la cabecera 'Nombre cargo' en la tabla de 'lista de cargos'$")
+    public void verificarQueSeCargueLaCabeceraNombreCargoEnLaTablaDeListaDeCargos() throws Throwable {
+        Assert.assertTrue(position.validHeaderNamePositionListIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Header 'Nombre' position list"));
+    }
+
+    @And("^verificar que se cargue la cabecera 'Nivel' en la tabla de 'lista de cargos'$")
+    public void verificarQueSeCargueLaCabeceraNivelEnLaTablaDeListaDeCargos() throws Throwable {
+        Assert.assertTrue(position.validHeaderLevelPositionListIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Header 'Nivel' position list"));
+    }
+
+    @And("^verificar que se cargue la cabecera 'Depende de' en la tabla de 'lista de cargos'$")
+    public void verificarQueSeCargueLaCabeceraDependeDeEnLaTablaDeListaDeCargos() throws Throwable {
+        Assert.assertTrue(position.validHeaderDependencyPositionListIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Header 'Depende de' position list"));
+    }
+
+    @And("^verificar que se cargue la cabecera 'Acciones' en la tabla de 'lista de cargos'$")
+    public void verificarQueSeCargueLaCabeceraAccionesEnLaTablaDeListaDeCargos() throws Throwable {
+        Assert.assertTrue(position.validHeaderActionsPositionListIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Header 'Acciones' position list"));
+    }
+
+    //Valid form Create position
+    @And("^seleccionar el boton 'Crear nuevo cargo' en la pagina 'Cargos de la empresa'$")
+    public void seleccionarElBotonCrearNuevoCargoEnLaPaginaCargosDeLaEmpresa() throws Throwable {
+        createPosition = position.clickButtonCreatePosition();
+    }
+
+    @Then("^verificar que exista el campo 'Nombre' en el formulario de 'crear cargo'$")
+    public void verificarQueExistaElCampoNombreEnElFormularioDeCrearCargo() throws Throwable {
+        Assert.assertTrue(createPosition.validFieldNameIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Field 'Nombre' "));
+    }
+
+    @And("^verificar que exista el campo 'Nivel' en el formulario de 'crear cargo'$")
+    public void verificarQueExistaElCampoNivelEnElFormularioDeCrearCargo() throws Throwable {
+        Assert.assertTrue(createPosition.validFieldLevelIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Field 'Nivel' "));
+    }
+
+    @And("^verificar que exista el campo 'Descripcion' en el formulario de 'crear cargo'$")
+    public void verificarQueExistaElCampoDescripcionEnElFormularioDeCrearCargo() throws Throwable {
+        Assert.assertTrue(createPosition.validFieldDescriptionIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Field 'Descripcion' "));
+    }
+
+    @And("^verificar que exista la lista desplegable 'Cargo padre' en el formulario de 'crear cargo'$")
+    public void verificarQueExistaLaListaDesplegableCargoPadreEnElFormularioDeCrearCargo() throws Throwable {
+        Assert.assertTrue(createPosition.validDropdownParentPositionIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Dropdown 'Cargo padre' "));
+    }
+    //end Valid form Create position
+
+    // Valid Back button in create position
+    @Then("^verificar que exista el boton 'Atras' en la pagina 'Crear nuevo cargo'$")
+    public void verificarQueExistaElBotonAtrasEnLaPaginaCrearNuevoCargo() throws Throwable {
+        Assert.assertTrue(createPosition.validateButtonBackIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Button 'Atras' "));
+    }
+
+    @And("^presionar el boton 'Atras' en la pagina 'Crear nuevo cargo'$")
+    public void presionarElBotonAtrasEnLaPaginaCrearNuevoCargo() throws Throwable {
+        position = createPosition.clickButtonBack();
+    }
+
+    @And("^verificar que se cargue la pagina 'Cargos de la empresa'$")
+    public void verificarQueSeCargueLaPaginaCargosDeLaEmpresa() throws Throwable {
+        Assert.assertTrue(position.validLoadPagePositionsIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Page 'Cargos de la empresa' "));
+    }
+    // End Valid Back button in create position
+
+    // Valid send button disabled when go in to create new position
+    @Then("^verificar que el formulario de creacion de cargo este vacio$")
+    public void verificarQueElFormularioDeCreacionDeCargoEsteVacio() throws Throwable {
+        Assert.assertTrue(createPosition.validateFormCreatePositionIsEmpty(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_EMPTY, "Create position form "));
+    }
+
+    @And("^verificar que exista el boton 'Enviar' en la pagina 'Crear nuevo cargo'$")
+    public void verificarQueExistaElBotonEnviarEnLaPaginaCrearNuevoCargo() throws Throwable {
+        Assert.assertTrue(createPosition.validateButtonSendIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Button 'Enviar' "));
+    }
+
+    @And("^verificar que el boton 'Enviar' este deshabilitado en la pagina 'Crear nuevo cargo'$")
+    public void verificarQueElBotonEnviarEsteDeshabilitadoEnLaPaginaCrearNuevoCargo() throws Throwable {
+        Assert.assertFalse(createPosition.validateButtonSendIsEnabled(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_ENABLED, "Button 'Enviar' "));
     }
 }
 
