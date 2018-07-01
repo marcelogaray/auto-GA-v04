@@ -10,6 +10,7 @@ import org.umssdiplo.automationv01.core.managepage.Assign.FormAssignPersonal;
 import org.umssdiplo.automationv01.core.managepage.Contract.ListContract;
 import org.umssdiplo.automationv01.core.managepage.Equipment.FormEquipment;
 import org.umssdiplo.automationv01.core.managepage.Equipment.ListEquipment;
+import org.umssdiplo.automationv01.core.managepage.Equipment.EquipmentDetail;
 import org.umssdiplo.automationv01.core.managepage.Home.Home;
 import org.umssdiplo.automationv01.core.managepage.Incident.IncidentPage;
 import org.umssdiplo.automationv01.core.managepage.Login.Login;
@@ -47,6 +48,7 @@ public class StepsDefinitionSSID {
     private FormAssignPersonal formAssignPersonal;
     private SubMenuPersonalContract menuPersonalContract;
     private ListContract listContract;
+    private EquipmentDetail equipmentDetail;
 
     private void loadPageObjects() {
         login = LoadPage.loginPage();
@@ -205,7 +207,7 @@ public class StepsDefinitionSSID {
     }
     //End Positions
 
-    //BEGIN Equipment
+    //BEGIN Equipments
     @And("^seleccionar menu 'Equipamiento' en la pagina 'Menu Principal'$")
     public void menuEquipamientoEstaSeleccionado() throws Throwable {
         menuEquipamiento = menu.selectEquipmentMenu();
@@ -280,7 +282,27 @@ public class StepsDefinitionSSID {
     public void verificarMensajeDescripcionRequeridoEnRegistroequipamiento() throws Throwable {
         Assert.assertTrue(formEquipment.verifyHintMessageInputDescriptionIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipment title"));
     }
-    //END Equipment
+
+    @And("^click en el boton 'Ver' de 'Lista de Equipamientos'$")
+    public void clickBtnVer() throws  Throwable {
+        equipmentDetail = listEquipment.clickbuttonViewEquipment();
+    }
+
+    @Then("^verificar titulo de 'Nombre' en el 'Detalle de Equipamiento' este visible$")
+    public void verificarNombreEnDetalleEquipamiento() throws Throwable {
+        Assert.assertTrue(equipmentDetail.verifyEquipmentNameIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "EquipmentDetail Title"));
+    }
+
+    @And("^verificar titulo de 'Tipo' en el 'Detalle de Equipamiento' este visible$")
+    public void verificarTipoEnDetalleEquipamiento() throws Throwable {
+        Assert.assertTrue(equipmentDetail.verifyEquipmentTypeIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "EquipmentDetail Title"));
+    }
+
+    @And("^verificar contenido de 'Imagen' en el 'Detalle de Equipamiento' este visible$")
+    public void verificarImagenEnDetalleEquipamiento() throws Throwable {
+        Assert.assertTrue(equipmentDetail.verifyEquipmentImageIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "EquipmentDetail Title"));
+    }
+    //END Equipments
 
     @And("^seleccionar submenu 'Personal' en menu 'Personal'$")
     public void seleccionarSubMenuPersonal() throws Throwable {
