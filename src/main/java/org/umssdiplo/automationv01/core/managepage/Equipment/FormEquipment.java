@@ -26,10 +26,10 @@ public class FormEquipment extends BasePage {
     private WebElement buttonClearImage;
 
     @FindBy(id="mat-hint-0")
-    private WebElement hintMessageInputName;
+    private WebElement hiddenMessageInputName;
 
     @FindBy(id="mat-hint-2")
-    private WebElement hintMessageInputDescription;
+    private WebElement hiddenMessageInputDescription;
 
     public FormEquipment() {
         CommonEvents.isVisible(buttonNewEquipment);
@@ -61,10 +61,10 @@ public class FormEquipment extends BasePage {
     }
 
     public boolean verifyHintMessageInputNameIsVisible() {
-        return CommonEvents.isVisible(hintMessageInputName);
+        return CommonEvents.isVisible(hiddenMessageInputName);
     }
 
     public boolean verifyHintMessageInputDescriptionIsVisible() {
-        return CommonEvents.isVisible(hintMessageInputDescription);
+        return CommonEvents.isVisible(hiddenMessageInputDescription);
     }
 }
