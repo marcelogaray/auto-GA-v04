@@ -54,7 +54,10 @@ public class FormContract extends BasePage {
     @FindBy(id = "find-contract")
     private WebElement inputFindContract;
 
-    public FormContract() {}
+    @FindBy(id = "form")
+    private WebElement formContract;
+
+    public FormContract(){ CommonEvents.isVisible(formContract);}
 
     public void newContractRegistration(List<Map<String, String>> data){
         setInputDataCode(data.get(0).get("contractCodes"));
