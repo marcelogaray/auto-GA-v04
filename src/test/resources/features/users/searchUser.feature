@@ -13,4 +13,4 @@ Feature: Validar la busqueda de usuarios
       | username |
       | admin    |
       | tom      |
-    Then verificar que el resultado coincida con el dato buscado
+    Then validar que la 'Lista de Usuarios' este visible en la pagina 'usuarios'
