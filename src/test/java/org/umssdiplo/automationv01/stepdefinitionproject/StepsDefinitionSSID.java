@@ -259,12 +259,12 @@ public class StepsDefinitionSSID {
 
     @And("^activar campo requerido 'Nombre' sin ingresar informacion en 'Formulario de creación de Equipamiento'$")
     public void activarCamposNombreEnRegistroEquipamiento() throws Throwable {
-        formEquipment.clickInputFieldName();
+        formEquipment.setInputFieldName();
     }
 
     @And("^activar campo requerido 'Descripcion' sin ingresar informacion en 'Formulario de creación de Equipamiento'$")
     public void activarCampoDescripcionEnRegistroEquipamiento() throws Throwable {
-        formEquipment.clickTextDescription();
+        formEquipment.setTextDescription();
     }
 
     @Then("^verificar mensaje de 'campo requerido' en 'Formulario de creación de Equipamiento' con el campo 'Nombre' vacio$")

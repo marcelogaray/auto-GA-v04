@@ -22,7 +22,7 @@ public class FormEquipment extends BasePage {
     @FindBy(id="imageEquipment")
     private WebElement fileEquipmentImage;
 
-    @FindBy(xpath = "//p[4]/button")
+    @FindBy(xpath = ".//button[contains(text(),'limpiar imagen')]")
     private WebElement buttonClearImage;
 
     @FindBy(id="mat-hint-0")
@@ -51,12 +51,12 @@ public class FormEquipment extends BasePage {
         return CommonEvents.isVisible(fileEquipmentImage);
     }
 
-    public void clickInputFieldName() {
-        CommonEvents.clickButton(inputEquipmentName);
+    public void setInputFieldName() {
+        CommonEvents.setInputField(inputEquipmentName, "");
     }
 
-    public void clickTextDescription() {
-        CommonEvents.clickButton(textAreaEquipmentDesc);
+    public void setTextDescription() {
+        CommonEvents.setInputField(textAreaEquipmentDesc, "");
         CommonEvents.clickButton(buttonClearImage);
     }
 
