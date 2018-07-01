@@ -11,6 +11,7 @@ import org.umssdiplo.automationv01.core.managepage.Contract.ListContract;
 import org.umssdiplo.automationv01.core.managepage.Equipment.FormEquipment;
 import org.umssdiplo.automationv01.core.managepage.Equipment.ListEquipment;
 import org.umssdiplo.automationv01.core.managepage.Equipment.EquipmentDetail;
+import org.umssdiplo.automationv01.core.managepage.Equipment.ListInventory;
 import org.umssdiplo.automationv01.core.managepage.Home.Home;
 import org.umssdiplo.automationv01.core.managepage.Incident.IncidentPage;
 import org.umssdiplo.automationv01.core.managepage.Login.Login;
@@ -38,6 +39,7 @@ public class StepsDefinitionSSID {
     private PersonnelSearch personnelSearch;
     private SubMenuEquipment menuEquipamiento;
     private ListEquipment listEquipment;
+    private ListInventory listInventory;
     private FormEquipment formEquipment;
     private Position position;
     private SubMenuOrganizationalStructure subMenuOrganizationalStructure;
@@ -302,7 +304,27 @@ public class StepsDefinitionSSID {
     public void verificarImagenEnDetalleEquipamiento() throws Throwable {
         Assert.assertTrue(equipmentDetail.verifyEquipmentImageIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "EquipmentDetail Title"));
     }
-    //END Equipments
+
+    @And("^seleccionar submenu 'Inventory' en menu 'Equipamiento'$")
+    public void seleccionarSubMenuInventory() throws Throwable {
+        listInventory = menuEquipamiento.selectSubMenuInventory();
+    }
+
+    @Then("^verificar que 'Reporte de Inventario' este visible$")
+    public void verificarInformacionReporteInventarios() throws Throwable {
+        Assert.assertTrue(listInventory.isInventoryListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Inventory title"));
+    }
+
+    @Then("^verificar 'Titulo' del 'Reporte de Inventario' este visible$")
+    public void verificarTituloCabeceraReporteInventario() throws Throwable {
+        Assert.assertTrue(listInventory.verifyTitleReportHeaderInventoryIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Inventory title"));
+    }
+
+    @And("^verificar 'Imagen' del 'Reporte de Inventario' este visible$")
+    public void verificarImagenCabeceraReporteInventario() throws Throwable {
+        Assert.assertTrue(listInventory.verifyImageReportHeaderInventoryIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Inventory title"));
+    }
+    //END Equipment
 
     @And("^seleccionar submenu 'Personal' en menu 'Personal'$")
     public void seleccionarSubMenuPersonal() throws Throwable {
@@ -493,4 +515,3 @@ public class StepsDefinitionSSID {
         Assert.assertFalse(createPosition.validateButtonSendIsEnabled(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_ENABLED, "Button 'Enviar' "));
     }
 }
-
