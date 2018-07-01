@@ -12,13 +12,16 @@ import java.util.List;
 public class ListUser extends BasePage {
 
     @FindBy(xpath = "//button/span[contains(text(),'Agregar Nuevo Usuario')]")
-    private WebElement btnAgregarUsuario;
+    private WebElement buttonAddUser;
 
     @FindBy(xpath = "//mat-cell[@class='mat-cell cdk-column-UserName mat-column-UserName ng-star-inserted']")
     private WebElement tableCellColumnUserName;
 
+    @FindBy(xpath = "//mat-table[@class='mat-table']")
+    private WebElement tableListUser;
+
     @FindBy(id = "mat-input-2")
-    private WebElement textSearchField;
+    private WebElement textFieldSearch;
 
     @FindBy(xpath = "//button[@class='mat-paginator-navigation-next mat-icon-button']")
     private WebElement btnNextPagination;
@@ -27,31 +30,35 @@ public class ListUser extends BasePage {
     private WebElement btnPreviusPagination;
 
     public ListUser() {
-        CommonEvents.isVisible(btnAgregarUsuario);
+        CommonEvents.isVisible(buttonAddUser);
     }
 
-    public boolean  isUserListVisible() {
+    public boolean isUserListVisible() {
         return CommonEvents.isVisible(tableCellColumnUserName);
     }
 
-    public void clickAddNewUser() {
-        CommonEvents.clickButton(btnAgregarUsuario);
+    public void clickButtonAddNewUser() {
+        CommonEvents.clickButton(buttonAddUser);
     }
 
     public FormUser isFormUserVisible() {
         return new FormUser();
     }
 
-    public void fillSeachFildWithData(DataTable searchUserTable) {
+    public void clickAddNewUser() {
+        CommonEvents.clickButton(buttonAddUser);
+    }
+
+    public void fillFieldSearchWithData(DataTable searchUserTable) {
         List<User> users = new ArrayList<>();
         users = searchUserTable.asList(User.class);
-        for (User user: users) {
-            fillSearchField(user);
+        for (User user : users) {
+            fillFieldSearch(user);
         }
     }
 
-    private void fillSearchField(User user) {
-        CommonEvents.setInputField(textSearchField, user.getUsername());
+    private void fillFieldSearch(User user) {
+        CommonEvents.setInputField(textFieldSearch, user.getUsername());
     }
 
     public void clickOnNextButton() {

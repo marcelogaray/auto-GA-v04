@@ -12,48 +12,43 @@ import java.util.List;
 public class FormUser extends BasePage {
 
     @FindBy(xpath = "//button/span[contains(text(),'Guardar')]")
-    private WebElement btnSaveUser;
+    private WebElement buttonSaveUser;
 
     @FindBy(id = "username-form")
-    private WebElement usernameInputField;
+    private WebElement inputFieldUsername;
 
     @FindBy(id = "password-form")
-    private WebElement passwordInputField;
+    private WebElement inputFieldPassword;
 
     @FindBy(id = "userActive-form-input")
-    private WebElement userActiveInput;
+    private WebElement inputUserActive;
 
     public FormUser() {
-        CommonEvents.isVisible(btnSaveUser);
+        CommonEvents.isVisible(buttonSaveUser);
     }
 
     public void createNewUserFromTable(DataTable userTable) {
         List<User> users = new ArrayList<>();
         users = userTable.asList(User.class);
-        createNewUser(users.get(0));
-    }
-
-    private void createNewUser(User user) {
-        setDataUsernameInputField(user.getUsername());
-        setDataPasswordInputField(user.getPassword());
-        clickSaveUserButton();
+        setDataUsernameInputField(users.get(0).getUsername());
+        setDataPasswordInputField(users.get(0).getPassword());
     }
 
     private void setDataUsernameInputField(String username) {
-        CommonEvents.setInputField(usernameInputField, username);
+        CommonEvents.setInputField(inputFieldUsername, username);
     }
 
     private void setDataPasswordInputField(String password) {
-        CommonEvents.setInputField(passwordInputField, password);
+        CommonEvents.setInputField(inputFieldPassword, password);
     }
 
-    private void clickUserActiveCheck(boolean userActive) {
+    private void clickCheckUserActive(boolean userActive) {
         if (userActive) {
-            CommonEvents.clickButton(userActiveInput);
+            CommonEvents.clickButton(inputUserActive);
         }
     }
 
-    private void clickSaveUserButton() {
-        CommonEvents.clickButton(btnSaveUser);
+    public void clickButtonSaveUser() {
+        CommonEvents.clickButton(buttonSaveUser);
     }
 }
