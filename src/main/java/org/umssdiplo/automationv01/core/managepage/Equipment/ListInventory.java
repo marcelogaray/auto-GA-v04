@@ -20,7 +20,7 @@ public class ListInventory extends BasePage{
     private WebElement titleReport;
 
     public ListInventory() {
-        CommonEvents.isVisible(buttonAccept);
+        CommonEvents.isVisible(tableInventory);
     }
 
     public boolean isInventoryListVisible() {
