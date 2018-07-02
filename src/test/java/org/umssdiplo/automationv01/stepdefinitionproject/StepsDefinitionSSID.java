@@ -1,6 +1,7 @@
 package org.umssdiplo.automationv01.stepdefinitionproject;
 
 import cucumber.api.DataTable;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -143,6 +144,11 @@ public class StepsDefinitionSSID {
     @And("^click en el boton 'Agregrar nuevo recurso' de la pagina 'Recursos'$")
     public void clickAddNewResource() throws Throwable {
         resourceForm = resource.clickButtonAddResource();
+    }
+
+    @Then("^validar si el titulo 'Crear Recurso' es visible en la pagina de 'Agregar Recursos'$")
+    public void validarSiElTituloCrearRecursoEsVisibleEnLaPaginaDeAgregarRecursos() throws Throwable {
+        Assert.assertTrue(resourceForm.validateTitleIsVisible("Crear Recurso"), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Titulo 'Crear Recurso' "));
     }
 
     @And("^llenar el formulario con valores validos de la pagiga 'Agregar Recursos' costo = \"(.*)\" y detalle = \"(.*)\"$")
@@ -652,6 +658,11 @@ public class StepsDefinitionSSID {
     @And("^presionar en el Boton de 'Guardar' para guardar la informacion$")
     public void presionarEnElBotonDeGuardarParaGuardarLaInformacion() throws Throwable {
         formUser.clickButtonSaveUser();
+    }
+
+    @And("^presionar en la opcion 'ProgramSSO' del 'Menu Principal'$")
+    public void presionarEnLaOpcionProgramSSODelMenuPrincipal() throws Throwable {
+        subMenuTrainer = menu.clickMenuProgramSSOTrainer();
     }
 
     @And("^presionar en la opcion 'Capacitadores' del sub menu 'ProgramSSO'$")
