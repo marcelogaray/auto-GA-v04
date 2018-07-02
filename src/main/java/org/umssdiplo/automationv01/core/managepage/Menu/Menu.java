@@ -59,4 +59,9 @@ public class Menu extends BasePage {
         CommonEvents.clickButton(menuPersonal);
         return new SubMenuPersonalContract();
     }
+
+    public SubMenuTrainer clickMenuProgramSSOTrainer() {
+        CommonEvents.clickButton(menuProgramaSSO);
+        return new SubMenuTrainer();
+    }
 }
