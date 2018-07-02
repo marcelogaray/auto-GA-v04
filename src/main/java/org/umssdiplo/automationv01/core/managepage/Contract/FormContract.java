@@ -4,6 +4,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.umssdiplo.automationv01.core.managepage.BasePage;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
+
 import java.util.List;
 import java.util.Map;
 
@@ -57,11 +58,11 @@ public class FormContract extends BasePage {
     @FindBy(id = "form")
     private WebElement formContract;
 
-    public FormContract(){
+    public FormContract() {
         CommonEvents.isVisible(formContract);
     }
 
-    public void newContractRegistration(List<Map<String, String>> data){
+    public void newContractRegistration(List<Map<String, String>> data) {
         setInputDataCode(data.get(0).get("contractCodes"));
         setInputDataDescription(data.get(0).get("contractDescriptions"));
         setInputDataSalary(data.get(0).get("contractSalarys"));
@@ -70,23 +71,23 @@ public class FormContract extends BasePage {
         selectCityContract();
     }
 
-    private void setInputDataCode(String data){
+    private void setInputDataCode(String data) {
         CommonEvents.setInputField(inputCodeContract, data);
     }
 
-    private void setInputDataDescription(String data){
+    private void setInputDataDescription(String data) {
         CommonEvents.setInputField(inputDescriptionContract, data);
     }
 
-    private void setInputDataSalary(String data){
+    private void setInputDataSalary(String data) {
         CommonEvents.setInputField(inputSalaryContract, data);
     }
 
-    private void setInputDataDate(String data){
+    private void setInputDataDate(String data) {
         CommonEvents.setInputField(inputDateContract, data);
     }
 
-    public void editContractRegistration(List<Map<String, String>> data){
+    public void editContractRegistration(List<Map<String, String>> data) {
         setInputDataCodeEdit(data.get(0).get("contractCodesEdit"));
         setInputDataDescriptionEdit(data.get(0).get("contractDescriptionsEdit"));
         setInputDataSalaryEdit(data.get(0).get("contractSalarysEdit"));
@@ -95,19 +96,19 @@ public class FormContract extends BasePage {
         selectCityContract();
     }
 
-    private void setInputDataCodeEdit(String data){
+    private void setInputDataCodeEdit(String data) {
         CommonEvents.setInputField(inputCodeEditContract, data);
     }
 
-    private void setInputDataDescriptionEdit(String data){
+    private void setInputDataDescriptionEdit(String data) {
         CommonEvents.setInputField(inputDescriptionEditContract, data);
     }
 
-    private void setInputDataSalaryEdit(String data){
+    private void setInputDataSalaryEdit(String data) {
         CommonEvents.setInputField(inputSalaryEditContract, data);
     }
 
-    private void setInputDataDateEdit(String data){
+    private void setInputDataDateEdit(String data) {
         CommonEvents.setInputField(inputDateEditContract, data);
     }
 
@@ -115,22 +116,22 @@ public class FormContract extends BasePage {
         CommonEvents.setInputField(inputFindContract, data.get(0).get("contractCode"));
     }
 
-    public void selectCityContract(){
+    public void selectCityContract() {
         CommonEvents.clickButton(inputCityContract);
         selectCityContract.click();
     }
 
-    public void selectTypeContract(){
+    public void selectTypeContract() {
         CommonEvents.clickButton(inputTypeContract);
         selectTypeContract.click();
     }
 
-    public boolean clickButtonSendForm(){
+    public boolean clickButtonSendForm() {
         CommonEvents.clickButton(buttonSendContract);
         return CommonEvents.isVisible(buttonSendContract);
     }
 
-    public boolean clickButtonSendFormEdit(){
+    public boolean clickButtonSendFormEdit() {
         CommonEvents.clickButton(buttonSendEdit);
         return CommonEvents.isVisible(buttonSendEdit);
     }

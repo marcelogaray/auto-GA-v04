@@ -54,15 +54,15 @@ public class ListContract extends BasePage {
         return new FormContract();
     }
 
-    public void selectNextListcontract(){
+    public void selectNextListcontract() {
         CommonEvents.clickButton(buttonNextListcontract);
     }
 
-    public void selectBackListcontract(){
+    public void selectBackListcontract() {
         CommonEvents.clickButton(buttonBackListcontract);
     }
 
-    public void selectBtnBackContarct(){
+    public void selectBtnBackContarct() {
         CommonEvents.clickButton(buttonBackList);
     }
 
