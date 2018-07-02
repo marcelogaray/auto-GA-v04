@@ -11,7 +11,7 @@ import java.util.List;
 
 public class ListUser extends BasePage {
 
-    @FindBy(xpath = "//button/span[contains(text(),'Agregar Nuevo Usuario')]")
+    @FindBy(xpath = "//button//span[contains(text(),'Agregar Nuevo Usuario')]")
     private WebElement buttonAddUser;
 
     @FindBy(className = "mat-column-UserName")
