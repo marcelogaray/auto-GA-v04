@@ -13,6 +13,7 @@ import org.umssdiplo.automationv01.core.managepage.Equipment.ListEquipment;
 import org.umssdiplo.automationv01.core.managepage.Equipment.EquipmentDetail;
 import org.umssdiplo.automationv01.core.managepage.Equipment.ListInventory;
 import org.umssdiplo.automationv01.core.managepage.Home.Home;
+import org.umssdiplo.automationv01.core.managepage.Incident.CreateIncidentPage;
 import org.umssdiplo.automationv01.core.managepage.Incident.IncidentPage;
 import org.umssdiplo.automationv01.core.managepage.Login.Login;
 import org.umssdiplo.automationv01.core.managepage.Menu.*;
@@ -46,6 +47,7 @@ public class StepsDefinitionSSID {
     private FormEquipment formEquipment;
     private Position position;
     private SubMenuOrganizationalStructure subMenuOrganizationalStructure;
+    private CreateIncidentPage createIncidentPage;
     private StructureOrganizational structureOrganizational;
     private CreatePosition createPosition;
     private ResourceForm resourceForm;
@@ -103,21 +105,6 @@ public class StepsDefinitionSSID {
     @And("^registrar usuarios con username, password con los siguiente datos$")
     public void registrarUsuariosConUsernamePasswordYQueEsteenEnEstadoActivado(DataTable usersTable) throws Throwable {
         formUser.createNewUserFromTable(usersTable);
-    }
-
-    @And("^presionar en el Boton de 'Guardar' para guardar la informacion$")
-    public void presionarEnElBotonDeGuardarParaGuardarLaInformacion() throws Throwable {
-        formUser.clickButtonSaveUser();
-    }
-
-    @And("^Presionar en la opcion 'Incidentes' del 'Menu Principal'$")
-    public void presionarEnLaOpcionIncidentesDelMenuPrincipal() throws Throwable {
-        incidentPage = menu.clickMenuIncident();
-    }
-
-    @Then("^Verificar que la tabla de incidentes se muestre correctamente$")
-    public void verificarQueLaTablaDeIncidentesSeMuestreCorrectamente() throws Throwable {
-        Assert.assertTrue(incidentPage.isTableVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Incident"));
     }
 
     //ProgramSSO - Resources
@@ -213,7 +200,16 @@ public class StepsDefinitionSSID {
     }
     //End Positions
 
-    //BEGIN Equipments
+    @And("^presionar en la opcion 'Incidentes' del 'Menu Principal'$")
+    public void presionarEnLaOpcionIncidentesDelMenuPrincipal() throws Throwable {
+        incidentPage = menu.clickMenuIncident();
+    }
+
+    @Then("^verificar que la 'tabla de incidentes' este visible en la pagina 'Incidentes'$")
+    public void verificarQueLaTablaDeIncidentesSeMuestreCorrectamente() throws Throwable {
+        Assert.assertTrue(incidentPage.isTableVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Incident title"));
+    }
+
     @And("^seleccionar menu 'Equipamiento' en la pagina 'Menu Principal'$")
     public void menuEquipamientoEstaSeleccionado() throws Throwable {
         menuEquipamiento = menu.selectEquipmentMenu();
@@ -227,6 +223,43 @@ public class StepsDefinitionSSID {
     @Then("^verificar que la 'Lista de Equipamientos' este visible$")
     public void validarListaDeEquipamientos() throws Throwable {
         Assert.assertTrue(listEquipment.isEquipmentListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
+    }
+
+    @And("^click en el boton 'Agregar nuevo Incidente' de la pagina 'incidentes'$")
+    public void hacemosClickEnElBotonAgregarNuevoIncidente() throws Throwable {
+        createIncidentPage = incidentPage.clickOnButtonAddNewIncident();
+    }
+
+    @When("^insertamos información valida en el formulario de 'Creacion de Incidentes'$")
+    public void insertamosInformacionValidaEnElFormularioDeCreacionDeIncidentes(DataTable table) throws Throwable {
+        List<Map<String, String>> data = table.asMaps(String.class, String. class);
+        createIncidentPage.setFormIncident(data);
+    }
+
+    @And("^click en el boton 'guardar' en el 'formulario creación de incidentes'$")
+    public void hacemosClicEnElBotonDeGuardar() throws Throwable {
+        createIncidentPage.clickSaveButton();
+    }
+
+    @And("^verificamos que el titulo de 'Creacion de Incidentes' se muestre correctamente$")
+    public void verificamosQueElTituloDeCreacionDeIncidentesSeMuestreCorrectamente() throws Throwable {
+        Assert.assertTrue(createIncidentPage.isTitleVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Titulo 'Crear Incidente'"));
+    }
+
+    @When("^llenamos el campo 'code' y el campo 'description' con valores vacios$")
+    public void llenamosLosDatosRequeridosDelFormularioDeCreacionDeIncidentes() throws Throwable {
+        createIncidentPage.fillInputCode("");
+        createIncidentPage.fillDescription("");
+    }
+
+    @Then("^verificar que el boton 'guardar' no se deshabilita$")
+    public void verificarQueElBotonDeGuardadoNoSeDeshabilita() throws Throwable {
+        Assert.assertFalse(createIncidentPage.isButtonEnabled(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_DISABLED, "is enabled"));
+    }
+
+    @When("^hacemos 'click' en el boton 'cancelar'$")
+    public void hacemosClickEnElBotonCancelar() throws Throwable {
+        incidentPage = createIncidentPage.clickOnCancelButton();
     }
 
     @Then("^verificar cabecera 'Nombre' de la pagina 'Lista de Equipamientos' esten cargados$")
@@ -517,6 +550,11 @@ public class StepsDefinitionSSID {
     @And("^verificar que el boton 'Enviar' este deshabilitado en la pagina 'Crear nuevo cargo'$")
     public void verificarQueElBotonEnviarEsteDeshabilitadoEnLaPaginaCrearNuevoCargo() throws Throwable {
         Assert.assertFalse(createPosition.validateButtonSendIsEnabled(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_ENABLED, "Button 'Enviar' "));
+    }
+
+    @Then("^verificar que la pagina 'incidentes' es cargada correctamente$")
+    public void verificarQueLaPaginaIncidentesEsCargadaCorrectamente() throws Throwable {
+        Assert.assertTrue(incidentPage.isTitleVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Incident"));
     }
 
     @And("^visualizacion de la 'Lista de Contratos' en la pagina 'Contratos'$")

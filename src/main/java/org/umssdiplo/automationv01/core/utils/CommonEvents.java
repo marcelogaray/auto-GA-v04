@@ -47,6 +47,21 @@ public class CommonEvents {
     }
 
     /**
+     * This method verifies if a web element is enabled.
+     *
+     * @param webElement is the web element.
+     * @return true if web element is enabled or false if it isn't enabled.
+     */
+    public static boolean isEnabled(WebElement webElement) {
+        try {
+            return webElement.isEnabled();
+        } catch (NoSuchElementException e) {
+            logger.error("Element do not exits!");
+            return false;
+        }
+    }
+
+    /**
      * This method verifies if a web element is visible.
      *
      * @param webElement is the web element.
@@ -118,21 +133,6 @@ public class CommonEvents {
      */
     public static void pressEnterKey(WebElement webElement) {
         webElement.sendKeys(Keys.ENTER);
-    }
-
-    /**
-     * This method verifies if a web element is enabled.
-     *
-     * @param webElement is the web element.
-     * @return true if web element is enabled or false if it isn't enabled.
-     */
-    public static boolean isEnabled(WebElement webElement) {
-        try {
-            return webElement.isEnabled();
-        } catch (NoSuchElementException e) {
-            logger.error("Element do not exists!");
-            return false;
-        }
     }
 
     /**
