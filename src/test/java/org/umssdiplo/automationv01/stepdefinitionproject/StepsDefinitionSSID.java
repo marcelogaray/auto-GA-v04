@@ -23,6 +23,9 @@ import org.umssdiplo.automationv01.core.managepage.Position.Position;
 import org.umssdiplo.automationv01.core.managepage.ProgramSSO.Resource;
 import org.umssdiplo.automationv01.core.managepage.ProgramSSO.ResourceForm;
 import org.umssdiplo.automationv01.core.managepage.StructureOrganizational.StructureOrganizational;
+import org.umssdiplo.automationv01.core.managepage.Trainer.CreateTrainer;
+import org.umssdiplo.automationv01.core.managepage.Trainer.EditTrainer;
+import org.umssdiplo.automationv01.core.managepage.Trainer.ListTrainer;
 import org.umssdiplo.automationv01.core.managepage.Usuario.FormUser;
 import org.umssdiplo.automationv01.core.managepage.Usuario.ListUser;
 import org.umssdiplo.automationv01.core.utils.ErrorMessage;
@@ -57,6 +60,10 @@ public class StepsDefinitionSSID {
     private ListContract listContract;
     private EquipmentDetail equipmentDetail;
     private FormContract formContract;
+    private ListTrainer listTrainer;
+    private SubMenuTrainer subMenuTrainer;
+    private CreateTrainer createTrainer;
+    private EditTrainer editTrainer;
 
     private void loadPageObjects() {
         login = LoadPage.loginPage();
