@@ -23,6 +23,9 @@ import org.umssdiplo.automationv01.core.managepage.Position.Position;
 import org.umssdiplo.automationv01.core.managepage.ProgramSSO.Resource;
 import org.umssdiplo.automationv01.core.managepage.ProgramSSO.ResourceForm;
 import org.umssdiplo.automationv01.core.managepage.StructureOrganizational.StructureOrganizational;
+import org.umssdiplo.automationv01.core.managepage.Trainer.CreateTrainer;
+import org.umssdiplo.automationv01.core.managepage.Trainer.EditTrainer;
+import org.umssdiplo.automationv01.core.managepage.Trainer.ListTrainer;
 import org.umssdiplo.automationv01.core.managepage.Usuario.FormUser;
 import org.umssdiplo.automationv01.core.managepage.Usuario.ListUser;
 import org.umssdiplo.automationv01.core.utils.ErrorMessage;
@@ -57,6 +60,10 @@ public class StepsDefinitionSSID {
     private ListContract listContract;
     private EquipmentDetail equipmentDetail;
     private FormContract formContract;
+    private ListTrainer listTrainer;
+    private SubMenuTrainer subMenuTrainer;
+    private CreateTrainer createTrainer;
+    private EditTrainer editTrainer;
 
     private void loadPageObjects() {
         login = LoadPage.loginPage();
@@ -642,10 +649,9 @@ public class StepsDefinitionSSID {
         Assert.assertTrue(listContract.getTitle().equals("Nuevo Contrato"),String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Contract Title") );
     }
 
-    @And("^presionar en la opcion 'ProgramSSO' del 'Menu Principal'$")
-    public void presionarEnLaOpcionProgramSSODelMenuPrincipal() throws Throwable {
-        subMenuTrainer = menu.clickMenuProgramSSOTrainer();
-
+    @And("^presionar en el Boton de 'Guardar' para guardar la informacion$")
+    public void presionarEnElBotonDeGuardarParaGuardarLaInformacion() throws Throwable {
+        formUser.clickButtonSaveUser();
     }
 
     @And("^presionar en la opcion 'Capacitadores' del sub menu 'ProgramSSO'$")

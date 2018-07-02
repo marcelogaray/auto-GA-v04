@@ -7,7 +7,7 @@ import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
 public class FormAssignPersonal extends BasePage {
 
-    @FindBy(xpath = "/h1[contains(text(),'Asignacion de Equipo al Personal')]")
+    @FindBy(xpath = "//h1[contains(text(),'Asignacion de Equipo al Personal')]")
     private WebElement h1TitleEquipamentPersonal;
 
     @FindBy(id = "mat-input-6")
