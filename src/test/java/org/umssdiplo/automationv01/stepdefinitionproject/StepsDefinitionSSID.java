@@ -13,6 +13,7 @@ import org.umssdiplo.automationv01.core.managepage.Equipment.ListEquipment;
 import org.umssdiplo.automationv01.core.managepage.Equipment.EquipmentDetail;
 import org.umssdiplo.automationv01.core.managepage.Equipment.ListInventory;
 import org.umssdiplo.automationv01.core.managepage.Home.Home;
+import org.umssdiplo.automationv01.core.managepage.Incident.CreateIncidentPage;
 import org.umssdiplo.automationv01.core.managepage.Incident.IncidentPage;
 import org.umssdiplo.automationv01.core.managepage.Login.Login;
 import org.umssdiplo.automationv01.core.managepage.Menu.*;
@@ -22,6 +23,9 @@ import org.umssdiplo.automationv01.core.managepage.Position.Position;
 import org.umssdiplo.automationv01.core.managepage.ProgramSSO.Resource;
 import org.umssdiplo.automationv01.core.managepage.ProgramSSO.ResourceForm;
 import org.umssdiplo.automationv01.core.managepage.StructureOrganizational.StructureOrganizational;
+import org.umssdiplo.automationv01.core.managepage.Trainer.CreateTrainer;
+import org.umssdiplo.automationv01.core.managepage.Trainer.EditTrainer;
+import org.umssdiplo.automationv01.core.managepage.Trainer.ListTrainer;
 import org.umssdiplo.automationv01.core.managepage.Usuario.FormUser;
 import org.umssdiplo.automationv01.core.managepage.Usuario.ListUser;
 import org.umssdiplo.automationv01.core.utils.ErrorMessage;
@@ -46,6 +50,7 @@ public class StepsDefinitionSSID {
     private FormEquipment formEquipment;
     private Position position;
     private SubMenuOrganizationalStructure subMenuOrganizationalStructure;
+    private CreateIncidentPage createIncidentPage;
     private StructureOrganizational structureOrganizational;
     private CreatePosition createPosition;
     private ResourceForm resourceForm;
@@ -55,6 +60,10 @@ public class StepsDefinitionSSID {
     private ListContract listContract;
     private EquipmentDetail equipmentDetail;
     private FormContract formContract;
+    private ListTrainer listTrainer;
+    private SubMenuTrainer subMenuTrainer;
+    private CreateTrainer createTrainer;
+    private EditTrainer editTrainer;
 
     private void loadPageObjects() {
         login = LoadPage.loginPage();
@@ -103,21 +112,6 @@ public class StepsDefinitionSSID {
     @And("^registrar usuarios con username, password con los siguiente datos$")
     public void registrarUsuariosConUsernamePasswordYQueEsteenEnEstadoActivado(DataTable usersTable) throws Throwable {
         formUser.createNewUserFromTable(usersTable);
-    }
-
-    @And("^presionar en el Boton de 'Guardar' para guardar la informacion$")
-    public void presionarEnElBotonDeGuardarParaGuardarLaInformacion() throws Throwable {
-        formUser.clickButtonSaveUser();
-    }
-
-    @And("^Presionar en la opcion 'Incidentes' del 'Menu Principal'$")
-    public void presionarEnLaOpcionIncidentesDelMenuPrincipal() throws Throwable {
-        incidentPage = menu.clickMenuIncident();
-    }
-
-    @Then("^Verificar que la tabla de incidentes se muestre correctamente$")
-    public void verificarQueLaTablaDeIncidentesSeMuestreCorrectamente() throws Throwable {
-        Assert.assertTrue(incidentPage.isTableVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Incident"));
     }
 
     //ProgramSSO - Resources
@@ -213,7 +207,16 @@ public class StepsDefinitionSSID {
     }
     //End Positions
 
-    //BEGIN Equipments
+    @And("^presionar en la opcion 'Incidentes' del 'Menu Principal'$")
+    public void presionarEnLaOpcionIncidentesDelMenuPrincipal() throws Throwable {
+        incidentPage = menu.clickMenuIncident();
+    }
+
+    @Then("^verificar que la 'tabla de incidentes' este visible en la pagina 'Incidentes'$")
+    public void verificarQueLaTablaDeIncidentesSeMuestreCorrectamente() throws Throwable {
+        Assert.assertTrue(incidentPage.isTableVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Incident title"));
+    }
+
     @And("^seleccionar menu 'Equipamiento' en la pagina 'Menu Principal'$")
     public void menuEquipamientoEstaSeleccionado() throws Throwable {
         menuEquipamiento = menu.selectEquipmentMenu();
@@ -227,6 +230,43 @@ public class StepsDefinitionSSID {
     @Then("^verificar que la 'Lista de Equipamientos' este visible$")
     public void validarListaDeEquipamientos() throws Throwable {
         Assert.assertTrue(listEquipment.isEquipmentListVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Equipments title"));
+    }
+
+    @And("^click en el boton 'Agregar nuevo Incidente' de la pagina 'incidentes'$")
+    public void hacemosClickEnElBotonAgregarNuevoIncidente() throws Throwable {
+        createIncidentPage = incidentPage.clickOnButtonAddNewIncident();
+    }
+
+    @When("^insertamos información valida en el formulario de 'Creacion de Incidentes'$")
+    public void insertamosInformacionValidaEnElFormularioDeCreacionDeIncidentes(DataTable table) throws Throwable {
+        List<Map<String, String>> data = table.asMaps(String.class, String. class);
+        createIncidentPage.setFormIncident(data);
+    }
+
+    @And("^click en el boton 'guardar' en el 'formulario creación de incidentes'$")
+    public void hacemosClicEnElBotonDeGuardar() throws Throwable {
+        createIncidentPage.clickSaveButton();
+    }
+
+    @And("^verificamos que el titulo de 'Creacion de Incidentes' se muestre correctamente$")
+    public void verificamosQueElTituloDeCreacionDeIncidentesSeMuestreCorrectamente() throws Throwable {
+        Assert.assertTrue(createIncidentPage.isTitleVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Titulo 'Crear Incidente'"));
+    }
+
+    @When("^llenamos el campo 'code' y el campo 'description' con valores vacios$")
+    public void llenamosLosDatosRequeridosDelFormularioDeCreacionDeIncidentes() throws Throwable {
+        createIncidentPage.fillInputCode("");
+        createIncidentPage.fillDescription("");
+    }
+
+    @Then("^verificar que el boton 'guardar' no se deshabilita$")
+    public void verificarQueElBotonDeGuardadoNoSeDeshabilita() throws Throwable {
+        Assert.assertFalse(createIncidentPage.isButtonEnabled(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_DISABLED, "is enabled"));
+    }
+
+    @When("^hacemos 'click' en el boton 'cancelar'$")
+    public void hacemosClickEnElBotonCancelar() throws Throwable {
+        incidentPage = createIncidentPage.clickOnCancelButton();
     }
 
     @Then("^verificar cabecera 'Nombre' de la pagina 'Lista de Equipamientos' esten cargados$")
@@ -332,8 +372,9 @@ public class StepsDefinitionSSID {
 
     @And("^seleccionar submenu 'Personal' en menu 'Personal'$")
     public void seleccionarSubMenuPersonal() throws Throwable {
-        personnelSearch = menuPersonal.selectSubMenuPersonnel();
-        Assert.assertTrue(personnelSearch.validateInputFindPersonIsVisible());
+        Assert.assertTrue(menuPersonal.selectSubMenuPersonnel(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Personnel Submenu"));
+        personnelSearch = menuPersonal.getPersonnelSearch();
+        Assert.assertTrue(personnelSearch.validateInputFindPersonIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Personnel search"));
     }
 
     @When("^ingresar (.*) en 'Buscar Personal'$")
@@ -519,6 +560,11 @@ public class StepsDefinitionSSID {
         Assert.assertFalse(createPosition.validateButtonSendIsEnabled(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_ENABLED, "Button 'Enviar' "));
     }
 
+    @Then("^verificar que la pagina 'incidentes' es cargada correctamente$")
+    public void verificarQueLaPaginaIncidentesEsCargadaCorrectamente() throws Throwable {
+        Assert.assertTrue(incidentPage.isTitleVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Incident"));
+    }
+
     @And("^visualizacion de la 'Lista de Contratos' en la pagina 'Contratos'$")
     public void validarContratos() throws Throwable {
         Assert.assertTrue(listContract.validateContractList(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Contract List"));
@@ -601,5 +647,68 @@ public class StepsDefinitionSSID {
     @Then("^validar que el título del formulario de creación contratos sea 'Nuevo Contrato'$")
     public void validarTitulo() throws Throwable {
         Assert.assertTrue(listContract.getTitle().equals("Nuevo Contrato"),String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Contract Title") );
+    }
+
+    @And("^presionar en el Boton de 'Guardar' para guardar la informacion$")
+    public void presionarEnElBotonDeGuardarParaGuardarLaInformacion() throws Throwable {
+        formUser.clickButtonSaveUser();
+    }
+
+    @And("^presionar en la opcion 'Capacitadores' del sub menu 'ProgramSSO'$")
+    public void presionarEnLaOpcionCapacitadoresDelSubMenu() throws Throwable {
+        listTrainer = subMenuTrainer.selectSubMenuTrainer();
+    }
+
+    @And("^presionar el boton 'Crear Nuevo Capacitador'$")
+    public void clickEnElBotonCrearNuevoCapacitador() throws Throwable {
+        createTrainer = listTrainer.clickOnCreateTrainerButton();
+    }
+
+    @Then("^validar que el título del formulario de creación de Capacitadores sea 'Crear capacitador'$")
+    public void validarTituloDeCapacitadoresEnModoCreacion() throws Throwable {
+        Assert.assertTrue(createTrainer.getTrainerTitleCreateMode().equals("Crear capacitador"),String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Capacitador title") );
+
+    }
+
+    @And("^presionar el boton 'Atras' del modo creacion de Capacitador$")
+    public void clickEnElBotonAtrasDelModoCreacionCapacitador() throws Throwable {
+        listTrainer = createTrainer.clickBackButton();
+    }
+
+    @Then("^verificar que la lista de capacitadores sea mostrada en la pagina 'Capacitadores'$")
+    public void verificarListaDeCapacitadores() throws Throwable {
+        Assert.assertTrue(listTrainer.verifyIfTrainerListIsVisible(),String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Trainers list"));
+
+    }
+
+    @And("^presionar el boton 'Editar' de Capacitador$")
+    public void clickEnElBotonEditarDelCapacitador() throws Throwable {
+        editTrainer = listTrainer.clickOnUpdateTrainerButton();
+    }
+
+    @Then("^validar que el título del formulario de edicion de Capacitadores sea 'Modificar capacitador'$")
+    public void validarTituloCapacitadoresEnModoEdicion() throws Throwable {
+        Assert.assertTrue(editTrainer.getTrainerTitleEditMode().equals("Modificar capacitador"),"Trainer title is not the correct") ;
+
+    }
+
+    @And("^presionar el boton 'Atras' del modo edicion de Capacitador$")
+    public void clickEnElBotonAtrasDeCapacitador() throws Throwable {
+        listTrainer = editTrainer.clickOnBackButton();
+    }
+
+    @And("^editar (.*) de Capacitador$")
+    public void editarNombreDeCapacitador(String nombre) throws Throwable {
+        editTrainer.setTrainerName(nombre);
+    }
+
+    @And("^presionar el boton  'guardar' Capacitador$")
+    public void guardarNombreEditadoDeCapacitador() throws Throwable {
+        listTrainer = editTrainer.clickOnSaveButton();
+    }
+
+    @And("^verificar si el boton crear capacitador es visible$")
+    public void verificarSiElBotonCrearCapacitadorEsVisible() throws Throwable {
+        Assert.assertTrue(listTrainer.verifyIfCreateTrainerButtonIsVisibleAfterEditingTrainer(), "Create trainer button is not visible") ;
     }
 }
