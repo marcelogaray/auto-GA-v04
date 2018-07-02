@@ -123,7 +123,7 @@ public class StepsDefinitionSSID {
 
     @Given("^click en el boton 'Agregar nuevo personal'$")
     public void clickEnElBotonAgregarNuevoPersonal() throws Throwable {
-        Assert.assertTrue(buttonAddPersonnel.validateButtonAddPersonnel());
+        Assert.assertTrue(buttonAddPersonnel.validateButtonAddPersonnel(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Personnel add"));
         addPersonnel = buttonAddPersonnel.clickAgregarPersonal();
     }
 
@@ -160,6 +160,5 @@ public class StepsDefinitionSSID {
     @Then("^click en 'Enviar' el nuevo personal$")
     public void clickEnEnviarElNuevoPersonal() throws Throwable {
         Assert.assertTrue(addPersonnel.send(), String.format(ErrorMessage.ERROR_MESSAGE, "Agregar Personal"));
-        Thread.sleep(4000);
     }
 }

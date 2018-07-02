@@ -9,19 +9,19 @@ import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
 public class AddPersonnel extends BasePage {
 
-    @FindBy(id="personalNombre")
+    @FindBy(xpath = "//input[@placeholder='Nombre']")
     private WebElement inputNamePersonnel;
 
-    @FindBy(id="personalApellido")
+    @FindBy(xpath = "//input[@placeholder='Apellido']")
     private WebElement inputLastNamePersonnel;
 
-    @FindBy(id="personalEmail")
+    @FindBy(xpath = "//input[@placeholder='Email']")
     private WebElement inputEmailPersonnel;
 
     @FindBy(xpath = "//*[@placeholder='Direccion']")
     private WebElement inputAddressPersonnel;
 
-    @FindBy(id="personalTelefono")
+    @FindBy(xpath = "//*[@placeholder='Telefono']")
     private WebElement inputPhonePersonnel;
 
     @FindBy(xpath = "//*[@placeholder='Seleccionar el area']")

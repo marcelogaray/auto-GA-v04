@@ -8,7 +8,7 @@ import org.umssdiplo.automationv01.core.managepage.Personnel.AddPersonnel;
 
 public class ButtonAddPersonnel extends BasePage {
 
-    @FindBy(id="agregarPersonal")
+    @FindBy(xpath = "//span[@class='mat-button-wrapper'][contains(text(),'Agregar nuevo personal')]")
     private WebElement buttonAddPersonnel;
 
     public ButtonAddPersonnel(){
