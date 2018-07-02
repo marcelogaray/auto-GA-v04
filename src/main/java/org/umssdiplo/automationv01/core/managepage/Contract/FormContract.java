@@ -57,7 +57,9 @@ public class FormContract extends BasePage {
     @FindBy(id = "form")
     private WebElement formContract;
 
-    public FormContract(){ CommonEvents.isVisible(formContract);}
+    public FormContract(){
+        CommonEvents.isVisible(formContract);
+    }
 
     public void newContractRegistration(List<Map<String, String>> data){
         setInputDataCode(data.get(0).get("contractCodes"));
@@ -68,13 +70,21 @@ public class FormContract extends BasePage {
         selectCityContract();
     }
 
-    private void setInputDataCode(String data){ CommonEvents.setInputField(inputCodeContract, data);}
+    private void setInputDataCode(String data){
+        CommonEvents.setInputField(inputCodeContract, data);
+    }
 
-    private void setInputDataDescription(String data){ CommonEvents.setInputField(inputDescriptionContract, data);}
+    private void setInputDataDescription(String data){
+        CommonEvents.setInputField(inputDescriptionContract, data);
+    }
 
-    private void setInputDataSalary(String data){ CommonEvents.setInputField(inputSalaryContract, data);}
+    private void setInputDataSalary(String data){
+        CommonEvents.setInputField(inputSalaryContract, data);
+    }
 
-    private void setInputDataDate(String data){ CommonEvents.setInputField(inputDateContract, data);}
+    private void setInputDataDate(String data){
+        CommonEvents.setInputField(inputDateContract, data);
+    }
 
     public void editContractRegistration(List<Map<String, String>> data){
         setInputDataCodeEdit(data.get(0).get("contractCodesEdit"));
@@ -85,15 +95,25 @@ public class FormContract extends BasePage {
         selectCityContract();
     }
 
-    private void setInputDataCodeEdit(String data){ CommonEvents.setInputField(inputCodeEditContract, data);}
+    private void setInputDataCodeEdit(String data){
+        CommonEvents.setInputField(inputCodeEditContract, data);
+    }
 
-    private void setInputDataDescriptionEdit(String data){ CommonEvents.setInputField(inputDescriptionEditContract, data);}
+    private void setInputDataDescriptionEdit(String data){
+        CommonEvents.setInputField(inputDescriptionEditContract, data);
+    }
 
-    private void setInputDataSalaryEdit(String data){ CommonEvents.setInputField(inputSalaryEditContract, data);}
+    private void setInputDataSalaryEdit(String data){
+        CommonEvents.setInputField(inputSalaryEditContract, data);
+    }
 
-    private void setInputDataDateEdit(String data){ CommonEvents.setInputField(inputDateEditContract, data);}
+    private void setInputDataDateEdit(String data){
+        CommonEvents.setInputField(inputDateEditContract, data);
+    }
 
-    public void findContractList(List<Map<String, String>> data) { CommonEvents.setInputField(inputFindContract, data.get(0).get("contractCode"));}
+    public void findContractList(List<Map<String, String>> data) {
+        CommonEvents.setInputField(inputFindContract, data.get(0).get("contractCode"));
+    }
 
     public void selectCityContract(){
         CommonEvents.clickButton(inputCityContract);

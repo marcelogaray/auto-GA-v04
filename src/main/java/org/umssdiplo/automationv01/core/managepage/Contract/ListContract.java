@@ -66,5 +66,7 @@ public class ListContract extends BasePage {
         CommonEvents.clickButton(buttonBackList);
     }
 
-    public String getTitle() {return CommonEvents.getTextContent(titleContract); }
+    public String getTitle() {
+        return CommonEvents.getTextContent(titleContract);
+    }
 }
