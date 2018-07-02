@@ -641,4 +641,68 @@ public class StepsDefinitionSSID {
     public void validarTitulo() throws Throwable {
         Assert.assertTrue(listContract.getTitle().equals("Nuevo Contrato"),String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Contract Title") );
     }
+
+    @And("^presionar en la opcion 'ProgramSSO' del 'Menu Principal'$")
+    public void presionarEnLaOpcionProgramSSODelMenuPrincipal() throws Throwable {
+        subMenuTrainer = menu.clickMenuProgramSSOTrainer();
+
+    }
+
+    @And("^presionar en la opcion 'Capacitadores' del sub menu 'ProgramSSO'$")
+    public void presionarEnLaOpcionCapacitadoresDelSubMenu() throws Throwable {
+        listTrainer = subMenuTrainer.selectSubMenuTrainer();
+    }
+
+    @And("^presionar el boton 'Crear Nuevo Capacitador'$")
+    public void clickEnElBotonCrearNuevoCapacitador() throws Throwable {
+        createTrainer = listTrainer.clickOnCreateTrainerButton();
+    }
+
+    @Then("^validar que el título del formulario de creación de Capacitadores sea 'Crear capacitador'$")
+    public void validarTituloDeCapacitadoresEnModoCreacion() throws Throwable {
+        Assert.assertTrue(createTrainer.getTrainerTitleCreateMode().equals("Crear capacitador"),String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Capacitador title") );
+
+    }
+
+    @And("^presionar el boton 'Atras' del modo creacion de Capacitador$")
+    public void clickEnElBotonAtrasDelModoCreacionCapacitador() throws Throwable {
+        listTrainer = createTrainer.clickBackButton();
+    }
+
+    @Then("^verificar que la lista de capacitadores sea mostrada en la pagina 'Capacitadores'$")
+    public void verificarListaDeCapacitadores() throws Throwable {
+        Assert.assertTrue(listTrainer.verifyIfTrainerListIsVisible(),String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Trainers list"));
+
+    }
+
+    @And("^presionar el boton 'Editar' de Capacitador$")
+    public void clickEnElBotonEditarDelCapacitador() throws Throwable {
+        editTrainer = listTrainer.clickOnUpdateTrainerButton();
+    }
+
+    @Then("^validar que el título del formulario de edicion de Capacitadores sea 'Modificar capacitador'$")
+    public void validarTituloCapacitadoresEnModoEdicion() throws Throwable {
+        Assert.assertTrue(editTrainer.getTrainerTitleEditMode().equals("Modificar capacitador"),"Trainer title is not the correct") ;
+
+    }
+
+    @And("^presionar el boton 'Atras' del modo edicion de Capacitador$")
+    public void clickEnElBotonAtrasDeCapacitador() throws Throwable {
+        listTrainer = editTrainer.clickOnBackButton();
+    }
+
+    @And("^editar (.*) de Capacitador$")
+    public void editarNombreDeCapacitador(String nombre) throws Throwable {
+        editTrainer.setTrainerName(nombre);
+    }
+
+    @And("^presionar el boton  'guardar' Capacitador$")
+    public void guardarNombreEditadoDeCapacitador() throws Throwable {
+        listTrainer = editTrainer.clickOnSaveButton();
+    }
+
+    @And("^verififcar si el boton crear capacitador es visible$")
+    public void verificarSiElBotonCrearCapacitadorEsVisible() throws Throwable {
+        Assert.assertTrue(listTrainer.verifyIfCreateTrainerButtonIsVisibleAfterEditingTrainer(), "Create trainer button is not visible") ;
+    }
 }
