@@ -1,13 +1,17 @@
-# Listar contratos
+# Eliminar contratos
 
-Feature: Listar contratos almacenados
+Feature: Eliminar contratos
 
   Background: Pagina de inicio es mostrada una vez que se ponen los credenciales correctos de inicio de sesión
     Given 'SSI-D' pagina de inicio de sesion es cargada
     And Ingresar los credenciales validos en la pagina 'Login' para ingresar al sistema
 
-  Scenario: Verificar lista de contratos este correctamente cargado
+  Scenario: Eliminacion de contratos almacenados
     Given menu principal este cargado en pagina de inicio
     And seleccionar la opcion 'Personal' en la pagina 'menu principal'
     And seleccionar el submenu 'Contratos' del menu 'Personal'
-    Then validar que la 'Lista de Contratos' este visible en la pagina 'Contratos'
+    And visualizacion de la 'Lista de Contratos' en la pagina 'Contratos'
+    And click en el boton 'Eliminar' del primer item lista contratos
+    Then validar que la 'Lista de Contratos' este visible sin el item eliminado
+
+
