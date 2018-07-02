@@ -8,5 +8,6 @@ Feature: List User
   Scenario: Verificar lista de Usuarios este correctamente cargado
     Given 'Menu principal' estee cargado
     And seleccionar menu 'Personal' en la pagina 'Menu Principal'
-    And Seleccionar submenu 'Usuario' en menu 'Personal'
-    Then Validar que la 'Lista de Usuarios' este visible
+    And seleccionar submenu 'Usuario' en menu 'Personal'
+    Then validar que la 'Lista de Usuarios' este visible en la pagina 'usuarios'
+
