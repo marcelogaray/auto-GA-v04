@@ -14,7 +14,7 @@
       And presionar el boton 'Editar' de Capacitador
       And editar <nombre> de Capacitador
       And presionar el boton  'guardar' Capacitador
-      Then verififcar si el boton crear capacitador es visible
+      Then verificar si el boton crear capacitador es visible
       Examples:
       | nombre        |
       | automated test|

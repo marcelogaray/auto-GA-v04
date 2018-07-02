@@ -701,7 +701,7 @@ public class StepsDefinitionSSID {
         listTrainer = editTrainer.clickOnSaveButton();
     }
 
-    @And("^verififcar si el boton crear capacitador es visible$")
+    @And("^verificar si el boton crear capacitador es visible$")
     public void verificarSiElBotonCrearCapacitadorEsVisible() throws Throwable {
         Assert.assertTrue(listTrainer.verifyIfCreateTrainerButtonIsVisibleAfterEditingTrainer(), "Create trainer button is not visible") ;
     }
