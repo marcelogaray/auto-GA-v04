@@ -4,6 +4,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.umssdiplo.automationv01.core.managepage.BasePage;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
+import java.util.List;
+import java.util.Map;
 
 public class ListContract extends BasePage {
 
@@ -31,6 +33,9 @@ public class ListContract extends BasePage {
     @FindBy(id = "titleCreateContract")
     private WebElement titleContract;
 
+    @FindBy(id = "find-contract")
+    private WebElement inputFindContract;
+
     public ListContract() {
         CommonEvents.isVisible(buttonAddContract);
     }
@@ -49,9 +54,9 @@ public class ListContract extends BasePage {
         return new FormContract();
     }
 
-    public FormContract selectBtnDeleteContract() {
+    public boolean selectBtnDeleteContract() {
         CommonEvents.clickButton(buttonDeleteContract);
-        return new FormContract();
+        return CommonEvents.isVisible(buttonDeleteContract);
     }
 
     public void selectNextListcontract() {
@@ -68,5 +73,9 @@ public class ListContract extends BasePage {
 
     public String getTitle() {
         return CommonEvents.getTextContent(titleContract);
+    }
+
+    public void findContractList(List<Map<String, String>> data) {
+        CommonEvents.setInputField(inputFindContract, data.get(0).get("contractCode"));
     }
 }
