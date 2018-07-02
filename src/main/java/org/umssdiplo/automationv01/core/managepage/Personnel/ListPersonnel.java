@@ -33,31 +33,31 @@ public class ListPersonnel extends BasePage {
         CommonEvents.isVisible(tableListPersonnel);
     }
 
-    public boolean validateListPersonnel() {
+    public boolean validateListPersonnelIsVisible() {
         return CommonEvents.isVisible(tableListPersonnel);
     }
 
-    public boolean validateName() {
+    public boolean validateNameIsVisible() {
         return CommonEvents.isVisible(tableListPersonnelName);
     }
 
-    public boolean validateLastName() {
+    public boolean validateLastNameIsVisible() {
         return CommonEvents.isVisible(tableListPersonnelLastName);
     }
 
-    public boolean validateEmail() {
+    public boolean validateEmailIsVisible() {
         return CommonEvents.isVisible(tableListPersonnelEmail);
     }
 
-    public boolean validateAddress() {
+    public boolean validateAddressIsVisible() {
         return CommonEvents.isVisible(tableListPersonnelAddress);
     }
 
-    public boolean validatePhone() {
+    public boolean validatePhoneIsVisible() {
         return CommonEvents.isVisible(tableListPersonnelPhone);
     }
 
-    public boolean validateAction() {
+    public boolean validateActionIsVisible() {
         return CommonEvents.isVisible(tableListPersonnelAction);
     }
 }

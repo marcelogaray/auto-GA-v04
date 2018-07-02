@@ -722,36 +722,36 @@ public class StepsDefinitionSSID {
     @Then("^verificar que la tabla lista de 'Personal' este visible$")
     public void verificarQueLaTablaListaDePersonalEsteVisible() throws Throwable {
         listPersonnel = new ListPersonnel();
-        Assert.assertTrue(listPersonnel.validateListPersonnel());
+        Assert.assertTrue(listPersonnel.validateListPersonnelIsVisible());
     }
 
     @And("^verificar que la tabla lista de 'Personal' contenga 'Nombre'$")
     public void verificarQueLaTablaListaDePersonalContengaNombre() throws Throwable {
-        Assert.assertTrue(listPersonnel.validateName());
+        Assert.assertTrue(listPersonnel.validateNameIsVisible());
     }
 
     @And("^verificar que la tabla lista de 'Personal' contenga 'Apellido'$")
     public void verificarQueLaTablaListaDePersonalContengaApellido() throws Throwable {
-        Assert.assertTrue(listPersonnel.validateLastName());
+        Assert.assertTrue(listPersonnel.validateLastNameIsVisible());
     }
 
     @And("^verificar que la tabla lista de 'Personal' contenga 'Email'$")
     public void verificarQueLaTablaListaDePersonalContengaEmail() throws Throwable {
-        Assert.assertTrue(listPersonnel.validateEmail());
+        Assert.assertTrue(listPersonnel.validateEmailIsVisible());
     }
 
     @And("^verificar que la tabla lista de 'Personal' contenga 'Direccion'$")
     public void verificarQueLaTablaListaDePersonalContengaDireccion() throws Throwable {
-        Assert.assertTrue(listPersonnel.validateAddress());
+        Assert.assertTrue(listPersonnel.validateAddressIsVisible());
     }
 
     @And("^verificar que la tabla lista de 'Personal' contenga 'Telefono'$")
     public void verificarQueLaTablaListaDePersonalContengaTelefono() throws Throwable {
-        Assert.assertTrue(listPersonnel.validatePhone());
+        Assert.assertTrue(listPersonnel.validatePhoneIsVisible());
     }
 
     @And("^verificar que la tabla lista de 'Personal' contenga 'Accion'$")
     public void verificarQueLaTablaListaDePersonalContengaAccion() throws Throwable {
-        Assert.assertTrue(listPersonnel.validateAction());
+        Assert.assertTrue(listPersonnel.validateActionIsVisible());
     }
 }
