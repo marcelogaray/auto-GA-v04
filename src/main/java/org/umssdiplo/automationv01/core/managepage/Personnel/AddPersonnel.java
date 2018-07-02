@@ -37,32 +37,32 @@ public class AddPersonnel extends BasePage {
         CommonEvents.isVisible(inputNamePersonnel);
     }
 
-    public void setName(String name) {
+    public void setInputFieldName(String name) {
         CommonEvents.setInputField(inputNamePersonnel, name);
     }
 
-    public void setLastName(String lastName) {
+    public void setInputFieldLastName(String lastName) {
         CommonEvents.setInputField(inputLastNamePersonnel, lastName);
     }
 
-    public void setEmail(String email) {
+    public void setInputFieldEmail(String email) {
         CommonEvents.setInputField(inputEmailPersonnel, email);
     }
 
-    public void setAddress(String address) {
+    public void setInputFieldAddress(String address) {
         CommonEvents.setInputField(inputAddressPersonnel, address);
     }
 
-    public void setPhone(String phone) {
+    public void setInputFieldPhone(String phone) {
         CommonEvents.setInputField(inputPhonePersonnel, phone);
     }
 
-    public void setArea() {
+    public void setOptionArea() {
             CommonEvents.clickButton(optionAreaPersonnel);
             CommonEvents.clickButton(selectAreaPersonnel);
     }
 
-    public boolean send() {
+    public boolean clickOnButtonSendPersonnel() {
         boolean res = CommonEvents.isVisible(buttonSendPersonnel);
         if(res) {
             CommonEvents.clickButton(buttonSendPersonnel);

@@ -15,11 +15,11 @@ public class ButtonAddPersonnel extends BasePage {
         CommonEvents.isVisible(buttonAddPersonnel);
     }
 
-    public boolean validateButtonAddPersonnel(){
+    public boolean validateButtonAddPersonnelIsVisible(){
         return CommonEvents.isVisible(buttonAddPersonnel);
     }
 
-    public AddPersonnel clickAgregarPersonal(){
+    public AddPersonnel clickOnButtonAddPersonnel(){
         CommonEvents.clickButton(buttonAddPersonnel);
         return new AddPersonnel();
     }
