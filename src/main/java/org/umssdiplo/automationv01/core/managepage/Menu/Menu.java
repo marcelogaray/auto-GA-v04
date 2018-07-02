@@ -6,6 +6,9 @@ import org.umssdiplo.automationv01.core.managepage.BasePage;
 import org.umssdiplo.automationv01.core.managepage.Incident.IncidentPage;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Menu extends BasePage {
     @FindBy(id = "menuStructure")
     private WebElement menuStructure;
@@ -17,7 +20,10 @@ public class Menu extends BasePage {
     private WebElement menuIncident;
 
     @FindBy(id = "menuEquipament")
-    private WebElement nemuEquipament;
+    private WebElement menuEquipament;
+
+    @FindBy(id = "menuProgramSSO")
+    private WebElement menuProgramaSSO;
 
     public Menu() {
         CommonEvents.isVisible(menuPersonal);
@@ -34,13 +40,28 @@ public class Menu extends BasePage {
         return new SubMenuPersonal();
     }
 
+    public SubMenuProgramSSO clickMenuProgramSSO() {
+        CommonEvents.clickButton(menuProgramaSSO);
+        return new SubMenuProgramSSO();
+    }
+
     public IncidentPage clickMenuIncident() {
         CommonEvents.clickButton(menuIncident);
         return new IncidentPage();
     }
 
     public SubMenuEquipment selectEquipmentMenu() {
-        CommonEvents.clickButton(nemuEquipament);
+        CommonEvents.clickButton(menuEquipament);
         return new SubMenuEquipment();
+    }
+
+    public SubMenuPersonalContract selectSubMenuPersonalContract() {
+        CommonEvents.clickButton(menuPersonal);
+        return new SubMenuPersonalContract();
+    }
+
+    public SubMenuTrainer clickMenuProgramSSOTrainer() {
+        CommonEvents.clickButton(menuProgramaSSO);
+        return new SubMenuTrainer();
     }
 }
