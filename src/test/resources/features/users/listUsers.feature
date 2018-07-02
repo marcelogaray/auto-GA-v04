@@ -10,3 +10,4 @@ Feature: List User
     And seleccionar menu 'Personal' en la pagina 'Menu Principal'
     And seleccionar submenu 'Usuario' en menu 'Personal'
     Then validar que la 'Lista de Usuarios' este visible en la pagina 'usuarios'
+
