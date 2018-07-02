@@ -52,9 +52,6 @@ public class FormContract extends BasePage {
     @FindBy(id = "btnEnviarEdit")
     private WebElement buttonSendEdit;
 
-    @FindBy(id = "find-contract")
-    private WebElement inputFindContract;
-
     @FindBy(id = "form")
     private WebElement formContract;
 
@@ -110,10 +107,6 @@ public class FormContract extends BasePage {
 
     private void setInputDataDateEdit(String data) {
         CommonEvents.setInputField(inputDateEditContract, data);
-    }
-
-    public void findContractList(List<Map<String, String>> data) {
-        CommonEvents.setInputField(inputFindContract, data.get(0).get("contractCode"));
     }
 
     public void selectCityContract() {
