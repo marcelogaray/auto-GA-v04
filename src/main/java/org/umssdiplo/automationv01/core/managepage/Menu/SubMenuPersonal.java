@@ -28,13 +28,20 @@ public class SubMenuPersonal extends BasePage {
         return new ListUser();
     }
 
+    public boolean selectSubMenuPersonnel() {
+        boolean res = CommonEvents.isVisible(subMenuPersonnel);
+        if (res) {
+            CommonEvents.clickButton(subMenuPersonnel);
+        }
+        return res;
+    }
+
     public FormAssignPersonal selectSubMenuAssignPersonal() {
         CommonEvents.clickButton(subMenuSmAssign);
         return new FormAssignPersonal();
     }
 
-    public PersonnelSearch selectSubMenuPersonnel() {
-        CommonEvents.clickButton(subMenuPersonnel);
+    public PersonnelSearch getPersonnelSearch() {
         return new PersonnelSearch();
     }
 }
