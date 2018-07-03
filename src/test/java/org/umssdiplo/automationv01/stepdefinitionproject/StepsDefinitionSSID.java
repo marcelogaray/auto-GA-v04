@@ -1,6 +1,7 @@
 package org.umssdiplo.automationv01.stepdefinitionproject;
 
 import cucumber.api.DataTable;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -18,6 +19,8 @@ import org.umssdiplo.automationv01.core.managepage.Incident.IncidentPage;
 import org.umssdiplo.automationv01.core.managepage.Login.Login;
 import org.umssdiplo.automationv01.core.managepage.Menu.*;
 import org.umssdiplo.automationv01.core.managepage.Personnel.PersonnelSearch;
+import org.umssdiplo.automationv01.core.managepage.Personnel.ButtonAddPersonnel;
+import org.umssdiplo.automationv01.core.managepage.Personnel.FormTitleNewPersonnel;
 import org.umssdiplo.automationv01.core.managepage.Position.CreatePosition;
 import org.umssdiplo.automationv01.core.managepage.Position.Position;
 import org.umssdiplo.automationv01.core.managepage.ProgramSSO.Resource;
@@ -65,6 +68,8 @@ public class StepsDefinitionSSID {
     private SubMenuTrainer subMenuTrainer;
     private CreateTrainer createTrainer;
     private EditTrainer editTrainer;
+    private ButtonAddPersonnel buttonAddPersonnel;
+    private FormTitleNewPersonnel formTitleNewPersonnel;
     private ListPersonnel listPersonnel;
 
     private void loadPageObjects() {
@@ -145,6 +150,11 @@ public class StepsDefinitionSSID {
     @And("^click en el boton 'Agregrar nuevo recurso' de la pagina 'Recursos'$")
     public void clickAddNewResource() throws Throwable {
         resourceForm = resource.clickButtonAddResource();
+    }
+
+    @Then("^validar si el titulo 'Crear Recurso' es visible en la pagina de 'Agregar Recursos'$")
+    public void validarSiElTituloCrearRecursoEsVisibleEnLaPaginaDeAgregarRecursos() throws Throwable {
+        Assert.assertTrue(resourceForm.validateTitleIsVisible("Crear Recurso"), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Titulo 'Crear Recurso' "));
     }
 
     @And("^llenar el formulario con valores validos de la pagiga 'Agregar Recursos' costo = \"(.*)\" y detalle = \"(.*)\"$")
@@ -607,8 +617,7 @@ public class StepsDefinitionSSID {
     @And("^insertar la siguiente informacion para realizar el filtro en la 'lista de contrato'$")
     public void llenarfiltroBusqueda(DataTable tables) throws Throwable {
         List<Map<String, String>> data = tables.asMaps(String.class, String.class);
-        formContract = new FormContract();
-        formContract.findContractList(data);
+        listContract.findContractList(data);
     }
 
     @Then("^validar que la 'lista de contratos' se haya filtrado correctamente$")
@@ -623,7 +632,7 @@ public class StepsDefinitionSSID {
 
     @And("^click en el boton 'Eliminar' del primer item lista contratos$")
     public void seleccionarEliminar() throws Throwable {
-        formContract = listContract.selectBtnDeleteContract();
+        listContract.selectBtnDeleteContract();
     }
 
     @Then("^validar que la 'Lista de Contratos' este visible sin el item eliminado$")
@@ -654,6 +663,11 @@ public class StepsDefinitionSSID {
     @And("^presionar en el Boton de 'Guardar' para guardar la informacion$")
     public void presionarEnElBotonDeGuardarParaGuardarLaInformacion() throws Throwable {
         formUser.clickButtonSaveUser();
+    }
+
+    @And("^presionar en la opcion 'ProgramSSO' del 'Menu Principal'$")
+    public void presionarEnLaOpcionProgramSSODelMenuPrincipal() throws Throwable {
+        subMenuTrainer = menu.clickMenuProgramSSOTrainer();
     }
 
     @And("^presionar en la opcion 'Capacitadores' del sub menu 'ProgramSSO'$")
@@ -718,6 +732,18 @@ public class StepsDefinitionSSID {
     public void clickEnElSubmenuPersonal() throws Throwable {
         Assert.assertTrue(menuPersonal.selectSubMenuPersonnel(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Personnel Submenu"));
         listPersonnel = menuPersonal.getListPersonnel();
+        buttonAddPersonnel = menuPersonal.getButtonAddPersonnel();
+    }
+
+    @Given("^click en el boton 'Agregar nuevo personal'$")
+    public void clickEnElBotonAgregarNuevoPersonal() throws Throwable {
+        Assert.assertTrue(buttonAddPersonnel.validateButtonAddPersonnel(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Personnel add"));
+    }
+
+    @Then("^verificar el titulo del formulario de creacion 'Nuevo Personal'$")
+    public void verificarElTituloDelFormularioDeCreacionNuevoPersonal() throws Throwable {
+        formTitleNewPersonnel = new FormTitleNewPersonnel();
+        Assert.assertTrue(formTitleNewPersonnel.validateTitleNewPersonnelIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Personnel title"));
     }
 
     @Then("^verificar que la tabla lista de 'Personal' este visible$")
