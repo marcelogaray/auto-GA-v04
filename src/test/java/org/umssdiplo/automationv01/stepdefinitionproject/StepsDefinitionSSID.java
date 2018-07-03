@@ -753,31 +753,31 @@ public class StepsDefinitionSSID {
 
     @And("^verificar que la tabla lista de 'Personal' contenga 'Nombre'$")
     public void verificarQueLaTablaListaDePersonalContengaNombre() throws Throwable {
-        Assert.assertTrue(listPersonnel.validateNameIsVisible());
+        Assert.assertTrue(listPersonnel.validateNameIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Personnel list name"));
     }
 
     @And("^verificar que la tabla lista de 'Personal' contenga 'Apellido'$")
     public void verificarQueLaTablaListaDePersonalContengaApellido() throws Throwable {
-        Assert.assertTrue(listPersonnel.validateLastNameIsVisible());
+        Assert.assertTrue(listPersonnel.validateLastNameIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Personnel list last name"));
     }
 
     @And("^verificar que la tabla lista de 'Personal' contenga 'Email'$")
     public void verificarQueLaTablaListaDePersonalContengaEmail() throws Throwable {
-        Assert.assertTrue(listPersonnel.validateEmailIsVisible());
+        Assert.assertTrue(listPersonnel.validateEmailIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Personnel list email"));
     }
 
     @And("^verificar que la tabla lista de 'Personal' contenga 'Direccion'$")
     public void verificarQueLaTablaListaDePersonalContengaDireccion() throws Throwable {
-        Assert.assertTrue(listPersonnel.validateAddressIsVisible());
+        Assert.assertTrue(listPersonnel.validateAddressIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Personnel list address"));
     }
 
     @And("^verificar que la tabla lista de 'Personal' contenga 'Telefono'$")
     public void verificarQueLaTablaListaDePersonalContengaTelefono() throws Throwable {
-        Assert.assertTrue(listPersonnel.validatePhoneIsVisible());
+        Assert.assertTrue(listPersonnel.validatePhoneIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Personnel list phone"));
     }
 
     @And("^verificar que la tabla lista de 'Personal' contenga 'Accion'$")
     public void verificarQueLaTablaListaDePersonalContengaAccion() throws Throwable {
-        Assert.assertTrue(listPersonnel.validateActionIsVisible());
+        Assert.assertTrue(listPersonnel.validateActionIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Personnel list action"));
     }
 }
