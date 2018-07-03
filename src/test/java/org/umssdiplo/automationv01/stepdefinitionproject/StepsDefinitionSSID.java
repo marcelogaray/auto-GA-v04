@@ -589,7 +589,7 @@ public class StepsDefinitionSSID {
 
     @And("^seleccionar Boton 'Enviar' para grabar los datos del formulario$")
     public void SeleccionarBotonformulario() throws Throwable {
-        Assert.assertTrue(formContract.clickButtonSendForm(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Form New Contract"));
+        formContract.clickButtonSendForm();
     }
 
     @And("^click en el boton 'Editar' del primer item lista contratos$")
