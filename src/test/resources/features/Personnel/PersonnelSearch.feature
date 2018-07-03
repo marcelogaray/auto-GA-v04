@@ -13,5 +13,5 @@ Feature: Personnel search
     Then el resultado de 'Buscar Personal' deberia ser <resultado>
     Examples:
             | correo                 | resultado |
-            | franzelunico@gmail.com | 1         |
+            | jhon@gmail.com         | 1         |
             | asdfdiasdfasdfkasasdfs | 0         |
