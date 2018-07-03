@@ -716,12 +716,12 @@ public class StepsDefinitionSSID {
 
     @And("^click en el submenu 'Personal'$")
     public void clickEnElSubmenuPersonal() throws Throwable {
-        menuPersonal.selectSubMenuPersonnel();
+        Assert.assertTrue(menuPersonal.selectSubMenuPersonnel(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Personnel Submenu"));
+        listPersonnel = menuPersonal.getListPersonnel();
     }
 
     @Then("^verificar que la tabla lista de 'Personal' este visible$")
     public void verificarQueLaTablaListaDePersonalEsteVisible() throws Throwable {
-        listPersonnel = new ListPersonnel();
         Assert.assertTrue(listPersonnel.validateListPersonnelIsVisible());
     }
 
