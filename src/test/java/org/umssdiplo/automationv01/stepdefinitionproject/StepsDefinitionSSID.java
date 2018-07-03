@@ -19,6 +19,8 @@ import org.umssdiplo.automationv01.core.managepage.Incident.IncidentPage;
 import org.umssdiplo.automationv01.core.managepage.Login.Login;
 import org.umssdiplo.automationv01.core.managepage.Menu.*;
 import org.umssdiplo.automationv01.core.managepage.Personnel.PersonnelSearch;
+import org.umssdiplo.automationv01.core.managepage.Personnel.ButtonAddPersonnel;
+import org.umssdiplo.automationv01.core.managepage.Personnel.FormTitleNewPersonnel;
 import org.umssdiplo.automationv01.core.managepage.Position.CreatePosition;
 import org.umssdiplo.automationv01.core.managepage.Position.Position;
 import org.umssdiplo.automationv01.core.managepage.ProgramSSO.Resource;
@@ -32,6 +34,7 @@ import org.umssdiplo.automationv01.core.managepage.Usuario.ListUser;
 import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 import org.umssdiplo.automationv01.core.managepage.Contract.FormContract;
+
 import java.util.List;
 import java.util.Map;
 
@@ -65,6 +68,8 @@ public class StepsDefinitionSSID {
     private SubMenuTrainer subMenuTrainer;
     private CreateTrainer createTrainer;
     private EditTrainer editTrainer;
+    private ButtonAddPersonnel buttonAddPersonnel;
+    private FormTitleNewPersonnel formTitleNewPersonnel; 
 
     private void loadPageObjects() {
         login = LoadPage.loginPage();
@@ -720,5 +725,22 @@ public class StepsDefinitionSSID {
     @And("^verificar si el boton crear capacitador es visible$")
     public void verificarSiElBotonCrearCapacitadorEsVisible() throws Throwable {
         Assert.assertTrue(listTrainer.verifyIfCreateTrainerButtonIsVisibleAfterEditingTrainer(), "Create trainer button is not visible") ;
+    }
+
+    @And("^click en el submenu 'Personal'$")
+    public void clickEnElSubmenuPersonal() throws Throwable {
+        Assert.assertTrue(menuPersonal.selectSubMenuPersonnel());
+        buttonAddPersonnel = menuPersonal.getButtonAddPersonnel();
+    }
+
+    @Given("^click en el boton 'Agregar nuevo personal'$")
+    public void clickEnElBotonAgregarNuevoPersonal() throws Throwable {
+        Assert.assertTrue(buttonAddPersonnel.validateButtonAddPersonnel(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Personnel add"));
+    }
+
+    @Then("^verificar el titulo del formulario de creacion 'Nuevo Personal'$")
+    public void verificarElTituloDelFormularioDeCreacionNuevoPersonal() throws Throwable {
+        formTitleNewPersonnel = new FormTitleNewPersonnel();
+        Assert.assertTrue(formTitleNewPersonnel.validateTitleNewPersonnelIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Personnel title"));
     }
 }
