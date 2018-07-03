@@ -54,6 +54,7 @@ public class CommonEvents {
      */
     public static boolean isEnabled(WebElement webElement) {
         try {
+            ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElement));
             return webElement.isEnabled();
         } catch (NoSuchElementException e) {
             logger.error("Element do not exits!");
@@ -85,6 +86,7 @@ public class CommonEvents {
      */
     public static boolean isPresent(WebElement webElement) {
         try {
+            ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElement));
             return webElement.isEnabled();
         } catch (NoSuchElementException e) {
             logger.error("Element do not exists!");
@@ -153,6 +155,8 @@ public class CommonEvents {
      * @return the boolean value if text is empty of the WebElement.
      */
     public static boolean isInputEmpty(WebElement webElement) {
+        ManageDriver.getInstance().getWebDriverWait().until(ExpectedConditions.visibilityOf(webElement));
+
         if (CommonEvents.getTextValue(webElement) != null && !CommonEvents.getTextValue(webElement).isEmpty()) {
             return false;
         } else {
