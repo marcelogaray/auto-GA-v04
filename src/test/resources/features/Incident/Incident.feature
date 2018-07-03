@@ -18,7 +18,7 @@ Feature: Lista de Incidentes
     And click en el boton 'Agregar nuevo Incidente' de la pagina 'incidentes'
     When insertamos información valida en el formulario de 'Creacion de Incidentes'
       | Severity | Code   | IncidentType | State     | Area           | ReportedBy | Reincident | Treatment | Description           |
-      | Media    | ACC-02 | enfermedad   | entregado | Remodelaciones | jose       | true       | true      | this is a description |
+      | Media    | ACC-02 | enfermedad   | entregado | Remodelaciones | Ivan | true       | true      | this is a description |
     And click en el boton 'guardar' en el 'formulario creación de incidentes'
     Then verificar que la pagina 'incidentes' es cargada correctamente
 
