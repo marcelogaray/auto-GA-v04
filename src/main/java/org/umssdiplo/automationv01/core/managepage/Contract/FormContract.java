@@ -54,6 +54,9 @@ public class FormContract extends BasePage {
     @FindBy(id = "form")
     private WebElement formContract;
 
+    @FindBy(id = "titleCreateContract")
+    private WebElement titleContract;
+
     public FormContract() {
         CommonEvents.isVisible(formContract);
     }
@@ -126,5 +129,9 @@ public class FormContract extends BasePage {
     public boolean clickButtonSendFormEdit() {
         CommonEvents.clickButton(buttonSendEdit);
         return CommonEvents.isVisible(buttonSendEdit);
+    }
+
+    public String getTitle() {
+        return CommonEvents.getTextContent(titleContract);
     }
 }

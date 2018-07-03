@@ -657,7 +657,7 @@ public class StepsDefinitionSSID {
 
     @Then("^validar que el título del formulario de creación contratos sea 'Nuevo Contrato'$")
     public void validarTitulo() throws Throwable {
-        Assert.assertTrue(listContract.getTitle().equals("Nuevo Contrato"),String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Contract Title") );
+        Assert.assertTrue(formContract.getTitle().equals("Nuevo Contrato"),String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Contract Title") );
     }
 
     @And("^presionar en el Boton de 'Guardar' para guardar la informacion$")

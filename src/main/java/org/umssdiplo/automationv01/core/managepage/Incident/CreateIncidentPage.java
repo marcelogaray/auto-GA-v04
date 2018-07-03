@@ -63,7 +63,9 @@ public class CreateIncidentPage extends BasePage {
 
     @FindAll({
             @FindBy(id = "mat-option-16"),
-            @FindBy(id = "mat-option-17")
+            @FindBy(id = "mat-option-17"),
+            @FindBy(id = "mat-option-18"),
+            @FindBy(id = "mat-option-19")
     })
     private List<WebElement> selectedReportedByOptions;
 
