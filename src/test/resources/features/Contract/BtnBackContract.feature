@@ -1,4 +1,4 @@
-# Boton atraz crear contratos
+# Boton atras crear contratos
 
 Feature: Validacion de funcionalidad del bonton 'atras' en la pagina de 'creacion de contrato
 
