@@ -748,7 +748,7 @@ public class StepsDefinitionSSID {
 
     @Then("^verificar que la tabla lista de 'Personal' este visible$")
     public void verificarQueLaTablaListaDePersonalEsteVisible() throws Throwable {
-        Assert.assertTrue(listPersonnel.validateListPersonnelIsVisible());
+        Assert.assertTrue(listPersonnel.validateListPersonnelIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Personnel list"));
     }
 
     @And("^verificar que la tabla lista de 'Personal' contenga 'Nombre'$")
