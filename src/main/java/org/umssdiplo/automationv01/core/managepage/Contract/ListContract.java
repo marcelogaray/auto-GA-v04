@@ -33,9 +33,6 @@ public class ListContract extends BasePage {
     @FindBy(id = "find-contract")
     private WebElement inputFindContract;
 
-    @FindBy(id = "find-contract")
-    private WebElement inputFindContract;
-
     public ListContract() {
         CommonEvents.isVisible(buttonAddContract);
     }
@@ -69,10 +66,6 @@ public class ListContract extends BasePage {
 
     public void selectBtnBackContarct() {
         CommonEvents.clickButton(buttonBackList);
-    }
-
-    public void findContractList(List<Map<String, String>> data) {
-        CommonEvents.setInputField(inputFindContract, data.get(0).get("contractCode"));
     }
 
     public void findContractList(List<Map<String, String>> data) {
