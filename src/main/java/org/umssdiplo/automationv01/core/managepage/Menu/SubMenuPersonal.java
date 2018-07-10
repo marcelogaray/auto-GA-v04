@@ -7,6 +7,7 @@ import org.umssdiplo.automationv01.core.managepage.BasePage;
 import org.umssdiplo.automationv01.core.managepage.Personnel.ButtonAddPersonnel;
 import org.umssdiplo.automationv01.core.managepage.Personnel.PersonnelSearch;
 import org.umssdiplo.automationv01.core.managepage.Usuario.ListUser;
+import org.umssdiplo.automationv01.core.managepage.Personnel.ButtonAddPersonnel;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
 public class SubMenuPersonal extends BasePage {

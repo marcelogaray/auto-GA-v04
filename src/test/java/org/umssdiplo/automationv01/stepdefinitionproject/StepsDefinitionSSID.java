@@ -31,6 +31,8 @@ import org.umssdiplo.automationv01.core.managepage.Trainer.EditTrainer;
 import org.umssdiplo.automationv01.core.managepage.Trainer.ListTrainer;
 import org.umssdiplo.automationv01.core.managepage.Usuario.FormUser;
 import org.umssdiplo.automationv01.core.managepage.Usuario.ListUser;
+import org.umssdiplo.automationv01.core.managepage.Personnel.AddPersonnel;
+import org.umssdiplo.automationv01.core.managepage.Personnel.ButtonAddPersonnel;
 import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 import org.umssdiplo.automationv01.core.managepage.Contract.FormContract;
@@ -68,8 +70,8 @@ public class StepsDefinitionSSID {
     private SubMenuTrainer subMenuTrainer;
     private CreateTrainer createTrainer;
     private EditTrainer editTrainer;
-    private ButtonAddPersonnel buttonAddPersonnel;
-    private FormTitleNewPersonnel formTitleNewPersonnel; 
+    private AddPersonnel addPersonnel;
+    private FormTitleNewPersonnel formTitleNewPersonnel;
 
     private void loadPageObjects() {
         login = LoadPage.loginPage();
@@ -735,6 +737,43 @@ public class StepsDefinitionSSID {
 
     @Given("^click en el boton 'Agregar nuevo personal'$")
     public void clickEnElBotonAgregarNuevoPersonal() throws Throwable {
+        Assert.assertTrue(buttonAddPersonnel.validateButtonAddPersonnelIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Personnel add"));
+        addPersonnel = buttonAddPersonnel.clickOnButtonAddPersonnel();
+    }
+
+    @When("^llenar el campo nombre (.*)$")
+    public void llenarElCampoNombre(String name) throws Throwable {
+        addPersonnel.setInputFieldName(name);
+    }
+
+    @When("^llenar el campo apellido (.*)$")
+    public void llenarElCampoApellido(String lastName) throws Throwable {
+        addPersonnel.setInputFieldLastName(lastName);
+    }
+
+    @When("^llenar el campo email (.*)$")
+    public void llenarElCampoEmail(String email) throws Throwable {
+        addPersonnel.setInputFieldEmail(email);
+    }
+
+    @When("^llenar el campo direccion (.*)$")
+    public void llenarElCampoDireccion(String address) throws Throwable {
+        addPersonnel.setInputFieldAddress(address);
+    }
+
+    @When("^llenar el campo telefono (.*)$")
+    public void llenarElCampoTelefono(String phone) throws Throwable {
+        addPersonnel.setInputFieldPhone(phone);
+    }
+
+    @When("^seleccionar el 'Area' de instalaciones hidricas$")
+    public void seleccionarElAreaDeInstalacionesHidricas() throws Throwable {
+        addPersonnel.setOptionArea();
+    }
+
+    @Then("^click en 'Enviar' el nuevo personal$")
+    public void clickEnEnviarElNuevoPersonal() throws Throwable {
+        Assert.assertTrue(addPersonnel.clickOnButtonSendPersonnel(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_ENABLED, "Agregar Personal"));
         Assert.assertTrue(buttonAddPersonnel.validateButtonAddPersonnel(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Personnel add"));
     }
 
