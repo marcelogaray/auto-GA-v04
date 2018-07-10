@@ -31,10 +31,10 @@ import org.umssdiplo.automationv01.core.managepage.Trainer.EditTrainer;
 import org.umssdiplo.automationv01.core.managepage.Trainer.ListTrainer;
 import org.umssdiplo.automationv01.core.managepage.Usuario.FormUser;
 import org.umssdiplo.automationv01.core.managepage.Usuario.ListUser;
+import org.umssdiplo.automationv01.core.managepage.Personnel.ListPersonnel;
 import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 import org.umssdiplo.automationv01.core.managepage.Contract.FormContract;
-
 import java.util.List;
 import java.util.Map;
 
@@ -69,7 +69,8 @@ public class StepsDefinitionSSID {
     private CreateTrainer createTrainer;
     private EditTrainer editTrainer;
     private ButtonAddPersonnel buttonAddPersonnel;
-    private FormTitleNewPersonnel formTitleNewPersonnel; 
+    private FormTitleNewPersonnel formTitleNewPersonnel;
+    private ListPersonnel listPersonnel;
 
     private void loadPageObjects() {
         login = LoadPage.loginPage();
@@ -729,7 +730,8 @@ public class StepsDefinitionSSID {
 
     @And("^click en el submenu 'Personal'$")
     public void clickEnElSubmenuPersonal() throws Throwable {
-        Assert.assertTrue(menuPersonal.selectSubMenuPersonnel());
+        Assert.assertTrue(menuPersonal.selectSubMenuPersonnel(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Personnel Submenu"));
+        listPersonnel = menuPersonal.getListPersonnel();
         buttonAddPersonnel = menuPersonal.getButtonAddPersonnel();
     }
 
@@ -742,5 +744,40 @@ public class StepsDefinitionSSID {
     public void verificarElTituloDelFormularioDeCreacionNuevoPersonal() throws Throwable {
         formTitleNewPersonnel = new FormTitleNewPersonnel();
         Assert.assertTrue(formTitleNewPersonnel.validateTitleNewPersonnelIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Personnel title"));
+    }
+
+    @Then("^verificar que la tabla lista de 'Personal' este visible$")
+    public void verificarQueLaTablaListaDePersonalEsteVisible() throws Throwable {
+        Assert.assertTrue(listPersonnel.validateListPersonnelIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Personnel list"));
+    }
+
+    @And("^verificar que la tabla lista de 'Personal' contenga 'Nombre'$")
+    public void verificarQueLaTablaListaDePersonalContengaNombre() throws Throwable {
+        Assert.assertTrue(listPersonnel.validateNameIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Personnel list name"));
+    }
+
+    @And("^verificar que la tabla lista de 'Personal' contenga 'Apellido'$")
+    public void verificarQueLaTablaListaDePersonalContengaApellido() throws Throwable {
+        Assert.assertTrue(listPersonnel.validateLastNameIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Personnel list last name"));
+    }
+
+    @And("^verificar que la tabla lista de 'Personal' contenga 'Email'$")
+    public void verificarQueLaTablaListaDePersonalContengaEmail() throws Throwable {
+        Assert.assertTrue(listPersonnel.validateEmailIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Personnel list email"));
+    }
+
+    @And("^verificar que la tabla lista de 'Personal' contenga 'Direccion'$")
+    public void verificarQueLaTablaListaDePersonalContengaDireccion() throws Throwable {
+        Assert.assertTrue(listPersonnel.validateAddressIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Personnel list address"));
+    }
+
+    @And("^verificar que la tabla lista de 'Personal' contenga 'Telefono'$")
+    public void verificarQueLaTablaListaDePersonalContengaTelefono() throws Throwable {
+        Assert.assertTrue(listPersonnel.validatePhoneIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Personnel list phone"));
+    }
+
+    @And("^verificar que la tabla lista de 'Personal' contenga 'Accion'$")
+    public void verificarQueLaTablaListaDePersonalContengaAccion() throws Throwable {
+        Assert.assertTrue(listPersonnel.validateActionIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Personnel list action"));
     }
 }

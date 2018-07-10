@@ -6,6 +6,7 @@ import org.umssdiplo.automationv01.core.managepage.Assign.FormAssignPersonal;
 import org.umssdiplo.automationv01.core.managepage.BasePage;
 import org.umssdiplo.automationv01.core.managepage.Personnel.ButtonAddPersonnel;
 import org.umssdiplo.automationv01.core.managepage.Personnel.PersonnelSearch;
+import org.umssdiplo.automationv01.core.managepage.Personnel.ListPersonnel;
 import org.umssdiplo.automationv01.core.managepage.Usuario.ListUser;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
 
@@ -48,5 +49,9 @@ public class SubMenuPersonal extends BasePage {
 
     public ButtonAddPersonnel getButtonAddPersonnel(){
         return new ButtonAddPersonnel();
+    }
+
+    public ListPersonnel getListPersonnel() {
+        return new ListPersonnel();
     }
 }
