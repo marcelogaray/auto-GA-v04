@@ -4,6 +4,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.umssdiplo.automationv01.core.managepage.BasePage;
 import org.umssdiplo.automationv01.core.utils.CommonEvents;
+import java.util.List;
+import java.util.Map;
 
 public class ListContract extends BasePage {
 
@@ -19,17 +21,17 @@ public class ListContract extends BasePage {
     @FindBy(id = "eliminarContract")
     private WebElement buttonDeleteContract;
 
-    @FindBy(className = "mat-paginator-navigation-next mat-icon-button")
+    @FindBy(className = "mat-paginator-navigation-next")
     private WebElement buttonNextListcontract;
 
-    @FindBy(className = "mat-paginator-navigation-previous mat-icon-button")
+    @FindBy(className = "mat-paginator-navigation-previous")
     private WebElement buttonBackListcontract;
 
     @FindBy(id = "btnAtras")
     private WebElement buttonBackList;
 
-    @FindBy(id = "titleCreateContract")
-    private WebElement titleContract;
+    @FindBy(id = "find-contract")
+    private WebElement inputFindContract;
 
     public ListContract() {
         CommonEvents.isVisible(buttonAddContract);
@@ -49,9 +51,9 @@ public class ListContract extends BasePage {
         return new FormContract();
     }
 
-    public FormContract selectBtnDeleteContract() {
+    public boolean selectBtnDeleteContract() {
         CommonEvents.clickButton(buttonDeleteContract);
-        return new FormContract();
+        return CommonEvents.isVisible(buttonDeleteContract);
     }
 
     public void selectNextListcontract() {
@@ -66,7 +68,7 @@ public class ListContract extends BasePage {
         CommonEvents.clickButton(buttonBackList);
     }
 
-    public String getTitle() {
-        return CommonEvents.getTextContent(titleContract);
+    public void findContractList(List<Map<String, String>> data) {
+        CommonEvents.setInputField(inputFindContract, data.get(0).get("contractCode"));
     }
 }

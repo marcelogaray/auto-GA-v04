@@ -1,6 +1,7 @@
 package org.umssdiplo.automationv01.stepdefinitionproject;
 
 import cucumber.api.DataTable;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -18,6 +19,8 @@ import org.umssdiplo.automationv01.core.managepage.Incident.IncidentPage;
 import org.umssdiplo.automationv01.core.managepage.Login.Login;
 import org.umssdiplo.automationv01.core.managepage.Menu.*;
 import org.umssdiplo.automationv01.core.managepage.Personnel.PersonnelSearch;
+import org.umssdiplo.automationv01.core.managepage.Personnel.ButtonAddPersonnel;
+import org.umssdiplo.automationv01.core.managepage.Personnel.FormTitleNewPersonnel;
 import org.umssdiplo.automationv01.core.managepage.Position.CreatePosition;
 import org.umssdiplo.automationv01.core.managepage.Position.Position;
 import org.umssdiplo.automationv01.core.managepage.ProgramSSO.Resource;
@@ -33,6 +36,7 @@ import org.umssdiplo.automationv01.core.managepage.Personnel.ButtonAddPersonnel;
 import org.umssdiplo.automationv01.core.utils.ErrorMessage;
 import org.umssdiplo.automationv01.core.utils.LoadPage;
 import org.umssdiplo.automationv01.core.managepage.Contract.FormContract;
+
 import java.util.List;
 import java.util.Map;
 
@@ -67,7 +71,7 @@ public class StepsDefinitionSSID {
     private CreateTrainer createTrainer;
     private EditTrainer editTrainer;
     private AddPersonnel addPersonnel;
-    private ButtonAddPersonnel buttonAddPersonnel;
+    private FormTitleNewPersonnel formTitleNewPersonnel;
 
     private void loadPageObjects() {
         login = LoadPage.loginPage();
@@ -147,6 +151,11 @@ public class StepsDefinitionSSID {
     @And("^click en el boton 'Agregrar nuevo recurso' de la pagina 'Recursos'$")
     public void clickAddNewResource() throws Throwable {
         resourceForm = resource.clickButtonAddResource();
+    }
+
+    @Then("^validar si el titulo 'Crear Recurso' es visible en la pagina de 'Agregar Recursos'$")
+    public void validarSiElTituloCrearRecursoEsVisibleEnLaPaginaDeAgregarRecursos() throws Throwable {
+        Assert.assertTrue(resourceForm.validateTitleIsVisible("Crear Recurso"), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Titulo 'Crear Recurso' "));
     }
 
     @And("^llenar el formulario con valores validos de la pagiga 'Agregar Recursos' costo = \"(.*)\" y detalle = \"(.*)\"$")
@@ -609,8 +618,7 @@ public class StepsDefinitionSSID {
     @And("^insertar la siguiente informacion para realizar el filtro en la 'lista de contrato'$")
     public void llenarfiltroBusqueda(DataTable tables) throws Throwable {
         List<Map<String, String>> data = tables.asMaps(String.class, String.class);
-        formContract = new FormContract();
-        formContract.findContractList(data);
+        listContract.findContractList(data);
     }
 
     @Then("^validar que la 'lista de contratos' se haya filtrado correctamente$")
@@ -625,7 +633,7 @@ public class StepsDefinitionSSID {
 
     @And("^click en el boton 'Eliminar' del primer item lista contratos$")
     public void seleccionarEliminar() throws Throwable {
-        formContract = listContract.selectBtnDeleteContract();
+        listContract.selectBtnDeleteContract();
     }
 
     @Then("^validar que la 'Lista de Contratos' este visible sin el item eliminado$")
@@ -650,12 +658,17 @@ public class StepsDefinitionSSID {
 
     @Then("^validar que el título del formulario de creación contratos sea 'Nuevo Contrato'$")
     public void validarTitulo() throws Throwable {
-        Assert.assertTrue(listContract.getTitle().equals("Nuevo Contrato"),String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Contract Title") );
+        Assert.assertTrue(formContract.getTitle().equals("Nuevo Contrato"),String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Contract Title") );
     }
 
     @And("^presionar en el Boton de 'Guardar' para guardar la informacion$")
     public void presionarEnElBotonDeGuardarParaGuardarLaInformacion() throws Throwable {
         formUser.clickButtonSaveUser();
+    }
+
+    @And("^presionar en la opcion 'ProgramSSO' del 'Menu Principal'$")
+    public void presionarEnLaOpcionProgramSSODelMenuPrincipal() throws Throwable {
+        subMenuTrainer = menu.clickMenuProgramSSOTrainer();
     }
 
     @And("^presionar en la opcion 'Capacitadores' del sub menu 'ProgramSSO'$")
@@ -761,5 +774,12 @@ public class StepsDefinitionSSID {
     @Then("^click en 'Enviar' el nuevo personal$")
     public void clickEnEnviarElNuevoPersonal() throws Throwable {
         Assert.assertTrue(addPersonnel.clickOnButtonSendPersonnel(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_ENABLED, "Agregar Personal"));
+        Assert.assertTrue(buttonAddPersonnel.validateButtonAddPersonnel(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Personnel add"));
+    }
+
+    @Then("^verificar el titulo del formulario de creacion 'Nuevo Personal'$")
+    public void verificarElTituloDelFormularioDeCreacionNuevoPersonal() throws Throwable {
+        formTitleNewPersonnel = new FormTitleNewPersonnel();
+        Assert.assertTrue(formTitleNewPersonnel.validateTitleNewPersonnelIsVisible(), String.format(ErrorMessage.ERROR_MESSAGE_ELEMENT_VISIBLE, "Personnel title"));
     }
 }

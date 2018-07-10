@@ -23,4 +23,12 @@ public class ButtonAddPersonnel extends BasePage {
         CommonEvents.clickButton(buttonAddPersonnel);
         return new AddPersonnel();
     }
+  
+    public boolean validateButtonAddPersonnel(){
+        boolean res = CommonEvents.isVisible(buttonAddPersonnel);
+        if (res){
+            CommonEvents.clickButton(buttonAddPersonnel);
+        }
+        return res;
+    }
 }
